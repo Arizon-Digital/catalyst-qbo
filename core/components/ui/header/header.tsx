@@ -57,12 +57,12 @@ const Header = ({
   <div className={cn('relative', className)}>
 
     
-<ul>
-  <li><a class="active" href="#home">Home</a></li>
-  <li><a href="#news">News</a></li>
-  <li><a href="#contact">Contact</a></li>
-  <li><a href="#about">About</a></li>
-</ul>
+<div class="navbar">
+  <a class="active" href="#"><i class="fa fa-fw fa-home"></i> About Us</a> 
+  <a href="#"><i class="fa fa-fw fa-search"></i> Select Currency:GBP</a> 
+  <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact Us</a> 
+  <a href="#"><i class="fa fa-fw fa-user"></i> CAN: 438 800 0605 </a>
+</div>
 
 
 

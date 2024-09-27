@@ -259,4 +259,29 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
 
 
 
-   
+    .navbar {
+        width: 100%;
+        background-color: #555;
+        overflow: auto;
+      }
+      
+      .navbar a {
+        float: left;
+        padding: 12px;
+        color: white;
+        text-decoration: none;
+        font-size: 17px;
+      }
+      
+      .navbar a:hover {
+        background-color: #000;
+      }
+      
+      
+      
+      @media screen and (max-width: 500px) {
+        .navbar a {
+          float: none;
+          display: block;
+        }
+      }
