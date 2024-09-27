@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 const TabComponent = () => {
   const [activeTab, setActiveTab] = useState('house');
 
-  const tabContent = {
+  const tabContent: any = {
     house: 'Content about Houses: Beautiful designs and architecture.',
     rent: 'Content about Rent: Tips for renting properties and agreements.',
     road: 'Content about Roads: Importance of road maintenance and safety.',

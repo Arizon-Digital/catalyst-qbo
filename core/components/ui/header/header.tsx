@@ -57,11 +57,11 @@ const Header = ({
   <div className={cn('relative', className)}>
 
     
-<div class="navbar">
-  <a class="active" href="#"><i class="fa fa-fw fa-home"></i> About Us</a> 
-  <a href="#"><i class="fa fa-fw fa-search"></i> Select Currency:GBP</a> 
-  <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact Us</a> 
-  <a href="#"><i class="fa fa-fw fa-user"></i> CAN: 438 800 0605 </a>
+<div className="navbar">
+  <a className="active" href="#"><i className="fa fa-fw fa-home"></i> About Us</a> 
+  <a href="#"><i className="fa fa-fw fa-search"></i> Select Currency:GBP</a> 
+  <a href="#"><i className="fa fa-fw fa-envelope"></i> Contact Us</a> 
+  <a href="#"><i className="fa fa-fw fa-user"></i> CAN: 438 800 0605 </a>
 </div>
 
 
@@ -143,7 +143,7 @@ const Header = ({
           {account}
           </nav>
           <nav className="flex gap-2 lg:gap-9">{cart} </nav>
-          <div class ="text">cart</div>
+          <div className="text">cart</div>
          
         {activeLocale && locales.length > 0 ? (
           <LocaleSwitcher activeLocale={activeLocale} locales={locales} />
