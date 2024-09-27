@@ -52,7 +52,21 @@ const Header = ({
   logo,
   search,
 }: Props) => (
+  
+
   <div className={cn('relative', className)}>
+
+    
+<div className="navbar">
+  <a className="active" href="#"><i className="fa fa-fw fa-home"></i> About Us</a> 
+  <a href="#"><i className="fa fa-fw fa-search"></i> Select Currency:GBP</a> 
+  <a href="#"><i className="fa fa-fw fa-envelope"></i> Contact Us</a> 
+  <a href="#"><i className="fa fa-fw fa-user"></i> CAN: 438 800 0605 </a>
+</div>
+
+
+
+    
     <header className="flex h-[92px] items-center justify-between gap-1 overflow-y-visible bg-white px-4 2xl:container sm:px-10 lg:gap-8 lg:px-12 2xl:mx-auto 2xl:px-0">
       <CustomLink className="overflow-hidden text-ellipsis py-3" href="/">
         {typeof logo === 'object' ? (
@@ -127,9 +141,10 @@ const Header = ({
         {search}
         <nav className="flex gap-2 lg:gap-4">
           {account}
-          {cart}
-        </nav>
-
+          </nav>
+          <nav className="flex gap-2 lg:gap-9">{cart} </nav>
+          <div className="text">cart</div>
+         
         {activeLocale && locales.length > 0 ? (
           <LocaleSwitcher activeLocale={activeLocale} locales={locales} />
         ) : null}

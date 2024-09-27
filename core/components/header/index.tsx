@@ -79,9 +79,19 @@ export const Header = async ({ cart }: Props) => {
             }
           />
         ) : (
-          <Link aria-label={t('Account.login')} className="block p-3" href="/login">
-            <User />
-          </Link>
+          <div className="flex items-center">
+            <div className='user-icon'> <User/> </div>   
+   <div className='flex sign/registration'>
+   <Link aria-label="Login" className="flex items-center p-3" href="/login">
+{/* Add margin-right to space the icon from the text */}
+    Sign In
+  </Link>
+  <Link aria-label="Registration" className="p-3" href="/registration">
+    Registration
+  </Link>
+    </div>             
+
+</div>
         )
       }
       activeLocale={locale}
