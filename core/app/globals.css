@@ -186,8 +186,8 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
         margin-left: 18px;
     }
     svg.lucide.lucide-shopping-cart {
-        width: 37px !important;
-        height: 37px !important;
+        width: 40px !important;
+        height: 40px !important;
     }
     .form-prefixPostfix {
         width: 300px;
@@ -241,11 +241,22 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
         border: 1px solid #ca9618 !important;
         color: #fff !important;
         border-radius: 70px !important;
-        margin-top: -4px;
+        margin-top: -6px;
         margin-right: -26px;
         width: 35px !important;
+        height: 24px;
+        font-size: 15px !important;
     }
     svg.lucide.lucide-user {
         width: 44px !important;
         height: 44px !important;
     }
+    .text {
+        margin-left: -33px;
+        margin-top: 19px;
+        font-size: 18px !important;
+    }
+
+
+
+   
