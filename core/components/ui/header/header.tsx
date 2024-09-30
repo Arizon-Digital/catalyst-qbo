@@ -83,7 +83,7 @@ const Header = ({
         )}
       </CustomLink>
 
-      <NavigationMenuPrimitive.Root className="hidden lg:block">
+      {/* <NavigationMenuPrimitive.Root className="hidden lg:block">
         <NavigationMenuPrimitive.List className="flex items-center gap-2 lg:gap-4">
           {links.map((link) =>
             link.groups && link.groups.length > 0 ? (
@@ -135,7 +135,7 @@ const Header = ({
         </NavigationMenuPrimitive.List>
 
         <NavigationMenuPrimitive.Viewport className="absolute start-0 top-full z-50 w-full bg-white pb-12 pt-6 shadow-xl duration-200 animate-in slide-in-from-top-5" />
-      </NavigationMenuPrimitive.Root>
+      </NavigationMenuPrimitive.Root> */}
 
       <div className="flex items-center gap-2 lg:gap-4">
         {search}

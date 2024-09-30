@@ -110,10 +110,7 @@ h3.text-xl.font-bold.lg\:text-2xl {
     margin-top: 0 !important;
 }
 
-body.flex.h-screen.min-w-\[375px\].flex-col {
-    max-width: 70% !important;
-    margin: auto !important;
-}
+
 
 .text-gray-500 {
     margin: 1rem 0 .375rem;
@@ -160,31 +157,30 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
         gap: 1.5rem;
         display: none !important;
     }
-    .disabled\:text-gray-200:disabled {
+ .disabled\:text-gray-200:disabled {
         border-color: #dcdcdc !important;
         border-style: solid !important;
         border-width: 1px !important;
         border-radius: 2px !important;
         --tw-text-opacity: 1 !important;
         color: rgb(207 216 220 / var(--tw-text-opacity)) !important;
-    }
-    .w-12 {
+ }
+.w-12 {
         color: rgb(207 216 220 / 1 );
         border-color: rgb(220, 220, 220) !important;
         border-style: solid !important;
         border-width: 1px !important;
         border-radius : 2px !important;
         width : 2.5rem !important;
-    }
-    p.pr {
+ }
+ p.pr {
         FONT-WEIGHT: 400 !important;
         FONT-SIZE: 15PX ! IMPORTANT;
-    }
-    input#search_query {
-        
-    
+ }
+ input#search_query {
         margin-left: 18px;
-    }
+        font-weight: 300;
+ }
     svg.lucide.lucide-shopping-cart {
         width: 40px !important;
         height: 40px !important;
@@ -257,13 +253,22 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
         font-size: 18px !important;
     }
 
-
+    .p-21.text-leftt.bg-\[\#e7f5f8\] {
+        padding: 6.5rem;
+        margin-left: 12px;
+        margin-right: 12px;
+        
+    }
 
     .navbar {
+        display: flex;
+        justify-content: center;
+        margin: auto;
         width: 100%;
         background-color: #555;
         overflow: auto;
-      }
+        
+    }
       
       .navbar a {
         float: left;
@@ -272,12 +277,39 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
         text-decoration: none;
         font-size: 17px;
       }
+      .p-5 {
+        padding: 0.75rem;
+        width: 190px;
+    }
+    button.p-5.rounded.bg-\[\#03465c\].text-whites {
+        background-color: #ededed !important;
+        margin-right: 3px;
+        border-radius: 0px;
+        font-size: 18px;
+    }
+    button.p-5.rounded.bg-\[\#e7f5f8\].text-\[\#03465c\] {
+        background-color: #ededed;
+        margin-right: 3px;
+        border-radius: 0px;
+        font-size: 18px;
+    }
+    .bg-\[\#e7f5f8\] {
+        --tw-bg-opacity: 1;
+        background-color: #ffffff;
+    }
       
       .navbar a:hover {
         background-color: #000;
       }
       
-      
+      .mb-42 {
+        margin-bottom: 1rem;
+        margin-left: 12px;
+    }  
+
+    main.flex-1.px-4.\32 xl\:container.sm\:px-10.lg\:px-12.\32 xl\:mx-auto.\32 xl\:px-0 {
+        max-width: 70%;
+    }
       
       @media screen and (max-width: 500px) {
         .navbar a {
