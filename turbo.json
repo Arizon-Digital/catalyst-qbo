@@ -23,6 +23,11 @@
         "!.next/cache/**"
       ]
     },
+    "web#build": {
+      "dependsOn": ["^build"],
+      "env": ["*"],
+      "outputs": ["dist/**"]
+    },
     "lint": {
       "env": ["*"],
       "dependsOn": [
