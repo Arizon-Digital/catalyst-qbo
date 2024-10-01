@@ -1,7 +1,6 @@
 import { useTranslations } from 'next-intl';
-
 import { FragmentOf, graphql } from '~/client/graphql';
-import TabComponnet  from '../_components/tab';
+import TabComponent from '../_components/tab';
 
 export const DescriptionFragment = graphql(`
   fragment DescriptionFragment on Product {
@@ -17,14 +16,14 @@ export const Description = ({ product }: Props) => {
   const t = useTranslations('Product.Description');
 
   if (!product.description) {
-    return null;
+    return null; // Return null if no description
   }
 
   return (
     <>
-    < TabComponnet /> 
       <h2 className="mb-4 text-xl font-bold md:text-2xl">{t('heading')}</h2>
-      <div dangerouslySetInnerHTML={{ __html: product.description }} />
+      {/* Pass product description to the TabComponent */}
+      <TabComponent productDescription={product.description} />
     </>
   );
 };
