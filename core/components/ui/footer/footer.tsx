@@ -52,6 +52,17 @@ const Footer = ({
   ...props
 }: Props) => (
   <footer className={cn('2xl:container 2xl:mx-auto', className)} {...props}>
+
+<nav className="grid flex-auto auto-cols-frr gap-8 sm:grid-flow-col">
+        {sections.map((section) => (
+          <div key={section.title}>
+            <h3 className="mb-4 text-lg font-bold">{section.title}</h3>
+            
+          </div>
+        ))}
+      </nav>
+
+    
     <section className="flex flex-col gap-8 border-t border-gray-200 px-4 py-10 sm:px-10 md:flex-row lg:gap-4 lg:px-12 2xl:px-0">
       <nav className="grid flex-auto auto-cols-fr gap-8 sm:grid-flow-col">
         {sections.map((section) => (
@@ -68,22 +79,7 @@ const Footer = ({
         ))}
       </nav>
       <div className="flex flex-col gap-4 md:order-first md:grow">
-        {Boolean(logo) && (
-          <h3>
-            {typeof logo === 'object' ? (
-              <BcImage
-                alt={logo.altText}
-                className="max-h-16 object-contain"
-                height={32}
-                priority
-                src={logo.src}
-                width={155}
-              />
-            ) : (
-              <span className="truncate text-2xl font-black">{logo}</span>
-            )}
-          </h3>
-        )}
+        
         {Boolean(contactInformation) && (
           <>
             <address className="not-italic">

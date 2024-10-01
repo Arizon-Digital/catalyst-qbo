@@ -1,33 +1,46 @@
-"use client"; // Add this line at the top
+"use client";
 
 import React, { useState } from 'react';
 
-const TabComponent = () => {
-  const [activeTab, setActiveTab] = useState('house');
+interface TabComponentProps {
+  productDescription: string;  // Prop to accept the product description
+}
+
+const TabComponent = ({ productDescription }: TabComponentProps) => {
+  const [activeTab, setActiveTab] = useState('Description'); // Default active tab is "Description"
 
   const tabContent: any = {
-    Description: 'Content about Rent: Tips for renting properties and agreements.',
-    TechnicalData : 'Content about Rent: Tips for renting properties and agreements.',
-    BulkPricing : 'Content about Roads: Importance of road maintenance and safety.',
-    DeliveryInformation : 'Content about Hills: Hiking trails and scenic views.',
-    Reviews: 'Content about Hills: Hiking trails and scenic views.',
+    Description: productDescription,  // Use the passed product description
+    TechnicalData: 'Technical data for the product goes here.',
+    BulkPricing: 'Bulk pricing details for the product.',
+    DeliveryInformation: 'Delivery information for the product.',
+    Reviews: 'Customer reviews for the product.',
   };
 
   return (
-    <div className="mbc-14">
-      <div className="flex justify-left  mb-42">
+    <div className="mb-143">
+      <div className="flex justify-left mb-41">
         {Object.keys(tabContent).map((tab) => (
           <button
             key={tab}
-            className={`p-5 rounded ${activeTab === tab ? 'bg-[#03465c] text-whites' : 'bg-[#e7f5f8] text-[#03465c]'}`}
+            className={`p-5 ${activeTab === tab ? 'bg-[#03465c] text-whitee' : 'bg-[#e7f5f8] text-[#03465c]'}`}
             onClick={() => setActiveTab(tab)}
           >
             {tab.charAt(0).toUpperCase() + tab.slice(1)}
           </button>
         ))}
       </div>
-      <div className="p-21 text-leftt bg-[#e7f5f8]">
-        <div className="text-[#03465c] text-base">{tabContent[activeTab]}</div>
+
+      <div className="p-53 text-left bg-[#e7f5f8]">
+        <div className="text-[#03465c] text-basee">
+          {activeTab === 'Description' ? (
+            // Use dangerouslySetInnerHTML to render the product description as HTML
+            <div dangerouslySetInnerHTML={{ __html: productDescription }} />
+          ) : (
+            // Render other tab content for non-description tabs
+            <div>{tabContent[activeTab]}</div>
+          )}
+        </div>
       </div>
     </div>
   );

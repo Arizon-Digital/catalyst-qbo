@@ -2,14 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+nav.grid.flex-auto.auto-cols-frr.gap-8.sm\:grid-flow-col {
+    background-color: #1a2348 !important;
+}
+section.flex.flex-col.gap-8.border-t.border-gray-200.px-4.py-10.sm\:px-10.md\:flex-row.lg\:gap-4.lg\:px-12.\32 xl\:px-0 {
+    margin-left: 120px;
+    margin-right: 120px;
+}
 
+button.p-5.bg-\[\#03465c\].text-whitee {
+    background-color: #ededed;
+    margin-left: 7px;
+}
+.border-gray-200 {
+    --tw-border-opacity: 1;
+    border-color: #1a2348;
+}
 .prod-desc-tbl th {
     background: #1a2348;
     color: #fff;
     padding: 2px;
     font-size: xx-small;
     text-transform: uppercase;
-    padding: 20px;
+    padding: 15px;
     font-size: 16px;
 }
 .prod-desc-tbl td {
@@ -174,8 +189,8 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
         width : 2.5rem !important;
  }
  p.pr {
-        FONT-WEIGHT: 400 !important;
-        FONT-SIZE: 15PX ! IMPORTANT;
+        font-weight: 400 !important;
+        Font-size: 15PX !important;
  }
  input#search_query {
         margin-left: 18px;
@@ -254,7 +269,7 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
     }
 
     .p-21.text-leftt.bg-\[\#e7f5f8\] {
-        padding: 6.5rem;
+       
         margin-left: 12px;
         margin-right: 12px;
         
@@ -278,8 +293,26 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
         font-size: 17px;
       }
       .p-5 {
+        margin-bottom: 50px;
         padding: 0.75rem;
         width: 190px;
+    }
+    button.p-5.bg-\[\#e7f5f8\].text-\[\#03465c\] {
+        background-color: #ededed;
+        color: #1a2348 !important;
+        font-size: 18px;
+        margin-left: 7px;
+    }
+    .text-\[\#03465c\] {
+        --tw-text-opacity: 1;
+        color: #1a2348;
+        margin-left: 10px;
+       
+    }
+    footer.\32 xl\:container.\32 xl\:mx-auto {
+        color: #fff !important;
+        background-color: #212121;
+        max-width:100% !important;
     }
     button.p-5.rounded.bg-\[\#03465c\].text-whites {
         background-color: #ededed !important;
@@ -317,3 +350,4 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
           display: block;
         }
       }
+    
