@@ -47,20 +47,6 @@ export const Footer = async () => {
 
   const sections = [
     {
-      title: 'Categories',
-      links: data.categoryTree.map((category) => ({
-        label: category.name,
-        href: category.path,
-      })),
-    },
-    {
-      title: 'Brands',
-      links: removeEdgesAndNodes(data.brands).map((brand) => ({
-        label: brand.name,
-        href: brand.path,
-      })),
-    },
-    {
       title: 'Navigate',
       links: removeEdgesAndNodes(data.content.pages).map((page) => ({
         label: page.name,

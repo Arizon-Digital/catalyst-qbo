@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+section#borderfooter {
+    border-color: #FFF;
+}
+h5.footer-info-heading {
+    font-size: 32px;
+    font-weight: 800;
+    display: flex;
+}
 nav.grid.flex-auto.auto-cols-frr.gap-8.sm\:grid-flow-col {
     background-color: #1a2348 !important;
 }
@@ -9,6 +17,29 @@ section.flex.flex-col.gap-8.border-t.border-gray-200.px-4.py-10.sm\:px-10.md\:fl
     margin-left: 120px;
     margin-right: 120px;
 }
+nav#nav-menu-root {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #1a2348;
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    border-bottom: 5px solid #ca9618;
+}
+.container.row {
+    background: #f5f5f5;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, .09);
+    margin: 0 0 20px;
+    padding: 5px;
+    max-width: 100%;
+    padding-left: 209px;
+    height: 88px;
+}
+.hover\:text-primary:hover {
+    
+    color: #ca9618 !important;
+}
+
 
 button.p-5.bg-\[\#03465c\].text-whitee {
     background-color: #ededed;
@@ -114,7 +145,7 @@ h3.text-xl.font-bold.lg\:text-2xl {
     margin-top: 15px !important;
 }
 .font-semibold {
-    font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
+    
     font-weight: 700 !important;
     font-size: 1rem !important;
     text-transform: uppercase;
@@ -123,6 +154,26 @@ h3.text-xl.font-bold.lg\:text-2xl {
 .pq {
     border-top: 1px solid #dcdcdc;
     margin-top: 0 !important;
+}
+.deliverytable th {
+    border-bottom: 3px solid #ca9618;
+    background-color: #1a2348;
+    color: #fff;
+    padding: 7px 5px;
+    text-transform: uppercase;
+}
+p.textscopy {
+    margin-left: 110px;
+    font-size: 14px;
+    font-weight: 400;
+}
+.\32xl\:px-0 {
+    padding: 40px 0;
+}
+div#payment-icons {
+    margin-right: 100px;
+    width: 80%;
+    height: 100%;
 }
 
 
@@ -235,7 +286,10 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
       img.max-h-16.object-contain {
         width: 400px;
         height: 900px;
+        margin-left: 90px;
     }
+    
+    
     .flex.sign\/registration {
         flex-direction: column;
         margin-top: 8px;
@@ -263,9 +317,11 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
         height: 44px !important;
     }
     .text {
-        margin-left: -33px;
+        margin-right: 120px;
+        margin-left: -28px;
         margin-top: 19px;
         font-size: 18px !important;
+        
     }
 
     .p-21.text-leftt.bg-\[\#e7f5f8\] {
@@ -280,7 +336,7 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
         justify-content: center;
         margin: auto;
         width: 100%;
-        background-color: #555;
+        background-color: #000;
         overflow: auto;
         
     }
@@ -290,12 +346,23 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
         padding: 12px;
         color: white;
         text-decoration: none;
-        font-size: 17px;
+        font-size: 18px;
+        font-weight: 700;
       }
+      .footer-images {
+        display: flex;
+        padding: 0 0 20px;
+    }
       .p-5 {
         margin-bottom: 50px;
         padding: 0.75rem;
         width: 190px;
+    }
+    ol, ul, menu {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
     }
     button.p-5.bg-\[\#e7f5f8\].text-\[\#03465c\] {
         background-color: #ededed;
@@ -339,6 +406,46 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
         margin-bottom: 1rem;
         margin-left: 12px;
     }  
+
+    .header-banner {
+        display: block;
+        width: 100%;
+    }
+    
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+    
+    .hb-card {
+        display: flex;
+       flex: 1;
+    padding: 10px;
+    
+    }
+    
+    .hb-image {
+        margin-right: 15px;
+    }
+    
+    .hb-image img {
+        max-width: 50px;
+    }
+    
+    .hb-text {
+        padding-top: 12px;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 1.2;
+    }
+    
+    .hb-item {
+        flex: 1;
+        padding: 10px;
+        text-align: left;
+    }
 
     main.flex-1.px-4.\32 xl\:container.sm\:px-10.lg\:px-12.\32 xl\:mx-auto.\32 xl\:px-0 {
         max-width: 70%;
