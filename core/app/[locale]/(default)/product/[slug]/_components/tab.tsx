@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface TabComponentProps {
   productDescription: string;  // Prop to accept the product description

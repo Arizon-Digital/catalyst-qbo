@@ -8,6 +8,8 @@ import { cn } from '~/lib/utils';
 
 import { type Locale, LocaleSwitcher } from './locale-switcher';
 import { MobileNav } from './mobile-nav';
+import MiniCart from './minicart';
+
 
 interface Link {
   label: string;
@@ -65,7 +67,6 @@ const Header = ({
 </div>
 
 
-
     
     <header className="flex h-[92px] items-center justify-between gap-1 overflow-y-visible bg-white px-4 2xl:container sm:px-10 lg:gap-8 lg:px-12 2xl:mx-auto 2xl:px-0">
       <CustomLink className="overflow-hidden text-ellipsis py-3" href="/">
@@ -83,7 +84,7 @@ const Header = ({
         )}
       </CustomLink>
 
-     
+      
 
       <div className="flex items-center gap-2 lg:gap-4">
         {search}
@@ -92,6 +93,7 @@ const Header = ({
           </nav>
           <nav className="flex gap-2 lg:gap-9">{cart} </nav>
           <div className="text">cart</div>
+          
          
         {activeLocale && locales.length > 0 ? (
           <LocaleSwitcher activeLocale={activeLocale} locales={locales} />
