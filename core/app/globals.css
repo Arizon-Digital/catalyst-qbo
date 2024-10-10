@@ -254,10 +254,17 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
         width: 300px;
         display: flex;
         align-items: center;
-        border: 2px solid #1a2348; /* Violet border for the whole section */
-        border-radius: 5px; /* Optional: Round the corners */
-        overflow: hidden; /* Ensure nothing spills outside */
-      }
+        border: 2px solid #1a2348;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+    div#warp {
+        background-color: #ca9618;
+        width: 350px;
+    }
+    input.button.form-prefixPostfix-button--postfix {
+        width: 120px;
+    }
       span.search-icon {
         color: #fff !important;
         width: 102px !important;
@@ -315,6 +322,21 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
         width: 44px !important;
         height: 44px !important;
     }
+    .newsletter-container {
+        width: 77em;
+        margin-left: 121px;
+        font-size: 16px;
+    }
+    p#font\ size {
+        font-weight: 400;
+        font-size: 1rem;
+    }
+    col-span-2.ol, ul, menu {
+        display: flex !important;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
     .text {
         margin-right: 120px;
         margin-left: -28px;
@@ -362,6 +384,13 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
         list-style: none;
         margin: 0;
         padding: 0;
+    }
+    col-span-2.ol, ul, menu{
+        display: flow;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
     }
     button.p-5.bg-\[\#e7f5f8\].text-\[\#03465c\] {
         background-color: #ededed;
@@ -448,6 +477,13 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
 
     main.flex-1.px-4.\32 xl\:container.sm\:px-10.lg\:px-12.\32 xl\:mx-auto.\32 xl\:px-0 {
         max-width: 70%;
+    }
+    nav.grid.flex-auto.auto-cols-fr.gap-8.sm\:grid-flow-col {
+        width: 230px;
+        margin-left: 230px;
+    }
+    address#address {
+        font-weight: 700;
     }
       
       @media screen and (max-width: 500px) {

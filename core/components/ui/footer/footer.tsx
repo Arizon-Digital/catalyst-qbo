@@ -55,8 +55,8 @@ const Footer = ({
     <nav className="grid flex-auto auto-cols-frr gap-8 sm:grid-flow-col">
     <article className="emthemesModez-newsletterForm" data-section-type="newsletterSubscription">
   <div className="newsletter-container" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-    <h5 className="footer-info-heading" style={{ margin: 0 }}>Subscribe Today</h5>
-    <p style={{ margin: 0 }}>
+    <h5 className="footer-info-heading" id='headingin' style={{ margin: 0 }}>Subscribe Today</h5>
+    <p id='font size' style={{ margin: 0 }}>
       Be the first to know about exclusive deals, new product lines, company announcements, and industry news.
     </p>
     <form className="form" action="/subscribe.php" method="post" data-hs-cf-bound="true" style={{ display: 'flex', alignItems: 'center' }}>
@@ -66,9 +66,8 @@ const Footer = ({
         <input type="hidden" name="check" value="1" />
         <div className="form-field" style={{ display: 'flex', alignItems: 'center' }}>
           <label className="form-label is-srOnly" htmlFor="nl_email">
-            Email Address
           </label>
-          <div className="form-prefixPostfix wrap" style={{ display: 'flex', alignItems: 'center' }}>
+          <div className="form-prefixPostfix wrap" id='warp' style={{ display: 'flex', alignItems: 'center' }}>
             <input
               className="form-input form-prefixPostfix-input"
               id="nl_email"
