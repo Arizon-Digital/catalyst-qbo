@@ -1,3 +1,4 @@
+
 import { useTranslations } from 'next-intl';
 import { FragmentOf, graphql } from '~/client/graphql';
 import TabComponent from '../_components/tab';
@@ -12,9 +13,8 @@ interface Props {
   product: FragmentOf<typeof DescriptionFragment>;
 }
 
-export const Description = ({ product }: Props) => {
+export const Description = ({ product }: any) => {
   const t = useTranslations('Product.Description');
-
   if (!product.description) {
     return null; // Return null if no description
   }
@@ -23,7 +23,7 @@ export const Description = ({ product }: Props) => {
     <>
       
       {/* Pass product description to the TabComponent */}
-      <TabComponent productDescription={product.description} />
+      <TabComponent product={product} />
     </>
     
   );

@@ -2,7 +2,7 @@ import { DraftModeScript } from '@makeswift/runtime/next/server';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Roboto_Slab } from 'next/font/google';
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 import { unstable_setRequestLocale } from 'next-intl/server';
 import { PropsWithChildren } from 'react';
@@ -16,10 +16,9 @@ import { revalidate } from '~/client/revalidate-target';
 import { Notifications } from '../notifications';
 import { Providers } from '../providers';
 
-const inter = Inter({
+const inter = Roboto_Slab({
   subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
+  weight: '700'
 });
 
 const RootLayoutMetadataQuery = graphql(`
@@ -89,7 +88,7 @@ export default function RootLayout({ children, params: { locale } }: Props) {
   const messages = useMessages();
 
   return (
-    <html className={`${inter.variable} font-sans`} lang={locale}>
+    <html className={` font-sans`} lang={locale}>
       <head>
         <DraftModeScript />
       </head>

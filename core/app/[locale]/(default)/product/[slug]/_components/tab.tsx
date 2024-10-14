@@ -1,20 +1,26 @@
+
+
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import TechData  from './techdata';
+import Bulk from './bulkprice';
+import Deliveryinformation from './DeliveryInformation';
+
 
 interface TabComponentProps {
-  productDescription: string;  // Prop to accept the product description
+  product: any;  // Prop to accept the product description
 }
 
-const TabComponent = ({ productDescription }: TabComponentProps) => {
+const TabComponent = ({product}: any) => {
   const [activeTab, setActiveTab] = useState('Description'); // Default active tab is "Description"
-
+  console.log('-------', product.description)
   const tabContent: any = {
-    Description: productDescription,  // Use the passed product description
-    TechnicalData: 'Technical data for the product goes here.',
-    BulkPricing: 'Bulk pricing details for the product.',
+    Description: product.description,  // Use the passed product description
+    TechnicalData: product.techdata,
+    BulkPricing: product.Bulkprice,
     DeliveryInformation: 'Delivery information for the product.',
-    Reviews: 'Customer reviews for the product.',
+    Reviews:  <div dangerouslySetInnerHTML={{ __html: product.reviews }}/>,
   };
 
   return (
@@ -35,15 +41,27 @@ const TabComponent = ({ productDescription }: TabComponentProps) => {
         <div className="text-[#03465c] text-basee">
           {activeTab === 'Description' ? (
             // Use dangerouslySetInnerHTML to render the product description as HTML
-            <div dangerouslySetInnerHTML={{ __html: productDescription }} />
-          ) : (
+            <div dangerouslySetInnerHTML={{ __html: product.description }} />
+          ) : ( 
             // Render other tab content for non-description tabs
             <div>{tabContent[activeTab]}</div>
           )}
+
+{activeTab === 'TechnicalData' && (
+            <TechData product={product} />
+          )}
+          {activeTab === 'BulkPricing' && (
+            <Bulk product={product} />
+          )}
+          
+         
+          
         </div>
       </div>
     </div>
   );
 };
+
+
 
 export default TabComponent;

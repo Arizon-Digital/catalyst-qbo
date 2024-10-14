@@ -66,7 +66,6 @@ const Header = ({
   <a href="#"><i className="fa fa-fw fa-user"></i> CAN: 438 800 0605 </a>
 </div>
 
-<MiniCart />
 
     
     <header className="flex h-[92px] items-center justify-between gap-1 overflow-y-visible bg-white px-4 2xl:container sm:px-10 lg:gap-8 lg:px-12 2xl:mx-auto 2xl:px-0">
