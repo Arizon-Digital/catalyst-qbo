@@ -6,47 +6,47 @@
   "globalDependencies": [
     ".env.local"
   ],
-  "tasks": {
-    "topo": {
-      "dependsOn": [
-        "^topo"
-      ]
-    },
+  "pipeline": {
     "build": {
-      "env": ["*"],
       "dependsOn": [
         "^build"
       ],
+      "env": ["*"],
       "outputs": [
         "dist/**",
         ".next/**",
         "!.next/cache/**"
       ]
     },
+    "core#build": {
+      "dependsOn": ["^build"],
+      "env": ["*"],
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
     "web#build": {
       "dependsOn": ["^build"],
       "env": ["*"],
-      "outputs": ["dist/**"]
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
     "lint": {
-      "env": ["*"],
       "dependsOn": [
         "^build"
-      ]
+      ],
+      "env": ["*"]
     },
     "typecheck": {
-      "env": ["*"],
       "dependsOn": [
-        "topo"
+        "^build"
       ],
+      "env": ["*"],
       "outputs": [
         "node_modules/.cache/tsbuildinfo.json"
       ]
     },
     "dev": {
-      "env": ["*"],
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "env": ["*"]
     }
   }
 }
