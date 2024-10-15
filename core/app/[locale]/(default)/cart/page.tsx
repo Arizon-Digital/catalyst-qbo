@@ -79,7 +79,7 @@ export default async function Cart() {
 
   return (
     <div>
-      <h1 className="pb-6 text-4xl font-black lg:pb-10 lg:text-5xl">{t('heading')}</h1>
+      <h1 className="pb-6 text-4xl font-black lg:pb-10 lg:text-5xl">Your Cart</h1>
       <div className="pb-12 md:grid md:grid-cols-2 md:gap-8 lg:grid-cols-3">
         <ul className="col-span-2">
           {lineItems.map((product) => (

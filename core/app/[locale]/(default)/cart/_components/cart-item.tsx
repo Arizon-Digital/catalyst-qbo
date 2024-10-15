@@ -160,7 +160,7 @@ export const CartItem = ({ currencyCode, product }: Props) => {
             <div className="h-full w-full bg-gray-200" />
           )}
         </div>
-
+        
         <div className="flex-1">
           <p className="text-base text-gray-500">{product.brand}</p>
           <div className="flex flex-col gap-2 md:flex-row">

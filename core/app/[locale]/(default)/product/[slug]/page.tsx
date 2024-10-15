@@ -96,14 +96,15 @@ export default async function Product({ params: { locale, slug }, searchParams }
       <div className="mb-12 mt-4 lg:grid lg:grid-cols-2 lg:gap-8">
         <Gallery product={product} />
         <Details product={product} />
-        <div className="lg:col-span-2">
+        
+      </div>
+      <div className="lg:col-span-2"  id='tabsection'>
           <Description product={product} />
           <Warranty product={product} />
           <Suspense fallback={t('loading')}>
-            <Reviews productId={product.entityId} />
+            {/* <Reviews productId={product.entityId} /> */}
           </Suspense>
         </div>
-      </div>
 
       <Suspense fallback={t('loading')}>
         <RelatedProducts productId={product.entityId} />
