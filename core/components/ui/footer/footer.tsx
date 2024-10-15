@@ -102,17 +102,23 @@ const Footer = ({
                 </Fragment>
               ))}
             </address>
+            <p> UK - 0808 168 1234</p>
+        <p> USA - 646 895 6246 / 619 354 1821</p>
+        <p> Canada - 438 800 0605</p>
             {Boolean(contactInformation?.phone) && (
               <a
                 className="hover:text-primary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20"
                 href={`tel:${contactInformation?.phone}`}
               >
-                <p>{contactInformation?.phone}</p>
+                <p> International- {contactInformation?.phone}</p>
               </a>
+              
             )}
           </>
         )}
+        
         <a className="contactus" href={`tel:${contactInformation?.phone}`}>
+          
           <p>Contact us</p>
         </a>
 
@@ -138,11 +144,47 @@ const Footer = ({
           <div key={section.title}>
             <h3 className="mb-4 text-lg font-bold">{section.title}</h3>
             <ul className="flex flex-col gap-4">
-              {section.links.map((link) => (
+              {/* {section.links.map((link) => (
                 <li key={link.href}>
                   <CustomLink href={link.href}>{link.label}</CustomLink>
                 </li>
-              ))}
+              ))} */}
+              <li>
+                Home
+              </li>
+              <li>
+                About Us
+              </li>
+              <li>
+                10 Year Anniversary
+              </li>
+              <li>
+                Contact Us
+              </li>
+              <li>
+                Customer Service
+              </li>
+              <li>
+                Delivery Information
+              </li>
+              <li>
+                FAQS
+              </li>
+              <li>
+              Privacy Policy
+              </li>
+              <li>
+                Customer Reviews
+              </li>
+              <li>
+                Terms & Conditions
+              </li>
+              <li>
+              Blog
+              </li>
+              <li>
+                Sitemap
+              </li>
             </ul>
           </div>
         ))}

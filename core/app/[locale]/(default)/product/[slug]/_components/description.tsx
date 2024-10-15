@@ -24,6 +24,7 @@ export const Description = ({ product }: any) => {
       
       {/* Pass product description to the TabComponent */}
       <TabComponent product={product} />
+      
     </>
     
   );

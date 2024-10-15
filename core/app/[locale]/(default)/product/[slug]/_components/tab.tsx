@@ -43,6 +43,7 @@ const TabComponent = ({product}: any) => {
         <div className="text-[#03465c] text-basee">
           {activeTab === 'Description' ? (
             // Use dangerouslySetInnerHTML to render the product description as HTML
+            
             <div dangerouslySetInnerHTML={{ __html: product.description }} />
           ) : ( 
             // Render other tab content for non-description tabs

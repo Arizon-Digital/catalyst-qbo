@@ -33,9 +33,7 @@ section.flex.flex-col.gap-8.border-t.border-gray-200.px-4.py-10.sm\:px-10.md\:fl
     margin-left: 120px;
     margin-right: 120px;
 }
-.flex.justify-left.mb-41 {
-    margin-bottom: -24px;
-}
+
 nav#nav-menu-root {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -62,7 +60,6 @@ nav#nav-menu-root {
 
 button.p-5.bg-\[\#03465c\].text-whitee {
     background-color: #ededed;
-    margin-left: 7px;
 }
 .border-gray-200 {
     --tw-border-opacity: 1;
@@ -416,11 +413,11 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
         display: flex;
         padding: 0 0 20px;
     }
-      .p-5 {
-        margin-bottom: 50px;
-        padding: 0.75rem;
-        width: 200px;
-    }
+.p-5 {
+margin-bottom: 50px;
+padding: 15px 25px;
+width: auto;
+}
     ol, ul, menu {
         display: flex;
         list-style: none;
@@ -499,18 +496,24 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
         text-transform: uppercase;
         background-color: #ededed;
         color: #1a2348 !important;
-        font-size: 15px;
-        margin-left: 7px;
+        font-family: Oswald, arial, sans-serif;
+        font-size: 18px;
+        font-weight: 400;
+        letter-spacing: 1.5px;
+        
     }
     button.p-5.bg-\[\#03465c\].text-whitee {
         background-color: #ededed;
-        margin-left: 7px;
         text-transform: uppercase;
+        font-family: Oswald, arial, sans-serif;
+        font-size: 18px;
+        font-weight: 400;
+        letter-spacing: 1.5px;
     }
     .text-\[\#03465c\] {
         --tw-text-opacity: 1;
         color: #1a2348;
-        margin-left: 10px;
+        margin-left: 2px;
        
     }
     footer.\32 xl\:container.\32 xl\:mx-auto {
