@@ -22,9 +22,9 @@ p#cartproductname {
     font-size: 16px !important;
     width: 60%;
 }
-div#feefo-service-review-carousel-widgetIdd {
-    width: 30% !important;
-    
+h2.page-heading {
+    font-size: 30px;
+    font-weight: 400;
 }
 nav.grid.flex-auto.auto-cols-frr.gap-8.sm\:grid-flow-col {
     background-color: #1a2348 !important;
@@ -95,12 +95,15 @@ table {
     border-spacing: 2px;
     border-color: BLACK;
 }
+div#feefo-service-review-carousel-widgetIdd {
+    width: 50%;
+}
 
 .pb-3 {
     height: 220px;
-    margin-left: 10px;
+    margin-left: 20px;
     margin-top: 20px;
-    width: 220px;
+    width: 240px;
     border: 1px solid #dcdcdc;
     box-shadow: 0 3px 0 #dcdcdc;
     padding-bottom: 0.75rem;
@@ -440,7 +443,7 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
     box-shadow: 0 3px 0 #dcdcdc;
     }
     div#buttoncart {
-        height: 185px;
+        height: auto;
     }
     .cart-secure-checkout-icon {
         margin-top: 20px;
@@ -448,24 +451,27 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
 
     .product-details {
         display: flex;
-        flex-wrap: wrap;
-        gap: 10px; /* Adjust spacing between items */
-      }
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
       
       .product-details-item {
-        display: inline-flex;
+        display: flex;
         align-items: center;
         gap: 5px; /* Space between label and value */
       }
       
       .product-details-logo {
-        height: 20px; /* Adjust size as necessary */
+        height: 30px;
         width: auto;
-      }
+        margin-left: 878px;
+    }
       
       strong {
         font-weight: bold;
       }
+      
       
     .col-span-1.col-start-2.lg\:col-start-3 {
         background-color: #fff;
@@ -480,10 +486,7 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
         padding-right: 1rem;
         padding-left: 1rem;
     }
-    .mb-143 {
-        margin-top: 20px;
-        margin-bottom: 15px;
-    }
+    
     div#tabsection {
         background-color: #fff;
         border: 1px solid #dcdcdc;
@@ -582,7 +585,7 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
     }
 
     main.flex-1.px-4.\32 xl\:container.sm\:px-10.lg\:px-12.\32 xl\:mx-auto.\32 xl\:px-0 {
-        max-width: 70%;
+        max-width: 80%;
     }
     nav.grid.flex-auto.auto-cols-fr.gap-8.sm\:grid-flow-col {
         width: 230px;

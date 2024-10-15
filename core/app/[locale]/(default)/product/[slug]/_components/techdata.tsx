@@ -27,11 +27,13 @@ interface Props {
 
 const TechData: React.FC<Props> = ({ product }) => {
   const t = useTranslations('Product.TechData');
-
+console.log('.....text.......',product.custom_fields);
   // Return null if no technical data is available
   if (!product.sku && !product.condition && !product.availability && !product.brand && !product.weight && !product.custom_fields?.length) {
     return null;
   }
+  
+
 
   return (
     <div className="tech-data">
@@ -43,7 +45,7 @@ const TechData: React.FC<Props> = ({ product }) => {
   {product.brand?.name && (
     <>
       <span className="product-details-item">
-        <strong>BRAND:</strong>
+        <strong>BRANDS:</strong>
         <img
           src={`https://www.qualitybearingsonline.com/content/img/brands/product-details/${product.brand.name}.png`}
           alt={`${product.brand.name} Brand Logo`}
@@ -85,34 +87,9 @@ const TechData: React.FC<Props> = ({ product }) => {
         <br />
       </div>
 
-      {/* Render custom fields */}
-      {product.custom_fields?.length > 0 && (
-        <div className="custom-fields">
-          {product.custom_fields.map((field, index) => (
-            <React.Fragment key={index}>
-              <dt className="product-details-dt">{field.name}:</dt>
-              <dd className="product-details-dd">
-                {field.value ? (
-                  <>
-                    {/* Ensure that field.value is an object and render its properties */}
-                    {typeof field.value === 'object' ? (
-                      <>
-                        {field.value.value}
-                        {field.value.unit && ` (${field.value.unit})`}
-                      </>
-                    ) : (
-                      field.value
-                    )}
-                  </>
-                ) : (
-                  <span>Value not available</span> // Fallback if value is missing
-                )}
-              </dd>
-              <br /><br />
-            </React.Fragment>
-          ))}
-        </div>
-      )}
+      
+      
+    
     </div>
   );
 };

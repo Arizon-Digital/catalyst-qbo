@@ -32,6 +32,15 @@ const ProductPageQuery = graphql(
           ...WarrantyFragment
           entityId
           name
+          customFields {
+            edges {
+              node {
+                entityId
+                name
+                value
+              }
+            }
+          }
           defaultImage {
             url: urlTemplate(lossy: true)
             altText

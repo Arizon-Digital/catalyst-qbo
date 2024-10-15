@@ -103,12 +103,12 @@ export default async function Cart() {
         
       </div>
       <CartViewed checkout={checkout} currencyCode={cart.currencyCode} lineItems={lineItems} />
-      <div>
-      
       <div data-content-region="cart_below_content"></div>
-                                       <script type="text/javascript" src="https://api.feefo.com/api/javascript/quality-bearings-online" async></script> <div id="feefo-service-review-carousel-widgetIdd" class="feefo-review-carousel-widget-service"></div>
+                                       <script type="text/javascript" src="https://api.feefo.com/api/javascript/quality-bearings-online" async></script> <div id="feefo-service-review-carousel-widgetIdd" className="feefo-review-carousel-widget-service"></div>
                 </div>
-</div>
+              
+      
+  
 	
 	
 
