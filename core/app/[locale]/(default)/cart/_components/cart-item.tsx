@@ -165,7 +165,7 @@ export const CartItem = ({ currencyCode, product }: Props) => {
           <p className="text-base text-gray-500">{product.brand}</p>
           <div className="flex flex-col gap-2 md:flex-row">
             <div className="flex flex-1 flex-col gap-2">
-              <p className="text-xl font-bold md:text-2xl">{product.name}</p>
+              <p className="text-xl font-bold md:text-2xl" id='cartproductname'>{product.name}</p>
 
               {product.selectedOptions.length > 0 && (
                 <div>
@@ -231,7 +231,14 @@ export const CartItem = ({ currencyCode, product }: Props) => {
                 <RemoveItem currency={currencyCode} product={product} />
               </div>
             </div>
-
+                <div className='price cart'>
+                <p className="text-lg font-bold">
+                  {format.number(product.extendedSalePrice.value, {
+                    style: 'currency',
+                    currency: currencyCode,
+                  })}
+                </p>
+                </div>
             <div className="flex flex-col gap-2 md:items-end">
               <div>
                 {product.originalPrice.value &&
@@ -243,12 +250,7 @@ export const CartItem = ({ currencyCode, product }: Props) => {
                     })}
                   </p>
                 ) : null}
-                <p className="text-lg font-bold">
-                  {format.number(product.extendedSalePrice.value, {
-                    style: 'currency',
-                    currency: currencyCode,
-                  })}
-                </p>
+                
               </div>
 
               <ItemQuantity product={product} />

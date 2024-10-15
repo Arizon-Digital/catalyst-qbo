@@ -1,11 +1,18 @@
+import React, { useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { FragmentOf, graphql } from '~/client/graphql';
 
+// GraphQL fragment for Bulk Pricing
 export const Bulkprice = graphql(`
-  fragment TechDataFragment on Product {
-    sku
-    condition
-    availability
+  fragment BulkPriceFragment on Product {
+    bulk_discount_rates {
+      min
+      max
+      type
+      discount {
+        formatted
+      }
+    }
   }
 `);
 
@@ -16,16 +23,76 @@ interface Props {
 const Bulk: React.FC<Props> = ({ product }) => {
   const t = useTranslations('Product.Bulk');
 
-  if (!product.sku && !product.condition && !product.availability) {
-    return null; // Return null if no technical data is available
+  // Check if there are bulk discount rates
+  if (!product.bulk_discount_rates || product.bulk_discount_rates.length === 0) {
+    return (
+      <div className="tab-content" id="tab-bulk" data-emthemesmodez-mobile-collapse>
+        <h2 className="page-heading">Bulk Pricing</h2>
+        <hr className="product-info-hr" />
+        <div className="productView-bulk-tabContent" data-emthemesmodez-mobile-collapse-content>
+          <p>
+            For bulk discount on this product, contact our dedicated sales team today by filling out the below form:
+          </p>
+          <div id="hubspot-form"></div> {/* Placeholder for the form */}
+        </div>
+      </div>
+    );
   }
 
+  // Use useEffect to load the HubSpot form
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "//js-eu1.hsforms.net/forms/embed/v2.js";
+    script.async = true;
+
+    script.onload = () => {
+      // Check if hbspt is available
+      if (window.hbspt) {
+        window.hbspt.forms.create({
+          region: "eu1",
+          portalId: "139717848",
+          formId: "cd97e866-8d59-4ca7-8252-23dacae92004",
+          target: "#hubspot-form" // Target the div where the form should be rendered
+        });
+      } else {
+        console.error("hbspt is not available.");
+      }
+    };
+
+    script.onerror = () => {
+      console.error("Failed to load the HubSpot form script.");
+    };
+
+    document.body.appendChild(script);
+    
+    // Cleanup function to remove the script when the component unmounts
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   return (
-    <div className="Bulk"> 
-     
-      <ul>
-        Bulk
-      </ul>
+    <div className="tab-content" id="tab-bulk" data-emthemesmodez-mobile-collapse>
+      <h2 className="page-heading">Bulk Pricing</h2>
+      <hr className="product-info-hr" />
+      <div className="productView-bulk-tabContent" data-emthemesmodez-mobile-collapse-content>
+        <ul className="bulk-pricing-list">
+          {product.bulk_discount_rates.map((rate, index) => (
+            <li key={index} className="bulk-pricing-item">
+              <span className="bulk-pricing-range" id="bulk-pricing-range">
+                {rate.min === rate.max
+                  ? t('products.bulk_pricing.range_single', { min: rate.min })
+                  : t('products.bulk_pricing.range', { min: rate.min, max: rate.max })}
+              </span>
+              <span className="bulk-pricing-value" id="bulk-pricing-value">
+                {rate.type === 'percent' && t('products.bulk_pricing.percent', { discount: rate.discount.formatted })}
+                {rate.type === 'fixed' && t('products.bulk_pricing.fixed', { discount: rate.discount.formatted })}
+                {rate.type === 'price' && t('products.bulk_pricing.price', { discount: rate.discount.formatted })}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

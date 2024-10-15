@@ -98,7 +98,7 @@ export const Details = ({ product }: Props) => {
           {Boolean(product.weight) && (
             <div>
               <h3 className="font-semibold flex">Bulk Pricing  <p className="pr">: 
-              <a href="https://www.qualitybearingsonline.com/bulk-pricing/" onclick="event.stopPropagation();">Click Here to Enquire</a>
+              <a href="https://www.qualitybearingsonline.com/bulk-pricing/" onClick="event.stopPropagation();">Click Here to Enquire</a>
               </p></h3>
               
             </div>

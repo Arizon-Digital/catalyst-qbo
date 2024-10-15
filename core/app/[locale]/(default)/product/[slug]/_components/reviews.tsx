@@ -38,30 +38,32 @@ const ReviewsQuery = graphql(
 );
 
 interface Props {
-  productId: number;
+  product: {
+    entityId: number;
+  };
 }
 
-export const Reviews = async ({ productId }: Props) => {
+export const Reviews = async ({ product }: Props) => {
   const t = await getTranslations('Product.Reviews');
   const format = await getFormatter();
 
   const { data } = await client.fetch({
     document: ReviewsQuery,
-    variables: { entityId: productId },
+    variables: { entityId: product.entityId },
     fetchOptions: { next: { revalidate } },
   });
 
-  const product = data.site.product;
+  const productData = data.site.product;
 
-  if (!product) {
+  if (!productData) {
     return null;
   }
 
-  const reviews = removeEdgesAndNodes(product.reviews);
+  const reviews = removeEdgesAndNodes(productData.reviews);
 
   return (
     <>
-     <h3 className="mb-4 mt-8 text-xl font-bold md:text-2xl">
+      <h3 className="mb-4 mt-8 text-xl font-bold md:text-2xl">
         {t('heading')}
         {reviews.length > 0 && (
           <span className="ms-2 ps-1 text-gray-500">
@@ -97,7 +99,9 @@ export const Reviews = async ({ productId }: Props) => {
           })
         )}
       </ul>
-      {reviews.length > 0 && <ProductReviewSchema productId={productId} reviews={reviews} />}
+      {reviews.length > 0 && <ProductReviewSchema productId={product.entityId} reviews={reviews} />}
     </>
   );
 };
+
+export default Reviews;

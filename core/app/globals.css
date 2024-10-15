@@ -10,6 +10,22 @@ h5.footer-info-heading {
     font-weight: 800;
     display: flex;
 }
+div#checkouticon {
+    width: 30% !important;
+    margin-left: 740px !important;
+}
+.price.cart {
+    margin-top: 22px;
+    margin-right: 90px;
+}
+p#cartproductname {
+    font-size: 16px !important;
+    width: 60%;
+}
+div#feefo-service-review-carousel-widgetIdd {
+    width: 30% !important;
+    
+}
 nav.grid.flex-auto.auto-cols-frr.gap-8.sm\:grid-flow-col {
     background-color: #1a2348 !important;
 }
@@ -423,6 +439,34 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
     -webkit-box-shadow: 0 3px 0 #dcdcdc;
     box-shadow: 0 3px 0 #dcdcdc;
     }
+    div#buttoncart {
+        height: 185px;
+    }
+    .cart-secure-checkout-icon {
+        margin-top: 20px;
+    }
+
+    .product-details {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px; /* Adjust spacing between items */
+      }
+      
+      .product-details-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px; /* Space between label and value */
+      }
+      
+      .product-details-logo {
+        height: 20px; /* Adjust size as necessary */
+        width: auto;
+      }
+      
+      strong {
+        font-weight: bold;
+      }
+      
     .col-span-1.col-start-2.lg\:col-start-3 {
         background-color: #fff;
     border: 1px solid #dcdcdc;

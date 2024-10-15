@@ -6,6 +6,8 @@ import React, { useState, useEffect } from 'react';
 import TechData  from './techdata';
 import Bulk from './bulkprice';
 import Deliveryinformation from './DeliveryInformation';
+import Reviews from './reviews';
+
 
 
 interface TabComponentProps {
@@ -19,8 +21,8 @@ const TabComponent = ({product}: any) => {
     Description: product.description,  // Use the passed product description
     TechnicalData: product.techdata,
     BulkPricing: product.Bulkprice,
-    DeliveryInformation: 'Delivery information for the product.',
-    Reviews:  <div dangerouslySetInnerHTML={{ __html: product.reviews }}/>,
+    DeliveryInformation: product.DelivaryInformation,
+    Reviews: product.reviews ,
   };
 
   return (
@@ -53,6 +55,11 @@ const TabComponent = ({product}: any) => {
           {activeTab === 'BulkPricing' && (
             <Bulk product={product} />
           )}
+          {activeTab === 'DeliveryInformation' && (
+            <Deliveryinformation product={product} />
+          )}
+         
+          
           
          
           
