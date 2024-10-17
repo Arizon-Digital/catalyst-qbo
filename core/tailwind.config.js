@@ -32,7 +32,7 @@ const config = {
         },
       },
       fontFamily: {
-        sans: ['var(--font-inter)'],
+        sans: ["Roboto Slab", 'serif'],
       },
       borderColor: {
         DEFAULT: '#CFD8DC',
