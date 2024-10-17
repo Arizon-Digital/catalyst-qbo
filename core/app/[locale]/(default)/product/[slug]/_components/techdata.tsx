@@ -84,21 +84,25 @@ const TechData: React.FC<Props> = ({ product }) => {
           {product.sku && (
             <>
               <span className="product-details-item">
-                <strong>SKU:</strong> {product.sku}
+                <strong>SKU:</strong> <div className='value'>{product.sku}</div>
               </span>
             </>
           )}
 
           {Boolean(product.availabilityV2.description) && (
-            <div>
-              <h3 className="font-semibold flex">Availability: <p className="pr">{product.availabilityV2.description}</p></h3>
+            
+            <div className='product-details-itemss'>
+              <h3 className="font-semibold flex id">Availability: <p className="pr value">{product.availabilityV2.description}</p></h3>
             </div>
+            
           )}
 
           {product.weight && (
             <>
               <span className="product-details-item">
-                <strong>Weight:</strong> {product.weight.value} {product.weight.unit}
+                <strong>Weight:</strong> 
+                <div className='value'>{product.weight.value} {product.weight.unit}
+                </div>
               </span>
             </>
           )}
@@ -113,9 +117,9 @@ const TechData: React.FC<Props> = ({ product }) => {
 
       {customFields.length > 0 &&
         customFields.map((customField) => (
-          <div key={customField.entityId}>
+          <div key={customField.entityId} className='custom-field'>
             <h3 className="font-semibold">{customField.name}</h3>
-            <p>{customField.value}</p>
+            <p className='custom'>{customField.value}</p>
           </div>
         ))
       }

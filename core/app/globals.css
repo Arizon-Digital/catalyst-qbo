@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+span.product-details-item {
+    width: 90% !important;
+    display: block;
+    margin-left: 9px;
+}
+.value {
+    float: right !important;
+}
+p.pr.value {
+    float: right !important;
+}
+.product-details-itemss {
+    display: block;
+    width: 91.5%;
+}
+h3.font-semibold.flex.id {
+    justify-content: space-between;
+    display: flex;
+    margin-left: 9px;
+}
 section#borderfooter {
     border-color: #FFF;
 }
@@ -25,6 +45,7 @@ p#cartproductname {
 h2.page-heading {
     font-size: 30px;
     font-weight: 400;
+    margin-left: 12px;
 }
 nav.grid.flex-auto.auto-cols-frr.gap-8.sm\:grid-flow-col {
     background-color: #1a2348 !important;
@@ -457,26 +478,71 @@ width: auto;
         display: flex;
         align-items: center;
         gap: 5px; /* Space between label and value */
+        font-family: "Roboto Slab", serif;
+    font-size: 16px;
+    font-style: normal;
+    float: left;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    line-height: 1.1875;
+    margin-left: 5px;
+    text-transform: uppercase;
       }
       
       .product-details-logo {
-        height: 30px;
+        height: 27px;
         width: auto;
-        margin-left: 878px;
+        margin-left: 1023px;
+        margin-top: -26px;
+    }
+    .custom-field {
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        margin-left: 9px;
+        margin-bottom: 7px;
+    }
+    .product-reviews-header {
+        margin-top: 20px;
+        font-size: 30px;
+        font-weight: 400;
+    }
+    .tech-data {
+        margin-left: 20px;
+        margin-bottom: 30px;
+    }
+    p.custom {
+        float: right;
+    font-family: "Roboto Slab", serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    line-height: 1.1875;
+    padding-right: 0;
+    text-transform: uppercase;
     }
       
       strong {
         font-weight: bold;
       }
+      .cart123 {
+        margin-bottom: 30px;
+        background-color: #fff;
+        border: 1px solid #dcdcdc;
+        border-radius: 4px;
+        /* -webkit-box-shadow: 0 3px 0 #dcdcdc; */
+        box-shadow: 0 3px 0 #dcdcdc;
+    }
+ 
       
-      
-    .col-span-1.col-start-2.lg\:col-start-3 {
+    /* .col-span-1.col-start-2.lg\:col-start-3 {
         background-color: #fff;
     border: 1px solid #dcdcdc;
     border-radius: 4px;
     -webkit-box-shadow: 0 3px 0 #dcdcdc;
     box-shadow: 0 3px 0 #dcdcdc;
-    }
+    } */
     .py-4 {
         padding-top: 1rem;
         padding-bottom: 1rem;

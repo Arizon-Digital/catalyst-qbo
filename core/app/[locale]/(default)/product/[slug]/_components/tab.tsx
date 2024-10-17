@@ -18,23 +18,23 @@ const TabComponent = ({product}: any) => {
   const [activeTab, setActiveTab] = useState('Description'); // Default active tab is "Description"
   console.log('-------', product.description)
   const tabContent: any = {
-    Description: product.description,  // Use the passed product description
-    TechnicalData: product.techdata,
-    BulkPricing: product.Bulkprice,
-    DeliveryInformation: product.DelivaryInformation,
-    Reviews: product.reviews ,
+    Description: {data: product.description, label: 'Description'},  // Use the passed product description
+    TechnicalData: {data: product.techdata, label: 'Technical Data'},
+    BulkPricing: {data: product.Bulkprice, label: 'Bulk Pricing'},
+    DeliveryInformation: { data: product.DelivaryInformation, label: 'Delivery Information'},
+    Reviews: { data: product.reviews, label: 'Reviews'}
   };
 
   return (
     <div className="mb-143">
       <div className="flex justify-left mb-41">
-        {Object.keys(tabContent).map((tab) => (
+        {Object.entries(tabContent).map(([tab, value]) => (
           <button
             key={tab}
             className={`p-5 ${activeTab === tab ? 'bg-[#03465c] text-whitee' : 'bg-[#e7f5f8] text-[#03465c]'}`}
             onClick={() => setActiveTab(tab)}
           >
-            {tab.charAt(0).toUpperCase() + tab.slice(1)}
+            {value?.label?.toUpperCase()}
           </button>
         ))}
       </div>
@@ -47,7 +47,7 @@ const TabComponent = ({product}: any) => {
             <div dangerouslySetInnerHTML={{ __html: product.description }} />
           ) : ( 
             // Render other tab content for non-description tabs
-            <div>{tabContent[activeTab]}</div>
+            <div>{tabContent[activeTab]?.data}</div>
           )}
 
 {activeTab === 'TechnicalData' && (
