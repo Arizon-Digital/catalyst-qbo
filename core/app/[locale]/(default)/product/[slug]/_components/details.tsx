@@ -206,3 +206,9 @@ export const Details = ({ product }: Props) => {
     </div>
   );
 };
+
+
+
+
+
+

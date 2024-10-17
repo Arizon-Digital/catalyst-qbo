@@ -1,6 +1,18 @@
+
+
 import React from 'react';
 import { useTranslations } from 'next-intl';
 import { FragmentOf, graphql } from '~/client/graphql';
+import { removeEdgesAndNodes } from '@bigcommerce/catalyst-client';
+
+import { PricingFragment } from '~/client/fragments/pricing';
+import { ProductItemFragment } from '~/client/fragments/product-item';
+
+import { ProductForm } from './product-form';
+import { ProductFormFragment } from './product-form/fragment';
+import { ProductSchema, ProductSchemaFragment } from './product-schema';
+import { ReviewSummary, ReviewSummaryFragment } from './review-summary';
+import TabComponent from '../_components/tab'; // Corrected typo from 'TabComponnet'
 
 export const TechDataFragment = graphql(`
   fragment TechDataFragment on Product {
@@ -10,16 +22,30 @@ export const TechDataFragment = graphql(`
     brand {
       name
     }
-    weight
-    custom_fields {
-      name
-      value {
-        value
-        unit
+    availabilityV2 {
+      description
+    }
+    weight {
+      value
+      unit
+    }
+    customFields {
+      edges {
+        node {
+          entityId
+          name
+          value
+        }
       }
     }
   }
-`);
+`, [
+  ReviewSummaryFragment,
+  ProductSchemaFragment,
+  ProductFormFragment,
+  ProductItemFragment,
+  PricingFragment,
+]);
 
 interface Props {
   product: FragmentOf<typeof TechDataFragment>;
@@ -27,13 +53,13 @@ interface Props {
 
 const TechData: React.FC<Props> = ({ product }) => {
   const t = useTranslations('Product.TechData');
-console.log('.....text.......',product.custom_fields);
+  
+  const customFields = removeEdgesAndNodes(product.customFields);
+
   // Return null if no technical data is available
-  if (!product.sku && !product.condition && !product.availability && !product.brand && !product.weight && !product.custom_fields?.length) {
+  if (!product.sku && !product.condition && !product.availability && !product.brand && !product.weight) {
     return null;
   }
-  
-
 
   return (
     <div className="tech-data">
@@ -42,44 +68,42 @@ console.log('.....text.......',product.custom_fields);
         <hr className="product-info-hr" />
 
         <div className="product-details">
-  {product.brand?.name && (
-    <>
-      <span className="product-details-item">
-        <strong>BRANDS:</strong>
-        <img
-          src={`https://www.qualitybearingsonline.com/content/img/brands/product-details/${product.brand.name}.png`}
-          alt={`${product.brand.name} Brand Logo`}
-          className="product-details-logo"
-        />
-      </span>
-    </>
-  )}
+          {product.brand?.name && (
+            <>
+              <span className="product-details-item">
+                <strong>BRANDS:</strong>
+                <img
+                  src={`https://www.qualitybearingsonline.com/content/img/brands/product-details/${product.brand.name}.png`}
+                  alt={`${product.brand.name} Brand Logo`}
+                  className="product-details-logo"
+                />
+              </span>
+            </>
+          )}
 
-  {product.sku && (
-    <>
-      <span className="product-details-item">
-        <strong>SKU:</strong> {product.sku}
-      </span>
-    </>
-  )}
+          {product.sku && (
+            <>
+              <span className="product-details-item">
+                <strong>SKU:</strong> {product.sku}
+              </span>
+            </>
+          )}
 
-  {product.condition && (
-    <>
-      <span className="product-details-item">
-        <strong>{t('condition')}:</strong> {product.condition}
-      </span>
-    </>
-  )}
+          {Boolean(product.availabilityV2.description) && (
+            <div>
+              <h3 className="font-semibold flex">Availability: <p className="pr">{product.availabilityV2.description}</p></h3>
+            </div>
+          )}
 
-  {product.availability && (
-    <>
-      <span className="product-details-item">
-        <strong>AVAILABILITY:</strong> {product.availability}
-      </span>
-    </>
-  )}
-</div>
-</div>
+          {product.weight && (
+            <>
+              <span className="product-details-item">
+                <strong>Weight:</strong> {product.weight.value} {product.weight.unit}
+              </span>
+            </>
+          )}
+        </div>
+      </div>
 
       <div className="product-reviews-header">
         <h2 className="page-heading">Technical Data</h2>
@@ -87,11 +111,17 @@ console.log('.....text.......',product.custom_fields);
         <br />
       </div>
 
-      
-      
-    
+      {customFields.length > 0 &&
+        customFields.map((customField) => (
+          <div key={customField.entityId}>
+            <h3 className="font-semibold">{customField.name}</h3>
+            <p>{customField.value}</p>
+          </div>
+        ))
+      }
     </div>
   );
 };
 
 export default TechData;
+

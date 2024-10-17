@@ -103,7 +103,7 @@ export const CheckoutSummary = async ({ checkout, geography }: Props) => {
           })}
         </span>
       </div>
-      
+     
     </>
   );
 };
