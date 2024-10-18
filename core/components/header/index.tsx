@@ -86,7 +86,7 @@ export const Header = async ({ cart }: Props) => {
 {/* Add margin-right to space the icon from the text */}
     Sign In
   </Link>
-  <Link aria-label="Registration" className="p-3" href="/registration">
+  <Link aria-label="Registration" className="p-3" href="/register/">
     Registration
   </Link>
     </div>             

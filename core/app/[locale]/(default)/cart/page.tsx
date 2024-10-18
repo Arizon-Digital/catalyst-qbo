@@ -76,10 +76,12 @@ export default async function Cart() {
   }
  
   const lineItems = [...cart.lineItems.physicalItems, ...cart.lineItems.digitalItems];
+  let cartQty = lineItems?.reduce(function (total, cartItems) { return total + cartItems?.quantity }, 0);
+  let cartItemsText = (cartQty > 1) ? " Items" : " Item";
  
   return (
     <div>
-      <h1 className="pb-6 text-4xl font-black lg:pb-10 lg:text-5xl">Your Cart</h1>
+      <h1 className="pb-6 text-4xl font-black lg:pb-10 lg:text-5xl">{`${t('heading')}(${cartQty}${cartItemsText})`}</h1>
       <div className="pb-12 md:grid md:grid-cols-2 md:gap-8 lg:grid-cols-3">
         <ul className="col-span-2">
           {lineItems.map((product) => (
@@ -101,6 +103,7 @@ export default async function Cart() {
       </div>
       </div>
         </div>
+        
        
       </div>
       <CartViewed checkout={checkout} currencyCode={cart.currencyCode} lineItems={lineItems} />

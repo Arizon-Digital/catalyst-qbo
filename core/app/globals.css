@@ -54,7 +54,19 @@ section.flex.flex-col.gap-8.border-t.border-gray-200.px-4.py-10.sm\:px-10.md\:fl
     margin-left: 120px;
     margin-right: 120px;
 }
-
+button#signinbutton {
+    width: 30% !important;
+    height: 45px;
+}
+a.focus-visible\:outline-none.focus-visible\:ring-4.focus-visible\:ring-primary\/20.my-5.inline-flex.items-center.justify-start.font-semiboldd.text-primary.hover\:text-secondary.md\:my-0 {
+    color: #282828 !important;
+    line-height: inherit;
+    text-decoration: underline;
+    font-size: 16px;
+    float: left !important;
+    text-align: left !important;
+    justify-content: left;
+}
 nav#nav-menu-root {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -306,7 +318,34 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
  input#search_query {
         margin-left: 18px;
         font-weight: 300;
+        font-family: inherit;
  }
+ 
+ form.text-base.mb-14.flex.flex-col.gap-3.md\:p-8.lg\:p-0 {
+    background: #fff;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 3px 0 #dcdcdc;
+    box-shadow: 0 3px 0 #dcdcdc;
+    padding: .75rem;
+}
+ h2#signinheading {
+    text-align: center !important;
+    font-weight: 400;
+    font-size: 25px !important;
+}
+ ul.list-disc.ps-4 {
+    display: flow !important;
+    margin-left: 36px;
+}
+div#background {
+    background-color: white;
+    background: #fff;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 3px 0 #dcdcdc;
+    box-shadow: 0 3px 0 #dcdcdc;
+}
     svg.lucide.lucide-shopping-cart {
         width: 40px !important;
         height: 40px !important;
@@ -355,7 +394,9 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
         height: 900px;
         margin-left: 90px;
     }
-    
+    a#register {
+        width: 60% !important;
+    }
     
     .flex.sign\/registration {
         flex-direction: column;
@@ -419,7 +460,10 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
         width: 100%;
         background-color: #000;
         overflow: auto;
-        
+        font-family: Oswald, arial, sans-serif;
+        font-weight: 700;
+        letter-spacing: 1px;
+        font-size: 15px;
     }
       
     .navbar a {
@@ -651,6 +695,11 @@ width: auto;
         flex: 1;
         padding: 10px;
         text-align: left;
+    }
+    h3#newcustomer {
+        font-size: 20px;
+        font-weight: 600;
+        font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
     }
 
     main.flex-1.px-4.\32 xl\:container.sm\:px-10.lg\:px-12.\32 xl\:mx-auto.\32 xl\:px-0 {

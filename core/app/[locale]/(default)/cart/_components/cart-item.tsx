@@ -233,7 +233,7 @@ export const CartItem = ({ currencyCode, product }: Props) => {
             </div>
                 <div className='price cart'>
                 <p className="text-lg font-bold">
-                  {format.number(product.extendedSalePrice.value, {
+                {format.number(product.originalPrice.value, {
                     style: 'currency',
                     currency: currencyCode,
                   })}
@@ -255,6 +255,14 @@ export const CartItem = ({ currencyCode, product }: Props) => {
 
               <ItemQuantity product={product} />
             </div>
+            <div className='price cart'>
+                <p className="text-lg font-bold">
+                  {format.number(product.extendedSalePrice.value, {
+                    style: 'currency',
+                    currency: currencyCode,
+                  })}
+                </p>
+                </div>
           </div>
 
           <div className="mt-4 md:hidden">
