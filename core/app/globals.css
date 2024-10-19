@@ -320,7 +320,51 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
         font-weight: 300;
         font-family: inherit;
  }
- 
+ div#Canada h2 {
+    font-size: 30px;
+    font-family: Oswald, arial, sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+    margin-top: 2.25rem;
+    line-height: 1.25;
+    margin-bottom: .75rem;
+}
+div#Canada h3 {
+    color: #000;
+    font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
+    line-height: 1.25;
+    margin-bottom: .75rem;
+    margin-top: 2.25rem;
+    font-size: 24px;
+}
+.Deliveryinformation {
+    width: 90%;
+    margin-left: 25px;
+    padding-bottom: 25px;
+}
+
+div#Canada p {
+background: #fff;
+    font-family: "Roboto Slab", serif;
+    font-weight: 300;
+    font-size: 16px;
+}
+div#Canada h4 {  
+color: #000;
+    font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: .75rem;
+    font-weight: 600;
+    margin-top: 2.25rem;
+    font-size: 20px;
+    padding-bottom: 25px;
+}
+div#Canada a {  
+    color: #ca9618;
+    text-decoration: none;
+    }
+
  form.text-base.mb-14.flex.flex-col.gap-3.md\:p-8.lg\:p-0 {
     background: #fff;
     border: 1px solid #dcdcdc;

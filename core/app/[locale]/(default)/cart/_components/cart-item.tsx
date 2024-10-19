@@ -145,10 +145,13 @@ export type Product = PhysicalItem | DigitalItem;
 interface Props {
   product: Product;
   currencyCode: string;
-}
+  deleteIcon: string;
+  }
 
-export const CartItem = ({ currencyCode, product }: Props) => {
+  export const CartItem = ({ currencyCode, product}: Props) => {
   const format = useFormatter();
+
+  const deleteIcon = "https://cdn11.bigcommerce.com/s-ur7wjnshy8/images/stencil/320w/image-manager/delete.jpg";
 
   return (
     <li>
@@ -227,9 +230,7 @@ export const CartItem = ({ currencyCode, product }: Props) => {
                 </div>
               )}
 
-              <div className="hidden md:block">
-                <RemoveItem currency={currencyCode} product={product} />
-              </div>
+              
             </div>
                 <div className='price cart'>
                 <p className="text-lg font-bold">
@@ -254,6 +255,9 @@ export const CartItem = ({ currencyCode, product }: Props) => {
               </div>
 
               <ItemQuantity product={product} />
+              <div className="hidden md:block">
+              <RemoveItem currency={currencyCode} product={product} deleteIcon={deleteIcon} />
+              </div>
             </div>
             <div className='price cart'>
                 <p className="text-lg font-bold">
@@ -266,7 +270,7 @@ export const CartItem = ({ currencyCode, product }: Props) => {
           </div>
 
           <div className="mt-4 md:hidden">
-            <RemoveItem currency={currencyCode} product={product} />
+          <RemoveItem currency={currencyCode} product={product} deleteIcon={deleteIcon} />
           </div>
         </div>
       </div>
