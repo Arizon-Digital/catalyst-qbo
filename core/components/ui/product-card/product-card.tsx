@@ -1,10 +1,11 @@
-import { ReactNode } from 'react';
 
+import { ReactNode } from 'react';
 import { BcImage } from '~/components/bc-image';
 import { Link } from '~/components/link';
 import { cn } from '~/lib/utils';
-
 import { Compare } from './compare';
+
+import Quickview from './Quickview';
 
 interface Image {
   altText: string;
@@ -77,7 +78,12 @@ const ProductCard = ({
         ) : (
           <div className="h-full w-full bg-gray-200" />
         )}
+        {/* Add the AddToCartButton here */}
+        <Quickview />
+        
       </div>
+      
+      
     </div>
     <div className={cn('flex flex-1 flex-col gap-1', Boolean(addToCart) && 'justify-end')}>
       {subtitle ? <p className="text-base text-gray-500">{subtitle}</p> : null}
@@ -116,10 +122,17 @@ const ProductCard = ({
         {showCompare && <Compare id={id} image={image} name={name} />}
       </div>
     </div>
-    {addToCart}
   </div>
 );
 
 ProductCard.displayName = 'ProductCard';
 
 export { ProductCard, type Price };
+
+
+
+
+
+
+
+

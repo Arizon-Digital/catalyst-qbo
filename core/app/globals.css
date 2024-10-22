@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.bottom-20 {
+    bottom: 25rem !important;
+}
+
 span.product-details-item {
     width: 90% !important;
     display: block;
@@ -542,11 +546,13 @@ width: auto;
     }
     ul.col-span-2 {
         display: flow !important;
+    }
+    table.table-auto.w-full {
         background-color: #fff;
-    border: 1px solid #dcdcdc;
-    border-radius: 4px;
-    -webkit-box-shadow: 0 3px 0 #dcdcdc;
-    box-shadow: 0 3px 0 #dcdcdc;
+        border: 1px solid #dcdcdc;
+        border-radius: 4px;
+       
+        box-shadow: 0 3px 0 #dcdcdc;
     }
     div#buttoncart {
         height: auto;
@@ -734,6 +740,18 @@ width: auto;
         font-weight: 700;
         line-height: 1.2;
     }
+
+    .small-button {
+        width: 40px;  /* Set the exact small width */
+        height: 20px;  /* Set a small height */
+        font-size: 10px;  /* Adjust font size */
+        padding: 0;  /* Remove any extra padding */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      
     
     .hb-item {
         flex: 1;

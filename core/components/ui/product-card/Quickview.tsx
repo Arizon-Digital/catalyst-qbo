@@ -2,10 +2,21 @@
 import React from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 
-const Minicart = () => (
+const Quickview = () => (
   <Dialog.Root>
     <Dialog.Trigger asChild>
-      Minicart
+      <button className="absolute bg-primary text-white rounded hover:bg-primary-dark flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+        style={{
+          width: '100%', // Full width of the parent
+          height: '40px', // Adjust height
+          fontSize: '14px', // Same font size for consistency
+          top: '90px', // Position below Add to Cart button
+          left: '50%', // Center horizontally
+          transform: 'translate(-50%, -50%)', // Center the button
+        }}
+      >
+        Quickview
+      </button>
     </Dialog.Trigger>
     <Dialog.Portal>
       <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-50 z-50" />
@@ -33,4 +44,4 @@ const Minicart = () => (
   </Dialog.Root>
 );
 
-export default Minicart;
+export default Quickview;

@@ -40,7 +40,7 @@ export const AddToCart = ({ data: product }: { data: FragmentOf<typeof AddToCart
           () => (
             <div className="flex items-center gap-3">
               <span>
-                {t.rich('success', {
+                {t.rich('success' ,  {
                   cartItems: quantity,
                   cartLink: (chunks) => (
                     <Link
@@ -56,11 +56,15 @@ export const AddToCart = ({ data: product }: { data: FragmentOf<typeof AddToCart
               </span>
             </div>
           ),
-          { icon: <Check className="text-success-secondary" /> },
+          { icon: <Check className="text-success-secondary" />
+          
+
+           },
+          
         );
       }}
     >
-      <input name="product_id" type="hidden" value={product.entityId} />
+      <input name="product_id" type="hidden" value={product.entityId}  />
       <input name="quantity" type="hidden" value={1} />
       <Submit data={product} />
     </form>

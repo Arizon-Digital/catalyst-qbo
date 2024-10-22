@@ -8,7 +8,7 @@ import { cn } from '~/lib/utils';
 
 import { type Locale, LocaleSwitcher } from './locale-switcher';
 import { MobileNav } from './mobile-nav';
-import MiniCart from './minicart';
+import minicart from './minicart';
 
 
 interface Link {
@@ -64,6 +64,7 @@ const Header = ({
   <a href="#"><i className="fa fa-fw fa-search"></i> Select Currency:GBP</a> 
   <a href="#"><i className="fa fa-fw fa-envelope"></i> Contact Us</a> 
   <a href="#"><i className="fa fa-fw fa-user"></i> CAN: 438 800 0605 </a>
+  
 </div>
 
 
