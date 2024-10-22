@@ -45,3 +45,9 @@ const Quickview = () => (
 );
 
 export default Quickview;
+
+
+
+
+
+

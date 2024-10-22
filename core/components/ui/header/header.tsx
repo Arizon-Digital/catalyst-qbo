@@ -8,7 +8,7 @@ import { cn } from '~/lib/utils';
 
 import { type Locale, LocaleSwitcher } from './locale-switcher';
 import { MobileNav } from './mobile-nav';
-import minicart from './minicart';
+import Minicart from '../header/minicart';
 
 
 interface Link {
@@ -43,6 +43,7 @@ interface Props extends ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.
   logo?: string | Image;
   search?: ReactNode;
 }
+
 
 const Header = ({
   account,
@@ -93,9 +94,11 @@ const Header = ({
           {account}
           </nav>
           <nav className="flex gap-2 lg:gap-9">{cart} </nav>
-          <div className="text">cart</div>
+          <div className="text"> <Minicart /></div> 
+          
           
          
+
         {activeLocale && locales.length > 0 ? (
           <LocaleSwitcher activeLocale={activeLocale} locales={locales} />
         ) : null}

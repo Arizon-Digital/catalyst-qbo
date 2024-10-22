@@ -3,6 +3,7 @@ import { FragmentOf, graphql } from '~/client/graphql';
 import { BcImage } from '~/components/bc-image';
 import { ItemQuantity } from './item-quantity';
 import { RemoveItem } from './remove-item';
+
  
 const PhysicalItemFragment = graphql(`
   fragment PhysicalItemFragment on CartPhysicalItem {

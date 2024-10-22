@@ -6,6 +6,7 @@ import { cn } from '~/lib/utils';
 import { Compare } from './compare';
 
 import Quickview from './Quickview';
+import miniCart from '../header/minicart';
 
 interface Image {
   altText: string;
@@ -81,6 +82,8 @@ const ProductCard = ({
         {/* Add the AddToCartButton here */}
         <Quickview />
         
+        
+
       </div>
       
       

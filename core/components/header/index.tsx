@@ -19,6 +19,7 @@ import { logout } from './_actions/logout';
 import { CartLink } from './cart';
 import { HeaderFragment } from './fragment';
 import { QuickSearch } from './quick-search';
+import Minicart from '../ui/header/minicart';
 
 interface Props {
   cart: ReactNode;
@@ -72,12 +73,15 @@ export const Header = async ({ cart }: Props) => {
                 className="p-3 text-black hover:bg-transparent hover:text-primary"
                 variant="subtle"
               >
+                <Minicart />
                 <User>
                   <title>{t('Account.account')}</title>
                 </User>
               </Button>
+              
             }
           />
+          
         ) : (
           <div className="flex items-center">
             <div className='user-icon'> <User/> </div>   
@@ -89,6 +93,7 @@ export const Header = async ({ cart }: Props) => {
   <Link aria-label="Registration" className="p-3" href="/register/">
     Registration
   </Link>
+  
     </div>             
 
 </div>
