@@ -3,6 +3,7 @@ import { FragmentOf, graphql } from '~/client/graphql';
 import { BcImage } from '~/components/bc-image';
 import { ItemQuantity } from './item-quantity';
 import { RemoveItem } from './remove-item';
+import Brand from '../../(faceted)/brand/[slug]/page';
 
  
 const PhysicalItemFragment = graphql(`
@@ -180,8 +181,9 @@ export const CartItem = ({ currencyCode, product }: Props) => {
  
               {/* Product name and SKU */}
               <td className="flex flex-1 flex-col gap-2">
+              <p className="text-xl font-bold md:text-2xl" id="cartbrandname">{product.brand}</p>
                 <p className="text-xl font-bold md:text-2xl" id="cartproductname">{product.name}</p>
-                <p className="text-xl font-bold md:text-2xl" id="cartproductname">{product.sku}</p>
+                
               </td>
  
               {/* Original price */}

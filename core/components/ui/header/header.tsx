@@ -1,5 +1,7 @@
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
 import { ChevronDown } from 'lucide-react';
+import { Phone, Inbox } from 'lucide-react';
+
 import { ComponentPropsWithoutRef, ReactNode } from 'react';
 
 import { BcImage } from '~/components/bc-image';
@@ -61,10 +63,13 @@ const Header = ({
 
     
 <div className="navbar">
-  <a className="active" href="#"><i className="fa fa-fw fa-home"></i> About Us</a> 
-  <a href="#"><i className="fa fa-fw fa-search"></i> Select Currency:GBP</a> 
-  <a href="#"><i className="fa fa-fw fa-envelope"></i> Contact Us</a> 
-  <a href="#"><i className="fa fa-fw fa-user"></i> CAN: 438 800 0605 </a>
+  <a className="contact-link" href="/about-us"><i className="contact-link"></i> About Us</a> 
+  <a href="#" className="contact-link"> Select Currency:GBP</a> 
+  <a href="#" className="contact-link"><Inbox size={15} /> Home</a>
+  <a href="#" className="contact-link"><Phone size={15} /> USA : 646 878 6265</a>
+  <a href="#" className="contact-link"><Phone size={15} /> CAN : 438 800 3601</a>
+  <a href="#" className="contact-link"><Phone size={15} /> INT : +44 113 537 2137</a>
+ 
   
 </div>
 

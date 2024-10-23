@@ -3,6 +3,7 @@ import { Fragment, ReactNode } from 'react';
 import { BcImage } from '~/components/bc-image';
 import { Link as CustomLink } from '~/components/link';
 import { cn } from '~/lib/utils';
+import { Phone, Inbox } from 'lucide-react';
 
 import { Locale } from './locale';
 
@@ -212,7 +213,7 @@ const Footer = ({
           </div>
 
           <div className="footer-apps footer-apps-desktop">
-            <h5 className="footer-info-heading">Download Our New Mobile App</h5>
+            <h2 className="footer-info-heading">Download Our New Mobile App</h2>
             <ul>
               <li>
                 <a href="https://play.google.com/store/apps/details?id=com.qualitybearingsonline.qualitybearingsonline" title="Get the Quality Bearings Online App on Google Play Store" target="_blank">
@@ -226,6 +227,22 @@ const Footer = ({
               </li>
             </ul>
           </div>
+
+          <div className="footer-apps footer-apps-desktop">
+            <h2 className="footer-info-heading">Follow Us on Social Media
+            </h2>
+            <ul>
+              <li>
+              <a href="#" className="contact-link"><Inbox size={15} /> Home</a>
+              </li>
+              <li>
+              <a href="#" className="contact-link"><Inbox size={15} /> Home</a>
+              </li>
+            </ul>
+          </div>
+         
+         
+
 
           <div data-content-region="ssl_site_seal--global"></div>
         </article>

@@ -5,6 +5,22 @@
 .bottom-20 {
     bottom: 25rem !important;
 }
+ul li:nth-child(1) thead.table-head tr th:nth-child(2) {
+    width: 12em;
+}
+div#nav-menu-viewport {
+    color: #000;
+}
+
+
+  
+  .contact-link {
+    display: inline-flex; /* Aligns icon and text in a line */
+    align-items: center;  /* Vertically aligns the icon with the text */
+    gap: 8px; /* Adds spacing between the icon and the text */
+    text-decoration: none; /* Removes underline from the link */
+    
+  }
 ul.col-span-2 {
     background-color: #fff;
     border: 1px solid #dcdcdc;
@@ -56,6 +72,18 @@ div#checkouticon {
 p#cartproductname {
     font-size: 16px !important;
     width: 60%;
+    color: #000;
+    font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+td.w-24.flex-none.md\:w-\[144px\] {
+    width: 10%;
+}
+td.flex.flex-1.flex-col.gap-2 {
+    width: 95%;
+    margin-left: 9%;
 }
 h2.page-heading {
     font-size: 30px;
@@ -379,7 +407,11 @@ div#Canada a {
     color: #ca9618;
     text-decoration: none;
     }
-
+    p#cartbrandname {
+        color: #a5a5a5;
+        font-size: 16px;
+        font-weight: 400;
+    }
  form.text-base.mb-14.flex.flex-col.gap-3.md\:p-8.lg\:p-0 {
     background: #fff;
     border: 1px solid #dcdcdc;
@@ -511,7 +543,9 @@ div#background {
         margin-right: 12px;
         
     }
-
+    a.contact-link {
+        border-left: 1px solid rgba(255, 255, 255, .2);
+    }
     .navbar {
         display: flex;
         justify-content: center;
@@ -521,7 +555,7 @@ div#background {
         overflow: auto;
         font-family: Oswald, arial, sans-serif;
         font-weight: 700;
-        letter-spacing: 1px;
+        letter-spacing: 2px;
         font-size: 15px;
     }
       
