@@ -146,15 +146,15 @@ interface Props {
   currencyCode: string;
   deleteIcon: string;
 }
- 
+
 export const CartItem = ({ currencyCode, product }: Props) => {
   const format = useFormatter();
  
   const deleteIcon = "https://cdn11.bigcommerce.com/s-ur7wjnshy8/images/stencil/320w/image-manager/delete.jpg";
- 
+
   return (
     <li>
-      <div className="border-t border-t-gray-200 py-4">
+      <div className="border-t border-t-gray-200 py-4 ">
         <table className="table-auto w-full">
         <thead className="table-head">
             <tr>
@@ -195,7 +195,7 @@ export const CartItem = ({ currencyCode, product }: Props) => {
               </td>
  
               {/* Quantity and Remove Item button */}
-              <td className="flex flex-col gap-2 md:items-end">
+              <td className="flex-col gap-2 md:items-end">
                 <ItemQuantity product={product} />
               </td>
               {/* Remove Item */}
@@ -223,3 +223,5 @@ export const CartItem = ({ currencyCode, product }: Props) => {
     </li>
   );
 };
+
+

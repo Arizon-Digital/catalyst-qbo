@@ -5,7 +5,18 @@
 .bottom-20 {
     bottom: 25rem !important;
 }
-
+ul.col-span-2 {
+    background-color: #fff;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    box-shadow: 0 3px 0 #dcdcdc;
+}
+.cart-heading ul li:nth-child(1) table thead {
+    display: contents;
+}
+.cart-heading ul li table thead {
+    display: none;
+}
 span.product-details-item {
     width: 90% !important;
     display: block;
@@ -547,13 +558,7 @@ width: auto;
     ul.col-span-2 {
         display: flow !important;
     }
-    table.table-auto.w-full {
-        background-color: #fff;
-        border: 1px solid #dcdcdc;
-        border-radius: 4px;
-       
-        box-shadow: 0 3px 0 #dcdcdc;
-    }
+    
     div#buttoncart {
         height: auto;
     }
