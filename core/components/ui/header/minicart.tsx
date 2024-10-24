@@ -1,6 +1,6 @@
 import React from "react";
 import * as Popover from "@radix-ui/react-popover";
-import { CartItem } from 'app/[locale]/(default)/cart/_components/cart-item'; // Import your CartItem component
+import { CartItem } from 'app/[locale]/(default)/cart/_components/cart-item'; 
 
 // Popover component accepting dynamic cartItems and currencyCod
 

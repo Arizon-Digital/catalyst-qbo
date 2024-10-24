@@ -12,7 +12,10 @@ div#nav-menu-viewport {
     color: #000;
 }
 
-
+.productView-bulk-tabContent {
+    width: 95%;
+    margin-left: 15px;
+}
   
   .contact-link {
     display: inline-flex; /* Aligns icon and text in a line */
@@ -720,11 +723,16 @@ width: auto;
         background-color: #212121;
         max-width:100% !important;
     }
-    button.p-5.rounded.bg-\[\#03465c\].text-whites {
-        background-color: #ededed !important;
-        margin-right: 3px;
-        border-radius: 0px;
+    button.p-5.bg-\[\#03465c\].text-whitee {
+        background-color: #f1f1f2;
+        background: #ededed;
+        text-transform: uppercase;
+        font-family: Oswald, arial, sans-serif;
         font-size: 18px;
+        font-weight: 400;
+        letter-spacing: 1.5px;
+        /* border-right: 1px solid #fff; */
+        border-left: 2px solid #fff;
     }
     button.p-5.rounded.bg-\[\#e7f5f8\].text-\[\#03465c\] {
         background-color: #ededed;
@@ -820,4 +828,113 @@ width: auto;
           display: block;
         }
       }
+    
+
+      .HoverCardContent {
+        border-radius: 6px;
+        padding: 20px;
+        width: 300px;
+        background-color: white;
+        box-shadow:
+            hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
+            hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+        animation-duration: 400ms;
+        animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: transform, opacity;
+    }
+    .HoverCardContent[data-side="top"] {
+        animation-name: slideDownAndFade;
+    }
+    .HoverCardContent[data-side="right"] {
+        animation-name: slideLeftAndFade;
+    }
+    .HoverCardContent[data-side="bottom"] {
+        animation-name: slideUpAndFade;
+    }
+    .HoverCardContent[data-side="left"] {
+        animation-name: slideRightAndFade;
+    }
+    
+    .HoverCardArrow {
+        fill: white;
+    }
+    
+    .ImageTrigger {
+        cursor: pointer;
+        border-radius: 100%;
+        display: inline-block;
+    }
+    .ImageTrigger:focus {
+        box-shadow: 0 0 0 2px white;
+    }
+    
+    .Image {
+        display: block;
+        border-radius: 100%;
+    }
+    .Image.normal {
+        width: 45px;
+        height: 45px;
+    }
+    .Image.large {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .Text {
+        margin: 0;
+        color: var(--mauve-12);
+        font-size: 15px;
+        line-height: 1.5;
+    }
+    .Text.faded {
+        color: var(--mauve-10);
+    }
+    .Text.bold {
+        font-weight: 500;
+    }
+    
+    @keyframes slideUpAndFade {
+        0% {
+            opacity: 0;
+            transform: translateY(2px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes slideRightAndFade {
+        0% {
+            opacity: 0;
+            transform: translateX(-2px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    @keyframes slideDownAndFade {
+        0% {
+            opacity: 0;
+            transform: translateY(-2px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes slideLeftAndFade {
+        0% {
+            opacity: 0;
+            transform: translateX(2px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
     
