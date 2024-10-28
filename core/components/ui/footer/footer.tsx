@@ -4,6 +4,7 @@ import { BcImage } from '~/components/bc-image';
 import { Link as CustomLink } from '~/components/link';
 import { cn } from '~/lib/utils';
 import { Phone, Inbox } from 'lucide-react';
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
 
 import { Locale } from './locale';
 
@@ -103,15 +104,15 @@ const Footer = ({
                 </Fragment>
               ))}
             </address>
-            <p> UK - 0808 168 1234</p>
-        <p> USA - 646 895 6246 / 619 354 1821</p>
-        <p> Canada - 438 800 0605</p>
+            <p id="address"> UK - 0808 168 1234</p>
+        <p id="address"> USA - 646 895 6246 / 619 354 1821</p>
+        <p id="address"> Canada - 438 800 0605</p>
             {Boolean(contactInformation?.phone) && (
               <a
                 className="hover:text-primary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20"
                 href={`tel:${contactInformation?.phone}`}
               >
-                <p> International- {contactInformation?.phone}</p>
+                <p id="address"> International- {contactInformation?.phone}</p>
               </a>
               
             )}
@@ -120,7 +121,7 @@ const Footer = ({
         
         <a className="contactus" href={`tel:${contactInformation?.phone}`}>
           
-          <p>Contact us</p>
+          <p id="address">Contact us</p>
         </a>
 
         {/* Social Media Links */}
@@ -139,54 +140,50 @@ const Footer = ({
         )}
       </div>
 
-      {/* Navigation Section */}
+      
       <nav className="grid flex-auto auto-cols-fr gap-8 sm:grid-flow-col">
         {sections.map((section) => (
           <div key={section.title}>
             <h3 className="mb-4 text-lg font-bold">{section.title}</h3>
             <ul className="flex flex-col gap-4">
-              {/* {section.links.map((link) => (
-                <li key={link.href}>
-                  <CustomLink href={link.href}>{link.label}</CustomLink>
-                </li>
-              ))} */}
-              <li>
-                Home
-              </li>
-              <li>
-                About Us
-              </li>
-              <li>
-                10 Year Anniversary
-              </li>
-              <li>
-                Contact Us
-              </li>
-              <li>
-                Customer Service
-              </li>
-              <li>
-                Delivery Information
-              </li>
-              <li>
-                FAQS
-              </li>
-              <li>
-              Privacy Policy
-              </li>
-              <li>
-                Customer Reviews
-              </li>
-              <li>
-                Terms & Conditions
-              </li>
-              <li>
-              Blog
-              </li>
-              <li>
-                Sitemap
-              </li>
-            </ul>
+  <li>
+    <a href="/">Home</a>
+  </li>
+  <li>
+    <a href="/about-us">About Us</a>
+  </li>
+  <li>
+    <a href="/10-year-anniversary">10 Year Anniversary</a>
+  </li>
+  <li>
+    <a href="/contact-us">Contact Us</a>
+  </li>
+  <li>
+    <a href="/customer-service">Customer Service</a>
+  </li>
+  <li>
+    <a href="/delivery-information">Delivery Information</a>
+  </li>
+  <li>
+    <a href="/faqs">FAQS</a>
+  </li>
+  <li>
+    <a href="/privacy-policy">Privacy Policy</a>
+  </li>
+  <li>
+    <a href="/customer-reviews">Customer Reviews</a>
+  </li>
+  <li>
+    <a href="/terms-conditions">Terms & Conditions</a>
+  </li>
+  <li>
+    <a href="/blog">Blog</a>
+  </li>
+  <li>
+    <a href="/sitemap">Sitemap</a>
+  </li>
+</ul>
+
           </div>
         ))}
       </nav>
@@ -196,22 +193,12 @@ const Footer = ({
         <h3 className="mb-4 text-lg font-bold">Additional Section</h3>
         <article className="footer-info-col footer-info-col--other">
           <div className="footer-images footer-images-flex">
-            <img src="https://cdn11.bigcommerce.com/s-03842/content/../product_images/uploaded_images/bbea-lloys-bank-winner-2023.png" alt="Employer of the Year 2023" height="75" width="300" />
-          </div>
-          <div className="footer-images footer-images-flex">
             <img src="https://cdn11.bigcommerce.com/s-03842/content/../product_images/uploaded_images/sc21.png" alt="Supply Chains Solutions" height="75" width="300" />
           </div>
           <div className="footer-images">
             <img src="https://cdn11.bigcommerce.com/s-03842/content/../product_images/uploaded_images/Queens_Award_White.png" alt="Queen's Award For Enterprise - International Trade 2022" width="70" height="90" />
             <img src="https://cdn11.bigcommerce.com/s-03842/content/../content/Investers_In_People_23_24-01.jpg" alt="Investors in People Accreditation" width="215" height="80" />
           </div>
-          <div className="footer-images">
-            <img src="https://cdn11.bigcommerce.com/s-03842/content/../content/NewSite/BQ.png" alt="BQ Award Thumbnail" className="award-thumb" width="80" height="80" />
-            <img src="https://cdn11.bigcommerce.com/s-03842/content/../content/NewSite/Chase%20Award.png" alt="Chase Award Thumbnail" className="award-thumb" width="80" height="80" />
-            <img src="https://cdn11.bigcommerce.com/s-03842/content/../content/NewSite/FSB.png" alt="FSB Award Thumbnail" className="award-thumb" width="80" height="80" />
-            <img src="https://cdn11.bigcommerce.com/s-03842/content/../content/NewSite/TAG.png" alt="TAG Award Thumbnail" className="award-thumb" width="80" height="80" />
-          </div>
-
           <div className="footer-apps footer-apps-desktop">
             <h2 className="footer-info-heading">Download Our New Mobile App</h2>
             <ul>
@@ -229,17 +216,25 @@ const Footer = ({
           </div>
 
           <div className="footer-apps footer-apps-desktop">
-            <h2 className="footer-info-heading">Follow Us on Social Media
-            </h2>
-            <ul>
-              <li>
-              <a href="#" className="contact-link"><Inbox size={15} /> Home</a>
-              </li>
-              <li>
-              <a href="#" className="contact-link"><Inbox size={15} /> Home</a>
-              </li>
-            </ul>
-          </div>
+  <h2 className="footer-info-heading">Follow Us on Social Media</h2>
+  <ul>
+    <li>
+      <a href="https://www.facebook.com" className="contact-links" target="_blank" rel="noopener noreferrer">
+        <FaFacebook size={35} />
+      </a>
+    </li>
+    <li>
+      <a href="https://www.instagram.com" className="contact-links" target="_blank" rel="noopener noreferrer">
+        <FaInstagram size={35} /> 
+      </a>
+    </li>
+    <li>
+      <a href="https://www.linkedin.com" className="contact-links" target="_blank" rel="noopener noreferrer">
+        <FaLinkedin size={35} />
+      </a>
+    </li>
+  </ul>
+</div>
          
          
 

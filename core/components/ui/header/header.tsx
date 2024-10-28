@@ -11,7 +11,9 @@ import { cn } from '~/lib/utils';
 import { type Locale, LocaleSwitcher } from './locale-switcher';
 import { MobileNav } from './mobile-nav';
 import Minicart from '../header/minicart';
-import  HoverCardDemo from '../header/Recently view';
+import ViewedItemsPopover  from './ViewedItemsPopover';
+
+
 
 
 interface Link {
@@ -100,10 +102,11 @@ const Header = ({
           {account}
           </nav>
           <nav className="flex gap-2 lg:gap-4">
-          <HoverCardDemo />
+          <div className="text"> <ViewedItemsPopover /></div>
           </nav>
           <nav className="flex gap-2 lg:gap-9">{cart} </nav>
           <div className="text"> <Minicart /></div> 
+          
           
           
          
