@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.mb-12.mt-4.lg\:grid.lg\:grid-cols-2.lg\:gap-8.a1 {
+    width: 210%;
+}
+figure.relative.aspect-square.h-full.max-h-\[548px\].w-full {
+    width: 350px !important;
+    height: 400px !important;
+}
+div#tabsection1 {
+    background-color: #fff;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    box-shadow: 0 3px 0 #dcdcdc;
+    margin-top: 12px;
+    margin-bottom: 30px;
+    width: 103%;
+}
 .bottom-20 {
     bottom: 25rem !important;
 }

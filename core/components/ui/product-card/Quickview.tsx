@@ -1,53 +1,91 @@
-'use client'; // Ensure this component is treated as a client component
-import React from "react";
-import * as Dialog from "@radix-ui/react-dialog";
-
-const Quickview = () => (
-  <Dialog.Root>
-    <Dialog.Trigger asChild>
-      <button className="absolute bg-primary text-white rounded hover:bg-primary-dark flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-        style={{
-          width: '100%', // Full width of the parent
-          height: '40px', // Adjust height
-          fontSize: '14px', // Same font size for consistency
-          top: '90px', // Position below Add to Cart button
-          left: '50%', // Center horizontally
-          transform: 'translate(-50%, -50%)', // Center the button
-        }}
+// QuickView.tsx
+'use client';
+ 
+import React, { useState } from 'react';
+import * as Dialog from '@radix-ui/react-dialog';
+import { X, ChevronUp, ChevronDown } from 'lucide-react';
+import { Details } from '~/app/[locale]/(default)/product/[slug]/_components/details';
+import { Gallery } from '~/app/[locale]/(default)/product/[slug]/_components/gallery';
+import { Warranty } from '~/app/[locale]/(default)/product/[slug]/_components/warranty';
+import { Description } from '~/app/[locale]/(default)/product/[slug]/_components/description';
+ 
+interface Image {
+  altText: string;
+  src: string;
+}
+ 
+type Price =
+  | string
+  | {
+      type: 'sale';
+      currentValue: string;
+      previousValue: string;
+    }
+  | {
+      type: 'range';
+      minValue: string;
+      maxValue: string;
+    };
+ 
+interface QuickViewProps {
+  product: any;
+}
+ 
+const QuickView = ({
+  product
+}: QuickViewProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [quantity, setQuantity] = useState(1);
+ 
+  const handleIncrement = () => {
+    setQuantity(prev => prev + 1);
+  };
+ 
+  const handleDecrement = () => {
+    if (quantity > 1) {
+      setQuantity(prev => prev - 1);
+    }
+  };
+ 
+  return (
+    <>
+      <button
+        onClick={() => setIsOpen(true)}
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg
+          shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200
+          hover:bg-primary hover:text-white z-10"
       >
-        Quickview
+        Quick View
       </button>
-    </Dialog.Trigger>
-    <Dialog.Portal>
-      <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-50 z-50" />
-      <Dialog.Content 
-        className="fixed bg-white rounded-md p-6 z-50"
-        style={{
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '90%',
-          maxWidth: '500px',
-        }}
-      >
-        <Dialog.Title className="text-lg font-bold">Product Quick View</Dialog.Title>
-        <Dialog.Description className="mt-4 text-sm">
-          Here are the details about the product you selected.
-        </Dialog.Description>
-        <div style={{ display: "flex", marginTop: '20px', justifyContent: "flex-end" }}>
-          <Dialog.Close asChild>
-            <button className="Button bg-green-500 text-white px-4 py-2 rounded">Close</button>
-          </Dialog.Close>
-        </div>
-      </Dialog.Content>
-    </Dialog.Portal>
-  </Dialog.Root>
-);
-
-export default Quickview;
-
-
-
-
-
-
+ 
+      <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
+        <Dialog.Portal>
+          <Dialog.Overlay className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40" />
+          <Dialog.Content className="fixed left-[50%] top-[50%] z-50 max-h-[90vh] w-[90vw] max-w-4xl translate-x-[-50%] translate-y-[-50%] overflow-y-auto rounded-lg bg-white shadow-lg">
+            <div className="p-8">
+              <Dialog.Close className="absolute right-4 top-4 p-2 hover:bg-gray-100 rounded-full z-50">
+                <X className="h-6 w-6" />
+                <span className="sr-only">Close</span>
+              </Dialog.Close>
+ 
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="mb-12 mt-4 lg:grid lg:grid-cols-2 lg:gap-8 a1">
+                <Gallery product={product} />
+                <Details product={product} />
+               
+              </div>
+              <div className="lg:col-span-2"  id='tabsection1'>
+                <Description product={product} />
+                <Warranty product={product} />
+              </div>
+              </div>
+            </div>
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
+    </>
+  );
+};
+ 
+export default QuickView;
+ 
