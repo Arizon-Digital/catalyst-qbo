@@ -1,4 +1,3 @@
-// product-card.tsx
 import React from 'react';
 import { BcImage } from '~/components/bc-image';
 import { Link } from '~/components/link';
@@ -6,12 +5,12 @@ import { cn } from '~/lib/utils';
 import { Compare } from './compare';
 import QuickView from './Quickview';
 import { getProductData } from '~/components/common-functions';
- 
+
 interface Image {
   altText: string;
   src: string;
 }
- 
+
 type Price =
   | string
   | {
@@ -24,7 +23,7 @@ type Price =
       minValue: string;
       maxValue: string;
     };
- 
+
 interface Product {
   id: string;
   name: string;
@@ -34,7 +33,7 @@ interface Product {
   subtitle?: string;
   badge?: string;
 }
- 
+
 interface Props extends Product {
   addToCart?: React.ReactNode;
   className?: string;
@@ -42,7 +41,7 @@ interface Props extends Product {
   imageSize?: 'square' | 'tall' | 'wide';
   showCompare?: boolean;
 }
- 
+
 const ProductCard = async ({
   addToCart,
   className,
@@ -57,11 +56,11 @@ const ProductCard = async ({
   name,
   ...props
 }: Props) => {
- 
+
   const product = await getProductData({
     entityId: Number(id)
   });
- 
+
   return(
     <div className={cn('group relative flex flex-col overflow-visible', className)} {...props}>
       <div className="relative flex justify-center pb-3">
@@ -72,7 +71,7 @@ const ProductCard = async ({
             'aspect-[7/5]': imageSize === 'wide',
           })}
         >
- 
+
           {image ? (
             <BcImage
               alt={image.altText}
@@ -81,20 +80,17 @@ const ProductCard = async ({
               priority={imagePriority}
               sizes="(max-width: 768px) 50vw, (max-width: 1536px) 25vw, 500px"
               src={image.src}
-             
-             
             />
           ) : (
             <div className="h-full w-full bg-gray-200" />
           )}
- 
+
           <QuickView product={product} />
         </div>
       </div>
- 
+
       <div className={cn('flex flex-1 flex-col gap-1', Boolean(addToCart) && 'justify-end')}>
-        {subtitle ? <p className="text-base text-gray-500">{subtitle}</p> : null}
-        <h3 className="text-xl font-bold lg:text-2xl">
+        <h3 className="text-xl font-bold lg:text-2xll">
           <Link
             className="focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-primary/20 focus-visible:ring-0"
             href={href}
@@ -103,7 +99,8 @@ const ProductCard = async ({
             {name}
           </Link>
         </h3>
-        <div className="flex flex-wrap items-end justify-between pt-1">
+        {subtitle ? <p className="text-base text-grayy-500">{subtitle}</p> : null}
+        <div className="flex flex-wrap items-end justify-between pt">
           {Boolean(price) &&
             (typeof price === 'object' ? (
               <p className="flex flex-col gap-1">
@@ -130,7 +127,7 @@ const ProductCard = async ({
     </div>
   );
 }
- 
+
 ProductCard.displayName = 'ProductCard';
- 
+
 export { ProductCard };

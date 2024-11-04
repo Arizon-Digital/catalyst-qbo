@@ -83,7 +83,7 @@ export const Details = ({ product }: Props) => {
         <p className="mb-2 font-semibold uppercase text-gray-500">{product.brand.name}</p>
       )}
 
-      <h1 className="mb-4 text-4xl font-black lg:text-5xl">{product.name}</h1>
+      <h1 className="mb-4 text-4xl font-black lg:text-5xll">{product.name}</h1>
 
       {Boolean(product.sku) && (
             <div className="pq">

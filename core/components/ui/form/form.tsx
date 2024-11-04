@@ -69,7 +69,7 @@ const FieldLabel = forwardRef<ElementRef<typeof Label>, FieldLabelProps>(
     >
       <>
         {children}
-        {isRequired && <span className="text-xs font-normal text-gray-500">Required</span>}
+        {isRequired && <span className="text-xss font-normal">Required</span>}
       </>
     </Label>
   ),

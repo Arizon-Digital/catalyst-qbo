@@ -45,6 +45,7 @@ const TabComponent = ({product}: any) => {
             // Use dangerouslySetInnerHTML to render the product description as HTML
             
             <div dangerouslySetInnerHTML={{ __html: product.description }}  />
+            
           ) : ( 
             // Render other tab content for non-description tabs
             <div>{tabContent[activeTab]?.data}</div>

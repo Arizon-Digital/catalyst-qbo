@@ -69,7 +69,7 @@ export const Checkboxes = ({
           <legend className="mb-2.5 inline-flex w-full items-center justify-between text-base font-semibold">
             <span>{field.label}</span>
             {field.isRequired && (
-              <span className="text-xs font-normal text-gray-500">Required</span>
+              <span className="text-xss font-normal">Required</span>
             )}
           </legend>
         </FieldLabel>
