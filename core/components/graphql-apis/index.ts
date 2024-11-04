@@ -20,6 +20,8 @@ const GET_RECENTLY_VIEWED_PRODUCTS = graphql(`
                         }
                         defaultImage {
                             url320wide: url(width: 320)
+                            isDefault
+                            altText
                         }
                     }
                 }

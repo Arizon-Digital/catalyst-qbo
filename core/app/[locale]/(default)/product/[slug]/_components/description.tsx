@@ -2,6 +2,7 @@
 import { useTranslations } from 'next-intl';
 import { FragmentOf, graphql } from '~/client/graphql';
 import TabComponent from '../_components/tab';
+import { log } from 'console';
 
 export const DescriptionFragment = graphql(`
   fragment DescriptionFragment on Product {

@@ -7,6 +7,7 @@ import { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { BcImage } from '~/components/bc-image';
 import { Link as CustomLink } from '~/components/link';
 import { cn } from '~/lib/utils';
+import DialogDemo from './addtocartpopup';
 
 import { type Locale, LocaleSwitcher } from './locale-switcher';
 import { MobileNav } from './mobile-nav';
@@ -106,6 +107,7 @@ const Header = ({
           </nav>
           <nav className="flex gap-2 lg:gap-9">{cart} </nav>
           <div className="text"> <Minicart /></div> 
+          <div className="texts"> <DialogDemo /></div> 
           
           
           

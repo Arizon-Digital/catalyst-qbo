@@ -35,11 +35,10 @@ const ViewedItemsPopover = () => {
         <Popover.Content
           className="fixed bg-white rounded-md p-6 z-50"
           style={{
-            top: '120px',
+            top: '190px',
             right: '-190px',
             transform: 'translate(-50%, -50%)',
             width: '290px',
-            maxWidth: '1500px',
           }}
           sideOffset={5}
         >

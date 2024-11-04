@@ -10,6 +10,7 @@ import { ProductFormFragment } from './product-form/fragment';
 import { ProductSchema, ProductSchemaFragment } from './product-schema';
 import { ReviewSummary, ReviewSummaryFragment } from './review-summary';
 import TabComponnet  from '../_components/tab';
+import { log } from 'console';
 
 
 
@@ -58,6 +59,8 @@ export const DetailsFragment = graphql(
     PricingFragment,
   ],
 );
+console.log(DetailsFragment);
+
 
 interface Props {
   product: FragmentOf<typeof DetailsFragment>;
@@ -72,6 +75,8 @@ export const Details = ({ product }: Props) => {
   const showPriceRange =
     product.prices?.priceRange.min.value !== product.prices?.priceRange.max.value;
 
+    console.log("::::::",product);
+    
   return (
     <div>
       {product.brand && (

@@ -13,6 +13,7 @@ export const addToCart = async (data: FormData) => {
 
   const cartId = cookies().get('cartId')?.value;
   let cart;
+  let cartData: any = {};
 
   try {
     cart = await getCart(cartId);
@@ -28,18 +29,27 @@ export const addToCart = async (data: FormData) => {
       });
 
       if (!cart?.entityId) {
-        return { status: 'error', error: 'Failed to add product to cart.' };
+        return { status: 'error', error: 'Failed to add product to cart.', items: cartData };
       }
 
+      let cartDataValue: any = await getCart(cart?.entityId);
+      if(cartDataValue?.lineItems?.physicalItems) {
+        cartData = cartDataValue;
+      }
       revalidateTag(TAGS.cart);
 
-      return { status: 'success', data: cart };
+      return { status: 'success', data: cart, items: cartData };
     }
 
     cart = await createCart([{ productEntityId, quantity: 1 }]);
 
     if (!cart?.entityId) {
-      return { status: 'error', error: 'Failed to add product to cart.' };
+      return { status: 'error', error: 'Failed to add product to cart.', items: cartData };
+    }
+
+    let cartDataValue: any = await getCart(cart?.entityId);
+    if(cartDataValue?.lineItems?.physicalItems) {
+      cartData = cartDataValue;
     }
 
     cookies().set({
@@ -53,12 +63,12 @@ export const addToCart = async (data: FormData) => {
 
     revalidateTag(TAGS.cart);
 
-    return { status: 'success', data: cart };
+    return { status: 'success', data: cart, items: cartData };
   } catch (error: unknown) {
     if (error instanceof Error) {
-      return { status: 'error', error: error.message };
+      return { status: 'error', error: error.message, items: cartData };
     }
 
-    return { status: 'error', error: 'Something went wrong. Please try again.' };
+    return { status: 'error', error: 'Something went wrong. Please try again.', items: cartData };
   }
 };

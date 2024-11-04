@@ -1,6 +1,7 @@
 "use client"; 
 import { removeEdgesAndNodes } from '@bigcommerce/catalyst-client';
 import React from 'react';
+import { BcImage } from '~/components/bc-image';
 
 const ViewedItems = ({ recentlyViewed }: { recentlyViewed: any }) => {
     // Clean up recently viewed items
@@ -15,10 +16,12 @@ const ViewedItems = ({ recentlyViewed }: { recentlyViewed: any }) => {
                     recentlyViewedItems.map((item, i) => (
                         <li key={i} className="viewed-item">
                             <div>
-                                <img 
+                                <BcImage
+                                    width={320}
+                                    height={320} 
                                     className="imagerecents"
-                                    src= "https://cdn11.bigcommerce.com/s-03842/images/stencil/640w/products/14073/376570/PR45BI45_6006_2rs1_c3_skf_6006_2RS1_C3_SKF_Deep_Groove_Bearing_30_x_55_x_13mm_SZ4__62601.1729679797.jpg"
-                                    alt={item.name}
+                                    src={item?.defaultImage?.url320wide}
+                                    alt={item?.defaultImage?.altText}
                                 />
                                
                                 {item.pricesWithTax && item.pricesWithTax.price ? (

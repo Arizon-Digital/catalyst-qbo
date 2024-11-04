@@ -25,6 +25,7 @@ export async function handleAddToCart(
   const cartId = cookies().get('cartId')?.value;
 
   let cart;
+  let cartData: any = {};
 
   const selectedOptions = removeEdgesAndNodes(
     product.productOptions,
@@ -135,9 +136,11 @@ export async function handleAddToCart(
 
   try {
     cart = await getCart(cartId);
+    
 
     if (cart) {
       cart = await addCartLineItem(cart.entityId, {
+
         lineItems: [
           {
             productEntityId,
@@ -148,7 +151,11 @@ export async function handleAddToCart(
       });
 
       if (!cart?.entityId) {
-        return { status: 'error', error: 'Failed to add product to cart.' };
+        return { status: 'error', error: 'Failed to add product to cart.', items: cartData};
+      }
+      let cartDataValue: any = await getCart(cart?.entityId);
+      if(cartDataValue?.lineItems?.physicalItems) {
+        cartData = cartDataValue;
       }
 
       revalidateTag(TAGS.cart);
@@ -166,7 +173,11 @@ export async function handleAddToCart(
     ]);
 
     if (!cart?.entityId) {
-      return { status: 'error', error: 'Failed to add product to cart.' };
+      return { status: 'error', error: 'Failed to add product to cart.', items: cartData };
+    }
+    let cartDataValue: any = await getCart(cart?.entityId);
+    if(cartDataValue?.lineItems?.physicalItems) {
+      cartData = cartDataValue;
     }
 
     cookies().set({
@@ -180,12 +191,12 @@ export async function handleAddToCart(
 
     revalidateTag(TAGS.cart);
 
-    return { status: 'success', data: cart };
+    return { status: 'success', data: cart , items: cartData };
   } catch (error: unknown) {
     if (error instanceof Error) {
-      return { status: 'error', error: error.message };
+      return { status: 'error', error: error.message , items: cartData  };
     }
 
-    return { status: 'error', error: 'Something went wrong. Please try again.' };
+    return { status: 'error', error: 'Something went wrong. Please try again.', items: cartData };
   }
 }
