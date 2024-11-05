@@ -66,8 +66,7 @@ const ViewedItemsPopover = () => {
                 </svg>
               </div>
               <div className='flex flex-col items-center'>
-                <span>Recently</span>
-                <span>Viewed</span>
+               
               </div>
             </div>
         </button>

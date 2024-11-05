@@ -13,6 +13,7 @@ import { type Locale, LocaleSwitcher } from './locale-switcher';
 import { MobileNav } from './mobile-nav';
 import Minicart from '../header/minicart';
 import ViewedItemsPopover  from './ViewedItemsPopover';
+import DoofinderScriptLoader  from '~/app/[locale]/(default)/product/[slug]/_components/Doofinder';
 
 
 
@@ -112,6 +113,7 @@ const Header = ({
                   <div className="text">
                     {' '}
                     <Minicart />
+                    <DoofinderScriptLoader />
                   </div>
                   <div className="texts">
                     {' '}
