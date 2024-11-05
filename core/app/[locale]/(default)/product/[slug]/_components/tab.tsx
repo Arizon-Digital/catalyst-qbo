@@ -31,7 +31,7 @@ const TabComponent = ({product}: any) => {
       {Object.entries(tabContent).map(([tab, value]) => (
 <button
           key={tab}
-          className={`p-3 ${activeTab === tab ? 'bg-[#03465c] text-white' : 'bg-[#e7f5f8] text-[#03465c]'}`}
+          className={`p-3 ${activeTab === tab ? ' bg-[#03465c] bg-[#ededed]' : 'bg-[#e7f5f8] text-[#03465c]'}`}
           onClick={() => setActiveTab(tab)}
 >
           {value?.label?.toUpperCase()}

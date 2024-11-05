@@ -79,46 +79,55 @@ const Header = ({
 
 
     
-    <header className="flex h-[92px] items-center justify-between gap-1 overflow-y-visible bg-white px-4 2xl:container sm:px-10 lg:gap-8 lg:px-12 2xl:mx-auto 2xl:px-0">
-      <CustomLink className="overflow-hidden text-ellipsis py-3" href="/">
-        {typeof logo === 'object' ? (
-          <BcImage
-            alt={logo.altText}
-            className="max-h-16 object-contain"
-            height={32}
-            priority
-            src={logo.src}
-            width={155}
-          />
-        ) : (
-          <span className="truncate text-2xl font-black">{logo}</span>
-        )}
-      </CustomLink>
-
-      
-
-      <div className="flex items-center gap-2 lg:gap-4">
-        {search}
-        <nav className="flex gap-2 lg:gap-4">
-          {account}
-          </nav>
-          <nav className="flex gap-2 lg:gap-4">
-          <div className="text"> <ViewedItemsPopover /></div>
-          </nav>
-          <nav className="flex gap-2 lg:gap-9">{cart} </nav>
-          <div className="text"> <Minicart /></div> 
-          <div className="texts"> <DialogDemo /></div> 
-          
-          
-          
-         
-
-        {activeLocale && locales.length > 0 ? (
-          <LocaleSwitcher activeLocale={activeLocale} locales={locales} />
-        ) : null}
-
-        <MobileNav links={links} logo={logo} />
+<header>
+      <div className="header-2 relative nmd:static nmd:gap-[25px] p-[0] nmd:py-[25px] flex items-center justify-center">
+        <CustomLink className="header-logo-a w-full flex nmd:w-[calc((400/1600)*100vw)]" href="/">
+          {typeof logo === 'object' ? (
+            <BcImage
+              alt={logo.altText}
+              className="header-logo h-[50px] nmd:h-[100px] w-full min-w-[173px] object-contain"
+              height={100}
+              priority
+              src={logo.src}
+              width={155}
+            />
+          ) : (
+            <span className="">{logo}</span>
+          )}
+        </CustomLink>
+        <div className="header-elements flex items-center gap-[20px] absolute w-full nmd:static nmd:w-auto">
+          <div className="header-search hidden nmd:block">{search}</div>
+          <div className="flex items-center gap-[20px] w-full nmd:w-auto">
+            <nav className="account hidden nmd:block header-account">{account}</nav>
+            <div className="header-cart flex items-center w-full nmd:w-auto">
+              <div className="header-cart-div flex items-center absolute right-0 pr-[10px] nmd:pr-0 nmd:static">
+                <nav className="header-viewedItems nmd:block hidden">
+                  <div className="text">
+                    {' '}
+                    <ViewedItemsPopover />
+                  </div>
+                </nav>
+                <nav className="header-cart-icon pl-10px nmd:p-0">{cart} </nav>
+                <div className="flex flex-col items-center gap-0 flex-wrap pl-[5px]">
+                  <div className="text">
+                    {' '}
+                    <Minicart />
+                  </div>
+                  <div className="texts">
+                    {' '}
+                    <DialogDemo />
+                  </div>
+                  {activeLocale && locales.length > 0 ? (
+                    <LocaleSwitcher activeLocale={activeLocale} locales={locales} />
+                  ) : null}
+                </div>
+              </div>
+              <MobileNav links={links} logo={logo} />
+            </div>
+          </div>
+        </div>
       </div>
+      <div className="header-search-2 nmd:hidden">{search}</div>
     </header>
     <NavigationMenuPrimitive.Root id="nav-menu-root" className="hidden lg:block">
   <NavigationMenuPrimitive.List id="nav-menu-list" className="flex items-center gap-2 lg:gap-4">

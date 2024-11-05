@@ -26,7 +26,7 @@ export const Text = ({ defaultValue, field, isValid, name, onChange, type }: Tex
   return (
     <Field className="relative space-y-2" name={name}>
       <FieldLabel
-        className="font-semibold"
+        className="font-semiboldd"
         htmlFor={`field-${field.entityId}`}
         isRequired={field.isRequired}
       >

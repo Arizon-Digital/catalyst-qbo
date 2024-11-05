@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.pl-\[5px\] {
+    padding-left: 0px !important;
+    margin-top: 14px !important;
+}
+
 .text-white {
     background: #ca9618 !important;
     border: 1px solid #ca9618 !important;
@@ -523,7 +528,6 @@ article.emthemesModez-newsletterForm {
     font-weight: 700 !important;
     font-size: 15px !important;
     text-transform: uppercase;
-    margin: .375rem .75rem 0 0;
 }
 button.relative.flex.items-center.justify-center.border-2.border-primary.text-base.font-semibold.leading-6.focus-visible\:outline-none.focus-visible\:ring-4.focus-visible\:ring-primary\/20.disabled\:border-gray-400.border-none.bg-transparent.hover\:bg-opacity-10.hover\:text-secondary.disabled\:text-gray-400.disabled\:hover\:bg-transparent.disabled\:hover\:text-gray-400.w-fit.p-0.text-primary.hover\:bg-transparent {
     text-transform: none;
@@ -735,7 +739,7 @@ div#background {
     }
       span.search-icon {
         color: #fff !important;
-        width: 102px !important;
+        width: 102px;
     }
       .form-input {
         flex: 1; /* Ensures the input takes up most of the space */
@@ -783,7 +787,7 @@ div#background {
         color: #fff !important;
         border-radius: 70px !important;
         margin-top: -6px;
-        margin-right: -26px;
+        margin-right: -36px;
         width: 35px !important;
         height: 24px;
         font-size: 15px !important;
@@ -806,12 +810,6 @@ div#background {
         list-style: none;
         margin: 0;
         padding: 0;
-    }
-    .text {
-        margin-right: 130px;
-        margin-left: -33px;
-        margin-top: 12px !important;
-        font-size: 18px !important;
     }
 
     .p-21.text-leftt.bg-\[\#e7f5f8\] {
@@ -1434,4 +1432,63 @@ width: auto;
         .product-details-dd {
             padding-right: 100px;
         }
+    }
+
+    header .header-cart-icon a{
+        padding: 0px;
+    }
+     
+    header .form-prefixPostfix{
+        width: 100%;
+        position: relative;
+    }
+     
+    header input#search_query{
+        height: 50px;
+    }
+     
+    header span.search-icon{
+        position: absolute;
+        right: 0;
+        height: 100%;
+    }
+     
+    header .header-search button{
+        width: calc((510/1600)*100vw);
+    }
+       
+    @media screen and (max-width: 800px) {
+        header .search-icon{
+            width: unset !important;
+        }
+     
+        header input#search_query{
+            height: 40px;
+        }
+     
+        .header-2 .header-cart button{
+            width: unset;
+        }
+    }
+    @media (max-width: 600px) {
+        .bg-\[\#e7f5f8\] {
+            --tw-bg-opacity: 1;
+            background-color: #ffffff;
+        }
+        .qbo2 {
+          @apply ml-2.5; /* Applies a margin-left of 10px */
+        }
+        main.flex-1.px-4.\32 xl\:container.sm\:px-10.lg\:px-12.\32 xl\:mx-auto.\32 xl\:px-0 {
+            max-width: 100%;
+        }
+        figure.relative.aspect-square.h-full.max-h-\[548px\].w-full {
+            width: 350px;
+            margin-top: 40px;
+            margin-left: 30px;
+            border: 1px solid #dcdcdc;
+            box-shadow: 0 3px 0 #dcdcdc;
+        }
+      }
+      .flex.justify-left.mb-4 {
+        background-color: #dedede;
     }

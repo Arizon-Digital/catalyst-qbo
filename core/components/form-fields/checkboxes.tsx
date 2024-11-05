@@ -66,7 +66,7 @@ export const Checkboxes = ({
     <Field className="relative space-y-2" name={name}>
       <fieldset>
         <FieldLabel asChild>
-          <legend className="mb-2.5 inline-flex w-full items-center justify-between text-base font-semibold">
+          <legend className="mb-2.5 inline-flex w-full items-center justify-between text-base font-semiboldd">
             <span>{field.label}</span>
             {field.isRequired && (
               <span className="text-xss font-normal">Required</span>
