@@ -4,6 +4,8 @@ import { useTranslations } from 'next-intl';
 import { FragmentOf, graphql } from '~/client/graphql';
 import HubspotContactForm  from './hubspot';
 
+
+
 // GraphQL fragment for Bulk Pricing
 export const Bulkprice = graphql(`
   fragment BulkPriceFragment on Product {
@@ -36,6 +38,7 @@ const Bulk: React.FC<Props> = ({ product }) => {
             For bulk discount on this product, contact our dedicated sales team today by filling out the form below:
           </p>
           <HubspotContactForm />
+          
         </div>
       </div>
     );
