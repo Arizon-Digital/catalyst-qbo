@@ -25,9 +25,11 @@ const ViewedItems = ({ recentlyViewed }: { recentlyViewed: any }) => {
                                 />
                                
                                 {item.pricesWithTax && item.pricesWithTax.price ? (
-                                    <div className='price-ss'>
-                                         <div className='recently'>{item.name || 'Item'}</div>
-                                        <div> {item.pricesWithTax.price.value.toFixed(2)} {item.pricesWithTax.price.currencyCode}</div>
+                                    <div className="price-ss">
+                                        <div className="recently">{item.name || 'Item'}</div>
+                                        <div className="price">
+                                            {item.pricesWithTax.price.value.toFixed(2)} {item.pricesWithTax.price.currencyCode}
+                                        </div>
                                     </div>
                                 ) : (
                                     <div>Price not available</div>

@@ -144,7 +144,7 @@ const Footer = ({
       <nav className="grid flex-auto auto-cols-fr gap-8 sm:grid-flow-col">
         {sections.map((section) => (
           <div key={section.title}>
-            <h3 className="mb-4 text-lg font-bold">{section.title}</h3>
+            <h3 className="mb-4 text-lg font-bold" id='footer headings'>Navigation </h3>
             <ul className="flex flex-col gap-4">
   <li>
     <a href="/">Home</a>
@@ -218,17 +218,17 @@ const Footer = ({
           <div className="footer-apps footer-apps-desktop">
   <h2 className="footer-info-heading">Follow Us on Social Media</h2>
   <ul>
-    <li>
+    <li className='contactfooter'>
       <a href="https://www.facebook.com" className="contact-links" target="_blank" rel="noopener noreferrer">
         <FaFacebook size={35} />
       </a>
     </li>
-    <li>
+    <li className='contactfooter'>
       <a href="https://www.instagram.com" className="contact-links" target="_blank" rel="noopener noreferrer">
         <FaInstagram size={35} /> 
       </a>
     </li>
-    <li>
+    <li className='contactfooter'>
       <a href="https://www.linkedin.com" className="contact-links" target="_blank" rel="noopener noreferrer">
         <FaLinkedin size={35} />
       </a>

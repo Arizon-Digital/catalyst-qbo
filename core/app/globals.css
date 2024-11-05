@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+.text-white {
+    background: #ca9618 !important;
+    border: 1px solid #ca9618 !important;
+    color: #fff !important;
+    /* width: 100% !important; */
+    border-radius: 4px !important;
+}
+.Label {
+    font-size: 18px;
+    color: var(--violet-11);
+    width: auto !important;
+    font-weight: 600 !important;
+    text-align: left !important;
+}
+
 .DialogOverlay {
 	background-color: var(--black-a9);
 	position: fixed;
@@ -25,7 +40,33 @@ p.text-base.text-grayy-500 {
     /* margin-bottom: 8px; */
     margin-top: 8px;
 }
-
+.footer-apps.footer-apps-desktop {
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 1.5px;
+    margin: 0 0 20px;
+    text-transform: uppercase;
+    margin-bottom: 20px !important;
+}
+li.contactfooter {
+    padding: 0 5px 5px;
+    margin-top: 10px;
+    fill: #f8f8f8;
+}
+h3#footer\ headings {
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 1.5px;
+    margin: 0 0 20px;
+    text-transform: uppercase;
+}
+h2.footer-info-heading {
+    margin-bottom: 12px;
+}
+address#address {
+    font-weight: 700;
+    font-size: 1rem;
+}
 .flex.flex-wrap.items-end.justify-between.pt {
     font-size: 1rem;
     font-weight: 700;
@@ -544,13 +585,7 @@ div#payment-icons {
 .product-payment {
     padding: 5px !important;
 }
-.text-white {
-    background: #ca9618 !important;
-    border: 1px solid #ca9618 !important;
-    color: #fff !important;
-    width: 100% !important;
-    border-radius: 4px !important;
-}
+
 a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].py-2\.5.text-base.font-semibold.leading-6.focus-visible\:outline-none.focus-visible\:ring-4.focus-visible\:ring-primary\/20.disabled\:border-gray-400.bg-primary.text-white.hover\:border-secondary.hover\:bg-secondary.disabled\:bg-gray-400.disabled\:hover\:border-gray-400.disabled\:hover\:bg-gray-400.w-fit {
     width: 20% !important;
 }

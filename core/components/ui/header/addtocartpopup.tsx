@@ -24,36 +24,37 @@ interface Props {
 
 
 
-const DialogDemo = ({ open, setOpen, data }: { open: boolean, setOpen: any, data: any }) => {
-    console.log(data);
+const DialogDemo = ({ open, setOpen, data,itemVal }: { open: boolean, setOpen: any, data: any ,itemVal:any}) => {
+    console.log('************',itemVal);
 
     return (
         <Dialog.Root open={open} onOpenChange={setOpen}>
             <Dialog.Portal>
-
+      
                 <Dialog.Overlay className="DialogOverlay" />
                 <Dialog.Content className="DialogContent">
-                    <Dialog.Title className="DialogTitle"></Dialog.Title>
+                    <Dialog.Title className="DialogTitle">
+                    19 ITEMS  WERE ADDED TO YOUR CART.
+                    </Dialog.Title>
                     <Dialog.Description className="DialogDescription">
                     
                     </Dialog.Description>
                     <fieldset className="Fieldset">
-                        <label className="Label" htmlFor="name">
-                            <p>Name:{data?.name} </p>
-
-                        </label>
-                        <label>
-                            <p> SKU : {data?.sku}</p>
-                        </label>
-                        
-
-                        <BcImage
+                    <BcImage
                             width={320}
                             height={320}
                             className="imagerecents"
                             src={data?.defaultImage?.url}
                             alt={data?.defaultImage?.altText}
                         />
+                        <label className="Label" htmlFor="name">
+                            <p>{data?.name} </p>
+
+                        </label>
+                        
+                        
+
+                        
 
                     </fieldset>
                     <fieldset className="Fieldset">
@@ -63,7 +64,7 @@ const DialogDemo = ({ open, setOpen, data }: { open: boolean, setOpen: any, data
 
                     </fieldset>
                     <div
-                        style={{ display: "flex", marginTop: 25, justifyContent: "flex-end" }}
+                        style={{ display: "flex", marginTop: 25, justifyContent: "flex-start" }}
                     >
 
 <div className="mt-4 space-y-2">
@@ -71,7 +72,7 @@ const DialogDemo = ({ open, setOpen, data }: { open: boolean, setOpen: any, data
                   href="/checkout"
                   className="block w-full bg-primary text-white text-center py-2 rounded-md hover:bg-primary/90"
                 >
-                  CHECKOUT NOW
+                  PROCEED TO CHECKOUT
                 </Link>
                 <Link
                   href="/cart"

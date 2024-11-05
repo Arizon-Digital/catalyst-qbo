@@ -51,8 +51,11 @@ const productItemTransform = (p: FragmentOf<typeof ProductItemFragment>) => {
 // console.log(':::::::::',productItemTransform);
 
 export const Submit = ({ data: product }: Props) => {
+  console.log(product);
+  
   const { formState } = useFormContext();
   const { isSubmitting } = formState;
+console.log(isSubmitting);
 
   return (
     <AddToCartButton data={product} loading={isSubmitting}>
@@ -63,14 +66,18 @@ export const Submit = ({ data: product }: Props) => {
 
 export const ProductForm = ({ data: product }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
+  const [itemsCount,setItemsCount]=useState('')
   const t = useTranslations('Product.Form');
   const productOptions = removeEdgesAndNodes(product.productOptions);
-
   const { handleSubmit, register, ...methods } = useProductForm();
-
+  
   const productFormSubmit = async (data: ProductFormData) => {
     const result = await handleAddToCart(data, product);
+    console.log(data.quantity);
+    
     const quantity = Number(data.quantity);
+    
+    console.log('result-----------',quantity);
     
     if (result.error) {
       toast.error(t('error'), {
@@ -152,9 +159,10 @@ export const ProductForm = ({ data: product }: Props) => {
 
         <QuantityField />
 
-        <div className="mt-4 flex flex-col gap-4 @md:flex-row">
+        <div className="mt-4 flex flex-col gap-4 @md:flex-row" id='addtocart button'>
           
-          <Submit data={product} /> <DialogDemo data={product}  open={open} setOpen={setOpen} />
+          <Submit data={product} />
+           <DialogDemo data={product} itemVal={productFormSubmit}  open={open} setOpen={setOpen} />
           
           
 
