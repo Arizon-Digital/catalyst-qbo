@@ -95,7 +95,7 @@ export const LoginForm = () => {
             {t('Form.enterEmailMessage')}
           </FieldMessage>
         </Field>
-        <Field className="relative space-y-2 pb-7" name="password">
+        <Field className="relative space-y-2 pb-7"id='password' name="password">
           <FieldLabel htmlFor="password">Password:</FieldLabel>
           <FieldControl asChild>
             <Input

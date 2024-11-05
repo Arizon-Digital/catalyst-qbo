@@ -31,8 +31,8 @@ const ViewedItemsPopover = () => {
          <div className='flex mr-[10px] items-center'>
               <div>
                 <svg
-                  width="35"
-                  height="35"
+                  width="45"
+                  height="50"
                   viewBox="0 0 100 100"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
