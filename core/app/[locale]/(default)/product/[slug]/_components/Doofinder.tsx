@@ -6,7 +6,8 @@ const DoofinderScriptLoader = () => {
     if (typeof window !== "undefined") {
         const dfLayerOptions = {
             installationId: 'c0f78410-3a01-422e-bb3d-1a441ec81c85',
-            zone: 'eu1'
+            zone: 'eu1',
+            currency: 'CAD'
         };
 
         // Dynamically inject the script
