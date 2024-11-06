@@ -26,7 +26,7 @@ interface Props {
     alt="Remove"
     width={20}
     height={20}
-    className="w-[20px] h-[20px]"
+    className="w-[20px] h-[20px] deleteIcon"
     src={icon}
     />
     </Button>

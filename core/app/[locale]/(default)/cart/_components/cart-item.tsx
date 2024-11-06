@@ -5,7 +5,6 @@ import { ItemQuantity } from './item-quantity';
 import { RemoveItem } from './remove-item';
 import Brand from '../../(faceted)/brand/[slug]/page';
  
- 
 const PhysicalItemFragment = graphql(`
   fragment PhysicalItemFragment on CartPhysicalItem {
     name
@@ -151,73 +150,70 @@ interface Props {
 export const CartItem = ({ currencyCode, product }: Props) => {
   const format = useFormatter();
  
-  const deleteIcon = "https://cdn11.bigcommerce.com/s-ur7wjnshy8/images/stencil/320w/image-manager/delete.jpg";
+  const deleteIcon =
+    'https://cdn11.bigcommerce.com/s-ur7wjnshy8/images/stencil/320w/image-manager/delete.jpg';
  
   return (
-    <li>
-      <div className="border-t border-t-gray-200">
-        <table className="table-auto ">
-        <thead className="table-head">
-            <tr>
-              <th className="text-left" colSpan={2}>ITEMS</th>
-              <th className="text-left">UNIT PRICE</th>
-              <th className="text-left">QUANTITY</th>
-              <th className="text-left">TOTAL</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              {/* Image */}
-              <td className="">
-                {product.image?.url ? (
-                  <BcImage alt={product.name} height={36} src={product.image.url} width={36} className='w-[36px] h-[36px]' />
-                ) : (
-                  <div className="h-full w-full bg-gray-200" />
-                )}
-              </td>
+    <tbody className='border border-[#CFD8DC]'>
+      <tr className='relative'>
+        {/* Image */}
+        <td className="w-[80px] product-td-img">
+          {product.image?.url ? (
+            <div className='product-img-div'>
+            <BcImage
+              alt={product.name}
+              height={80}
+              src={product.image.url}
+              width={80}
+              className="product-img"
+            />
+            </div>
+          ) : (
+            <div className="h-full w-full bg-gray-200" />
+          )}
+        </td>
  
-              {/* Product name and SKU */}
-              <td className="">
-              <p className="text-xl font-bold md:text-2xl" id="cartbrandname">{product.brand}</p>
-                <p className="text-xl font-bold md:text-2xl" id="cartproductname">{product.name}</p>
-               
-              </td>
+        {/* Product name and SKU */}
+        <td className="">
+          <p className="text-xl font-bold md:text-2xl" id="cartbrandname">
+            {product.brand}
+          </p>
+          <p className="text-xl font-bold md:text-2xl" id="cartproductname">
+            {product.name}
+          </p>
+        </td>
  
-              {/* Original price */}
-              <td className="price cart">
-                <p className="text-lg font-bold">
-                  {format.number(product.originalPrice.value, {
-                    style: 'currency',
-                    currency: currencyCode,
-                  })}
-                </p>
-              </td>
+        {/* Original price */}
+        <td className="price cart">
+          <p className="text-lg font-bold">
+            {format.number(product.originalPrice.value, {
+              style: 'currency',
+              currency: currencyCode,
+            })}
+          </p>
+        </td>
  
-              {/* Quantity and Remove Item button */}
-              <td className="">
-                <ItemQuantity product={product} />
-                {/* Remove Item */}
-                <div className="hidden md:block">
-                  <RemoveItem currency={currencyCode} product={product} deleteIcon={deleteIcon} />
-                </div>
-              </td>
-             
+        {/* Quantity and Remove Item button */}
+        <td className="cart-qunRem">
+          <div className='cart-qunRem-div'>
+          <ItemQuantity product={product} />
+          {/* Remove Item */}
+          <div className="hidden md:block deleteIcon-div">
+            <RemoveItem currency={currencyCode} product={product} deleteIcon={deleteIcon} />
+          </div>
+          </div>
+        </td>
  
-              {/* Sale price */}
-              <td className="price cart">
-                <p className="text-lg font-bold">
-                  {format.number(product.extendedSalePrice.value, {
-                    style: 'currency',
-                    currency: currencyCode,
-                  })}
-                </p>
-              </td>
- 
-             
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </li>
+        {/* Sale price */}
+        <td className="price cart">
+          <p className="text-lg font-bold">
+            {format.number(product.extendedSalePrice.value, {
+              style: 'currency',
+              currency: currencyCode,
+            })}
+          </p>
+        </td>
+      </tr>
+    </tbody>
   );
 };

@@ -186,10 +186,10 @@ export const ItemQuantity = ({ product }: { product: Product }) => {
     onSubmit();  // Call backend update when the input loses focus
   };
   return (
-    <div className="w-[120px] border-2  p-2.5">
+    <div className="w-[120px] border-2  p-2.5 input-quantity">
       <form action={onSubmit} className="flex items-center">
         <SubmitButton onClick={() => setProductQuantity(productQuantity - 1)}>
-          <Minus>
+          <Minus className='quantity-reduce'>
             <title>{t('submitReduceText')}</title>
           </Minus>
         </SubmitButton>
@@ -208,7 +208,7 @@ export const ItemQuantity = ({ product }: { product: Product }) => {
         {/* <Quantity value={productQuantity} /> */}
 
         <SubmitButton onClick={() => setProductQuantity(productQuantity + 1)}>
-          <Plus>
+          <Plus className='quantity-increase'>
             <title>{t('submitIncreaseText')}</title>
           </Plus>
         </SubmitButton>
