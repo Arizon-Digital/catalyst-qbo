@@ -14,6 +14,7 @@ import { MobileNav } from './mobile-nav';
 import Minicart from '../header/minicart';
 import ViewedItemsPopover  from './ViewedItemsPopover';
 import DoofinderScriptLoader  from '~/app/[locale]/(default)/product/[slug]/_components/Doofinder';
+import HubspotChat from '~/app/[locale]/(default)/product/[slug]/_components/Chatbot';
 
 
 
@@ -114,6 +115,7 @@ const Header = ({
                     {' '}
                     <Minicart />
                     <DoofinderScriptLoader />
+                    <HubspotChat portalId={139717848} />
                   </div>
                   <div className="texts">
                     {' '}
