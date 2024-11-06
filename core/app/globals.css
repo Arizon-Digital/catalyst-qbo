@@ -6,7 +6,10 @@
     padding-left: 0px !important;
     margin-top: 14px !important;
 }
-
+.dfd-card .dfd-cart-add-button {
+    margin-left: auto;
+    display: none !important;
+}
 .text-white {
     background: #ca9618 !important;
     border: 1px solid #ca9618 !important;
@@ -269,12 +272,7 @@ ul.col-span-2 {
     border-radius: 4px;
     box-shadow: 0 3px 0 #dcdcdc;
 }
-.cart-heading ul li:nth-child(1) table thead {
-    display: contents;
-}
-.cart-heading ul li table thead {
-    display: none;
-}
+
 span.product-details-item {
     width: 90% !important;
     display: block;
@@ -483,9 +481,7 @@ figure.relative.aspect-square.h-full.max-h-\[548px\].w-full {
     -webkit-box-shadow: 0 3px 0 #dcdcdc;
     box-shadow: 0 3px 0 #dcdcdc;
 }
-article.product-payment {
-    margin-left: 3px;
-}
+
 .flex.flex-1.flex-col.gap-1 {
     text-align: center !important;
 }
@@ -494,11 +490,7 @@ article.product-payment {
     text-align: center !important;
     margin-left: 90px !important;
 }
-.product-payments.flex {
-    margin-top: 20px !important;
-    margin-bottom: 20px !important;
-    
-}
+
 h3.text-xl.font-bold.lg\:text-2xl {
     font-size: 1rem !important;
     text-align: center !important;
@@ -586,9 +578,7 @@ div#payment-icons {
     height: 40px;
     width: 50px;
 }
-.product-payment {
-    padding: 5px !important;
-}
+
 
 a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].py-2\.5.text-base.font-semibold.leading-6.focus-visible\:outline-none.focus-visible\:ring-4.focus-visible\:ring-primary\/20.disabled\:border-gray-400.bg-primary.text-white.hover\:border-secondary.hover\:bg-secondary.disabled\:bg-gray-400.disabled\:hover\:border-gray-400.disabled\:hover\:bg-gray-400.w-fit {
     width: 20% !important;
@@ -809,7 +799,7 @@ label.inline-flex.w-full.items-center.justify-between {
         font-size: 1rem;
     }
     col-span-2.ol, ul, menu {
-        display: flex !important;
+        display: flex ;
         list-style: none;
         margin: 0;
         padding: 0;
@@ -874,9 +864,7 @@ width: auto;
     div#buttoncart {
         height: auto;
     }
-    .cart-secure-checkout-icon {
-        margin-top: 20px;
-    }
+    
 
     .product-details {
         display: flex;
@@ -937,30 +925,22 @@ width: auto;
       strong {
         font-weight: bold;
       }
-      .cart123 {
-        margin-bottom: 30px;
-        background-color: #fff;
-        border: 1px solid #dcdcdc;
-        border-radius: 4px;
-        /* -webkit-box-shadow: 0 3px 0 #dcdcdc; */
-        box-shadow: 0 3px 0 #dcdcdc;
-    }
- 
-      
-    /* .col-span-1.col-start-2.lg\:col-start-3 {
-        background-color: #fff;
-    border: 1px solid #dcdcdc;
-    border-radius: 4px;
-    -webkit-box-shadow: 0 3px 0 #dcdcdc;
-    box-shadow: 0 3px 0 #dcdcdc;
-    } */
     .py-4 {
         padding-top: 1rem;
         padding-bottom: 1rem;
         padding-right: 1rem;
         padding-left: 1rem;
     }
-    
+    .cart-page .div-breadcrumb{
+        padding-left: 0px;
+    }
+    .cart-page-col1 li:not(:first-child) table thead {
+        display: none;
+    }
+     
+    .buttoncart-child2 form button{
+        margin-top: 0px;
+    }
     div#tabsection {
         background-color: #fff;
         border: 1px solid #dcdcdc;

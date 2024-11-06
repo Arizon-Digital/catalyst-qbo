@@ -4,7 +4,7 @@ import { BcImage } from '~/components/bc-image';
 import { ItemQuantity } from './item-quantity';
 import { RemoveItem } from './remove-item';
 import Brand from '../../(faceted)/brand/[slug]/page';
-
+ 
  
 const PhysicalItemFragment = graphql(`
   fragment PhysicalItemFragment on CartPhysicalItem {
@@ -147,43 +147,40 @@ interface Props {
   currencyCode: string;
   deleteIcon: string;
 }
-
+ 
 export const CartItem = ({ currencyCode, product }: Props) => {
   const format = useFormatter();
  
   const deleteIcon = "https://cdn11.bigcommerce.com/s-ur7wjnshy8/images/stencil/320w/image-manager/delete.jpg";
-
+ 
   return (
     <li>
-      <div className="border-t border-t-gray-200 py-4 ">
-        <table className="table-auto w-full">
+      <div className="border-t border-t-gray-200">
+        <table className="table-auto ">
         <thead className="table-head">
             <tr>
-              <th className="w-24 md:w-[144px] text-left">ITEMS</th>
-              <th className="text-left"></th>
+              <th className="text-left" colSpan={2}>ITEMS</th>
               <th className="text-left">UNIT PRICE</th>
               <th className="text-left">QUANTITY</th>
-              <th className="text-left"></th>
               <th className="text-left">TOTAL</th>
-             
             </tr>
           </thead>
           <tbody>
             <tr>
               {/* Image */}
-              <td className="w-24 flex-none md:w-[144px]">
+              <td className="">
                 {product.image?.url ? (
-                  <BcImage alt={product.name} height={144} src={product.image.url} width={144} />
+                  <BcImage alt={product.name} height={36} src={product.image.url} width={36} className='w-[36px] h-[36px]' />
                 ) : (
                   <div className="h-full w-full bg-gray-200" />
                 )}
               </td>
  
               {/* Product name and SKU */}
-              <td className="flex flex-1 flex-col gap-2">
+              <td className="">
               <p className="text-xl font-bold md:text-2xl" id="cartbrandname">{product.brand}</p>
                 <p className="text-xl font-bold md:text-2xl" id="cartproductname">{product.name}</p>
-                
+               
               </td>
  
               {/* Original price */}
@@ -197,15 +194,14 @@ export const CartItem = ({ currencyCode, product }: Props) => {
               </td>
  
               {/* Quantity and Remove Item button */}
-              <td className="flex-col gap-2 md:items-end">
+              <td className="">
                 <ItemQuantity product={product} />
-              </td>
-              {/* Remove Item */}
-              <td>
+                {/* Remove Item */}
                 <div className="hidden md:block">
                   <RemoveItem currency={currencyCode} product={product} deleteIcon={deleteIcon} />
                 </div>
               </td>
+             
  
               {/* Sale price */}
               <td className="price cart">
@@ -225,5 +221,3 @@ export const CartItem = ({ currencyCode, product }: Props) => {
     </li>
   );
 };
-
-

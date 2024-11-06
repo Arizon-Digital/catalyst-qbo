@@ -52,7 +52,7 @@ export const ShippingEstimator = ({ checkout, shippingCountries }: Props) => {
 
   return (
     <>
-      <div className="flex flex-col gap-2 border-t border-t-gray-200 py-4">
+      <div className="flex flex-col gap-2 border-t border-t-gray-200 py-3">
         <div className="flex justify-between">
           <span className="font-semibold" id='shipping'>Shipping:</span>
           {selectedShippingConsignment ? (

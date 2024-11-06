@@ -28,7 +28,7 @@ const ViewedItemsPopover = () => {
           }}
           aria-label="Quickview"
         >
-         <div className='flex mr-[10px] items-center'>
+         <div className='flex mr-[20px] items-center'>
               <div>
                 <svg
                   width="45"

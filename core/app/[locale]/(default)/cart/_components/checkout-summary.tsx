@@ -55,7 +55,7 @@ export const CheckoutSummary = async ({ checkout, geography }: Props) => {
 
   return (
     <>
-      <div className="flex justify-between border-t border-t-gray-200 py-4">
+      <div className="flex justify-between border-t border-t-gray-200 py-3">
         <span className="font-semibold">Subtotal:</span>
         <span>
           {format.number(subtotal?.value || 0, {
@@ -94,7 +94,7 @@ export const CheckoutSummary = async ({ checkout, geography }: Props) => {
         </div>
       )} */}
 
-      <div className="flex justify-between border-t border-t-gray-200 py-4 text-xl font-bold lg:text-2xl">
+      <div className="flex justify-between border-t border-t-gray-200 py-3 text-xl font-bold lg:text-2xl">
         Grandtotal:
         <span>
           {format.number(grandTotal?.value || 0, {
