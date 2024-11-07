@@ -7,6 +7,7 @@ import { Phone, Inbox } from 'lucide-react';
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
 
 import { Locale } from './locale';
+import CookieConsent from '~/components/header/cookie-consent';
 
 interface Image {
   altText: string;
@@ -261,6 +262,7 @@ const Footer = ({
         </div>
       </div>
     </section>
+    <CookieConsent />
   </footer>
 );
 
