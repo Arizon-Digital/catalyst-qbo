@@ -91,14 +91,24 @@ export default async function Cart() {
     <div className='cart-page flex flex-col justify-center'>
       <ComponentsBreadcrumbs className="mt-10" breadcrumbs={breadcrumbs} />
       <h1 className="font-normal mb-[0.75rem] text-[25px]">{`${t('heading')}(${cartQty}${cartItemsText})`}</h1>
-      <div className="flex gap-[25px]">
-        <ul className="cart-page-col1 w-2/3 border border-[#CFD8DC] rounded-[3px]">
+      <div className="flex gap-[25px] cart-cols">
+        <div className='w-[70%] cart-page-col1'>
+        <table className=" rounded-[3px] w-full border-collapse table-auto border border-[#CFD8DC]">
+          <thead className="table-head">
+            <tr className='border border-[#CFD8DC]'>
+              <th className="text-left border-b border-[#CFD8DC]" colSpan={2}>ITEMS</th>
+              <th className="text-left border-b border-[#CFD8DC] w-[16%]">UNIT PRICE</th>
+              <th className="text-left border-b border-[#CFD8DC]">QUANTITY</th>
+              <th className="text-left border-b border-[#CFD8DC]">TOTAL</th>
+            </tr>
+          </thead>
           {lineItems.map((product) => (
             <CartItem currencyCode={cart.currencyCode} key={product.entityId} product={product} />
           ))}
-        </ul>
+        </table>
+        </div>
  
-        <div className="cart-page-col2 w-1/3 flex flex-col gap-[25px]" id="buttoncart">
+        <div className="cart-page-col2 w-[30%] flex flex-col gap-[25px]" id="buttoncart">
           <div className="border border-[#CFD8DC] rounded-[2px] p-[24px_12px]">
             {checkout && <CheckoutSummary checkout={checkout} geography={geography} />}{' '}
           </div>
@@ -167,7 +177,7 @@ export default async function Cart() {
       </div>
       <CartViewed checkout={checkout} currencyCode={cart.currencyCode} lineItems={lineItems} />
       <div data-content-region="cart_below_content">
-        <script
+      <script
           type="text/javascript"
           src="https://api.feefo.com/api/javascript/quality-bearings-online"
           async
