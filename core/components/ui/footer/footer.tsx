@@ -95,6 +95,7 @@ const Footer = ({
       
       {/* Contact Information Section */}
       <div className="flex flex-col gap-4">
+      <p id="address"> Quality Bearings Online Ltd</p>
         {Boolean(contactInformation) && (
           <>
             <address className="not-italic" id="address">
@@ -109,18 +110,15 @@ const Footer = ({
         <p id="address"> USA - 646 895 6246 / 619 354 1821</p>
         <p id="address"> Canada - 438 800 0605</p>
             {Boolean(contactInformation?.phone) && (
-              <a
-                className="hover:text-primary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20"
-                href={`tel:${contactInformation?.phone}`}
-              >
+              
                 <p id="address"> International- {contactInformation?.phone}</p>
-              </a>
+              
               
             )}
           </>
         )}
         
-        <a className="contactus" href={`tel:${contactInformation?.phone}`}>
+        <a className="contactus" href="/contact-us">
           
           <p id="address">Contact us</p>
         </a>
@@ -147,40 +145,40 @@ const Footer = ({
           <div key={section.title}>
             <h3 className="mb-4 text-lg font-bold" id='footer headings'>Navigation </h3>
             <ul className="flex flex-col gap-4">
-  <li>
+  <li className='navigationfooter'>
     <a href="/">Home</a>
   </li>
-  <li>
+  <li className='navigationfooter'>
     <a href="/about-us">About Us</a>
   </li>
-  <li>
+  <li className='navigationfooter'>
     <a href="/10-year-anniversary">10 Year Anniversary</a>
   </li>
-  <li>
+  <li className='navigationfooter'>
     <a href="/contact-us">Contact Us</a>
   </li>
-  <li>
+  <li className='navigationfooter'>
     <a href="/customer-service">Customer Service</a>
   </li>
-  <li>
+  <li className='navigationfooter'>
     <a href="/delivery-information">Delivery Information</a>
   </li>
-  <li>
+  <li className='navigationfooter'>
     <a href="/faqs">FAQS</a>
   </li>
-  <li>
+  <li className='navigationfooter'>
     <a href="/privacy-policy">Privacy Policy</a>
   </li>
-  <li>
+  <li className='navigationfooter'>
     <a href="/customer-reviews">Customer Reviews</a>
   </li>
-  <li>
+  <li className='navigationfooter'>
     <a href="/terms-conditions">Terms & Conditions</a>
   </li>
-  <li>
+  <li className='navigationfooter'>
     <a href="/blog">Blog</a>
   </li>
-  <li>
+  <li className='navigationfooter'>
     <a href="/sitemap">Sitemap</a>
   </li>
 </ul>
@@ -202,8 +200,8 @@ const Footer = ({
           </div>
           <div className="footer-apps footer-apps-desktop">
             <h2 className="footer-info-heading">Download Our New Mobile App</h2>
-            <ul>
-              <li>
+            <ul className='downaload'>
+              <li className='payment'>
                 <a href="https://play.google.com/store/apps/details?id=com.qualitybearingsonline.qualitybearingsonline" title="Get the Quality Bearings Online App on Google Play Store" target="_blank">
                   <img src="https://cdn11.bigcommerce.com/s-03842/content/../content/NewSite/Product-Images/Google%20Play%20Store%20Icon.png" alt="Google Play Store" width="150" />
                 </a>
@@ -218,7 +216,7 @@ const Footer = ({
 
           <div className="footer-apps footer-apps-desktop">
   <h2 className="footer-info-heading">Follow Us on Social Media</h2>
-  <ul>
+  <ul className='socialmedia'>
     <li className='contactfooter'>
       <a href="https://www.facebook.com" className="contact-links" target="_blank" rel="noopener noreferrer">
         <FaFacebook size={35} />
