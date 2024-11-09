@@ -1102,6 +1102,10 @@ width: auto;
         
 
     }
+
+    img.feefologo {
+        max-width: 135px;
+    }
     input#password {
         -webkit-appearance: none;
         -moz-appearance: none;
