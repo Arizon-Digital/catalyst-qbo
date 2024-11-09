@@ -6,7 +6,7 @@ import { Breadcrumbs } from '~/components/breadcrumbs';
 import { ProductCard } from '~/components/product-card';
 import { Pagination } from '~/components/ui/pagination';
 import { LocaleType } from '~/i18n/routing';
-// import { ProductLimitSelector } from '../../_components/ProductLimitSelector';
+import { ProductLimitSelector } from '../../_components/ProductLimitSelector';
 
 import { FacetedSearch } from '../../_components/faceted-search';
 import { MobileSideNav } from '../../_components/mobile-side-nav';
