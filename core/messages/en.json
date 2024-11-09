@@ -27,9 +27,9 @@
     "Form": {
       "error": "Your email address or password is incorrect. Try signing in again or reset your password",
       "emailLabel": "Email",
-      "enterEmailMessage": "Enter your email",
+      "enterEmailMessage": "Please use a valid email address, such as user@example.com",
       "passwordLabel": "Password",
-      "entePasswordMessage": "Enter your password",
+      "entePasswordMessage": "You must enter a password.",
       "submitting": "Submitting...",
       "logIn": "Log in",
       "resetPassword": "Forgot your password?"

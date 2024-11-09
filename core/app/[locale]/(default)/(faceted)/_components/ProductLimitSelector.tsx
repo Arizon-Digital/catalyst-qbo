@@ -3,7 +3,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { ProductCard } from '~/components/product-card';
-import { fetchFacetedSearch } from '../fetch-faceted-search';
+// import { fetchFacetedSearch } from '../fetch-faceted-search';
 import { storeProductLimitInCookies } from '../_actions/store-prod-data-limit';
 interface ProductLimitSelectorProps {
   initialProducts: any[];
@@ -11,9 +11,9 @@ interface ProductLimitSelectorProps {
   searchParams: Record<string, string | string[] | undefined>;
 }
 
-export function ProductLimitSelector({ initialProducts, categoryId, searchParams }: ProductLimitSelectorProps) {
-  const [productLimit, setProductLimit] = useState(50);
-  const [products, setProducts] = useState(initialProducts);
+// export function ProductLimitSelector({ initialProducts, categoryId, searchParams }: ProductLimitSelectorProps) {
+//   const [productLimit, setProductLimit] = useState(50);
+//   const [products, setProducts] = useState(initialProducts);
 
   const handleLimitChange = async (event: React.ChangeEvent<HTMLSelectElement>) => {
     const newLimit = Number(event.target.value);    
@@ -21,9 +21,9 @@ export function ProductLimitSelector({ initialProducts, categoryId, searchParams
     setProductLimit(newLimit);
 
     
-    const search = await fetchFacetedSearch({ ...searchParams, category: categoryId, limit: newLimit });
-    setProducts(search.products.items);
-  };
+  //   const search = await fetchFacetedSearch({ ...searchParams, category: categoryId, limit: newLimit });
+  //   setProducts(search.products.items);
+  // };
 
   return (
     <div>

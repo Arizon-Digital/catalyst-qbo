@@ -8,7 +8,7 @@
     width: 20%;
     margin-bottom: 5px;
 }
-.form-field {
+/* .form-field {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -31,7 +31,7 @@
     width: 900px;
     margin-left: 70px;
     margin-bottom: 10px;
-}
+} */
 aside.mb-8.hidden.lg\:block {
     padding: 1.5rem;
     border: 1px solid #dcdcdc;
@@ -1089,6 +1089,17 @@ width: auto;
         -webkit-transition: border-color .1s ease-out;
         transition: border-color .1s ease-out;
         width: 100%;
+    }
+    button#signinbutton:hover {
+        color: #ca9618 !important; 
+        border-color: #ca9618 !important;/* Changes the text color to white */
+        background-color: white !important; /* Changes the background color to white */
+    }
+    .text-white:hover{
+        color: #ca9618 !important; 
+        border-color: #ca9618 !important;/* Changes the text color to white */
+        background-color: white !important; /* Changes the background color to white */
+
     }
     input#password {
         -webkit-appearance: none;
