@@ -44,7 +44,7 @@ export const Text = ({ defaultValue, field, isValid, name, onChange, type }: Tex
           type={type === 'email' ? 'email' : 'text'}
         />
       </FieldControl>
-      <div className="relative h-7">
+      <div className="relative h-7" id='field'>
         {field.isRequired && (
           <FieldMessage
             className="inline-flex w-full text-xs font-normal text-error-secondary"
