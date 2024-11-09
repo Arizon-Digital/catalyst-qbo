@@ -17,6 +17,8 @@ const CookieConsent = () => {
     cookieText.async= true;
     document.body.appendChild(cookieText);
   }, []);
+
+  return (<></>);
 };
 
 export default CookieConsent;
