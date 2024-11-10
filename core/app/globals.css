@@ -432,6 +432,13 @@ nav#nav-menu-root {
     padding-left: 109px;
     height: 88px;
 }
+.search-icon {
+    background: linear-gradient(90deg, #1a2348 0, rgba(26, 35, 72, .7) 100%) !important;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .hover\:text-primary:hover {
     
     color: #ca9618 !important;
