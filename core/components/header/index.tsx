@@ -20,6 +20,7 @@ import { CartLink } from './cart';
 import { HeaderFragment } from './fragment';
 import { QuickSearch } from './quick-search';
 import Minicart from '../ui/header/minicart';
+import { Currenciesquires } from './currency';
 
 interface Props {
   cart: ReactNode;
@@ -55,6 +56,15 @@ export const Header = async ({ cart }: Props) => {
       })),
     })),
   }));
+
+  const tc = await getTranslations('Currencies');
+
+  const {data: currencies } = await client.fetch({
+    document: Currenciesquires,
+    fetchOptions: customerId ? { cache: 'no-store' } : { next: { revalidate } },
+  });
+
+  console.log('---currencies---', JSON.stringify(currencies));
 
   return (
     <ComponentsHeader

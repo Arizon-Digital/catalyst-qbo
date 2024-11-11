@@ -15,6 +15,11 @@ const CategoryPageQuery = graphql(
         category(entityId: $categoryId) {
           name
           ...BreadcrumbsFragment
+          defaultImage {
+            altText
+            isDefault
+            url(width: 10, height: 10, lossy: false)
+          }
           seo {
             pageTitle
             metaDescription

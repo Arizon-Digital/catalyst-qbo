@@ -5,6 +5,10 @@
       "newestProducts": "Newest products"
     }
   },
+ "Currencies" :{
+  
+"title": "Select Currency"
+ },
   "ChangePassword": {
     "title": "Change password",
     "heading": "Change password",

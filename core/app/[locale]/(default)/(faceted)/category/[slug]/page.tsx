@@ -7,6 +7,7 @@ import { ProductCard } from '~/components/product-card';
 import { Pagination } from '~/components/ui/pagination';
 import { LocaleType } from '~/i18n/routing';
 import { ProductLimitSelector } from '../../_components/ProductLimitSelector';
+import { BcImage } from '~/components/bc-image';
 
 import { FacetedSearch } from '../../_components/faceted-search';
 import { MobileSideNav } from '../../_components/mobile-side-nav';
@@ -31,6 +32,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const data = await getCategoryPageData({
     categoryId,
   });
+
+  
 
   const category = data.category;
 
@@ -71,6 +74,12 @@ export default async function Category({ params: { locale, slug }, searchParams 
   return (
     <div className="group">
       <Breadcrumbs category={category} />
+                        <BcImage
+                          alt={category.defaultImage.altText}
+                          height={300}
+                          src={category.defaultImage.url}
+                          width={300}
+                        />
       <div className="md:mb-8 lg:flex lg:flex-row lg:items-center lg:justify- sortbutton">
         <p className="mb-4 text-4xl font-black lg:mb-0 lg:text-5xl categorybtn" id='categorybtn'>
         Can't Find What You Are Looking For?</p>
@@ -79,7 +88,7 @@ export default async function Category({ params: { locale, slug }, searchParams 
                         
                     </input>
         
-        
+                   
         
 
         <div className="flex flex-col items-center gap-3 whitespace-nowrap md:flex-row">

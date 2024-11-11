@@ -439,6 +439,9 @@ nav#nav-menu-root {
     align-items: center;
     justify-content: center;
 }
+.CookieDeclaration {
+    display: none;
+}
 .hover\:text-primary:hover {
     
     color: #ca9618 !important;
