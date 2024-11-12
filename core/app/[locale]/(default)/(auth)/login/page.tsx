@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
-
+import { Breadcrumbs } from '~/components/breadcrumbs';
 import { Link } from '~/components/link';
 import { Button } from '~/components/ui/button';
 import { locales, LocaleType } from '~/i18n/routing';

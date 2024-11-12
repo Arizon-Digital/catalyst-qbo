@@ -50,10 +50,10 @@
     }
   },
   "Register": {
-    "title": "Register account",
-    "heading": "New account",
+    "title": "Register Account",
+    "heading": "New Account",
     "Form": {
-      "submit": "Create account",
+      "submit": "Create Account",
       "submitting": "Creating account...",
       "recaptchaText": "Pass ReCAPTCHA check",
       "confirmPassword": "Passwords don't match"

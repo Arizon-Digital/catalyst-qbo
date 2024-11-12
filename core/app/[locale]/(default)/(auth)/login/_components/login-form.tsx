@@ -119,7 +119,7 @@ export const LoginForm = () => {
             <SubmitButton />
           </FormSubmit>
           <Link
-            className="my-5 inline-flex items-center justify-start font-semiboldd text-primary hover:text-secondary md:my-0"
+            className="my-5 inline-flex items-center justify-start font-semiboldd text-primary hover:text-secondary md:my-0 reset"
             href="/reset"
           >
             {t('Form.resetPassword')}

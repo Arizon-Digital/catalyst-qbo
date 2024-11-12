@@ -18,7 +18,7 @@ const CategoryPageQuery = graphql(
           defaultImage {
             altText
             isDefault
-            url(width: 10, height: 10, lossy: false)
+            url(width: 1230, height: 250, lossy: false)
           }
           seo {
             pageTitle

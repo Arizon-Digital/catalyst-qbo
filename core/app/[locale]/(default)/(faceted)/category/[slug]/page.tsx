@@ -76,9 +76,9 @@ export default async function Category({ params: { locale, slug }, searchParams 
       <Breadcrumbs category={category} />
                         <BcImage
                           alt={category.defaultImage.altText}
-                          height={300}
+                          height={250}
                           src={category.defaultImage.url}
-                          width={300}
+                          width={1230}
                         />
       <div className="md:mb-8 lg:flex lg:flex-row lg:items-center lg:justify- sortbutton">
         <p className="mb-4 text-4xl font-black lg:mb-0 lg:text-5xl categorybtn" id='categorybtn'>

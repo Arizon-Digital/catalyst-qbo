@@ -1,4 +1,4 @@
-import { ShoppingCart, User } from 'lucide-react';
+import { CornerLeftDown, ShoppingCart, User } from 'lucide-react';
 import { getLocale, getTranslations } from 'next-intl/server';
 import { ReactNode, Suspense } from 'react';
 
@@ -21,6 +21,7 @@ import { HeaderFragment } from './fragment';
 import { QuickSearch } from './quick-search';
 import Minicart from '../ui/header/minicart';
 import { Currenciesquires } from './currency';
+import { Console } from 'console';
 
 interface Props {
   cart: ReactNode;
@@ -65,7 +66,7 @@ export const Header = async ({ cart }: Props) => {
   });
 
   console.log('---currencies---', JSON.stringify(currencies));
-
+  
   return (
     <ComponentsHeader
       account={
@@ -91,6 +92,9 @@ export const Header = async ({ cart }: Props) => {
               
             }
           />
+
+
+          
           
         ) : (
           <div className="flex items-center">
@@ -106,7 +110,6 @@ export const Header = async ({ cart }: Props) => {
   <Link aria-label="Registration" className="p-3" href="/register/">
     Registration
   </Link>
-  
     </div>             
 
 </div>
@@ -157,3 +160,7 @@ export const HeaderSkeleton = () => (
     </div>
   </header>
 );
+
+
+
+
