@@ -36,7 +36,7 @@ export const Gallery = ({ product }: Props) => {
     let recentlyViewedItems: any = JSON?.parse(getRecentlyViewedItems) || [];
     let productId = product?.entityId;
     let productFound = recentlyViewedItems?.find((item: any) => item == productId);
-    console.log('------found----', productFound);
+   
     if(!productFound) {
       recentlyViewedItems.push(productId);
       localStorage.setItem('qbo_recently_viewed_items', JSON.stringify(recentlyViewedItems));

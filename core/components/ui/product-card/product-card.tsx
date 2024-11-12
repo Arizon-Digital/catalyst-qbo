@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BcImage } from '~/components/bc-image';
 import { Link } from '~/components/link';
 import { cn } from '~/lib/utils';
 import { Compare } from './compare';
 import QuickView from './Quickview';
 import { getProductData } from '~/components/common-functions';
-
+import { AddToCartButton } from './AddToCartButton';
+ 
+ 
+ 
 interface Image {
   altText: string;
   src: string;
 }
-
+ 
 type Price =
   | string
   | {
@@ -23,7 +26,7 @@ type Price =
       minValue: string;
       maxValue: string;
     };
-
+ 
 interface Product {
   id: string;
   name: string;
@@ -33,7 +36,7 @@ interface Product {
   subtitle?: string;
   badge?: string;
 }
-
+ 
 interface Props extends Product {
   addToCart?: React.ReactNode;
   className?: string;
@@ -41,7 +44,7 @@ interface Props extends Product {
   imageSize?: 'square' | 'tall' | 'wide';
   showCompare?: boolean;
 }
-
+ 
 const ProductCard = async ({
   addToCart,
   className,
@@ -56,11 +59,21 @@ const ProductCard = async ({
   name,
   ...props
 }: Props) => {
-
+ 
   const product = await getProductData({
     entityId: Number(id)
   });
-
+ 
+  const addToCardData ={
+    defaultImage:{
+      url:image.src,
+      altText:image.altText,
+    },
+    name:name,
+    price:price,
+    subtitle:subtitle,
+    cartCount:10
+  }
   return(
     <div className={cn('group relative flex flex-col overflow-visible', className)} {...props}>
       <div className="relative flex justify-center pb-3">
@@ -71,7 +84,7 @@ const ProductCard = async ({
             'aspect-[7/5]': imageSize === 'wide',
           })}
         >
-
+ 
           {image ? (
             <BcImage
               alt={image.altText}
@@ -84,11 +97,11 @@ const ProductCard = async ({
           ) : (
             <div className="h-full w-full bg-gray-200" />
           )}
-
+<AddToCartButton addToCardData={addToCardData} />
           <QuickView product={product} />
         </div>
       </div>
-
+ 
       <div className={cn('flex flex-1 flex-col gap-1', Boolean(addToCart) && 'justify-end')}>
         <h3 className="text-xl font-bold lg:text-2xll">
           <Link
@@ -127,7 +140,7 @@ const ProductCard = async ({
     </div>
   );
 }
-
+ 
 ProductCard.displayName = 'ProductCard';
-
+ 
 export { ProductCard };

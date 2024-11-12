@@ -80,14 +80,14 @@ export const Details = ({ product }: Props) => {
   return (
     <div>
       {product.brand && (
-        <p className="mb-2 font-semibold uppercase text-gray-500">{product.brand.name}</p>
+        <p className="mb-2 font-semibold uppercase text-gray-500 pdpbrand">{product.brand.name}</p>
       )}
 
-      <h1 className="mb-4 text-4xl font-black lg:text-5xll">{product.name}</h1>
+      <h1 className="mb-4 text-4xl font-black lg:text-5xll pdpprname">{product.name}</h1>
 
       {Boolean(product.sku) && (
-            <div className="pq">
-              <h3 className="font-semibold flex ">{t('sku')} <p className="pr">: {product.sku}</p></h3>
+            <div className="pq productView-info">
+              <h3 className="font-semibold flex productView-info-name">{t('sku')} <p className="pr productView-info-value ">: {product.sku}</p></h3>
             </div>
           )}
 
@@ -95,14 +95,14 @@ export const Details = ({ product }: Props) => {
 {Boolean(product.availabilityV2.description) && (
    
             <div>
-              <h3 className="font-semibold flex ">{t('availability')} <p className="pr">: {product.availabilityV2.description}</p></h3>
+              <h3 className="font-semibold flex productView-info-name">{t('availability')} <p className="pr productView-info-value ">: {product.availabilityV2.description}</p></h3>
               
             </div>
             
           )}
           {Boolean(product.weight) && (
             <div>
-              <h3 className="font-semibold flex">Bulk Pricing  <p className="pr">: 
+              <h3 className="font-semibold flex productView-info-name">Bulk Pricing  <p className="pr productView-info-value ">: 
               <a href="https://www.qualitybearingsonline.com/bulk-pricing/" onClick="event.stopPropagation();">Click Here to Enquire</a>
               </p></h3>
               
@@ -112,9 +112,9 @@ export const Details = ({ product }: Props) => {
       {/* <ReviewSummary data={product} /> */}
 
       {product.prices && (
-        <div className="my-6 text-2xl font-bold lg:text-3xl">
+        <div className="my-6 text-2xl font-bold lg:text-3xl .productView-price .price--main">
           {showPriceRange ? (
-            <span>
+            <span className=' .productView-price .price--main'>
               {format.number(product.prices.priceRange.min.value, {
                 style: 'currency',
                 currency: product.prices.price.currencyCode,
@@ -152,7 +152,7 @@ export const Details = ({ product }: Props) => {
                     </span>
                   </span>
                   <br />
-                  <span>
+                  <span className=' .productView-price .price--main'>
                     {t('Prices.now')}:{' '}
                     {format.number(product.prices.price.value, {
                       style: 'currency',
@@ -162,7 +162,7 @@ export const Details = ({ product }: Props) => {
                 </>
               ) : (
                 product.prices.price.value && (
-                  <span>
+                  <span className='.productView-price .price--main'>
                     {format.number(product.prices.price.value, {
                       style: 'currency',
                       currency: product.prices.price.currencyCode,

@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { ChangeEvent, useState } from 'react';
 import { useFormState, useFormStatus } from 'react-dom';
+import { Breadcrumbs as ComponentsBreadcrumbs } from '~/components/ui/breadcrumbs';
 
 import { Link } from '~/components/link';
 import { Button } from '~/components/ui/button';
@@ -119,7 +120,7 @@ export const LoginForm = () => {
             <SubmitButton />
           </FormSubmit>
           <Link
-            className="my-5 inline-flex items-center justify-start font-semiboldd text-primary hover:text-secondary md:my-0"
+            className="my-5 inline-flex items-center justify-start font-semiboldd text-primary hover:text-secondary md:my-0 reset"
             href="/reset"
           >
             {t('Form.resetPassword')}

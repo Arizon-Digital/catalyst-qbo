@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
-
+import { Breadcrumbs as ComponentsBreadcrumbs } from '~/components/ui/breadcrumbs';
 import { Link } from '~/components/link';
 import { Button } from '~/components/ui/button';
 import { locales, LocaleType } from '~/i18n/routing';
@@ -24,8 +24,19 @@ export default function Login({ params: { locale } }: Props) {
 
   const t = useTranslations('Login');
 
+  const breadcrumbs: any = [
+    {
+      label: 'LOGIN',
+      href: '#',
+    },
+  ];
+
   return (
     <div className="mx-auto my-6 max-w-4xl">
+       <ComponentsBreadcrumbs
+          className="login-div login-breadcrumb mx-auto mt-[6rem] w-[80%] px-[1px]"
+          breadcrumbs={breadcrumbs}
+        />
       <h2 className="text-h2 mb-8 text-4xl font-black lg:text-5xl" id='signinheading'>Sign in</h2>
       <div className="mb-12 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8">
         <LoginForm />

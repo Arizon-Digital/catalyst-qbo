@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
+import { Breadcrumbs as ComponentsBreadcrumbs } from '~/components/ui/breadcrumbs';
 
 import { bypassReCaptcha } from '~/lib/bypass-recaptcha';
 
@@ -22,6 +23,12 @@ export async function generateMetadata() {
 
 export default async function Register() {
   const t = await getTranslations('Register');
+  const breadcrumbs: any = [
+    {
+      label: 'Create Account',
+      href: '#',
+    },
+  ];
 
   const registerCustomerData = await getRegisterCustomerQuery({
     address: { sortBy: 'SORT_ORDER' },
@@ -48,7 +55,11 @@ export default async function Register() {
 
   return (
     <div className="mx-auto mb-10 mt-8 text-base lg:w-2/3"id='width'>
-      <h1 className="my-6 text-4xl font-black lg:my-8 lg:text-5xl">{t('heading')}</h1>
+      <ComponentsBreadcrumbs
+          className="login-div login-breadcrumb mx-auto mt-[6rem] w-[80%] px-[1px]"
+          breadcrumbs={breadcrumbs}
+        />
+      <h1 className="my-6 text-4xl font-black lg:my-8 lg:text-5xl heading">{t('heading')}</h1>
       <RegisterCustomerForm
         addressFields={addressFields}
         countries={countries}

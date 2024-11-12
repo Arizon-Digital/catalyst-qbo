@@ -7,7 +7,7 @@ const ViewedItems = ({ recentlyViewed }: { recentlyViewed: any }) => {
     // Clean up recently viewed items
     let recentlyViewedItems = removeEdgesAndNodes(recentlyViewed);
 
-    console.log('---recentlyViewed-------', recentlyViewedItems);
+    
 
     return (
         <div>

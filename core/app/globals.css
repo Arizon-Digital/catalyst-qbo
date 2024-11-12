@@ -2,6 +2,60 @@
 @tailwind components;
 @tailwind utilities;
 
+.sort.order {
+    margin-top: -60px;
+    margin-left: 312px;
+    width: 20%;
+    margin-bottom: 5px;
+}
+/* .form-field {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    border-color: #dcdcdc;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 4px;
+    color: #454545;
+    display: block;
+    font-family: inherit;
+    font-size: 1rem;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    height: 3.125rem;
+    margin: 0;
+    padding: .23rem 1rem;
+    transition: border-color .1s ease-out;
+    width: 900px;
+    margin-left: 70px;
+    margin-bottom: 10px;
+} */
+aside.mb-8.hidden.lg\:block {
+    padding: 1.5rem;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    margin: 0 -1.125rem;
+    background-color: #fff;
+}
+p#categorybtn {
+    background-color: rgba(202, 150, 25, 1.0);
+    border: 7px solid #CA9619;
+    border-radius: 8px;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-family: Oswald, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+    padding-top: 12px;
+    padding-right: 18px;
+    padding-bottom: 12px;
+    padding-left: 18px;
+    width: 20%;
+}
+
 .pl-\[5px\] {
     padding-left: 0px !important;
     margin-top: 14px !important;
@@ -106,6 +160,11 @@ div#tabsection h2 {
 }
 .DialogContent:focus {
 	outline: none;
+}
+div#warp:hover{
+    background: #fff;
+    border-color: #ca9618;
+    color: #ca9618;
 }
 
 .DialogTitle {
@@ -214,10 +273,7 @@ div#tabsection h2 {
 .mb-12.mt-4.lg\:grid.lg\:grid-cols-2.lg\:gap-8.a1 {
     width: 210%;
 }
-figure.relative.aspect-square.h-full.max-h-\[548px\].w-full {
-    width: 350px !important;
-    height: 400px !important;
-}
+
 div#tabsection1 {
     background-color: #fff;
     border: 1px solid #dcdcdc;
@@ -239,6 +295,13 @@ div#nav-menu-viewport {
 td.flex.flex-1.flex-col.gap-2 {
     display: table-caption;
     width: 100%;
+}
+.gap-y-3 {
+    row-gap: 1.5rem;
+}
+.heading {
+    font-size: 25px;
+    font-weight: 400;
 }
 .productView-bulk-tabContent {
     width: 95%;
@@ -345,11 +408,11 @@ button#signinbutton {
     width: 30% !important;
     height: 45px;
 }
-a.focus-visible\:outline-none.focus-visible\:ring-4.focus-visible\:ring-primary\/20.my-5.inline-flex.items-center.justify-start.font-semiboldd.text-primary.hover\:text-secondary.md\:my-0 {
+.reset{
     color: #282828 !important;
     line-height: inherit;
     text-decoration: underline;
-    font-size: 16px;
+    font-size: 18px;
     float: left !important;
     text-align: left !important;
     justify-content: left;
@@ -370,14 +433,26 @@ nav#nav-menu-root {
     margin: 0 0 20px;
     padding: 5px;
     max-width: 100%;
-    padding-left: 209px;
+    padding-left: 109px;
     height: 88px;
+}
+.search-icon {
+    background: linear-gradient(90deg, #1a2348 0, rgba(26, 35, 72, .7) 100%) !important;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.CookieDeclaration {
+    display: none;
 }
 .hover\:text-primary:hover {
     
     color: #ca9618 !important;
 }
-
+div#field {
+    height: 0rem !important;
+}
 
 button.p-5.bg-\[\#03465c\].text-whitee {
     background-color: #ededed;
@@ -389,15 +464,15 @@ button.p-5.bg-\[\#03465c\].text-whitee {
 div#width {
     width: 88% !important;
 }
-h1.mb-4.text-4xl.font-black.lg\:text-5xll {
+.pdpprname {
     color: #000;
     font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
     font-weight: 600;
     line-height: 1.25;
-    /* margin-bottom: .75rem; */
+    margin-bottom: .75rem;
     font-size: 30px;
-    margin: .375rem;
-    /* margin: -.75rem 0 .375rem; */
+    margin: 0 0 .375rem;
+    
 }
 .product-details-dt {
     font-family: "Roboto Slab", serif;
@@ -467,13 +542,7 @@ div#feefo-service-review-carousel-widgetIdd {
     border-width: 2px 0 0;
     margin: 8px 0;
 }
-figure.relative.aspect-square.h-full.max-h-\[548px\].w-full {
-    width: 480px;
-    margin-top: 40px;
-    margin-left: 30px;
-    border: 1px solid #dcdcdc;
-    box-shadow: 0 3px 0 #dcdcdc;
-}
+
 .group.relative.flex.flex-col.overflow-visible {
     border-color: #dcdcdc !important;
     border: solid 1px !important;
@@ -539,9 +608,18 @@ div#feefo-service-review-carousel-widgetId {
     width: 100%;
     margin-bottom: 40px;
 }
-.pq {
+.productView-info-name {
+    font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    float: left;
+    clear: both;
+    margin: .375rem .75rem 0 0;
+}
+.productView-info {
     border-top: 1px solid #dcdcdc;
-    margin-top: 0 !important;
+    margin-top: .75rem;
 }
 .deliverytable th {
     border-bottom: 3px solid #ca9618;
@@ -566,12 +644,13 @@ div#payment-icons {
 
 
 
-.text-gray-500 {
+.pdpbrand {
     margin: 1rem 0 .375rem;
     color: #a5a5a5 !important;
     font-weight: 700 !important;
     font-size: 1rem !important;
     --tw-text-opacity: 1;
+    font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
 }
 .product-payment svg {
     height: 40px;
@@ -1034,6 +1113,38 @@ width: auto;
         transition: border-color .1s ease-out;
         width: 100%;
     }
+    button#signinbutton:hover {
+        color: #ca9618 !important; 
+        border-color: #ca9618 !important;/* Changes the text color to white */
+        background-color: white !important; /* Changes the background color to white */
+    }
+    .text-white:hover{
+        color: #ca9618 !important; 
+        border-color: #ca9618 !important;/* Changes the text color to white */
+        background-color: white !important; /* Changes the background color to white */
+        
+
+    }
+    li.navigationfooter:hover {
+        text-decoration: underline; /* Underline on hover */
+        color: #eaeaea; /* Change color on hover */
+    }
+    ul.downaload {
+        display: flex;
+    }
+    a.contactus:hover {
+        text-decoration: underline; /* Underline on hover */
+    }
+    li.payment {
+        margin-right: 10px;
+    }
+    ul.socialmedia {
+        display: flex;
+    }
+
+    img.feefologo {
+        max-width: 135px !important;
+    }
     input#password {
         -webkit-appearance: none;
         -moz-appearance: none;
@@ -1061,7 +1172,7 @@ width: auto;
         color: #000;
         cursor: pointer;
         display: block;
-        font-size: 1rem;
+        font-size: 1.2rem;
         line-height: 1.5;
         margin-bottom: .5rem;
         font-family: "Roboto Slab", serif;

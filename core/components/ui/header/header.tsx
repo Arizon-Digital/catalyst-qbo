@@ -249,7 +249,7 @@ const Header = ({
             <div className="hb-card">
                 <figure className="hb-image hb-image-full">
                     <a href="https://www.feefo.com/reviews/quality-bearings-online" target="_blank" data-tagrocket-clicked-outboundlink="1">
-                        <img alt="Feefo logo" src="https://api.feefo.com/api/logo?merchantidentifier=quality-bearings-online&amp;template=Service-Stars-Yellow-150x38.png" title="Our customer Feefo rating" />
+                        <img  className='feefo' alt="Feefo logo" src="https://api.feefo.com/api/logo?merchantidentifier=quality-bearings-online&amp;template=Service-Stars-Yellow-150x38.png" title="Our customer Feefo rating" />
                     </a>
                 </figure>
             </div>
