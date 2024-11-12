@@ -25,7 +25,7 @@ export default async function Register() {
   const t = await getTranslations('Register');
   const breadcrumbs: any = [
     {
-      label: 'Create Account',
+      label: 'CREATE ACCOUNT',
       href: '#',
     },
   ];
@@ -54,7 +54,7 @@ export default async function Register() {
   } = countries.find(({ name }) => name === defaultCountry) || {};
 
   return (
-    <div className="mx-auto mb-10 mt-8 text-base lg:w-2/3"id='width'>
+    <div className="mx-auto mb-10 mt-8 text-base lg:w-2/3 pageheading"id='width'>
       <ComponentsBreadcrumbs
           className="login-div login-breadcrumb mx-auto mt-[6rem] w-[80%] px-[1px]"
           breadcrumbs={breadcrumbs}

@@ -32,7 +32,7 @@ export default function Login({ params: { locale } }: Props) {
   ];
 
   return (
-    <div className="mx-auto my-6 max-w-4xl">
+    <div className="mx-auto my-6 max-w-4xl pageheading">
        <ComponentsBreadcrumbs
           className="login-div login-breadcrumb mx-auto mt-[6rem] w-[80%] px-[1px]"
           breadcrumbs={breadcrumbs}
