@@ -68,7 +68,7 @@ export default async function Cart() {
   });
   const breadcrumbs: any = [
     {
-      label: 'Your Cart',
+      label: 'YOUR CART',
       href: '#',
     },
   ];
@@ -88,25 +88,25 @@ export default async function Cart() {
  
   return (
  
-    <div className='cart-page flex flex-col justify-center'>
-      <ComponentsBreadcrumbs className="mt-10" breadcrumbs={breadcrumbs} />
+    <div className='cart-page flex flex-col justify-center mt-[-60px]'>
+      <ComponentsBreadcrumbs breadcrumbs={breadcrumbs} />
       <h1 className="font-normal cart-heading mb-[0.75rem] text-[25px]">{`${t('heading')}(${cartQty}${cartItemsText})`}</h1>
       <div className="flex gap-[25px] cart-cols">
         <div className='w-[70%] cart-page-col1'>
-        <table className="cart-item-desk rounded-[3px] w-full text-[1rem] border-collapse table-auto border border-[#CFD8DC]">
+        <table className="cart-item-desk rounded-[3px] w-full text-[1rem] border-collapse table-auto border border-[#dcdcdc]">
           <thead className="table-head">
-            <tr className='border border-[#CFD8DC]'>
-              <th className="text-left border-b border-[#CFD8DC]" colSpan={2}>ITEMS</th>
-              <th className="text-left border-b border-[#CFD8DC] w-[16%]">UNIT PRICE</th>
-              <th className="text-left border-b border-[#CFD8DC]">QUANTITY</th>
-              <th className="text-left border-b border-[#CFD8DC]">TOTAL</th>
+            <tr className='border border-[#dcdcdc]'>
+              <th className="text-left border-b border-[#dcdcdc]" colSpan={2}>ITEM</th>
+              <th className="text-left border-b border-[#dcdcdc] w-[16%]">UNIT PRICE</th>
+              <th className="text-left border-b border-[#dcdcdc]">QUANTITY</th>
+              <th className="text-left border-b border-[#dcdcdc]">TOTAL</th>
             </tr>
           </thead>
           {lineItems.map((product) => (
             <CartItem currencyCode={cart.currencyCode} key={product.entityId} product={product} />
           ))}
         </table>
-        <ul className='md:hidden text-[1rem] cart-item-tab border border-[#CFD8DC] py-[6px]'>
+        <ul className='md:hidden text-[1rem] cart-item-tab rounded-[4px] border border-[#dcdcdc] py-[6px]'>
           {lineItems.map((product) => (
               <CartItem currencyCode={cart.currencyCode} key={product.entityId} product={product} />
             ))}
@@ -114,7 +114,7 @@ export default async function Cart() {
         </div>
  
         <div className="cart-page-col2 w-[30%] flex flex-col gap-[25px]" id="buttoncart">
-          <div className="border border-[#CFD8DC] rounded-[2px] p-[24px_12px] font-[600]">
+          <div className="border border-[#dcdcdc] rounded-[4px] p-[12px_24px] font-[600]">
             {checkout && <CheckoutSummary checkout={checkout} geography={geography} />}{' '}
           </div>
           <div className="buttoncart-child2 flex flex-col gap-[25px]">

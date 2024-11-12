@@ -173,25 +173,40 @@ export const ItemQuantity = ({ product }: { product: Product }) => {
       });
     }
   };
-  const handleQuantityChange = (e: { target: { value: any; }; }) => {
+  const handleQuantityChange = (e: { target: { value: any } }) => {
     const quantity = Number(e.target.value);
     if (quantity < 1) {
-      setProductQuantity(1);  // Enforce minimum value of 1
+      setProductQuantity(1); // Enforce minimum value of 1
     } else {
-      setProductQuantity(quantity);  // Set the valid quantity
+      setProductQuantity(quantity); // Set the valid quantity
     }
   };
- 
+
   const handleBlur = () => {
-    onSubmit();  // Call backend update when the input loses focus
+    onSubmit(); // Call backend update when the input loses focus
   };
   return (
-    <div className="w-[120px] border-2  p-2.5 input-quantity">
+    <div className="input-quantity w-[120px] border-2 p-2.5">
       <form action={onSubmit} className="flex items-center">
         <SubmitButton onClick={() => setProductQuantity(productQuantity - 1)}>
-          <Minus className='quantity-reduce'>
+          <div className="quantity-reduce hover:bg-white">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7 10l5 5 5-5"
+                stroke="black"
+                stroke-width="1"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
             <title>{t('submitReduceText')}</title>
-          </Minus>
+          </div>
         </SubmitButton>
 
         {/* <input name="quantity" type="hidden" value={productQuantity} /> */}
@@ -200,17 +215,32 @@ export const ItemQuantity = ({ product }: { product: Product }) => {
           name="quantity"
           type="tel"
           value={productQuantity}
-          onBlur={handleBlur}  // Sync with backend on blur
+          onBlur={handleBlur} // Sync with backend on blur
           onChange={handleQuantityChange} // Use the new function
-          className="border w-12 text-center"
+          className="w-12 border text-center text-[15px] font-[700] h-[26px] rounded-none !text-[#454545]"
           min="1"
         />
         {/* <Quantity value={productQuantity} /> */}
 
         <SubmitButton onClick={() => setProductQuantity(productQuantity + 1)}>
-          <Plus className='quantity-increase'>
-            <title>{t('submitIncreaseText')}</title>
-          </Plus>
+            <div className="quantity-increase hover:bg-white">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M7 14l5-5 5 5"
+                  stroke="black"
+                  stroke-width="1"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <title>{t('submitIncreaseText')}</title>
+            </div>
         </SubmitButton>
       </form>
     </div>

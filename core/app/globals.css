@@ -574,7 +574,6 @@ div#payment-icons {
     --tw-text-opacity: 1;
 }
 .product-payment svg {
-    fill: #999 !important;
     height: 40px;
     width: 50px;
 }
@@ -616,7 +615,6 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
         border-color: rgb(220, 220, 220) !important;
         border-style: solid !important;
         border-width: 1px !important;
-        border-radius : 2px !important;
         width : 2.5rem !important;
  }
  p.pr {
@@ -1613,3 +1611,10 @@ width: auto;
 .cart-page .cart-item-tab-val-div1:first-child{
     color: #131313;
 }
+
+
+.cart-page .shipping-btn:hover{
+    background-color: unset !important;
+    color: #053fb0 !important;
+}
+
