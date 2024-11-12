@@ -77,7 +77,7 @@ export const ProductForm = ({ data: product }: Props) => {
     
     const quantity = Number(data.quantity);
     
-    console.log('result-----------',quantity);
+    
     
     if (result.error) {
       toast.error(t('error'), {

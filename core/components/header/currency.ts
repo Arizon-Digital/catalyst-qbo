@@ -15,3 +15,4 @@ export const Currenciesquires = graphql(`
   }
 }
 `);
+

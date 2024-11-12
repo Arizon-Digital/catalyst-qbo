@@ -5,7 +5,7 @@ const HubspotContactForm = () => {
         const script = document.createElement('script');
         script.src='//js-eu1.hsforms.net/forms/embed/v2.js';
         document.body.appendChild(script);
-        console.log('------------', script);
+        
         script.addEventListener('load', () => {
             // @TS-ignore
             if (window?.hbspt) {

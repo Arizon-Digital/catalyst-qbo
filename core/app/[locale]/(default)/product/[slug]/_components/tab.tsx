@@ -14,7 +14,7 @@ interface TabComponentProps {
  
 const TabComponent = ({product}: any) => {
   const [activeTab, setActiveTab] = useState('Description'); // Default active tab is "Description"
-  console.log('-------', product.description)
+  
   const tabContent: any = {
     Description: {data: product.description, label: 'Description'},  // Use the passed product description
     TechnicalData: {data: product.techdata, label: 'Technical Data'},

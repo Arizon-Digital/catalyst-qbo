@@ -59,12 +59,12 @@ export const Header = async ({ cart }: Props) => {
   }));
 
   const tc = await getTranslations('Currencies');
-
+  
   const {data: currencies } = await client.fetch({
     document: Currenciesquires,
     fetchOptions: customerId ? { cache: 'no-store' } : { next: { revalidate } },
   });
-
+  
   console.log('---currencies---', JSON.stringify(currencies));
   
   return (
