@@ -1,3 +1,4 @@
+"use client "
 import { Fragment, ReactNode } from 'react';
 
 import { BcImage } from '~/components/bc-image';
@@ -8,6 +9,7 @@ import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
 
 import { Locale } from './locale';
 import CookieConsent from '~/components/header/cookie-consent';
+
 
 interface Image {
   altText: string;

@@ -22,6 +22,7 @@ import { QuickSearch } from './quick-search';
 import Minicart from '../ui/header/minicart';
 import { Currenciesquires } from './currency';
 import { Console } from 'console';
+import { removeEdgesAndNodes } from '@bigcommerce/catalyst-client';
 
 interface Props {
   cart: ReactNode;
@@ -60,12 +61,30 @@ export const Header = async ({ cart }: Props) => {
 
   const tc = await getTranslations('Currencies');
   
-  const {data: currencies } = await client.fetch({
+  
+  const { data: currencyData} = await client.fetch({
     document: Currenciesquires,
     fetchOptions: customerId ? { cache: 'no-store' } : { next: { revalidate } },
   });
   
-  console.log('---currencies---', JSON.stringify(currencies));
+  
+  const  currency = removeEdgesAndNodes(currencyData?.site?.currencies);
+  // console.log('---currencies---', JSON.stringify(currency));
+  //  {currency.map ((item) => {
+  //  return(
+  //   <li>
+  //   <h3>{item.code}</h3>
+   
+  // </li>
+  //  )
+  //    console.log(item.name);
+  //  })}
+  
+  
+
+  
+ 
+  
   
   return (
     <ComponentsHeader
@@ -77,8 +96,10 @@ export const Header = async ({ cart }: Props) => {
               { href: '/account/addresses', label: t('Account.addresses') },
               { href: '/account/settings', label: t('Account.accountSettings') },
               { action: logout, name: t('Account.logout') },
+              
             ]}
             trigger={
+              
               <Button
                 aria-label={t('Account.account')}
                 className="p-3 text-black hover:bg-transparent hover:text-primary"
@@ -90,11 +111,13 @@ export const Header = async ({ cart }: Props) => {
                 </User>
               </Button>
               
+
+
+              
             }
           />
-
-
           
+
           
         ) : (
           <div className="flex items-center">
@@ -140,6 +163,7 @@ export const Header = async ({ cart }: Props) => {
 export const HeaderSkeleton = () => (
   <header className="flex min-h-[92px] animate-pulse items-center justify-between gap-1 overflow-y-visible bg-white px-4 2xl:container sm:px-10 lg:gap-8 lg:px-12 2xl:mx-auto 2xl:px-0">
     <div className="h-16 w-40 rounded bg-slate-200" />
+    
     <div className="hidden space-x-4 lg:flex">
       <div className="h-6 w-20 rounded bg-slate-200" />
       <div className="h-6 w-20 rounded bg-slate-200" />

@@ -1,8 +1,9 @@
+"use client"
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
 import { ChevronDown } from 'lucide-react';
 import { Phone, Inbox } from 'lucide-react';
 
-import { ComponentPropsWithoutRef, ReactNode } from 'react';
+import { ComponentPropsWithoutRef, ReactNode, useEffect, useState } from 'react';
 
 import { BcImage } from '~/components/bc-image';
 import { Link as CustomLink } from '~/components/link';
@@ -15,6 +16,9 @@ import Minicart from '../header/minicart';
 import ViewedItemsPopover  from './ViewedItemsPopover';
 import DoofinderScriptLoader  from '~/app/[locale]/(default)/product/[slug]/_components/Doofinder';
 import HubspotChat from '~/app/[locale]/(default)/product/[slug]/_components/Chatbot';
+
+import { GetCurrency } from '~/components/header/_actions/get-search-results';
+
 
 
 
@@ -53,6 +57,8 @@ interface Props extends ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.
 }
 
 
+
+
 const Header = ({
   account,
   activeLocale,
@@ -62,15 +68,58 @@ const Header = ({
   locales,
   logo,
   search,
-}: Props) => (
-  
+}: Props) => {
+  const [currency, setCurrency] = useState([]);
 
+  useEffect(() => {
+    const fetchCurrency = async () => {
+      try {
+        const currencyData = await GetCurrency();
+        setCurrency(currencyData); // Set the resolved data into state
+      } catch (error) {
+        console.error("Error fetching currency data:", error);
+      }
+    };
+    fetchCurrency();
+  }, []);
+  console.log("currency-----------",currency);
+  
+//   const CurrencyList = ( currencies ) => {
+//    return(
+// <div>
+//       {currencies.map((currency) => (
+//         <p key={currency.entityId}>
+//           {currency.name} ({currency.code})
+//         </p>
+//       ))}
+//     </div>
+//    )
+   
+//   };
+ return(
+
+
+ 
   <div className={cn('relative', className)}>
 
     
+<div>
+      {currency.length > 0 ? (
+        currency.map((curr) => (
+          <p key={curr.entityId}>
+            {curr.name} ({curr.code})
+          </p>
+        ))
+      ) : (
+        <p>Loading currency data...</p>
+      )}
+    </div>
 <div className="navbar">
+
+  {/* <CurrencyList currencies={currency}/> */}
   <a className="contact-link" href="/about-us"><i className="contact-link"></i> About Us</a> 
   <a href="#" className="contact-link"> Select Currency:GBP</a> 
+ 
   <a href="#" className="contact-link"><Inbox size={15} /> Home</a>
   <a href="#" className="contact-link"><Phone size={15} /> USA : 646 878 6265</a>
   <a href="#" className="contact-link"><Phone size={15} /> CAN : 438 800 3601</a>
@@ -80,7 +129,11 @@ const Header = ({
 </div>
 
 
-    
+    {/* { currency?.map((d) => (
+        <p key={d.entityId}>
+          {d.name} ({d.code})
+        </p>
+      ))} */}
 <header>
       <div className="header-2 relative nmd:static nmd:gap-[25px] p-[0] nmd:py-[25px] flex items-center justify-center">
         <CustomLink className="header-logo-a w-full flex nmd:w-[calc((400/1600)*100vw)]" href="/">
@@ -260,10 +313,10 @@ const Header = ({
 
 
 </div>
-
+ ) 
+}
 
   
-);
 
 
 Header.displayName = 'Header';
