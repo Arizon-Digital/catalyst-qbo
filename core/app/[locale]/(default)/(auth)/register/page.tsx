@@ -70,5 +70,3 @@ export default async function Register() {
     </div>
   );
 }
-
-
