@@ -5,14 +5,14 @@ import { getSessionCustomerId } from '~/auth';
 import { client } from '~/client';
 import { graphql } from '~/client/graphql';
 import { TAGS } from '~/client/tags';
- 
+
 import { CartItem, CartItemFragment } from './_components/cart-item';
 import { CartViewed } from './_components/cart-viewed';
 import { CheckoutButton } from './_components/checkout-button';
 import { CheckoutSummary, CheckoutSummaryFragment } from './_components/checkout-summary';
 import { EmptyCart } from './_components/empty-cart';
 import { GeographyFragment } from './_components/shipping-estimator/fragment';
- 
+
 const CartPageQuery = graphql(
   `
     query CartPageQuery($cartId: String) {
@@ -35,26 +35,26 @@ const CartPageQuery = graphql(
   `,
   [CartItemFragment, CheckoutSummaryFragment, GeographyFragment],
 );
- 
+
 export async function generateMetadata() {
   const t = await getTranslations('Cart');
- 
+
   return {
     title: t('title'),
   };
 }
- 
+
 export default async function Cart() {
   const cartId = cookies().get('cartId')?.value;
- 
+
   if (!cartId) {
     return <EmptyCart />;
   }
- 
+
   const t = await getTranslations('Cart');
- 
+
   const customerId = await getSessionCustomerId();
- 
+
   const { data } = await client.fetch({
     document: CartPageQuery,
     variables: { cartId },
@@ -75,55 +75,62 @@ export default async function Cart() {
   const cart = data.site.cart;
   const checkout = data.site.checkout;
   const geography = data.geography;
- 
+
   if (!cart) {
     return <EmptyCart />;
   }
- 
+
   const lineItems = [...cart.lineItems.physicalItems, ...cart.lineItems.digitalItems];
   let cartQty = lineItems?.reduce(function (total, cartItems) {
     return total + cartItems?.quantity;
   }, 0);
   let cartItemsText = cartQty > 1 ? ' Items' : ' Item';
- 
+
   return (
- 
-    <div className='cart-page flex flex-col justify-center mt-[-60px]'>
+    <div className="cart-page mt-[-60px] flex flex-col justify-center">
       <ComponentsBreadcrumbs breadcrumbs={breadcrumbs} />
-      <h1 className="font-normal cart-heading mb-[0.75rem] text-[25px]">{`${t('heading')}(${cartQty}${cartItemsText})`}</h1>
-      <div className="flex gap-[25px] cart-cols">
-        <div className='w-[70%] cart-page-col1'>
-        <table className="cart-item-desk rounded-[3px] w-full text-[1rem] border-collapse table-auto border border-[#dcdcdc]">
-          <thead className="table-head">
-            <tr className='border border-[#dcdcdc]'>
-              <th className="text-left border-b border-[#dcdcdc]" colSpan={2}>ITEM</th>
-              <th className="text-left border-b border-[#dcdcdc] w-[16%]">UNIT PRICE</th>
-              <th className="text-left border-b border-[#dcdcdc]">QUANTITY</th>
-              <th className="text-left border-b border-[#dcdcdc]">TOTAL</th>
-            </tr>
-          </thead>
-          {lineItems.map((product) => (
-            <CartItem currencyCode={cart.currencyCode} key={product.entityId} product={product} />
-          ))}
-        </table>
-        <ul className='md:hidden text-[1rem] cart-item-tab rounded-[4px] border border-[#dcdcdc] py-[6px]'>
-          {lineItems.map((product) => (
+      <h1 className="cart-heading mb-[0.75rem] text-[25px] font-normal">{`${t('heading')} (${cartQty}${cartItemsText})`}</h1>
+      <div className="cart-cols flex gap-[25px]">
+        <div className="cart-page-col1 w-[70%]">
+          <table className="cart-item-desk w-full table-auto border-collapse rounded-[3px] border border-[#dcdcdc] text-[1rem]">
+            <thead className="table-head">
+              <tr className="border border-[#dcdcdc]">
+                <th className="border-b border-[#dcdcdc] text-left" colSpan={2}>
+                  ITEM
+                </th>
+                <th className="w-[16%] border-b border-[#dcdcdc] text-left">UNIT PRICE</th>
+                <th className="border-b border-[#dcdcdc] text-left">QUANTITY</th>
+                <th className="border-b border-[#dcdcdc] text-left">TOTAL</th>
+              </tr>
+            </thead>
+            {lineItems.map((product) => (
               <CartItem currencyCode={cart.currencyCode} key={product.entityId} product={product} />
             ))}
-        </ul>
+          </table>
+          <ul className="cart-item-tab rounded-[4px] border border-[#dcdcdc] py-[6px] text-[1rem] md:hidden">
+            {lineItems.map((product) => (
+              <CartItem currencyCode={cart.currencyCode} key={product.entityId} product={product} />
+            ))}
+          </ul>
         </div>
- 
-        <div className="cart-page-col2 w-[30%] flex flex-col gap-[25px]" id="buttoncart">
-          <div className="border border-[#dcdcdc] rounded-[4px] p-[12px_24px] font-[600]">
+
+        <div className="cart-page-col2 flex w-[30%] flex-col gap-[25px]" id="buttoncart">
+          <div className="rounded-[4px] border border-[#dcdcdc] p-[12px_24px] font-[600]">
             {checkout && <CheckoutSummary checkout={checkout} geography={geography} />}{' '}
           </div>
           <div className="buttoncart-child2 flex flex-col gap-[25px]">
             <CheckoutButton cartId={cartId} />
             <div className="flex flex-col items-center">
-              <img className='w-[200px] h-[76px]' src="https://cdn2.bigcommerce.com/server4700/03842/product_images/uploaded_images/global-secure.png?t=1508252387&amp;_ga=2.7859762.1482315180.1508138351-1600153642.1496331199"></img>
+              <img
+                className="h-[76px] w-[200px]"
+                src="https://cdn2.bigcommerce.com/server4700/03842/product_images/uploaded_images/global-secure.png?t=1508252387&amp;_ga=2.7859762.1482315180.1508138351-1600153642.1496331199"
+              ></img>
               <div className="text-center">
                 qualitybearingsonline.com is secure and your personal details are protected{' '}
-                <a className='underline' href="https://profile.globalsign.com/SiteSeal/siteSeal/profile/profile.do?p1=062bf82c&amp;p2=7b6308ce4b44da63de16be9586a9b394f87701813c3256930f0589358d55e2c9d5e3f08de369419567305597572fdb60dd0be3d3c6e0eccfd9301fc27a7f548f1710&amp;p3=6e180727fc699782c939b6e2466b873c230c3863">
+                <a
+                  className="underline hover:text-[#053fb0]"
+                  href="https://profile.globalsign.com/SiteSeal/siteSeal/profile/profile.do?p1=062bf82c&amp;p2=7b6308ce4b44da63de16be9586a9b394f87701813c3256930f0589358d55e2c9d5e3f08de369419567305597572fdb60dd0be3d3c6e0eccfd9301fc27a7f548f1710&amp;p3=6e180727fc699782c939b6e2466b873c230c3863"
+                >
                   Learn more.
                 </a>
               </div>
@@ -169,10 +176,31 @@ export default async function Cart() {
                   </svg>
                 </article>
                 <article className="product-payment">
-                  <svg>
-                    <use href="#icon-logo-googlepay" width="57" height="32" viewBox="0 0 57 32">
-                      <path d="M47.11 10.477c2.21-.037 4.633.618 4.072 3.276l-1.37 6.263h-3.158l.21-.947c-1.72 1.71-6.037 1.82-5.334-2.112.49-2.294 2.878-3.023 6.423-3.023.246-1.02-.457-1.274-1.65-1.238s-2.633.437-3.09.655l.282-2.293c.913-.183 2.106-.584 3.615-.584zm.21 6.408c.07-.29.106-.547.176-.838h-.773c-.596 0-1.58.146-1.93.765-.457.728.176 1.348.877 1.31.807-.036 1.474-.4 1.65-1.237zM53.883 8h3.242L54.48 20.016h-3.21zm-14.74.037c1.688 0 3.728 1.274 3.13 4.077-.528 2.476-2.498 3.933-4.89 3.933h-2.428l-.88 3.97h-3.41l2.602-11.98h5.874zm-.106 4.077c.21-.91-.317-1.638-1.197-1.638h-1.69l-.703 3.277h1.583c.88 0 1.795-.728 2.006-1.638zm-22.69-1.638c2.183-.037 4.61.618 4.055 3.276l-1.352 6.262h-3.155l.208-.947c-1.664 1.712-5.93 1.82-5.235-2.11.486-2.295 2.844-3.024 6.345-3.024.208-1.02-.485-1.274-1.664-1.238s-2.602.437-3.018.655l.277-2.293c.866-.182 2.045-.583 3.536-.583zm.242 6.41c.034-.292.103-.548.172-.84h-.797c-.555 0-1.525.147-1.872.766-.45.728.138 1.348.832 1.31.797-.036 1.49-.4 1.664-1.237zm11.938-6.238h3.255l-7.496 13.35H20.76l2.305-3.924-1.29-9.426h3.157l.508 5.58zM8.498 8.036c1.73 0 3.74 1.274 3.14 4.077-.53 2.476-2.504 3.933-4.867 3.933H4.304l-.847 3.97H0l2.61-11.98H8.5zm-.105 4.078c.247-.91-.317-1.638-1.164-1.638H5.535l-.74 3.277h1.622c.882 0 1.763-.728 1.975-1.638z"></path>
-                    </use>
+                  <svg
+                    width="57"
+                    height="32"
+                    viewBox="0 0 57 32"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <text
+                      x="1"
+                      y="20"
+                      font-family="Arial, sans-serif"
+                      font-size="20"
+                      fill="#000000"
+                      font-weight="bold"
+                    >
+                      G
+                    </text>
+                    <text
+                      x="20"
+                      y="20"
+                      font-family="Arial, sans-serif"
+                      font-size="20"
+                      fill="#000000"
+                    >
+                      Pay
+                    </text>
                   </svg>
                 </article>
               </div>
@@ -182,7 +210,7 @@ export default async function Cart() {
       </div>
       <CartViewed checkout={checkout} currencyCode={cart.currencyCode} lineItems={lineItems} />
       <div data-content-region="cart_below_content">
-      <script
+        <script
           type="text/javascript"
           src="https://api.feefo.com/api/javascript/quality-bearings-online"
           async
@@ -195,5 +223,5 @@ export default async function Cart() {
     </div>
   );
 }
- 
+
 export const runtime = 'edge';
