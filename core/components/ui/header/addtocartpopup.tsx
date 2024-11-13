@@ -34,8 +34,6 @@ const CartQuantityResponseSchema = z.object({
    
     // }
 const DialogDemo = ({ open, setOpen, data,itemVal, count }: { open: boolean, setOpen: any, data: any ,itemVal:any, count?:any}) => {
-    console.log('************',itemVal);
-    console.log('Data',data);
     const [fetchedCount, setFetchedCount] = useState<number | null>();
     const computedCount = count ?? fetchedCount;
     const locale = useLocale();

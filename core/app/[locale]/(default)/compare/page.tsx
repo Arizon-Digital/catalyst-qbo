@@ -1,7 +1,8 @@
+"use server";
 import { removeEdgesAndNodes } from '@bigcommerce/catalyst-client';
 import { getFormatter, getTranslations } from 'next-intl/server';
 import * as z from 'zod';
-
+ 
 import { getSessionCustomerId } from '~/auth';
 import { client } from '~/client';
 import { PricingFragment } from '~/client/fragments/pricing';
@@ -13,12 +14,12 @@ import { SearchForm } from '~/components/search-form';
 import { Button } from '~/components/ui/button';
 import { Rating } from '~/components/ui/rating';
 import { cn } from '~/lib/utils';
-
+ 
 import { AddToCart } from './_components/add-to-cart';
 import { AddToCartFragment } from './_components/add-to-cart/fragment';
-
+ 
 const MAX_COMPARE_LIMIT = 10;
-
+ 
 const CompareParamsSchema = z.object({
   ids: z
     .union([z.string(), z.array(z.string()), z.undefined()])
@@ -26,16 +27,16 @@ const CompareParamsSchema = z.object({
       if (Array.isArray(value)) {
         return value;
       }
-
+ 
       if (typeof value === 'string') {
         return [...value.split(',')];
       }
-
+ 
       return undefined;
     })
     .transform((value) => value?.map((id) => parseInt(id, 10))),
 });
-
+ 
 const ComparePageQuery = graphql(
   `
     query ComparePageQuery($entityIds: [Int!], $first: Int) {
@@ -80,28 +81,28 @@ const ComparePageQuery = graphql(
   `,
   [AddToCartFragment, PricingFragment],
 );
-
+ 
 export async function generateMetadata() {
   const t = await getTranslations('Compare');
-
+ 
   return {
     title: t('title'),
   };
 }
-
+ 
 interface Props {
   searchParams: Record<string, string | string[] | undefined>;
 }
-
+ 
 export default async function Compare({ searchParams }: Props) {
   const t = await getTranslations('Compare');
   const format = await getFormatter();
-
+ 
   const customerId = await getSessionCustomerId();
-
+ 
   const parsed = CompareParamsSchema.parse(searchParams);
   const productIds = parsed.ids?.filter((id) => !Number.isNaN(id));
-
+ 
   const { data } = await client.fetch({
     document: ComparePageQuery,
     variables: {
@@ -111,12 +112,12 @@ export default async function Compare({ searchParams }: Props) {
     customerId,
     fetchOptions: customerId ? { cache: 'no-store' } : { next: { revalidate } },
   });
-
+ 
   const products = removeEdgesAndNodes(data.site.products).map((product) => ({
     ...product,
     productOptions: removeEdgesAndNodes(product.productOptions),
   }));
-
+ 
   if (!products.length) {
     return (
       <div className="flex w-full justify-center py-16 align-middle">
@@ -128,21 +129,21 @@ export default async function Compare({ searchParams }: Props) {
       </div>
     );
   }
-
+ 
   return (
     <>
       <h1 className="pb-8 text-4xl font-black lg:text-5xl">
         {t('heading', { quantity: products.length })}
       </h1>
-
+ 
       <div className="-mx-6 overflow-auto overscroll-x-contain px-4 sm:-mx-10 sm:px-10 lg:-mx-12 lg:px-12">
         <table className="mx-auto w-full max-w-full table-fixed text-base md:w-fit">
           <caption className="sr-only">{t('Table.caption')}</caption>
-
+ 
           <colgroup>
             <col className="w-80" span={products.length} />
           </colgroup>
-
+ 
           <thead>
             <tr>
               {products.map((product) => (
@@ -167,7 +168,7 @@ export default async function Compare({ searchParams }: Props) {
                     </td>
                   );
                 }
-
+ 
                 return (
                   <td className="px-4" key={product.entityId}>
                     <Link aria-label={product.name} href={product.path}>
@@ -197,7 +198,7 @@ export default async function Compare({ searchParams }: Props) {
               {products.map((product) => {
                 const showPriceRange =
                   product.prices?.priceRange.min.value !== product.prices?.priceRange.max.value;
-
+ 
                 return (
                   <td className="px-4 py-4 align-bottom text-base" key={product.entityId}>
                     {product.prices && (
@@ -276,7 +277,7 @@ export default async function Compare({ searchParams }: Props) {
                     </td>
                   );
                 }
-
+ 
                 return (
                   <td className="border-b px-4 pb-12" key={product.entityId}>
                     <AddToCart data={product} />
@@ -358,7 +359,7 @@ export default async function Compare({ searchParams }: Props) {
                     </td>
                   );
                 }
-
+ 
                 return (
                   <td className="border-b px-4 pb-24 pt-12" key={product.entityId}>
                     <AddToCart data={product} />
@@ -372,5 +373,5 @@ export default async function Compare({ searchParams }: Props) {
     </>
   );
 }
-
+ 
 export const runtime = 'edge';

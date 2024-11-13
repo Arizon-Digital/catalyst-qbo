@@ -131,7 +131,7 @@ export const Header = async ({ cart }: Props) => {
     Sign In
   </Link>
   <Link aria-label="Registration" className="p-3" href="/register/">
-    Registration
+    Register
   </Link>
     </div>             
 

@@ -136,11 +136,15 @@ address#address {
     margin-left: 120px;
     margin-bottom: 12px;
 }
-div#tabsection h2 {
-    font-family: Oswald, arial, sans-serif;
-    font-size: 25px;
+h2.page-heading {
+    font-size: 30px;
     font-weight: 400;
-    margin: 25px 0;
+    margin-left: 12px;
+    text-align: left;
+    margin-left: 0rem;
+    margin-right: 0rem;
+    padding: .75rem;
+    font-family: Oswald, arial, sans-serif;
 }
 .DialogContent {
 	background-color: white;
@@ -983,7 +987,7 @@ width: auto;
       .product-details-logo {
         height: 27px;
         width: auto;
-        margin-left: 1023px;
+        margin-left: 950px;
         margin-top: -26px;
     }
     .custom-field {
