@@ -720,7 +720,7 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
         Font-size: 15PX !important;
  }
  input#search_query {
-        margin-left: 18px;
+    padding-left: 23px;
         font-weight: 300;
         font-family: inherit;
  }
@@ -815,8 +815,8 @@ label.inline-flex.w-full.items-center.justify-between {
         width: 300px;
         display: flex;
         align-items: center;
-        border: 2px solid #1a2348;
-        border-radius: 5px;
+        border: 1px  #1a2348;
+        border-radius: 3px;
         overflow: hidden;
     }
     div#warp {
@@ -1559,6 +1559,7 @@ width: auto;
     }
      
     header input#search_query{
+        width: 32em;
         height: 50px;
     }
      

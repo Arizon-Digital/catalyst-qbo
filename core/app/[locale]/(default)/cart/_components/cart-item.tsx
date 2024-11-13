@@ -4,6 +4,8 @@ import { BcImage } from '~/components/bc-image';
 import { ItemQuantity } from './item-quantity';
 import { RemoveItem } from './remove-item';
 import Brand from '../../(faceted)/brand/[slug]/page';
+import DialogDemos from './deleteicon';
+
 
 const PhysicalItemFragment = graphql(`
   fragment PhysicalItemFragment on CartPhysicalItem {
@@ -201,8 +203,9 @@ export const CartItem = ({ currencyCode, product }: Props) => {
             <div className="cart-qunRem-div">
               <ItemQuantity product={product} />
               {/* Remove Item */}
+              
               <div className="deleteIcon-div hidden md:block">
-                <RemoveItem currency={currencyCode} product={product} deleteIcon={deleteIcon} />
+                <RemoveItem currency={currencyCode} product={product} deleteIcon={deleteIcon} /> 
               </div>
             </div>
           </td>
@@ -258,9 +261,11 @@ export const CartItem = ({ currencyCode, product }: Props) => {
             <div className="cart-qunRem-div">
               <ItemQuantity product={product} />
               {/* Remove Item */}
+              
               <div className="deleteIcon-div hidden md:block">
                 <RemoveItem currency={currencyCode} product={product} deleteIcon={deleteIcon} />
               </div>
+              
             </div>
           </div>
           <div className='flex flex-col cart-item-tab-val-div1'>
