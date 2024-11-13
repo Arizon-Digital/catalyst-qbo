@@ -97,7 +97,6 @@ export const RegisterCustomerForm = ({
 }: RegisterCustomerProps) => {
   const form = useRef<HTMLFormElement>(null);
   const [formStatus, setFormStatus] = useState<FormStatus | null>(null);
-  console.log(customerFields);
  
   const [textInputValid, setTextInputValid] = useState<Record<string, boolean>>({});
   const [passwordValid, setPassswordValid] = useState<Record<string, boolean>>({

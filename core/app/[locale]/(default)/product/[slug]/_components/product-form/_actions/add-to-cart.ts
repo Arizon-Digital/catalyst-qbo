@@ -136,9 +136,7 @@ export async function handleAddToCart(
 
   try {
     cart = await getCart(cartId);
-    console.log('cart- ',cart);
     
-
     if (cart) {
       cart = await addCartLineItem(cart.entityId, {
 
