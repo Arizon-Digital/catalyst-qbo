@@ -604,7 +604,6 @@ article.emthemesModez-newsletterForm {
 .font-semibold {
     font-weight: 700 !important;
     font-size: 15px !important;
-    text-transform: uppercase;
 }
 button.relative.flex.items-center.justify-center.border-2.border-primary.text-base.font-semibold.leading-6.focus-visible\:outline-none.focus-visible\:ring-4.focus-visible\:ring-primary\/20.disabled\:border-gray-400.border-none.bg-transparent.hover\:bg-opacity-10.hover\:text-secondary.disabled\:text-gray-400.disabled\:hover\:bg-transparent.disabled\:hover\:text-gray-400.w-fit.p-0.text-primary.hover\:bg-transparent {
     text-transform: none;
@@ -1188,9 +1187,9 @@ width: auto;
         color: #000;
         cursor: pointer;
         display: block;
-        font-size: 1.2rem;
+        font-size: 1rem;
+        font-weight: 400;
         line-height: 1.5;
-        margin-bottom: .5rem;
         font-family: "Roboto Slab", serif;
         font-weight: 300 !important;
         color: #000;
@@ -1748,3 +1747,127 @@ width: auto;
     color: #053fb0 !important;
 }
 
+.cart-page #cartproductname:hover{
+    color: #053fb0;
+    cursor: pointer;
+}
+
+.cart-page .remove-cart-btn:hover{
+    filter: invert(22%) sepia(93%) saturate(5285%) hue-rotate(211deg) brightness(90%) contrast(108%);
+    
+}
+
+.cart-page .shipping-country label{
+    margin: 0px !important;
+    width: 40%;
+}
+.cart-page .shipping-country button span{
+    color: #454545;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal;
+} 
+.cart-page .shipping-country button{
+    margin-top: 0 !important;
+    padding: 0 8px;
+    height: 32px;
+    width: 60%;
+    border: 1px solid orangered;
+    border-radius: 4px;
+    letter-spacing: normal;
+    word-spacing: normal;
+    box-shadow: none;
+    outline: none;
+}
+
+.cart-page .shipping-state button{
+    margin-top: 0 !important;
+    padding: 0 8px;
+    height: 32px;
+    border: 1px solid #dcdcdc;
+    width: 60%;
+    color: #454545;
+    font-weight: 300;
+    letter-spacing: normal;
+    word-spacing: normal;
+    box-shadow: none;
+    outline: none;
+}
+
+
+.cart-page .shipping-state,
+.cart-page .shipping-city,
+.cart-page .shipping-zipcode{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+ }
+
+
+.cart-page .shipping-state label,
+.cart-page .shipping-city label,
+.cart-page .shipping-zipcode label{
+width: 40%;
+}
+
+.cart-page .shipping-state div,
+.cart-page .shipping-city div,
+.cart-page .shipping-zipcode div{
+    width: 60%;
+margin-top: 0 !important;
+height: 32px;
+}
+
+
+.cart-page .shipping-state input,
+.cart-page .shipping-city input,
+.cart-page .shipping-zipcode input{
+    padding: 0px 8px;
+    height: 32px;
+    border: 1px solid #dcdcdc;
+    font-size: 1rem;
+    color: #454545;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal;
+}
+
+.cart-page .shipping-state input::placeholder,
+.cart-page .shipping-city input::placeholder,
+.cart-page .shipping-zipcode input::placeholder,
+.cart-page .shipping-country button::placeholder,
+.cart-page .shipping-state button::placeholder{
+    font-size: 1rem;
+    font-weight: 400;
+    color: #a6a6a6;
+}
+
+
+.cart-page .shipping-state input:focus,
+.cart-page .shipping-city input:focus,
+.cart-page .shipping-zipcode input:focus{
+    outline: none;
+    box-shadow: none;
+    border: 1px solid orange;
+}
+
+.cart-page .shipping-details + button{
+    border: 1px solid #ca9618;
+    font-size: 13px !important;
+    padding: 9px 24px;
+    width: 60%;
+    height: 35px;
+    border-radius: 4px;
+    background: #ca9618;
+    color: white;
+    text-transform: uppercase;
+}
+
+.cart-page .shipping-details + button:hover{
+    color: #ca9618;
+    background-color: white;
+}
+
+.cart-page .cart-checkout-btn{
+    text-transform: uppercasei;
+}

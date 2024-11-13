@@ -16,19 +16,24 @@ interface Props {
 
   return (
     <Button
-    className="w-auto items-center p-0 text-primary hover:bg-transparent disabled:text-primary disabled:hover:text-primary"
+    className=" remove-cart-btn w-auto items-center p-0 text-primary hover:bg-transparent disabled:text-primary disabled:hover:text-primary"
     loading={pending}
     loadingText={t('spinnerText')}
     type="submit"
     variant="subtle"
     >
-    <BcImage
-    alt="Remove"
-    width={20}
-    height={20}
-    className="w-[20px] h-[20px] deleteIcon"
-    src={icon}
-    />
+ <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <path d="M3 6h18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  
+ 
+  <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6h14Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <path d="M9 11v6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12 11v6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M15 11v6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
     </Button>
     );
 };
