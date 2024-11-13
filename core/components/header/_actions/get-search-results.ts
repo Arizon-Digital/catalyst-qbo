@@ -8,6 +8,7 @@ import { client } from '~/client';
 import { graphql } from '~/client/graphql';
 import { revalidate } from '~/client/revalidate-target';
 import { ProductCardFragment } from '~/components/product-card/fragment';
+import { Currenciesquires } from '../currency';
 
 const GetQuickSearchResultsQuery = graphql(
   `
@@ -65,3 +66,12 @@ export const getSearchResults = cache(async (searchTerm: string) => {
     return { status: 'error', error: 'Something went wrong. Please try again.' };
   }
 });
+export const GetCurrency=async()=>{
+  const customerId = await getSessionCustomerId();
+  const { data: currencyData} = await client.fetch({
+    document: Currenciesquires,
+    fetchOptions: customerId ? { cache: 'no-store' } : { next: { revalidate } },
+  });
+  const  currency = removeEdgesAndNodes(currencyData?.site?.currencies);
+  return currency
+}
