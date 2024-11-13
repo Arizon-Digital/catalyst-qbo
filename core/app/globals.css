@@ -139,7 +139,6 @@ address#address {
 h2.page-heading {
     font-size: 30px;
     font-weight: 400;
-    margin-left: 12px;
     text-align: left;
     margin-left: 0rem;
     margin-right: 0rem;
@@ -561,6 +560,7 @@ div#feefo-service-review-carousel-widgetIdd {
     border-color: #ca9618;
     border-width: 2px 0 0;
     margin: 8px 0;
+    margin-left: 13px;
 }
 
 .group.relative.flex.flex-col.overflow-visible {
