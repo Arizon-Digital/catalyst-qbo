@@ -99,7 +99,7 @@ const DialogDemo = ({ open, setOpen, data,itemVal, count }: { open: boolean, set
  
 <div className="mt-4 space-y-2">
                 <Link
-                  href="/checkout"
+                  href="https://store-ur7wjnshy8-1646467.checkout.catalyst-sandbox.store/checkout"
                   className="block w-full bg-primary text-white text-center py-2 rounded-md hover:bg-primary/90"
                 >
                   PROCEED TO CHECKOUT
