@@ -719,8 +719,12 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
         font-weight: 400 !important;
         Font-size: 15PX !important;
  }
+ button#currency-selection {
+    width: auto;
+    color: #fff;
+}
  input#search_query {
-    
+
     padding-left: 23px;
         font-weight: 300;
         font-family: inherit;
@@ -1562,6 +1566,7 @@ width: auto;
     header input#search_query{
         width: 32em;
         height: 50px;
+        border: 1px solid #000 !important;
     }
      
     header span.search-icon{
