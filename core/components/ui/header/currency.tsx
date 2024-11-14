@@ -39,7 +39,7 @@ export const GetCurrencyList = () => {
       setCurrency(currencyOptions);
     }
     getCurrencyData();
-  }, []);
+  }, [currencyCode]);
   
   const onCurrencyChange = (currencyCode: string) => {
     setCurrencyCodeFn(currencyCode);
