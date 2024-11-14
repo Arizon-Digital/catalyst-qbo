@@ -2,7 +2,7 @@ import { graphql } from '../graphql';
 
 export const PricingFragment = graphql(`
   fragment PricingFragment on Product {
-    prices(currencyCode: CAD) {
+    prices(currencyCode: $currencyCode) {
       price {
         value
         currencyCode

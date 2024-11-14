@@ -18,6 +18,7 @@ const ProductPageQuery = graphql(
       $entityId: Int!
       $optionValueIds: [OptionValueId!]
       $useDefaultOptionSelections: Boolean
+      $currencyCode: currencyCode
     ) {
       site {
         product(
@@ -72,10 +73,10 @@ const ProductPageQuery = graphql(
 );
  
 type Variables = VariablesOf<typeof ProductPageQuery>;
+export type CurrencyCode = Variables['currencyCode'];
  
 export const getProduct = cache(async (variables: Variables) => {
   const customerId = await getSessionCustomerId();
- 
   const { data } = await client.fetch({
     document: ProductPageQuery,
     variables,

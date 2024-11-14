@@ -19,16 +19,10 @@ export const GetCurrencyList = () => {
   const getCommonContext:any = useCommonContext();
   useEffect(() => {
     const getCurrencyData = async () => {
-      let currencyCookieData: string = await getCurrencyCodeFn() || '';
-      if(!currencyCookieData) {
-        setCurrencyCodeFn('CAD');
-        setCurrencyCode('CAD');
-        getCommonContext.setCurrencyCodeFn('CAD');
-      } else {
-        setCurrencyCodeFn(currencyCookieData);
-        setCurrencyCode(currencyCookieData);
-        getCommonContext.setCurrencyCodeFn(currencyCookieData);
-      }
+      let currencyCookieData: string = await getCurrencyCodeFn() || 'CAD';
+      setCurrencyCodeFn(currencyCookieData);
+      setCurrencyCode(currencyCookieData);
+      getCommonContext.setCurrencyCodeFn(currencyCookieData);
       let currencyData: any = await getCurrencyListData();
       let currencyOptions: any = currencyData?.map(
         ({
@@ -45,7 +39,7 @@ export const GetCurrencyList = () => {
       setCurrency(currencyOptions);
     }
     getCurrencyData();
-  }, [currencyCode]);
+  }, []);
   
   const onCurrencyChange = (currencyCode: string) => {
     setCurrencyCodeFn(currencyCode);

@@ -20,7 +20,7 @@ export const ProductSchemaFragment = graphql(`
     defaultImage {
       url: urlTemplate(lossy: true)
     }
-    prices (currencyCode: CAD) {
+    prices (currencyCode: $currencyCode) {
       price {
         value
         currencyCode

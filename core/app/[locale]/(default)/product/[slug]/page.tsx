@@ -14,7 +14,8 @@ import { ProductViewed } from './_components/product-viewed';
 import { RelatedProducts } from './_components/related-products';
 import { Reviews } from './_components/reviews';
 import { Warranty } from './_components/warranty';
-import { getProduct } from './page-data';
+import { CurrencyCode, getProduct } from './page-data';
+import { cookies } from 'next/headers';
  
 interface Props {
   params: { slug: string; locale: LocaleType };
@@ -37,11 +38,13 @@ function getOptionValueIds({ searchParams }: { searchParams: Props['searchParams
 export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
   const productId = Number(params.slug);
   const optionValueIds = getOptionValueIds({ searchParams });
- 
+  const currencyCode = (await cookies()).get('currencyCode')?.value as CurrencyCode | undefined;
+
   const product = await getProduct({
     entityId: productId,
     optionValueIds,
     useDefaultOptionSelections: optionValueIds.length === 0 ? true : undefined,
+    currencyCode
   });
  
   if (!product) {
@@ -76,11 +79,13 @@ export default async function Product({ params: { locale, slug }, searchParams }
   const productId = Number(slug);
  
   const optionValueIds = getOptionValueIds({ searchParams });
+  const currencyCode = (await cookies()).get('currencyCode')?.value as CurrencyCode | undefined;
  
   const product = await getProduct({
     entityId: productId,
     optionValueIds,
     useDefaultOptionSelections: optionValueIds.length === 0 ? true : undefined,
+    currencyCode
   });
  
   if (!product) {
