@@ -48,14 +48,10 @@ const productItemTransform = (p: FragmentOf<typeof ProductItemFragment>) => {
   };
 };
 
-// console.log(':::::::::',productItemTransform);
-
 export const Submit = ({ data: product }: Props) => {
-  console.log(product);
   
   const { formState } = useFormContext();
   const { isSubmitting } = formState;
-console.log(isSubmitting);
 
   return (
     <AddToCartButton data={product} loading={isSubmitting}>
@@ -73,7 +69,6 @@ export const ProductForm = ({ data: product }: Props) => {
   
   const productFormSubmit = async (data: ProductFormData) => {
     const result = await handleAddToCart(data, product);
-    console.log(data.quantity);
     
     const quantity = Number(data.quantity);
     

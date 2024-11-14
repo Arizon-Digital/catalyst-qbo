@@ -59,7 +59,6 @@ export const DetailsFragment = graphql(
     PricingFragment,
   ],
 );
-console.log(DetailsFragment);
 
 
 interface Props {
@@ -74,8 +73,6 @@ export const Details = ({ product }: Props) => {
 
   const showPriceRange =
     product.prices?.priceRange.min.value !== product.prices?.priceRange.max.value;
-
-    console.log("::::::",product);
     
   return (
     <div>

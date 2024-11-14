@@ -1,55 +1,69 @@
-import { removeEdgesAndNodes } from "@bigcommerce/catalyst-client";
-import { getSessionCustomerId } from "~/auth";
-import { client } from "~/client";
-import { Currenciesquires } from "~/components/header/currency";
-import { revalidate } from '~/client/revalidate-target';
+'use client';
 
+import { useState, useEffect } from "react";
+import { Select } from '~/components/ui/form';
+import { useRouter } from '~/i18n/routing';
+import { getCurrencyListData, getCurrencyCodeFn, setCurrencyCodeFn } from "~/components/header/_actions/getCurrencyList";
+import { useCommonContext } from '~/components/common-context/common-provider';
 
-// const customerId = await getSessionCustomerId();
-// const { data: currencyData} = await client.fetch({
-//     document: Currenciesquires,
-//     fetchOptions: customerId ? { cache: 'no-store' } : { next: { revalidate } },
-//   });
-  
-//   const currency = removeEdgesAndNodes(currencyData?.site?.currencies);
-//   console.log('---currencies---', JSON.stringify(currency));
-//    {currency.map ((item) => {
-//     <li>
-//       <h3>{item.name}{item.code}</h3>
-     
-//     </li>
-//    })}
-// }
+interface Currency {
+  code: string;
+  entityId: number;
+  name: string;
+}
 
-export async function getCurrencies() {
-    const customerId = await getSessionCustomerId();
-    
-    const { data: currencyData } = await client.fetch({
-      document: Currenciesquires,
-      fetchOptions: customerId ? { cache: 'no-store' } : { next: { revalidate } },
-    });
+export const GetCurrencyList = () => {
+  const [currency, setCurrency] = useState([]);
+  const [currencyCode, setCurrencyCode] = useState('');
+  const router = useRouter();
+  const getCommonContext:any = useCommonContext();
+  useEffect(() => {
+    const getCurrencyData = async () => {
+      let currencyCookieData: string = await getCurrencyCodeFn() || '';
+      if(!currencyCookieData) {
+        setCurrencyCodeFn('CAD');
+        setCurrencyCode('CAD');
+        getCommonContext.setCurrencyCodeFn('CAD');
+      } else {
+        setCurrencyCodeFn(currencyCookieData);
+        setCurrencyCode(currencyCookieData);
+        getCommonContext.setCurrencyCodeFn(currencyCookieData);
+      }
+      let currencyData: any = await getCurrencyListData();
+      let currencyOptions: any = currencyData?.map(
+        ({
+          code,
+          name
+        }: {
+          code: string;
+          name: string;
+        }) => ({
+          value: code,
+          label: name,
+        }),
+      )
+      setCurrency(currencyOptions);
+    }
+    getCurrencyData();
+  }, [currencyCode]);
   
-    const currency = removeEdgesAndNodes(currencyData?.site?.currencies);
-    return currency;
-  }
-  
-  // Optional: If you want to type the currency data
-  export interface Currency {
-    code: string;
-    entityId: number;
-    name: string;
-  }
-  
-  // Optional: Export a currency selector component if needed
-  export const CurrencyList = ({ currency }: { currency: Currency[] }) => {
-    return (
-      <ul>
-        {currency.map((item) => (
-          <li key={item.entityId}>
-            <h3> currency Code:{item.name} {item.code}</h3>
-          </li>
-        ))}
-      </ul>
-    );
+  const onCurrencyChange = (currencyCode: string) => {
+    setCurrencyCodeFn(currencyCode);
+    setCurrencyCode(currencyCode);
+    getCommonContext.setCurrencyCodeFn(currencyCode);
+    router.refresh();
   };
+  
+
+  return (
+    <Select
+        name={`currency-selection`}
+        id={`currency-selection`}
+        options={currency}
+        value={currencyCode}
+        placeholder='Select Currency'
+        onValueChange={(value: string) => onCurrencyChange(value)}
+      />
+  );
+};
 

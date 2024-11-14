@@ -200,9 +200,9 @@ export const ItemQuantity = ({ product }: { product: Product }) => {
               <path
                 d="M7 10l5 5 5-5"
                 stroke="black"
-                stroke-width="1"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
             <title>{t('submitReduceText')}</title>
@@ -234,7 +234,7 @@ export const ItemQuantity = ({ product }: { product: Product }) => {
                 <path
                   d="M7 14l5-5 5 5"
                   stroke="black"
-                  stroke-width="1"
+                  strokeWidth="1"
                   stroke-linecap="round"
                   stroke-linejoin="round"
                 />

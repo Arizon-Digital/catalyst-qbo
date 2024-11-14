@@ -44,7 +44,7 @@ const ViewedItemsPopover = () => {
                     height="70"
                     rx="1"
                     stroke="#1A2A47"
-                    stroke-width="5"
+                    strokeWidth="5"
                     fill="none"
                   ></rect>
                   <rect x="27" y="25" width="8" height="8" rx="1" fill="#1A2A47"></rect>
@@ -58,11 +58,11 @@ const ViewedItemsPopover = () => {
                     cy="65"
                     r="12"
                     stroke="#1A2A47"
-                    stroke-width="4"
+                    strokeWidth="4"
                     fill="#ffffff"
                   ></circle>
-                  <line x1="80" y1="65" x2="80" y2="58" stroke="#1A2A47" stroke-width="2"></line>
-                  <line x1="80" y1="65" x2="87" y2="65" stroke="#1A2A47" stroke-width="2"></line>
+                  <line x1="80" y1="65" x2="80" y2="58" stroke="#1A2A47" strokeWidth="2"></line>
+                  <line x1="80" y1="65" x2="87" y2="65" stroke="#1A2A47" strokeWidth="2"></line>
                 </svg>
               </div>
               <div className='flex flex-col items-center'>
