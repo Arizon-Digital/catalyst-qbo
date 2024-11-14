@@ -51,10 +51,27 @@ const QuickView = ({
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg
-          shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200
-          hover:bg-primary hover:text-white z-10"
-      >
+        className="absolute group-hover:opacity-100 opacity-0 transition-all duration-300
+          bg-orange-500 hover:bg-white
+          text-white hover:text-orange-500
+          w-full flex items-center justify-center gap-2 py-2.5 px-4
+          font-semibold text-sm
+          border border-orange-500
+          shadow-sm z-10"
+      ><svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="text-white group-hover:text-orange-500"
+    >
+      <path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0a4.5 4.5 0 1 1-.01-8.99A4.5 4.5 0 0 1 14 10.5c0 2.49-2.01 4.5-4.5 4.5z"/>
+    </svg>
         Quick View
       </button>
  
