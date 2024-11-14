@@ -720,6 +720,7 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
         Font-size: 15PX !important;
  }
  input#search_query {
+    
     padding-left: 23px;
         font-weight: 300;
         font-family: inherit;

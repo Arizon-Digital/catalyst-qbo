@@ -40,6 +40,16 @@ const lineItemTransform = (item: Product) => {
   };
 };
 
+export const deleteIconTemp=async(product:any,currency:any)=>{
+    const { status } = await removeItem({
+      lineItemEntityId: product.entityId,
+    });
+    bodl.cart.productRemoved({
+      currency,
+      product_value: product.listPrice.value * product.quantity,
+      line_items: [lineItemTransform(product)],
+    });
+}
 export const RemoveItem = ({ currency, product, deleteIcon }: Props) => {
   const t = useTranslations('Cart.SubmitRemoveItem');
 
