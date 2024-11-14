@@ -51,10 +51,10 @@ const QuickView = ({
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="absolute group-hover:opacity-100 opacity-0 transition-all duration-300
-          bg-orange-500 hover:bg-white
+        className="absolute left-[10%] top-[40%] group-hover:opacity-100 opacity-0 transition-all duration-300
+          bg-orange-500 hover:bg-white h-[40px] 
           text-white hover:text-orange-500
-          w-full flex items-center justify-center gap-2 py-2.5 px-4
+          w-[80%] flex items-center justify-center gap-2 py-2.5 px-4
           font-semibold text-sm
           border border-orange-500
           shadow-sm z-10"

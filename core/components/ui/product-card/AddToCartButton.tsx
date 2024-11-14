@@ -23,13 +23,8 @@ return(
     <>
     <button style={{top:"25px"}}
         onClick={() => addCountToCart(productId)}
-    className="absolute bottom-0 left-0 right-0 group-hover:opacity-100 opacity-0 transition-all duration-300
-                bg-orange-500 hover:bg-white
-                text-white hover:text-orange-500
-                w-full flex items-center justify-center gap-2 py-2.5 px-4
-                font-semibold text-sm
-                border border-orange-500
-                shadow-sm z-10"
+        
+    className="absolute group-hover:opacity-100 opacity-0 bottom-0 left-[10%] right-0  transition-all duration-300 h-[40px] top-[25px] bg-orange-500  text-white  w-[80%] flex items-center justify-center gap-2 py-2.5 px-4 font-[600] text-sm border border-orange-500 shadow-sm z-10"
   ><svg
   xmlns="http://www.w3.org/2000/svg"
   width="24"

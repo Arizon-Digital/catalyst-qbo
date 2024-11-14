@@ -48,13 +48,13 @@ const ProductCard = async ({ id, name, href, image, price, subtitle }: Props) =>
       </div>
  
       <div className="flex flex-col gap-1">
-        <h3 className="text-xl font-bold">
+        <h3 className="text-xl font-bold title">
           <Link href={href}>
             <span>{name}</span>
           </Link>
         </h3>
-        {subtitle && <p className="text-base text-gray-500">{subtitle}</p>}
-        <span>{price}</span>
+        {subtitle && <p className="text-base text-gray-500 brand">{subtitle}</p>}
+        <span className='price'>{price}</span>
       </div>
     </div>
   );

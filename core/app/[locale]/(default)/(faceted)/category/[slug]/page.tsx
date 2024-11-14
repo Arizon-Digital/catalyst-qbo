@@ -83,7 +83,7 @@ export default async function Category({ params: { locale, slug }, searchParams 
       <div className="md:mb-8 lg:flex lg:flex-row lg:items-center lg:justify- sortbutton">
         <p className="mb-4 text-4xl font-black lg:mb-0 lg:text-5xl categorybtn" id='categorybtn'>
         Can't Find What You Are Looking For?</p>
-        <div className="form-field">
+        <div className="form-field pdp">
                         <input className="form-input" type="text" name="q" placeholder="Filter products by name or part number..." value="" data-search-in-category="">
                         
                     </input>

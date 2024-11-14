@@ -143,10 +143,10 @@ const Header = ({
                 </NavigationMenuPrimitive.Trigger>
                 <NavigationMenuPrimitive.Content
                   id={`nav-menu-content-${link.href}`}
-                  className="flex gap-20 2xl:container data-[motion^=from-]:animate-in data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 sm:px-10 lg:px-12 2xl:mx-auto 2xl:px-0"
+                  className="flex flex-wrap !justify-center gap-20 2xl:container data-[motion^=from-]:animate-in data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 sm:px-10 lg:px-12 2xl:mx-auto 2xl:px-0"
                 >
                   {link.groups.map((group) => (
-                    <ul id={`nav-menu-group-${group.href}`} className="flex flex-col" key={group.href}>
+                    <ul id={`nav-menu-group-${group.href}`} className="flex flex-col w-[25%]" key={group.href}>
                       <li id={`nav-menu-group-item-${group.href}`}>
                         <NavigationMenuPrimitive.Link asChild>
                           <CustomLink id={`nav-menu-group-link-${group.href}`} className="block p-3 font-semibold" href={group.href}>
