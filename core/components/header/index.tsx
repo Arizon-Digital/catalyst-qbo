@@ -16,7 +16,6 @@ import { Dropdown } from '../ui/dropdown';
 import { Header as ComponentsHeader } from '../ui/header';
  
 import { logout } from './_actions/logout';
-import { CartLink } from './cart';
 import { HeaderFragment } from './fragment';
 import { QuickSearch } from './quick-search';
  
@@ -100,17 +99,15 @@ export const Header = async ({ cart }: Props) => {
       }
       activeLocale={locale}
       cart={
-        <p role="status">
+        <div role="status">
           <Suspense
             fallback={
-              <CartLink>
-                <ShoppingCart aria-label="cart" />
-              </CartLink>
+              <ShoppingCart aria-label="cart" />
             }
           >
             {cart}
           </Suspense>
-        </p>
+        </div>
       }
       links={links}
       locales={localeLanguageRegionMap}

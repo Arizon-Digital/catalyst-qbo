@@ -12,7 +12,7 @@ import { ProductItemFragment } from '~/client/fragments/product-item';
 import { Link } from '~/components/link';
 
 import { BcImage } from '~/components/bc-image';
-import { redirectToCheckout } from "~/app/[locale]/(default)/cart/_actions/redirect-to-checkout";
+import { CheckoutButtonPopUp } from "./checkout-button";
 import { pricesTransformer } from "~/data-transformers/prices-transformer";
 
 interface Props {
@@ -20,27 +20,6 @@ interface Props {
   count?: number;
   cartId?: any;
 }
-
-const InternalButton = () => {
-  const t = useTranslations('Cart');
-  const { pending } = useFormStatus();
-
-  return (
-    <Button className="block w-full bg-primary text-white text-center py-2 rounded-md hover:bg-primary/90" loading={pending} loadingText={t('loading')}>
-      PROCEED TO CHECKOUT
-    </Button>
-  );
-};
-
-export const CheckoutButtonPopUp = ({ cartId }: { cartId: string }) => {
-  return (
-    <form action={redirectToCheckout}>
-      <input name="cartId" type="hidden" value={cartId} />
-      <InternalButton />
-    </form>
-  );
-};
-
 
 const DialogDemo = ({ open, setOpen, data, itemVal, count, cartId, handleModalClose }: { open: boolean, setOpen: any, data: any, itemVal: any, count?: any, cartId?: any, handleModalClose?: any }) => {
   const [counterSec, setCounterSec] = useState(10);

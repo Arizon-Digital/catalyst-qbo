@@ -1,12 +1,13 @@
 'use client';
  
 import { useState, useRef, useEffect } from 'react';
-import { ShoppingCart, Loader2 } from 'lucide-react';
+import { ShoppingCart } from 'lucide-react';
 import { Link } from '~/components/link';
 import { useCart } from '~/lib/hooks/useCart';
-import { RemoveFromCartButton } from '../../../app/[locale]/(default)/cart/_components/remove-from-cart-button';
+import { RemoveFromCartButton } from '~/app/[locale]/(default)/cart/_components/remove-from-cart-button';
+import { CheckoutButtonPopUp } from './checkout-button';
  
-export const MiniCart = ({cartItems,closeModal}: {cartItems: any,closeModal:any}) => {
+export const MiniCart = ({cartItems,closeModal, cartId}: {cartItems: any, closeModal:any, cartId: string}) => {
   const [isOpen, setIsOpen] = useState(false);
   const cartRef = useRef<HTMLDivElement>(null);
   const { cart, loading, removeItem } = useCart();
@@ -109,12 +110,7 @@ export const MiniCart = ({cartItems,closeModal}: {cartItems: any,closeModal:any}
  
             {hasItems && (
               <div className="mt-4 space-y-2">
-                <Link
-                  href="/checkout"
-                  className="block w-full bg-primary text-white text-center py-2 rounded-md hover:bg-primary/90"
-                >
-                  CHECKOUT NOW
-                </Link>
+                <CheckoutButtonPopUp cartId={cartId} />
                 <Link
                   href="/cart"
                   className="block w-full border border-gray-200 text-center py-2 rounded-md hover:bg-gray-100"

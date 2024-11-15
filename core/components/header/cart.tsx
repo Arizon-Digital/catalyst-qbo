@@ -17,9 +17,7 @@ export const Cart = async () => {
 
   if (!cartId) {
     return (
-      <CartLink>
-        <CartIcon />
-      </CartLink>
+      <CartIcon />
     );
   }
 
@@ -28,8 +26,6 @@ export const Cart = async () => {
   const count = cart?.lineItems.totalQuantity ?? 0;
 
   return (
-    <CartLink>
-      <CartIcon count={count} />
-    </CartLink>
+    <CartIcon count={count} />
   );
 };

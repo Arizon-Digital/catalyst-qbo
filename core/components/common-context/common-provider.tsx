@@ -5,23 +5,28 @@ import { createContext, ReactNode, useContext, useReducer } from 'react';
 interface CommonContext {
   open: any;
   getCurrencyCode: any;
+  getCartId: any;
   handlePopup: (data?: any) => void;
   setCurrencyCodeFn: (data?: any) => void;
+  setCartIdFn: (data?: any) => void;
 }
 
 const CommonContext = createContext<CommonContext | undefined>({
   open: false,
   getCurrencyCode: 'CAD',
+  getCartId: '',
   handlePopup: () => { },
   setCurrencyCodeFn: () => { },
+  setCartIdFn: () => { },
 });
 
 function CommonReducer(state: any, action: any) {
   if(action.type === 'DISPLAY_POPUP') {
     return {
       items: {
-        currencyCode: { ...state.items.currencyCode },
         open: action.payload,
+        currencyCode: { ...state.items.currencyCode },
+        cartId: {... state.items.cartId}
       },
     };
   } else if(action.type === 'CURRENCY_CODE') {
@@ -29,6 +34,15 @@ function CommonReducer(state: any, action: any) {
       items: {
         open: state.items.open,
         currencyCode: action.payload,
+        cartId: {... state.items.cartId}
+      },
+    };
+  } else if(action.type === 'CART_ID') {
+    return {
+      items: {
+        open: state.items.open,
+        currencyCode: { ...state.items.currencyCode },
+        cartId: action.payload,
       },
     };
   }
@@ -40,6 +54,7 @@ export const CommonProvider = ({ children }: { children: ReactNode }) => {
     items: {
       open: false,
       currencyCode: 'CAD',
+      cartId: '',
     }
   });
 
@@ -57,11 +72,20 @@ export const CommonProvider = ({ children }: { children: ReactNode }) => {
     });
   }
 
+  const setCartIdFn = (items: any) => {
+    commonDispatch({
+      type: 'CART_ID',
+      payload: items
+    });
+  }
+
   const value = {
     open: commonState?.items?.open,
     getCurrencyCode: commonState?.items?.currencyCode,
+    getCartId: commonState?.items?.cartId,
     handlePopup,
-    setCurrencyCodeFn
+    setCurrencyCodeFn,
+    setCartIdFn
   };
 
   return <CommonContext.Provider value={value}>{children}</CommonContext.Provider>;
