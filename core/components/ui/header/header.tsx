@@ -2,6 +2,7 @@
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
 import { ChevronDown } from 'lucide-react';
 import { Phone, Inbox } from 'lucide-react';
+import ScrollToTop from './scrolltop';
  
 import { ComponentPropsWithoutRef, ReactNode, useEffect, useState } from 'react';
  
@@ -119,6 +120,7 @@ const Header = ({
                     <div className="text">
                       {/* {' '}
                       <Minicart /> */}
+                      <ScrollToTop />
                       {isModalOpen && <div className='m-6 bg-white w-[1px] h-[1px] hidden'> <Minicart cartItems={''} closeModal={closeModal}/></div>}
                       <DoofinderScriptLoader />
                       <HubspotChat portalId={139717848} />
@@ -126,6 +128,7 @@ const Header = ({
                     <div className="texts">
                       {' '}
                       <DialogDemo />
+                      
                     </div>
                     {activeLocale && locales.length > 0 ? (
                       <LocaleSwitcher activeLocale={activeLocale} locales={locales} />
