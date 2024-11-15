@@ -1,5 +1,4 @@
 
-
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
@@ -169,3 +168,7 @@ export default async function Category({ params: { locale, slug }, searchParams 
 }
 
 export const runtime = 'edge';
+
+
+
+
