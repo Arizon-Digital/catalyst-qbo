@@ -1,3 +1,5 @@
+
+
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
@@ -17,6 +19,7 @@ import { fetchFacetedSearch } from '../../fetch-faceted-search';
 import { CategoryViewed } from './_components/category-viewed';
 import { SubCategories } from './_components/sub-categories';
 import { getCategoryPageData } from './page-data';
+import { ProductGridSwitcher } from './ProductGridSwitcher';
 
 interface Props {
   params: {
@@ -32,8 +35,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const data = await getCategoryPageData({
     categoryId,
   });
-
-  
 
   const category = data.category;
 
@@ -65,7 +66,6 @@ export default async function Category({ params: { locale, slug }, searchParams 
   if (!category) {
     return notFound();
   }
-  
 
   const productsCollection = search.products;
   const products = productsCollection.items;
@@ -74,22 +74,28 @@ export default async function Category({ params: { locale, slug }, searchParams 
   return (
     <div className="group">
       <Breadcrumbs category={category} />
-                        <BcImage
-                          alt={category.defaultImage.altText}
-                          height={250}
-                          src={category.defaultImage.url}
-                          width={1230}
-                        />
+      {category.defaultImage && (
+        <BcImage
+          alt={category.defaultImage.altText}
+          height={250}
+          src={category.defaultImage.url}
+          width={1230}
+        />
+      )}
+      
       <div className="md:mb-8 lg:flex lg:flex-row lg:items-center lg:justify- sortbutton">
         <p className="mb-4 text-4xl font-black lg:mb-0 lg:text-5xl categorybtn" id='categorybtn'>
-        Can't Find What You Are Looking For?</p>
+          Can't Find What You Are Looking For?
+        </p>
         <div className="form-field pdp">
-                        <input className="form-input" type="text" name="q" placeholder="Filter products by name or part number..." value="" data-search-in-category="">
-                        
-                    </input>
-        
-                   
-        
+          <input 
+            className="form-input" 
+            type="text" 
+            name="q" 
+            placeholder="Filter products by name or part number..." 
+            data-search-in-category=""
+          />
+        </div>
 
         <div className="flex flex-col items-center gap-3 whitespace-nowrap md:flex-row">
           <MobileSideNav>
@@ -102,20 +108,17 @@ export default async function Category({ params: { locale, slug }, searchParams 
             </FacetedSearch>
           </MobileSideNav>
           <div className="flex w-full flex-col items-start gap-4 md:flex-row md:items-center md:justify-end md:gap-6">
-            {/* <SortBy /> */}
             <div className="order-3 py-4 text-base font-semibold md:order-2 md:py-0">
               {t('sortBy', { items: productsCollection.collectionInfo?.totalItems ?? 0 })}
             </div>
           </div>
         </div>
       </div>
-      </div>
+
       <div className="sort order">
         <SortBy />
-        </div>
-        <div>
-          {/* <ProductLimitSelector initialProducts={[]} categoryId={0} searchParams={0}/> */}
-        </div>
+      </div>
+
       <div className="grid grid-cols-4 gap-8">
         <FacetedSearch
           className="mb-8 hidden lg:block"
@@ -134,7 +137,13 @@ export default async function Category({ params: { locale, slug }, searchParams 
             {t('products')}
           </h2>
 
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 sm:gap-8">
+          {/* Grid Switcher */}
+          <div className="flex justify-between items-center mb-6">
+            <ProductGridSwitcher />
+          </div>
+
+          {/* Product Grid */}
+          <div className="product-grid grid gap-6 grid-cols-2 sm:grid-cols-3 sm:gap-8">
             {products.map((product, index) => (
               <ProductCard
                 imagePriority={index <= 3}
@@ -153,6 +162,7 @@ export default async function Category({ params: { locale, slug }, searchParams 
           />
         </section>
       </div>
+
       <CategoryViewed category={category} categoryId={categoryId} products={products} />
     </div>
   );
