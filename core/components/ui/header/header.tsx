@@ -17,6 +17,7 @@ import ViewedItemsPopover from './ViewedItemsPopover';
 import DoofinderScriptLoader from '~/app/[locale]/(default)/product/[slug]/_components/Doofinder';
 import HubspotChat from '~/app/[locale]/(default)/product/[slug]/_components/Chatbot';
 import { GetCurrencyList } from './currency';
+import ScrollToTop from './scrolltop';
 
 interface Link {
   label: string;
@@ -104,6 +105,7 @@ const Header = ({
                     <div className="text">
                       {' '}
                       <Minicart />
+                      <ScrollToTop />
                       <DoofinderScriptLoader />
                       <HubspotChat portalId={139717848} />
                     </div>

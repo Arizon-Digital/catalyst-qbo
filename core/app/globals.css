@@ -83,7 +83,6 @@ p#categorybtn {
     background: #ca9618 !important;
     border: 1px solid #ca9618 !important;
     color: #fff !important;
-    /* width: 100% !important; */
     border-radius: 4px !important;
 }
 .Label {
@@ -840,7 +839,7 @@ label.inline-flex.w-full.items-center.justify-between {
         overflow: hidden;
     }
     div#warp {
-        background-color: #ca9618;
+        background-color: #ffffff;
         width: 350px;
     }
     input.button.form-prefixPostfix-button--postfix {
