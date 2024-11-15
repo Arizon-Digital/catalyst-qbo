@@ -1,4 +1,3 @@
-"use client "
 import { Fragment, ReactNode } from 'react';
 
 import { BcImage } from '~/components/bc-image';
@@ -9,6 +8,8 @@ import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
 
 import { Locale } from './locale';
 import CookieConsent from '~/components/header/cookie-consent';
+import { NewsLetterSubscriptions } from './news-letter-subscription';
+import { getChannelIdFromLocale } from '~/channels.config';
 
 
 interface Image {
@@ -58,46 +59,21 @@ const Footer = ({
 }: Props) => (
   <footer className={cn('2xl:container 2xl:mx-auto', className)} {...props}>
     <nav className="grid flex-auto auto-cols-frr gap-8 sm:grid-flow-col">
-    <article className="emthemesModez-newsletterForm" data-section-type="newsletterSubscription">
-  <div className="newsletter-container" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-    <h5 className="footer-info-heading" id='headingin' style={{ margin: 0 }}>Subscribe Today</h5>
-    <p id='font size' style={{ margin: 0 }}>
-      Be the first to know about exclusive deals, new product lines, company announcements, and industry news.
-    </p>
-    <form className="form" action="/subscribe.php" method="post" data-hs-cf-bound="true" style={{ display: 'flex', alignItems: 'center' }}>
-      <fieldset className="form-fieldset" style={{ display: 'flex', alignItems: 'center', border: 'none' }}>
-        <input type="hidden" name="action" value="subscribe" />
-        <input type="hidden" name="nl_first_name" value="bc" />
-        <input type="hidden" name="check" value="1" />
-        <div className="form-field" style={{ display: 'flex', alignItems: 'center' }}>
-          <label className="form-label is-srOnly" htmlFor="nl_email">
-          </label>
-          <div className="form-prefixPostfix wrap" id='warp' style={{ display: 'flex', alignItems: 'center' }}>
-            <input
-              className="form-input form-prefixPostfix-input"
-              id="nl_email"
-              name="nl_email"
-              type="email"
-              placeholder="Your email address"
-              aria-required="true"
-              required
-              style={{ marginRight: '8px' }}
-            />
-            <input className="button form-prefixPostfix-button--postfix" type="submit" value="Subscribe" />
-          </div>
+      <article className="emthemesModez-newsletterForm" data-section-type="newsletterSubscription">
+        <div className="newsletter-container" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <h5 className="footer-info-heading" id='headingin' style={{ margin: 0 }}>Subscribe Today</h5>
+          <p id='font size' style={{ margin: 0 }}>
+            Be the first to know about exclusive deals, new product lines, company announcements, and industry news.
+          </p>
+          <NewsLetterSubscriptions channelId={getChannelIdFromLocale()}/>
         </div>
-      </fieldset>
-    </form>
-  </div>
-</article>
-
-
+      </article>
     </nav>
     <section className="flex flex-col gap-8 border-t border-gray-200 px-4 py-10 sm:px-10 md:flex-row lg:gap-4 lg:px-12 2xl:px-0">
-      
+
       {/* Contact Information Section */}
       <div className="flex flex-col gap-4">
-      <p id="address"> Quality Bearings Online Ltd</p>
+        <p id="address"> Quality Bearings Online Ltd</p>
         {Boolean(contactInformation) && (
           <>
             <address className="not-italic" id="address">
@@ -109,19 +85,19 @@ const Footer = ({
               ))}
             </address>
             <p id="address"> UK - 0808 168 1234</p>
-        <p id="address"> USA - 646 895 6246 / 619 354 1821</p>
-        <p id="address"> Canada - 438 800 0605</p>
+            <p id="address"> USA - 646 895 6246 / 619 354 1821</p>
+            <p id="address"> Canada - 438 800 0605</p>
             {Boolean(contactInformation?.phone) && (
-              
-                <p id="address"> International- {contactInformation?.phone}</p>
-              
-              
+
+              <p id="address"> International- {contactInformation?.phone}</p>
+
+
             )}
           </>
         )}
-        
+
         <a className="contactus" href="/contact-us">
-          
+
           <p id="address">Contact us</p>
         </a>
 
@@ -141,49 +117,49 @@ const Footer = ({
         )}
       </div>
 
-      
+
       <nav className="grid flex-auto auto-cols-fr gap-8 sm:grid-flow-col">
         {sections.map((section) => (
           <div key={section.title}>
             <h3 className="mb-4 text-lg font-bold" id='footer headings'>Navigation </h3>
             <ul className="flex flex-col gap-4">
-  <li className='navigationfooter'>
-    <a href="/">Home</a>
-  </li>
-  <li className='navigationfooter'>
-    <a href="/about-us">About Us</a>
-  </li>
-  <li className='navigationfooter'>
-    <a href="/10-year-anniversary">10 Year Anniversary</a>
-  </li>
-  <li className='navigationfooter'>
-    <a href="/contact-us">Contact Us</a>
-  </li>
-  <li className='navigationfooter'>
-    <a href="/customer-service">Customer Service</a>
-  </li>
-  <li className='navigationfooter'>
-    <a href="/delivery-information">Delivery Information</a>
-  </li>
-  <li className='navigationfooter'>
-    <a href="/faqs">FAQS</a>
-  </li>
-  <li className='navigationfooter'>
-    <a href="/privacy-policy">Privacy Policy</a>
-  </li>
-  <li className='navigationfooter'>
-    <a href="/customer-reviews">Customer Reviews</a>
-  </li>
-  <li className='navigationfooter'>
-    <a href="/terms-conditions">Terms & Conditions</a>
-  </li>
-  <li className='navigationfooter'>
-    <a href="/blog">Blog</a>
-  </li>
-  <li className='navigationfooter'>
-    <a href="/sitemap">Sitemap</a>
-  </li>
-</ul>
+              <li className='navigationfooter'>
+                <a href="/">Home</a>
+              </li>
+              <li className='navigationfooter'>
+                <a href="/about-us">About Us</a>
+              </li>
+              <li className='navigationfooter'>
+                <a href="/10-year-anniversary">10 Year Anniversary</a>
+              </li>
+              <li className='navigationfooter'>
+                <a href="/contact-us">Contact Us</a>
+              </li>
+              <li className='navigationfooter'>
+                <a href="/customer-service">Customer Service</a>
+              </li>
+              <li className='navigationfooter'>
+                <a href="/delivery-information">Delivery Information</a>
+              </li>
+              <li className='navigationfooter'>
+                <a href="/faqs">FAQS</a>
+              </li>
+              <li className='navigationfooter'>
+                <a href="/privacy-policy">Privacy Policy</a>
+              </li>
+              <li className='navigationfooter'>
+                <a href="/customer-reviews">Customer Reviews</a>
+              </li>
+              <li className='navigationfooter'>
+                <a href="/terms-conditions">Terms & Conditions</a>
+              </li>
+              <li className='navigationfooter'>
+                <a href="/blog">Blog</a>
+              </li>
+              <li className='navigationfooter'>
+                <a href="/sitemap">Sitemap</a>
+              </li>
+            </ul>
 
           </div>
         ))}
@@ -217,27 +193,27 @@ const Footer = ({
           </div>
 
           <div className="footer-apps footer-apps-desktop">
-  <h2 className="footer-info-heading">Follow Us on Social Media</h2>
-  <ul className='socialmedia'>
-    <li className='contactfooter'>
-      <a href="https://www.facebook.com" className="contact-links" target="_blank" rel="noopener noreferrer">
-        <FaFacebook size={35} />
-      </a>
-    </li>
-    <li className='contactfooter'>
-      <a href="https://www.instagram.com" className="contact-links" target="_blank" rel="noopener noreferrer">
-        <FaInstagram size={35} /> 
-      </a>
-    </li>
-    <li className='contactfooter'>
-      <a href="https://www.linkedin.com" className="contact-links" target="_blank" rel="noopener noreferrer">
-        <FaLinkedin size={35} />
-      </a>
-    </li>
-  </ul>
-</div>
-         
-         
+            <h2 className="footer-info-heading">Follow Us on Social Media</h2>
+            <ul className='socialmedia'>
+              <li className='contactfooter'>
+                <a href="https://www.facebook.com" className="contact-links" target="_blank" rel="noopener noreferrer">
+                  <FaFacebook size={35} />
+                </a>
+              </li>
+              <li className='contactfooter'>
+                <a href="https://www.instagram.com" className="contact-links" target="_blank" rel="noopener noreferrer">
+                  <FaInstagram size={35} />
+                </a>
+              </li>
+              <li className='contactfooter'>
+                <a href="https://www.linkedin.com" className="contact-links" target="_blank" rel="noopener noreferrer">
+                  <FaLinkedin size={35} />
+                </a>
+              </li>
+            </ul>
+          </div>
+
+
 
 
           <div data-content-region="ssl_site_seal--global"></div>

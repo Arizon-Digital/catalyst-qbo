@@ -126,7 +126,8 @@
   "Category": {
     "sortBy": "{items, plural, =0 {no items} =1 {1 item} other {# items}}",
     "products": "Products",
-    "items": "items"
+    "items": "items",
+    "loading": "Loading..."
   },
   "Search": {
     "title": "Search results",
