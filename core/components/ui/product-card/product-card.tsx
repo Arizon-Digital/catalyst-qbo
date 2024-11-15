@@ -17,10 +17,10 @@ interface Props {
   };
   price: string;
   subtitle?: string;
+  addToCart?: any;
 }
  
-const ProductCard = async ({ id, name, href, image, price, subtitle }: Props) => {
-  const product = await getProductData({ entityId: Number(id) });
+const ProductCard = async ({ id, name, href, image, price, subtitle, product }: Props) => {
  
   const addToCardData = {
     defaultImage: {
@@ -43,7 +43,7 @@ const ProductCard = async ({ id, name, href, image, price, subtitle }: Props) =>
             <div className="h-full w-full bg-gray-200" />
           )}
           <div className='opacity-0 hover:opacity-100'>
-          <AddToCartButton addToCardData={addToCardData} productId={Number(id)} />
+          <AddToCartButton addToCardData={addToCardData} product={product} />
           <QuickView product={product} />
           </div>
         </div>
