@@ -1,4 +1,3 @@
-
 import { useFormatter } from 'next-intl';
 import { FragmentOf, graphql } from '~/client/graphql';
 import { BcImage } from '~/components/bc-image';
@@ -8,7 +7,7 @@ import Brand from '../../(faceted)/brand/[slug]/page';
 import DialogDemos from './deleteicon';
 import { Trash2 } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
-
+ 
 const PhysicalItemFragment = graphql(`
   fragment PhysicalItemFragment on CartPhysicalItem {
     name
@@ -66,7 +65,7 @@ const PhysicalItemFragment = graphql(`
     }
   }
 `);
-
+ 
 const DigitalItemFragment = graphql(`
   fragment DigitalItemFragment on CartDigitalItem {
     name
@@ -124,7 +123,7 @@ const DigitalItemFragment = graphql(`
     }
   }
 `);
-
+ 
 export const CartItemFragment = graphql(
   `
     fragment CartItemFragment on CartLineItems {
@@ -138,13 +137,13 @@ export const CartItemFragment = graphql(
   `,
   [PhysicalItemFragment, DigitalItemFragment],
 );
-
+ 
 type FragmentResult = FragmentOf<typeof CartItemFragment>;
 type PhysicalItem = FragmentResult['physicalItems'][number];
 type DigitalItem = FragmentResult['digitalItems'][number];
-
+ 
 export type Product = PhysicalItem | DigitalItem;
-
+ 
 interface Props {
   product: Product;
   currencyCode: string;
@@ -157,14 +156,14 @@ const ExclamationIcon = () => (
     <circle cx="12" cy="17" r="1" fill="#FFC5A8"/>
   </svg>
 );
-
-const DeleteConfirmationDialog = ({ 
-  product, 
-  currencyCode, 
+ 
+const DeleteConfirmationDialog = ({
+  product,
+  currencyCode,
   deleteIcon,
-  children 
-}: { 
-  product: Product; 
+  children
+}: {
+  product: Product;
   currencyCode: string;
   deleteIcon: string;
   children: React.ReactNode;
@@ -174,7 +173,7 @@ const DeleteConfirmationDialog = ({
       <Dialog.Trigger asChild>
         {children}
       </Dialog.Trigger>
-
+ 
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-black/50 animate-fade-in" />
         <Dialog.Content className="fixed top-[50%] left-[50%] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-md bg-white p-6 shadow-lg animate-content-show">
@@ -184,7 +183,7 @@ const DeleteConfirmationDialog = ({
           <Dialog.Description className="text-gray-600 mb-6">
             Are you sure you want to delete this item?
           </Dialog.Description>
-
+ 
           <div className="flex justify-end gap-4">
             <Dialog.Close asChild>
               <button className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-md">
@@ -202,13 +201,13 @@ const DeleteConfirmationDialog = ({
     </Dialog.Root>
   );
 };
-
+ 
 export const CartItem = ({ currencyCode, product }: Props) => {
   const format = useFormatter();
-
+ 
   const deleteIcon =
     'https://cdn11.bigcommerce.com/s-ur7wjnshy8/images/stencil/320w/image-manager/delete.jpg';
-
+ 
   return (
     <>
       <tbody className="cart-item-desk border border-[#CFD8DC]">
@@ -229,7 +228,7 @@ export const CartItem = ({ currencyCode, product }: Props) => {
               <div className="h-full w-full bg-gray-200" />
             )}
           </td>
-
+ 
           {/* Product name and SKU */}
           <td className="">
             <p className="text-xl font-bold md:text-2xl" id="cartbrandname">
@@ -239,7 +238,7 @@ export const CartItem = ({ currencyCode, product }: Props) => {
               {product.name}
             </p>
           </td>
-
+ 
           {/* Original price */}
           <td className="price cart">
             <p className="text-lg font-bold">
@@ -249,7 +248,7 @@ export const CartItem = ({ currencyCode, product }: Props) => {
               })}
             </p>
           </td>
-
+ 
           {/* Quantity and Remove Item button */}
           <td className="cart-qunRem">
            
@@ -265,7 +264,7 @@ export const CartItem = ({ currencyCode, product }: Props) => {
               </div>
             </div>
           </td>
-
+ 
           {/* Sale price */}
           <td className="price cart">
             <p className="text-lg font-bold">
@@ -317,11 +316,11 @@ export const CartItem = ({ currencyCode, product }: Props) => {
               <ItemQuantity product={product} />
               {/* Remove Item */}
               <div className="deleteIcon-div hidden md:block">
-                
-                  <button className="flex items-center">
+               
+                  <button className="flex items-center">+
                     <img src={deleteIcon} alt="Remove item" className="w-5 h-5" />
                   </button>
-                
+               
               </div>
             </div>
           </div>
@@ -339,6 +338,4 @@ export const CartItem = ({ currencyCode, product }: Props) => {
     </>
   );
 };
-
-
-
+ 

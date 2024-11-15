@@ -2,14 +2,15 @@
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
 import { ChevronDown } from 'lucide-react';
 import { Phone, Inbox } from 'lucide-react';
-
+import ScrollToTop from './scrolltop';
+ 
 import { ComponentPropsWithoutRef, ReactNode, useEffect, useState } from 'react';
-
+ 
 import { BcImage } from '~/components/bc-image';
 import { Link as CustomLink } from '~/components/link';
 import { cn } from '~/lib/utils';
 import DialogDemo from './addtocartpopup';
-
+ 
 import { type Locale, LocaleSwitcher } from './locale-switcher';
 import { MobileNav } from './mobile-nav';
 import Minicart from '../header/minicart';
@@ -17,30 +18,29 @@ import ViewedItemsPopover from './ViewedItemsPopover';
 import DoofinderScriptLoader from '~/app/[locale]/(default)/product/[slug]/_components/Doofinder';
 import HubspotChat from '~/app/[locale]/(default)/product/[slug]/_components/Chatbot';
 import { GetCurrencyList } from './currency';
-import ScrollToTop from './scrolltop';
-
+ 
 interface Link {
   label: string;
   href: string;
 }
-
+ 
 interface Group {
   label: string;
   href: string;
   links?: Link[];
 }
-
+ 
 interface Image {
   src: string;
   altText: string;
 }
-
+ 
 interface Links {
   label: string;
   href: string;
   groups?: Group[];
 }
-
+ 
 interface Props extends ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Root> {
   account?: ReactNode;
   activeLocale?: string;
@@ -51,7 +51,7 @@ interface Props extends ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.
   logo?: string | Image;
   search?: ReactNode;
 }
-
+ 
 const Header = ({
   account,
   activeLocale,
@@ -62,6 +62,17 @@ const Header = ({
   logo,
   search,
 }: Props) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+ 
+  const handleCartClick = () => {
+    console.log('??????????????????????????????????????????????????');
+   
+    setIsModalOpen(true);
+  };
+ 
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
   return (
     <div className={cn('relative', className)}>
       <div className="navbar">
@@ -100,18 +111,24 @@ const Header = ({
                       <ViewedItemsPopover />
                     </div>
                   </nav>
-                  <nav className="header-cart-icon pl-10px nmd:p-0">{cart} </nav>
+                  {/* <nav className="header-cart-icon pl-10px nmd:p-0">{cart} </nav> */}
+                  <nav className="header-cart-icon pl-10px nmd:p-0">
+                    <button onClick={handleCartClick}>
+                    {cart}
+                  </button> </nav>
                   <div className="flex flex-col items-center gap-0 flex-wrap pl-[5px]">
                     <div className="text">
-                      {' '}
-                      <Minicart />
+                      {/* {' '}
+                      <Minicart /> */}
                       <ScrollToTop />
+                      {isModalOpen && <div className='m-6 bg-white w-[1px] h-[1px] hidden'> <Minicart cartItems={''} closeModal={closeModal}/></div>}
                       <DoofinderScriptLoader />
                       <HubspotChat portalId={139717848} />
                     </div>
                     <div className="texts">
                       {' '}
                       <DialogDemo />
+                      
                     </div>
                     {activeLocale && locales.length > 0 ? (
                       <LocaleSwitcher activeLocale={activeLocale} locales={locales} />
@@ -182,10 +199,10 @@ const Header = ({
             ),
           )}
         </NavigationMenuPrimitive.List>
-
+ 
         <NavigationMenuPrimitive.Viewport id="nav-menu-viewport" className="absolute start-0 top-full z-50 w-full bg-white pb-12 pt-6 shadow-xl duration-200 animate-in slide-in-from-top-5" />
       </NavigationMenuPrimitive.Root>
-
+ 
       {/* New Section Here */}
       <section className="header-banner">
         <div className="container row">
@@ -248,13 +265,13 @@ const Header = ({
           </article>
         </div>
       </section>
-
-
-
+ 
+ 
+ 
     </div>
   )
 }
-
+ 
 Header.displayName = 'Header';
-
+ 
 export { Header, type Links };
