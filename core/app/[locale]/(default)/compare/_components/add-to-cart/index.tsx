@@ -24,7 +24,6 @@ const Submit = ({ data: product }: { data: FragmentOf<typeof AddToCartFragment> 
 export const AddToCart = ({ data: product }: { data: FragmentOf<typeof AddToCartFragment> }) => {
   const t = useTranslations('Compare.AddToCart');
   const cartContext = useCommonContext();
-  const cart = useCart();
   return (
     <form
       action={async (formData: FormData) => {
