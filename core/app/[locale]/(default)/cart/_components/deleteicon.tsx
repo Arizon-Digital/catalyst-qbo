@@ -20,10 +20,7 @@ const DialogDemos = ({ currency, product,deleteIcon }: DialogDemosProps) => {
   const handleDeleteCart = async (product: any) => {
     try {
       setIsDeleting(true);
-      console.log("****************]]]]]]]]]]]]]", product);
-      deleteIconTemp(product,currency)
-    //    RemoveItem(productEntityId);
-      console.log("*****************", product);
+      deleteIconTemp(product,currency);
     } catch (error) {
       console.error("Error deleting item:", error);
     } finally {
@@ -32,8 +29,6 @@ const DialogDemos = ({ currency, product,deleteIcon }: DialogDemosProps) => {
     }
   };
 
-
-  console.log('____________________________________________', product.entityId);
   
   return (
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>

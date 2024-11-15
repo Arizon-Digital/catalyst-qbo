@@ -44,10 +44,13 @@ export const CheckoutButtonPopUp = ({ cartId }: { cartId: string }) => {
 const DialogDemo = ({ open, setOpen, data, itemVal, count, cartId }: { open: boolean, setOpen: any, data: any, itemVal: any, count?: any, cartId?: any }) => {
   const [counterSec, setCounterSec] = useState(10);
   useEffect(() => {
-    counterSec > 0 && setTimeout(() => {
-      setCounterSec(counterSec - 1);
-    }, 1000);
-    counterSec <= 0 && setOpen(false);
+    if(counterSec > 0) {
+      setTimeout(() => {
+        setCounterSec(counterSec - 1);
+      }, 1000);
+    } else {
+      setOpen(false);
+    }
   }, [counterSec]);
 
   return (
