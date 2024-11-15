@@ -24,6 +24,7 @@ import { QuantityField } from './fields/quantity-field';
 import { TextField } from './fields/text-field';
 import { ProductFormData, useProductForm } from './use-product-form';
 import { useState } from 'react';
+import { useCommonContext } from '~/components/common-context/common-provider';
 
 interface Props {
   data: FragmentOf<typeof ProductItemFragment>;
@@ -61,7 +62,9 @@ export const Submit = ({ data: product }: Props) => {
 };
 
 export const ProductForm = ({ data: product }: Props) => {
-  const [open, setOpen] = useState<boolean>(false);
+  const productDialog = useCommonContext();
+  let open = productDialog.open;
+  let setOpen = productDialog.handlePopup;
   const [count, setCount] = useState(1);
   const [cartId, setCartId] = useState('');
   const t = useTranslations('Product.Form');
@@ -74,10 +77,7 @@ export const ProductForm = ({ data: product }: Props) => {
 
   const productFormSubmit = async (data: ProductFormData) => {
     const result = await handleAddToCart(data, product);
-    
     const quantity = Number(data.quantity);
-    
-    
     
     if (result.error) {
       toast.error(t('error'), {
@@ -86,7 +86,7 @@ export const ProductForm = ({ data: product }: Props) => {
 
       return;
     }
-    console.log('========result=======', result);
+    
     if(result?.items?.lineItems?.totalQuantity) {
       setCount(result?.items?.lineItems?.totalQuantity);
       setCartId(result?.data?.entityId || '');

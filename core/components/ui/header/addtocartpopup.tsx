@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { FragmentOf } from 'gql.tada';
-import { useTranslations } from 'next-intl';
+import { useFormatter, useTranslations } from 'next-intl';
 import { useFormStatus } from 'react-dom';
 
 import { Button } from '~/components/ui/button';
@@ -13,6 +13,7 @@ import { Link } from '~/components/link';
 
 import { BcImage } from '~/components/bc-image';
 import { redirectToCheckout } from "~/app/[locale]/(default)/cart/_actions/redirect-to-checkout";
+import { pricesTransformer } from "~/data-transformers/prices-transformer";
 
 interface Props {
   data: FragmentOf<typeof ProductItemFragment>;
@@ -52,6 +53,13 @@ const DialogDemo = ({ open, setOpen, data, itemVal, count, cartId, handleModalCl
       handleModalClose();
     }
   }, [counterSec]);
+  let productPrice: any;
+  if(data?.price) {
+    productPrice = data?.price;
+  } else {
+    const format = useFormatter();
+    productPrice = pricesTransformer(data?.prices, format);
+  }
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
@@ -76,7 +84,7 @@ const DialogDemo = ({ open, setOpen, data, itemVal, count, cartId, handleModalCl
             />
             <label className="Label" htmlFor="name">
               <p>{data?.name} </p>
-              <p>1 x {data?.price} </p>
+              <p>1 x {productPrice} </p>
 
               <p className="text-base text-grayy-500">{data?.subtitle}</p>
             </label>
