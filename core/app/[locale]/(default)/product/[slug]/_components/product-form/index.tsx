@@ -62,11 +62,16 @@ export const Submit = ({ data: product }: Props) => {
 
 export const ProductForm = ({ data: product }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
-  const [itemsCount,setItemsCount]=useState('')
+  const [count, setCount] = useState(1);
+  const [cartId, setCartId] = useState('');
   const t = useTranslations('Product.Form');
   const productOptions = removeEdgesAndNodes(product.productOptions);
   const { handleSubmit, register, ...methods } = useProductForm();
   
+  const handleModalClose = () => {
+    setOpen(false);
+  }
+
   const productFormSubmit = async (data: ProductFormData) => {
     const result = await handleAddToCart(data, product);
     
@@ -80,6 +85,11 @@ export const ProductForm = ({ data: product }: Props) => {
       });
 
       return;
+    }
+    console.log('========result=======', result);
+    if(result?.items?.lineItems?.totalQuantity) {
+      setCount(result?.items?.lineItems?.totalQuantity);
+      setCartId(result?.data?.entityId || '');
     }
     setOpen(true);
     const transformedProduct = productItemTransform(product);
@@ -157,10 +167,8 @@ export const ProductForm = ({ data: product }: Props) => {
         <div className="mt-4 flex flex-col gap-4 @md:flex-row" id='addtocart button'>
           
           <Submit data={product} />
-           <DialogDemo data={product} itemVal={productFormSubmit}  open={open} setOpen={setOpen} />
+          {open && <DialogDemo data={product} itemVal={productFormSubmit}  open={open} setOpen={setOpen} handleModalClose={handleModalClose} count={count} cartId={cartId}/>}
           
-          
-
           {/* NOT IMPLEMENTED YET */}
           <div className="w-full">
             <Button disabled type="submit" variant="secondary">

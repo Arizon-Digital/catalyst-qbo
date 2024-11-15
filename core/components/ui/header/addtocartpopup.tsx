@@ -41,7 +41,7 @@ export const CheckoutButtonPopUp = ({ cartId }: { cartId: string }) => {
 };
 
 
-const DialogDemo = ({ open, setOpen, data, itemVal, count, cartId }: { open: boolean, setOpen: any, data: any, itemVal: any, count?: any, cartId?: any }) => {
+const DialogDemo = ({ open, setOpen, data, itemVal, count, cartId, handleModalClose }: { open: boolean, setOpen: any, data: any, itemVal: any, count?: any, cartId?: any, handleModalClose?: any }) => {
   const [counterSec, setCounterSec] = useState(10);
   useEffect(() => {
     if(counterSec > 0) {
@@ -49,7 +49,7 @@ const DialogDemo = ({ open, setOpen, data, itemVal, count, cartId }: { open: boo
         setCounterSec(counterSec - 1);
       }, 1000);
     } else {
-      setOpen(false);
+      handleModalClose();
     }
   }, [counterSec]);
 

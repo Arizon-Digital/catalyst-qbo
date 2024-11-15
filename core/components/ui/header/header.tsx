@@ -9,7 +9,6 @@ import { ComponentPropsWithoutRef, ReactNode, useEffect, useState } from 'react'
 import { BcImage } from '~/components/bc-image';
 import { Link as CustomLink } from '~/components/link';
 import { cn } from '~/lib/utils';
-import DialogDemo from './addtocartpopup';
  
 import { type Locale, LocaleSwitcher } from './locale-switcher';
 import { MobileNav } from './mobile-nav';
@@ -127,7 +126,6 @@ const Header = ({
                     </div>
                     <div className="texts">
                       {' '}
-                      <DialogDemo />
                       
                     </div>
                     {activeLocale && locales.length > 0 ? (

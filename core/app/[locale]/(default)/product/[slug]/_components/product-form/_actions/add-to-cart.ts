@@ -159,7 +159,7 @@ export async function handleAddToCart(
 
       revalidateTag(TAGS.cart);
 
-      return { status: 'success', data: cart };
+      return { status: 'success', data: cart, items: cartData };
     }
 
     // Create cart
