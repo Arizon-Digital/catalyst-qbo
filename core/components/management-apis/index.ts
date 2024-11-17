@@ -1,8 +1,8 @@
 'use server';
 
-export const CreateSubscribers = async (postData: any) => {
+export const CreateSubscribeUsers = async (postData: any) => {
   try {
-    let { data } = await fetch(
+    let data = await fetch(
       `https://api.bigcommerce.com/stores/${process.env.BIGCOMMERCE_STORE_HASH}/v3/customers/subscribers`,
       {
         method: 'POST',

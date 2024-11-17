@@ -1,8 +1,8 @@
 'use client';
 
-import { AlertCircle } from 'lucide-react';
+import { AlertCircle, Check } from 'lucide-react';
 import toast from 'react-hot-toast';
-import { CreateSubscribers } from '~/components/management-apis';
+import { CreateSubscribeUsers } from '~/components/management-apis';
 import { Button } from '~/components/ui/button';
 
 export const NewsLetterSubscriptions = ({ channelId} : {channelId: any}) => {
@@ -17,9 +17,17 @@ export const NewsLetterSubscriptions = ({ channelId} : {channelId: any}) => {
         "email": emailAddress,
         "channel_id": channelId
       }
-      console.log('========postData=======', postData);
-      let status = await CreateSubscribers(postData);
-      console.log('========status=======', status);
+      let status = await CreateSubscribeUsers(postData);
+      if(status?.data?.email) {
+        toast.success('Email address added successfully',
+          { icon: <Check className="text-success-secondary" /> },
+         
+        );
+      } else {
+        toast.error(status?.title), {
+          icon: <AlertCircle className="text-error-secondary" />,
+        }
+      }
     } else {
       toast.error('Please enter valid email address.'), {
         icon: <AlertCircle className="text-error-secondary" />,
