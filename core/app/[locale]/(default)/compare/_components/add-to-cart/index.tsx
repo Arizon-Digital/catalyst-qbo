@@ -12,6 +12,7 @@ import { Link } from '~/components/link';
 import { addToCart } from '../../_actions/add-to-cart';
  
 import { AddToCartFragment } from './fragment';
+import { useCommonContext } from '~/components/common-context/common-provider';
  
 const Submit = ({ data: product }: { data: FragmentOf<typeof AddToCartFragment> }) => {
   const { pending } = useFormStatus();
@@ -22,13 +23,12 @@ const Submit = ({ data: product }: { data: FragmentOf<typeof AddToCartFragment> 
  
 export const AddToCart = ({ data: product }: { data: FragmentOf<typeof AddToCartFragment> }) => {
   const t = useTranslations('Compare.AddToCart');
- 
+  const cartContext = useCommonContext();
   return (
     <form
       action={async (formData: FormData) => {
         const result = await addToCart(formData);
         const quantity = Number(formData.get('quantity'));
- 
         if (result.error) {
           toast.error(t('error'), {
             icon: <AlertCircle className="text-error-secondary" />,
@@ -36,7 +36,7 @@ export const AddToCart = ({ data: product }: { data: FragmentOf<typeof AddToCart
  
           return;
         }
- 
+        cartContext.setCartIdFn(result?.data?.entityId);
         toast.success(
           () => (
             <div className="flex items-center gap-3">

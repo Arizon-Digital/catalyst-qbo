@@ -64,8 +64,6 @@ const Header = ({
   const [isModalOpen, setIsModalOpen] = useState(false);
  
   const handleCartClick = () => {
-    console.log('??????????????????????????????????????????????????');
-   
     setIsModalOpen(true);
   };
  
@@ -117,10 +115,8 @@ const Header = ({
                   </button> </nav>
                   <div className="flex flex-col items-center gap-0 flex-wrap pl-[5px]">
                     <div className="text">
-                      {/* {' '}
-                      <Minicart /> */}
                       <ScrollToTop />
-                      {isModalOpen && <div className='m-6 bg-white w-[1px] h-[1px] hidden'> <Minicart cartItems={''} closeModal={closeModal}/></div>}
+                      {isModalOpen && <div className='m-6 bg-white w-[1px] h-[1px] hidden'> <Minicart cartItems={''} cartId="" closeModal={closeModal}/></div>}
                       <DoofinderScriptLoader />
                       <HubspotChat portalId={139717848} />
                     </div>

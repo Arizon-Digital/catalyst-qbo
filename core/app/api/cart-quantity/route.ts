@@ -13,10 +13,10 @@ export const GET = async (request: NextRequest) => {
   if (cartId) {
     const cart = await getCart(cartId, getChannelIdFromLocale(locale));
  
-    return NextResponse.json({ count: cart?.lineItems.totalQuantity ?? 0, cartItems: cart });
+    return NextResponse.json({ count: cart?.lineItems.totalQuantity ?? 0, cartItems: cart, cartId: cartId });
   }
  
-  return NextResponse.json({ count: 0, cartItems: [] });
+  return NextResponse.json({ count: 0, cartItems: [], cartId: cartId });
 };
  
 export const runtime = 'edge';

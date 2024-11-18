@@ -3,6 +3,8 @@ import React, { useState, useTransition } from 'react';
 import DialogDemo from '../header/addtocartpopup';
 import { addToCart } from '~/components/product-card/add-to-cart/form/_actions/add-to-cart';
 import { Button } from '~/components/ui/button';
+import { useCommonContext } from '~/components/common-context/common-provider';
+
 interface AddToCartButtonProps {
   addToCardData: any;
   product: any;
@@ -12,6 +14,8 @@ export const AddToCartButton = ({ addToCardData, product }: AddToCartButtonProps
   const [isPending, startTransition] = useTransition();
   const [count, setCount] = useState(1);
   const [cartId, setCartId] = useState('');
+  const cartContext = useCommonContext();
+
   const handleModalClose = () => {
     setAddtocart(false);
   }
@@ -25,6 +29,7 @@ export const AddToCartButton = ({ addToCardData, product }: AddToCartButtonProps
           setCount(result?.items?.lineItems?.totalQuantity);
           setCartId(result?.data?.entityId || '');
         }
+        cartContext.setCartIdFn(result?.data?.entityId);
         setAddtocart(true);
       } catch (error) {
         console.error('Unexpected error:', error);

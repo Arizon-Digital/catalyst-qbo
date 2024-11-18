@@ -12,6 +12,7 @@ import { Link } from '~/components/link';
 import { AddToCartFragment } from '../fragment';
 
 import { addToCart } from './_actions/add-to-cart';
+import { useCommonContext } from '~/components/common-context/common-provider';
 
 interface Props {
   data: FragmentOf<typeof AddToCartFragment>;
@@ -25,7 +26,7 @@ const SubmitButton = ({ data: product }: Props) => {
 
 export const Form = ({ data: product }: Props) => {
   const t = useTranslations('Components.ProductCard.AddToCart');
-
+  const cartContext = useCommonContext();
   return (
     <form
       action={async (formData: FormData) => {
@@ -39,7 +40,7 @@ export const Form = ({ data: product }: Props) => {
 
           return;
         }
-
+        cartContext.setCartIdFn(result?.data?.entityId);
         toast.success(
           () => (
             <div className="flex items-center gap-3">

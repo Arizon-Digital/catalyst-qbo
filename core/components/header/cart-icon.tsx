@@ -5,7 +5,6 @@ import { useLocale } from 'next-intl';
 import { useEffect, useState } from 'react';
 import { z } from 'zod';
  
-import { Badge } from '~/components/ui/badge';
 import Minicart from '../ui/header/minicart';
  
 const CartQuantityResponseSchema = z.object({
@@ -22,6 +21,7 @@ export const CartIcon = ({ count }: CartIconProps) => {
   const [fetchedCount, setFetchedCount] = useState<number | null>();
   const computedCount = count ?? fetchedCount;
   const [cartItems, setCartItems] = useState([]);
+  const [cartId, setCartId] = useState('');
   const locale = useLocale();
   useEffect(() => {
     async function fetchCartQuantity() {
@@ -29,6 +29,7 @@ export const CartIcon = ({ count }: CartIconProps) => {
       const parsedData = CartQuantityResponseSchema.parse(await response.json());
       setCartItems(parsedData?.cartItems);
       setFetchedCount(parsedData.count);
+      setCartId(parsedData?.cartId);
     }
  
     // When a page is rendered statically via the 'force-static' route config option, cookies().get() always returns undefined,
@@ -42,14 +43,13 @@ export const CartIcon = ({ count }: CartIconProps) => {
   if (!computedCount) {
     return <ShoppingCart aria-label="cart" />;
   }
-console.log('------------', cartItems);
  
   return (
     <>
       <span className="sr-only">Cart Items</span>
       {/* <ShoppingCart aria-hidden="true" />
       <Badge>{computedCount}</Badge> */}
-      <Minicart cartItems={cartItems} />
+      <Minicart cartItems={cartItems} cartId={cartId} closeModal="" />
     </>
   );
 };
