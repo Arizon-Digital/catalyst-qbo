@@ -30,5 +30,33 @@ export const PricingFragment = graphql(`
         }
       }
     }
+    excludeTax: prices(currencyCode: $currencyCode) {
+      price {
+        value
+        currencyCode
+      }
+      basePrice {
+        value
+        currencyCode
+      }
+      retailPrice {
+        value
+        currencyCode
+      }
+      salePrice {
+        value
+        currencyCode
+      }
+      priceRange {
+        min {
+          value
+          currencyCode
+        }
+        max {
+          value
+          currencyCode
+        }
+      }
+    }
   }
 `);

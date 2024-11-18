@@ -34,6 +34,20 @@ export const ProductSchemaFragment = graphql(`
         }
       }
     }
+    excludeTax: prices (currencyCode: $currencyCode) {
+      price {
+        value
+        currencyCode
+      }
+      priceRange {
+        min {
+          value
+        }
+        max {
+          value
+        }
+      }
+    }
     condition
     availabilityV2 {
       status
