@@ -6,7 +6,8 @@ import { Compare } from './compare';
 import QuickView from './Quickview';
 import { getProductData } from '~/components/common-functions';
 import { AddToCartButton } from './AddToCartButton';
-// import {CurrencyTextWrapper} from '../../../app/[locale]/(default)/product/[slug]/_components/exclvat';
+import ProductPriceDisplay from '~/app/[locale]/(default)/product/[slug]/_components/exclvat';
+
 
 
  
@@ -59,8 +60,9 @@ const ProductCard = async ({ id, name, href, image, price, subtitle, product }: 
           </Link>
         </h3>
         {subtitle && <p className="text-base text-gray-500 brand">{subtitle}</p>}
-        <span className='price'>{price}</span>
-        {/* <CurrencyTextWrapper /> */}
+        <ProductPriceDisplay
+        product={product} 
+      />
       </div>
     </div>
   );

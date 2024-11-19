@@ -86,7 +86,7 @@ const ProductPriceDisplay = ({ product }: Props) => {
           <p>Excl. VAT:</p>
           <p>
             {renderPrice(
-              excludeTax?.price?.value || (prices.price.value / 1.2), // Fallback calculation if excludeTax is not provided
+              excludeTax?.price?.value || (prices.price.value / 1.2), 
               excludeTax?.price?.currencyCode || currency
             )}
           </p>
