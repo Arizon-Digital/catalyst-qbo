@@ -24,7 +24,7 @@ import { ApplePayIcon } from './payment-icons/apple-pay';
 import { MastercardIcon } from './payment-icons/mastercard';
 import { PayPalIcon } from './payment-icons/paypal';
 import { VisaIcon } from './payment-icons/visa';
-
+import { GetCurrency } from '../header';
 const socialIcons: Record<string, { icon: JSX.Element }> = {
   Facebook: { icon: <SiFacebook title="Facebook" /> },
   Twitter: { icon: <SiX title="Twitter" /> },
@@ -47,20 +47,6 @@ export const Footer = async () => {
 
   const sections = [
     {
-      title: 'Categories',
-      links: data.categoryTree.map((category) => ({
-        label: category.name,
-        href: category.path,
-      })),
-    },
-    {
-      title: 'Brands',
-      links: removeEdgesAndNodes(data.brands).map((brand) => ({
-        label: brand.name,
-        href: brand.path,
-      })),
-    },
-    {
       title: 'Navigate',
       links: removeEdgesAndNodes(data.content.pages).map((page) => ({
         label: page.name,
@@ -69,7 +55,9 @@ export const Footer = async () => {
     },
   ];
 
+  
   return (
+    <>
     <ComponentsFooter
       contactInformation={data.settings?.contact ?? undefined}
       copyright={
@@ -94,5 +82,10 @@ export const Footer = async () => {
           icon: socialIcons[socialMediaLink.name]?.icon,
         }))}
     />
+    
+
+    </>
+
+
   );
 };

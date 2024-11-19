@@ -102,7 +102,18 @@ const Search = ({ initialTerm = '', logo, onSearch }: Props) => {
           aria-label="Open search popup"
           className="border-0 bg-transparent p-3 text-black hover:bg-transparent hover:text-primary focus-visible:text-primary"
         >
-          <SearchIcon />
+          <div className="form-prefixPostfix wrap">
+            <input
+              className="form-inputss"
+              name="search_query"
+              id="search_query"
+              placeholder="Search by reference"
+              autoComplete="off"
+            />
+            <span className="search-icon">
+              <SearchIcon className="text-whites" />
+            </span>
+          </div>
         </Button>
       </SheetPrimitive.Trigger>
       <SheetPrimitive.Overlay className="fixed inset-0 bg-transparent backdrop-blur-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0">

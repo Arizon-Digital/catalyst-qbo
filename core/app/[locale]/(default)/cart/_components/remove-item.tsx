@@ -21,7 +21,8 @@ export type Product = PhysicalItem | DigitalItem;
 interface Props {
   currency: string;
   product: Product;
-}
+  deleteIcon: string
+  }
 
 const lineItemTransform = (item: Product) => {
   return {
@@ -39,7 +40,17 @@ const lineItemTransform = (item: Product) => {
   };
 };
 
-export const RemoveItem = ({ currency, product }: Props) => {
+export const deleteIconTemp=async(product:any,currency:any)=>{
+    const { status } = await removeItem({
+      lineItemEntityId: product.entityId,
+    });
+    bodl.cart.productRemoved({
+      currency,
+      product_value: product.listPrice.value * product.quantity,
+      line_items: [lineItemTransform(product)],
+    });
+}
+export const RemoveItem = ({ currency, product, deleteIcon }: Props) => {
   const t = useTranslations('Cart.SubmitRemoveItem');
 
   const onSubmitRemoveItem = async () => {
@@ -64,7 +75,7 @@ export const RemoveItem = ({ currency, product }: Props) => {
 
   return (
     <form action={onSubmitRemoveItem}>
-      <RemoveFromCartButton />
+    <RemoveFromCartButton icon={deleteIcon} />
     </form>
-  );
+    );
 };

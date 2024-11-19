@@ -55,8 +55,8 @@ export const CheckoutSummary = async ({ checkout, geography }: Props) => {
 
   return (
     <>
-      <div className="flex justify-between border-t border-t-gray-200 py-4">
-        <span className="font-semibold">{t('subTotal')}</span>
+      <div className="flex justify-between  py-3">
+        <span className="font-semibold">Subtotal:</span>
         <span>
           {format.number(subtotal?.value || 0, {
             style: 'currency',
@@ -67,7 +67,7 @@ export const CheckoutSummary = async ({ checkout, geography }: Props) => {
 
       <ShippingEstimator checkout={checkout} shippingCountries={shippingCountries} />
 
-      {cart?.discountedAmount && (
+      {/* {cart?.discountedAmount && (
         <div className="flex justify-between border-t border-t-gray-200 py-4">
           <span className="font-semibold">{t('discounts')}</span>
           <span>
@@ -78,11 +78,11 @@ export const CheckoutSummary = async ({ checkout, geography }: Props) => {
             })}
           </span>
         </div>
-      )}
+      )} */}
 
-      <CouponCode checkout={checkout} />
+      {/* <CouponCode checkout={checkout} /> */}
 
-      {taxTotal && (
+      {/* {taxTotal && (
         <div className="flex justify-between border-t border-t-gray-200 py-4">
           <span className="font-semibold">{t('tax')}</span>
           <span>
@@ -92,10 +92,10 @@ export const CheckoutSummary = async ({ checkout, geography }: Props) => {
             })}
           </span>
         </div>
-      )}
+      )} */}
 
-      <div className="flex justify-between border-t border-t-gray-200 py-4 text-xl font-bold lg:text-2xl">
-        {t('grandTotal')}
+      <div className="flex cart-gtotal justify-between border-t border-t-gray-200 py-3 text-xl font-bold lg:text-2xl">
+        Grandtotal:
         <span>
           {format.number(grandTotal?.value || 0, {
             style: 'currency',
@@ -103,6 +103,7 @@ export const CheckoutSummary = async ({ checkout, geography }: Props) => {
           })}
         </span>
       </div>
+     
     </>
   );
 };

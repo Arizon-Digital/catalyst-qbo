@@ -66,10 +66,10 @@ export const Checkboxes = ({
     <Field className="relative space-y-2" name={name}>
       <fieldset>
         <FieldLabel asChild>
-          <legend className="mb-2.5 inline-flex w-full items-center justify-between text-base font-semibold">
+          <legend className="mb-2.5 inline-flex w-full items-center justify-between text-base font-semiboldd">
             <span>{field.label}</span>
             {field.isRequired && (
-              <span className="text-xs font-normal text-gray-500">Required</span>
+              <span className="text-xss font-normal">Required</span>
             )}
           </legend>
         </FieldLabel>
@@ -108,7 +108,7 @@ export const Checkboxes = ({
             );
           })}
         </div>
-        <div className="relative h-7">
+        <div className="relative h-7 " id='field'>
           {validationError && (
             <FieldMessage className="inline-flex w-full text-xs font-normal text-error-secondary">
               {t('empty')}

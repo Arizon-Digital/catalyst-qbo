@@ -83,7 +83,7 @@ export const Picklist = ({
           required={field.isRequired}
         />
       </FieldControl>
-      <div className="relative h-7">
+      <div className="relative h-7" id='field'>
         {validationError && (
           <FieldMessage className="inline-flex w-full text-xs font-normal text-error-secondary">
             {t('empty')}

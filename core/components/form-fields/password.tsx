@@ -45,7 +45,7 @@ export const Password = ({ defaultValue, field, isValid, name, onChange }: Passw
           type="password"
         />
       </FieldControl>
-      <div className="relative h-7">
+      <div className="relative h-7" id='field'>
         {field.isRequired && (
           <FieldMessage
             className="inline-flex w-full text-xs font-normal text-error-secondary"

@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { ChangeEvent, useState } from 'react';
 import { useFormState, useFormStatus } from 'react-dom';
+import { Breadcrumbs as ComponentsBreadcrumbs } from '~/components/ui/breadcrumbs';
 
 import { Link } from '~/components/link';
 import { Button } from '~/components/ui/button';
@@ -26,13 +27,12 @@ const SubmitButton = () => {
 
   return (
     <Button
-      className="md:w-auto"
+      className="md:w-auto" id='signinbutton'
       loading={pending}
       loadingText={t('Form.submitting')}
       variant="primary"
     >
-      {t('Form.logIn')}
-    </Button>
+      SIGN IN    </Button>
   );
 };
 
@@ -77,7 +77,7 @@ export const LoginForm = () => {
       )}
       <Form action={formAction} className="mb-14 flex flex-col gap-3 md:p-8 lg:p-0">
         <Field className="relative space-y-2 pb-7" name="email">
-          <FieldLabel htmlFor="email">{t('Form.emailLabel')}</FieldLabel>
+          <FieldLabel htmlFor="email">Email Address:</FieldLabel>
           <FieldControl asChild>
             <Input
               autoComplete="email"
@@ -96,8 +96,8 @@ export const LoginForm = () => {
             {t('Form.enterEmailMessage')}
           </FieldMessage>
         </Field>
-        <Field className="relative space-y-2 pb-7" name="password">
-          <FieldLabel htmlFor="password">{t('Form.passwordLabel')}</FieldLabel>
+        <Field className="relative space-y-2 pb-7"id='password' name="password">
+          <FieldLabel htmlFor="password">Password:</FieldLabel>
           <FieldControl asChild>
             <Input
               error={!isPasswordValid}
@@ -120,7 +120,7 @@ export const LoginForm = () => {
             <SubmitButton />
           </FormSubmit>
           <Link
-            className="my-5 inline-flex items-center justify-start font-semibold text-primary hover:text-secondary md:my-0"
+            className="my-5 inline-flex items-center justify-start font-semiboldd text-primary hover:text-secondary md:my-0 reset"
             href="/reset"
           >
             {t('Form.resetPassword')}

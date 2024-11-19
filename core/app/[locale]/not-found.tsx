@@ -3,6 +3,7 @@ import { ShoppingCart } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
 
+import { cookies } from 'next/headers';
 import { client } from '~/client';
 import { graphql } from '~/client/graphql';
 import { revalidate } from '~/client/revalidate-target';
@@ -12,10 +13,11 @@ import { CartLink } from '~/components/header/cart';
 import { ProductCardFragment } from '~/components/product-card/fragment';
 import { ProductCardCarousel } from '~/components/product-card-carousel';
 import { SearchForm } from '~/components/search-form';
+import { CurrencyCode } from './(default)/product/[slug]/page-data';
 
 const NotFoundQuery = graphql(
   `
-    query NotFoundQuery {
+    query NotFoundQuery($currencyCode: currencyCode) {
       site {
         featuredProducts(first: 4) {
           edges {
@@ -32,9 +34,13 @@ const NotFoundQuery = graphql(
 
 export default async function NotFound() {
   const t = await getTranslations('NotFound');
+  const currencyCode = (await cookies()).get('currencyCode')?.value as CurrencyCode | undefined;
 
   const { data } = await client.fetch({
     document: NotFoundQuery,
+    variables: {
+      currencyCode: currencyCode
+    },
     fetchOptions: { next: { revalidate } },
   });
 

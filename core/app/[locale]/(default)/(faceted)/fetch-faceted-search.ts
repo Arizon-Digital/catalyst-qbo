@@ -1,6 +1,7 @@
 import { removeEdgesAndNodes } from '@bigcommerce/catalyst-client';
 import { cache } from 'react';
 import { z } from 'zod';
+import { cookies } from 'next/headers';
 
 import { getSessionCustomerId } from '~/auth';
 import { client } from '~/client';
@@ -8,6 +9,7 @@ import { PaginationFragment } from '~/client/fragments/pagination';
 import { graphql, VariablesOf } from '~/client/graphql';
 import { revalidate } from '~/client/revalidate-target';
 import { ProductCardFragment } from '~/components/product-card/fragment';
+import { CurrencyCode } from '../product/[slug]/page-data';
 
 const GetProductSearchResultsQuery = graphql(
   `
@@ -18,6 +20,7 @@ const GetProductSearchResultsQuery = graphql(
       $before: String
       $filters: SearchProductsFiltersInput!
       $sort: SearchProductsSortInput
+      $currencyCode: currencyCode
     ) {
       site {
         search {
@@ -168,12 +171,13 @@ interface ProductSearch {
 const getProductSearchResults = cache(
   async ({ limit = 9, after, before, sort, filters }: ProductSearch) => {
     const customerId = await getSessionCustomerId();
+    const currencyCode = (await cookies()).get('currencyCode')?.value as CurrencyCode | undefined;
     const filterArgs = { filters, sort };
     const paginationArgs = before ? { last: limit, before } : { first: limit, after };
 
     const response = await client.fetch({
       document: GetProductSearchResultsQuery,
-      variables: { ...filterArgs, ...paginationArgs },
+      variables: { ...filterArgs, ...paginationArgs, currencyCode: currencyCode },
       customerId,
       fetchOptions: customerId ? { cache: 'no-store' } : { next: { revalidate: 300 } },
     });
