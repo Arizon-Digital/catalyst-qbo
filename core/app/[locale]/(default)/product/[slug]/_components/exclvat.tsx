@@ -1,106 +1,98 @@
 
+
 'use client';
 
 import { useFormatter, useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 import { getCurrencyCodeFn } from '~/components/header/_actions/getCurrencyList';
 import { type FragmentOf } from '~/client/graphql';
-import { DetailsFragment } from './fragment'; 
+import { DetailsFragment } from './fragment';
 import { PricingFragment } from '~/client/fragments/pricing';
 
 interface Props {
-  product: FragmentOf<typeof DetailsFragment>;
+  product: FragmentOf<typeof DetailsFragment | typeof PricingFragment>;
 }
 
 const ProductPriceDisplay = ({ product }: Props) => {
   const t = useTranslations('Product.Details');
   const format = useFormatter();
+  const [currency, setCurrency] = useState('CAD');
   const [showExclTax, setShowExclTax] = useState(false);
 
   useEffect(() => {
     const checkCurrency = async () => {
-      const currency = await getCurrencyCodeFn() || 'CAD';
-      setShowExclTax(currency === 'GBP');
+      const currencyCode = (await getCurrencyCodeFn()) || 'CAD';
+      setCurrency(currencyCode);
+      setShowExclTax(currencyCode === 'GBP');
     };
     checkCurrency();
   }, []);
 
   if (!product?.prices) return null;
 
+  const { prices, excludeTax } = product;
+  const displayPrices = showExclTax && currency === 'GBP' ? excludeTax : prices;
+
   const showPriceRange =
-    product.prices?.priceRange?.min.value !== product.prices?.priceRange?.max.value;
+    displayPrices?.priceRange?.min.value !== displayPrices?.priceRange?.max.value;
+
+  const renderPrice = (priceValue: number, currencyCode: string) => {
+    return format.number(priceValue, {
+      style: 'currency',
+      currency: currencyCode,
+    });
+  };
 
   return (
-    <div className="my-6 text-2xl font-bold lg:text-3xl">
+    <>
       {showPriceRange ? (
-        <span className="productView-price price--main">
-          {format.number(product.prices.priceRange.min.value, {
-            style: 'currency',
-            currency: product.prices.price.currencyCode,
-          })}{' '}
-          -{' '}
-          {format.number(product.prices.priceRange.max.value, {
-            style: 'currency',
-            currency: product.prices.price.currencyCode,
-          })}
-        </span>
+        <>
+          {renderPrice(displayPrices.priceRange.min.value, displayPrices.price.currencyCode)}
+          {' - '}
+          {renderPrice(displayPrices.priceRange.max.value, displayPrices.price.currencyCode)}
+        </>
       ) : (
         <>
-          {product.prices.retailPrice?.value !== undefined && (
-            <span>
-              {t('Prices.msrp')}:{' '}
-              <span className="line-through">
-                {format.number(product.prices.retailPrice.value, {
-                  style: 'currency',
-                  currency: product.prices.price.currencyCode,
-                })}
-              </span>
-              <br />
-            </span>
-          )}
-          {product.prices.salePrice?.value !== undefined &&
-            product.prices.basePrice?.value !== undefined ? (
+          {displayPrices.retailPrice?.value !== undefined && (
             <>
-              <span>
-                {t('Prices.was')}:{' '}
-                <span className="line-through">
-                  {format.number(product.prices.basePrice.value, {
-                    style: 'currency',
-                    currency: product.prices.price.currencyCode,
-                  })}
-                </span>
-              </span>
-              <br />
-              <span className="productView-price price--main">
-                {t('Prices.now')}:{' '}
-                {format.number(product.prices.price.value, {
-                  style: 'currency',
-                  currency: product.prices.price.currencyCode,
-                })}
-              </span>
+              {t('Prices.msrp')}: {' '}
+              {renderPrice(displayPrices.retailPrice.value, displayPrices.price.currencyCode)}
+            </>
+          )}
+          {displayPrices.salePrice?.value !== undefined &&
+          displayPrices.basePrice?.value !== undefined ? (
+            <>
+              {t('Prices.was')}: {' '}
+              {renderPrice(displayPrices.basePrice.value, displayPrices.price.currencyCode)}
+              {' '}
+              {t('Prices.now')}: {' '}
+              {renderPrice(displayPrices.price.value, displayPrices.price.currencyCode)}
             </>
           ) : (
-            product.prices.price.value && (
-              <span className="productView-price price--main">
-                {format.number(product.prices.price.value, {
-                  style: 'currency',
-                  currency: product.prices.price.currencyCode,
-                })}
-              </span>
+            displayPrices.price.value && (
+              <>
+                {renderPrice(displayPrices.price.value, displayPrices.price.currencyCode)}
+              </>
             )
           )}
         </>
       )}
-
-      {showExclTax && (
-        <div className="text-sm font-normal mt-1">
-          <span>excl. VAT</span>
-          <div>
-            <span>incl. VAT</span>
-          </div>
-        </div>
+      {currency === 'GBP' && (
+        <>
+          <p>Inc. VAT:</p>
+          <p>
+            {renderPrice(prices.price.value, prices.price.currencyCode)}
+          </p>
+          <p>Excl. VAT:</p>
+          <p>
+            {renderPrice(
+              excludeTax?.price?.value || (prices.price.value / 1.2), // Fallback calculation if excludeTax is not provided
+              excludeTax?.price?.currencyCode || currency
+            )}
+          </p>
+        </>
       )}
-    </div>
+    </>
   );
 };
 
