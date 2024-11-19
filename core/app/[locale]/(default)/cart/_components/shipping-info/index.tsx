@@ -105,10 +105,10 @@ export const ShippingInfo = ({
   return (
     <Form
       action={onSubmit}
-      className={cn('mx-auto mb-4 mt-4 hidden w-full grid-cols-1 gap-y-4', isVisible && 'grid')}
+      className={cn('mx-auto shipping-form mb-4 mt-4 hidden w-full grid-cols-1 gap-y-4', isVisible && 'grid')}
     >
-      <>
-        <Field className="relative space-y-2" name="country">
+      <div className='flex flex-col shipping-details gap-[10px]'>
+        <Field className="relative shipping-country space-y-2 flex items-center justify-between" name="country">
           <FieldLabel htmlFor="country">{t('country')}</FieldLabel>
           <FieldControl asChild>
             <Select
@@ -132,7 +132,7 @@ export const ShippingInfo = ({
             />
           </FieldControl>
         </Field>
-        <Field className="relative space-y-2" name="state">
+        <Field className="relative space-y-2 shipping-state" name="state">
           <FieldLabel htmlFor="state">{t('state')}</FieldLabel>
           <FieldControl asChild>
             {selectedCountry?.statesOrProvinces ? (
@@ -158,7 +158,7 @@ export const ShippingInfo = ({
             )}
           </FieldControl>
         </Field>
-        <Field className="relative space-y-2" name="city">
+        <Field className="relative space-y-2 shipping-city" name="city">
           <FieldLabel htmlFor="city-field">{t('city')}</FieldLabel>
           <FieldControl asChild>
             <Input
@@ -171,7 +171,7 @@ export const ShippingInfo = ({
             />
           </FieldControl>
         </Field>
-        <Field className="relative space-y-2" name="zip">
+        <Field className="relative space-y-2 shipping-zipcode" name="zip">
           <FieldLabel htmlFor="zip-field">{t('postcode')}</FieldLabel>
           <FieldControl asChild>
             <Input
@@ -184,8 +184,8 @@ export const ShippingInfo = ({
             />
           </FieldControl>
         </Field>
-      </>
-      <FormSubmit asChild>
+      </div>
+      <FormSubmit asChild className='shipping-submit-btn'>
         <SubmitButton />
       </FormSubmit>
     </Form>

@@ -5,6 +5,10 @@
       "newestProducts": "Newest products"
     }
   },
+ "Currencies" :{
+  
+"title": "Select Currency"
+ },
   "ChangePassword": {
     "title": "Change password",
     "heading": "Change password",
@@ -27,9 +31,9 @@
     "Form": {
       "error": "Your email address or password is incorrect. Try signing in again or reset your password",
       "emailLabel": "Email",
-      "enterEmailMessage": "Enter your email",
+      "enterEmailMessage": "Please use a valid email address, such as user@example.com",
       "passwordLabel": "Password",
-      "entePasswordMessage": "Enter your password",
+      "entePasswordMessage": "You must enter a password.",
       "submitting": "Submitting...",
       "logIn": "Log in",
       "resetPassword": "Forgot your password?"
@@ -46,10 +50,10 @@
     }
   },
   "Register": {
-    "title": "Register account",
-    "heading": "New account",
+    "title": "Register Account",
+    "heading": "New Account",
     "Form": {
-      "submit": "Create account",
+      "submit": "Create Account",
       "submitting": "Creating account...",
       "recaptchaText": "Pass ReCAPTCHA check",
       "confirmPassword": "Passwords don't match"
@@ -122,7 +126,8 @@
   "Category": {
     "sortBy": "{items, plural, =0 {no items} =1 {1 item} other {# items}}",
     "products": "Products",
-    "items": "items"
+    "items": "items",
+    "loading": "Loading..."
   },
   "Search": {
     "title": "Search results",

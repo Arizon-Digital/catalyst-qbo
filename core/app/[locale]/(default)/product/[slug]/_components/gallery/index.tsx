@@ -6,6 +6,7 @@ import { FragmentOf } from '~/client/graphql';
 import { Gallery as ComponentsGallery } from '~/components/ui/gallery';
 
 import { GalleryFragment } from './fragment';
+import { useEffect } from 'react';
 
 interface Props {
   product: FragmentOf<typeof GalleryFragment>;
@@ -30,7 +31,17 @@ export const Gallery = ({ product }: Props) => {
       isDefault: true,
     });
   }
-
+  useEffect(() => {
+    let getRecentlyViewedItems: any = localStorage.getItem('qbo_recently_viewed_items');
+    let recentlyViewedItems: any = JSON?.parse(getRecentlyViewedItems) || [];
+    let productId = product?.entityId;
+    let productFound = recentlyViewedItems?.find((item: any) => item == productId);
+   
+    if(!productFound) {
+      recentlyViewedItems.push(productId);
+      localStorage.setItem('qbo_recently_viewed_items', JSON.stringify(recentlyViewedItems));
+    }
+  }, []);
   const defaultImageIndex = images.findIndex((image) => image.isDefault);
 
   return (

@@ -26,7 +26,7 @@ export const Text = ({ defaultValue, field, isValid, name, onChange, type }: Tex
   return (
     <Field className="relative space-y-2" name={name}>
       <FieldLabel
-        className="font-semibold"
+        className="font-semiboldd"
         htmlFor={`field-${field.entityId}`}
         isRequired={field.isRequired}
       >
@@ -44,7 +44,7 @@ export const Text = ({ defaultValue, field, isValid, name, onChange, type }: Tex
           type={type === 'email' ? 'email' : 'text'}
         />
       </FieldControl>
-      <div className="relative h-7">
+      <div className="relative h-7" id='field'>
         {field.isRequired && (
           <FieldMessage
             className="inline-flex w-full text-xs font-normal text-error-secondary"

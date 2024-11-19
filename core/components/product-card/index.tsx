@@ -31,6 +31,7 @@ export const ProductCard = ({
   return (
     <ComponentProductCard
       addToCart={showCart && <AddToCart data={product} />}
+      product={product}
       href={path}
       id={entityId.toString()}
       image={defaultImage ? { src: defaultImage.url, altText: defaultImage.altText } : undefined}

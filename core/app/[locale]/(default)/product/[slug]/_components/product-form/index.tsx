@@ -6,6 +6,7 @@ import { AlertCircle, Check, Heart, ShoppingCart } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { FormProvider, useFormContext } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
+import DialogDemo from '~/components/ui/header/addtocartpopup'; 
 
 import { ProductItemFragment } from '~/client/fragments/product-item';
 import { AddToCartButton } from '~/components/add-to-cart-button';
@@ -22,6 +23,8 @@ import { NumberField } from './fields/number-field';
 import { QuantityField } from './fields/quantity-field';
 import { TextField } from './fields/text-field';
 import { ProductFormData, useProductForm } from './use-product-form';
+import { useState } from 'react';
+import { useCommonContext } from '~/components/common-context/common-provider';
 
 interface Props {
   data: FragmentOf<typeof ProductItemFragment>;
@@ -47,6 +50,7 @@ const productItemTransform = (p: FragmentOf<typeof ProductItemFragment>) => {
 };
 
 export const Submit = ({ data: product }: Props) => {
+  
   const { formState } = useFormContext();
   const { isSubmitting } = formState;
 
@@ -58,15 +62,23 @@ export const Submit = ({ data: product }: Props) => {
 };
 
 export const ProductForm = ({ data: product }: Props) => {
+  const productDialog = useCommonContext();
+  let open = productDialog.open;
+  let setOpen = productDialog.handlePopup;
+  const [count, setCount] = useState(1);
+  const [cartId, setCartId] = useState('');
   const t = useTranslations('Product.Form');
   const productOptions = removeEdgesAndNodes(product.productOptions);
-
   const { handleSubmit, register, ...methods } = useProductForm();
+  
+  const handleModalClose = () => {
+    setOpen(false);
+  }
 
   const productFormSubmit = async (data: ProductFormData) => {
     const result = await handleAddToCart(data, product);
     const quantity = Number(data.quantity);
-
+    
     if (result.error) {
       toast.error(t('error'), {
         icon: <AlertCircle className="text-error-secondary" />,
@@ -74,7 +86,12 @@ export const ProductForm = ({ data: product }: Props) => {
 
       return;
     }
-
+    
+    if(result?.items?.lineItems?.totalQuantity) {
+      setCount(result?.items?.lineItems?.totalQuantity);
+      setCartId(result?.data?.entityId || '');
+    }
+    setOpen(true);
     const transformedProduct = productItemTransform(product);
 
     bodl.cart.productAdded({
@@ -147,9 +164,11 @@ export const ProductForm = ({ data: product }: Props) => {
 
         <QuantityField />
 
-        <div className="mt-4 flex flex-col gap-4 @md:flex-row">
+        <div className="mt-4 flex flex-col gap-4 @md:flex-row" id='addtocart button'>
+          
           <Submit data={product} />
-
+          {open && <DialogDemo data={product} itemVal={productFormSubmit}  open={open} setOpen={setOpen} handleModalClose={handleModalClose} count={count} cartId={cartId}/>}
+          
           {/* NOT IMPLEMENTED YET */}
           <div className="w-full">
             <Button disabled type="submit" variant="secondary">

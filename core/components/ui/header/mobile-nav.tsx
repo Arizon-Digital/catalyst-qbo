@@ -99,6 +99,7 @@ export const MobileNav = ({ links, logo }: Props) => {
                               </CustomLink>
                             </NavigationMenuPrimitive.Link>
                           </li>
+                          
                           {group.links &&
                             group.links.length > 0 &&
                             group.links.map((nestedLink) => (
@@ -113,7 +114,10 @@ export const MobileNav = ({ links, logo }: Props) => {
                                   </CustomLink>
                                 </NavigationMenuPrimitive.Link>
                               </li>
+                              
+
                             ))}
+                            
                         </ul>
                       ))}
                     </NavigationMenuPrimitive.Content>
@@ -132,10 +136,28 @@ export const MobileNav = ({ links, logo }: Props) => {
                   </NavigationMenuPrimitive.Item>
                 ),
               )}
+              <a>About Us</a>
+              <a>10 Year Anniversary</a>
+              <a>Contact Us</a>
+              <a>Costomer Service</a>
+              <a>Delivery Information</a>
+              <a>FAQS</a>
+              <a>Privacy Policy</a>
+              <a>Customer Reviews</a>
+              <a>Terms & Conditions</a>
+              <a>Blog</a>
+
+              <a>GBP</a>
+              <a>Sign In</a>
+              <a>Register</a>
+
+              
             </NavigationMenuPrimitive.List>
           </NavigationMenuPrimitive.Root>
         </SheetPrimitive.Content>
       </SheetPrimitive.Portal>
     </SheetPrimitive.Root>
+
+    
   );
 };

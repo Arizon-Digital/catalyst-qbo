@@ -1,5 +1,4 @@
 import { Product as ProductSchemaType, WithContext } from 'schema-dts';
-
 import { FragmentOf, graphql } from '~/client/graphql';
 
 export const ProductSchemaFragment = graphql(`
@@ -21,7 +20,21 @@ export const ProductSchemaFragment = graphql(`
     defaultImage {
       url: urlTemplate(lossy: true)
     }
-    prices {
+    prices (includeTax: true, currencyCode: $currencyCode) {
+      price {
+        value
+        currencyCode
+      }
+      priceRange {
+        min {
+          value
+        }
+        max {
+          value
+        }
+      }
+    }
+    excludeTax: prices (currencyCode: $currencyCode) {
       price {
         value
         currencyCode

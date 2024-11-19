@@ -75,7 +75,7 @@ export const DateField = ({
   return (
     <Field className="relative space-y-2 pb-7" name={name}>
       <fieldset className="space-y-2">
-        <FieldLabel className="font-semibold" htmlFor={name} isRequired={field.isRequired}>
+        <FieldLabel className="font-semiboldd" htmlFor={name} isRequired={field.isRequired}>
           {field.label}
         </FieldLabel>
         <input
@@ -94,7 +94,7 @@ export const DateField = ({
           required={field.isRequired}
           selected={date ? new Date(date) : undefined}
         />
-        <div className="relative h-7">
+        <div className="relative h-7" id='field'>
           {validationError && (
             <FieldMessage className="inline-flex w-full text-xs font-normal text-error-secondary">
               {t('empty')}
