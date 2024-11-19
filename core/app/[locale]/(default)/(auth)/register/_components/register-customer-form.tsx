@@ -265,7 +265,7 @@ export const RegisterCustomerForm = ({
         </Message>
       )}
       <Form action={onSubmit} onClick={preSubmitFieldsValidation} ref={form}>
-        <div className="mb-4 grid grid-cols-1 gap-y-3 lg:grid-cols-2 lg:gap-x-6">
+        <div className="mb-4 grid grid-cols-1 gap-y-3 sm:grid-cols-2 sm:gap-x-6">
  
           {customerFields
             .filter((field) => !CUSTOMER_FIELDS_TO_EXCLUDE.includes(field.entityId))
@@ -387,7 +387,7 @@ export const RegisterCustomerForm = ({
             {addressFields.map((field) => {
             const fieldId = field.entityId;
             const fieldName = createFieldName(field, 'address');
-
+ 
             switch (field.__typename) {
               case 'TextFormField': {
                 return (
@@ -401,7 +401,7 @@ export const RegisterCustomerForm = ({
                   </FieldWrapper>
                 );
               }
-
+ 
               case 'MultilineTextFormField': {
                 return (
                   <FieldWrapper fieldId={fieldId} key={fieldId}>
@@ -414,7 +414,7 @@ export const RegisterCustomerForm = ({
                   </FieldWrapper>
                 );
               }
-
+ 
               case 'NumberFormField': {
                 return (
                   <FieldWrapper fieldId={fieldId} key={fieldId}>
@@ -427,7 +427,7 @@ export const RegisterCustomerForm = ({
                   </FieldWrapper>
                 );
               }
-
+ 
               case 'DateFormField': {
                 return (
                   <FieldWrapper fieldId={fieldId} key={fieldId}>
@@ -441,7 +441,7 @@ export const RegisterCustomerForm = ({
                   </FieldWrapper>
                 );
               }
-
+ 
               case 'RadioButtonsFormField': {
                 return (
                   <FieldWrapper fieldId={fieldId} key={fieldId}>
@@ -454,13 +454,13 @@ export const RegisterCustomerForm = ({
                   </FieldWrapper>
                 );
               }
-
+ 
               case 'PicklistFormField': {
                 const isCountrySelector = fieldId === FieldNameToFieldId.countryCode;
                 const picklistOptions = isCountrySelector
                   ? countries.map(({ name, code }) => ({ label: name, entityId: code }))
                   : field.options;
-
+ 
                 return (
                   <FieldWrapper fieldId={fieldId} key={fieldId}>
                     <Picklist
@@ -475,7 +475,7 @@ export const RegisterCustomerForm = ({
                   </FieldWrapper>
                 );
               }
-
+ 
               case 'CheckboxesFormField': {
                 return (
                   <FieldWrapper fieldId={fieldId} key={fieldId}>
@@ -489,7 +489,7 @@ export const RegisterCustomerForm = ({
                   </FieldWrapper>
                 );
               }
-
+ 
               case 'PicklistOrTextFormField': {
                 return (
                   <FieldWrapper fieldId={fieldId} key={fieldId}>
@@ -508,7 +508,7 @@ export const RegisterCustomerForm = ({
                   </FieldWrapper>
                 );
               }
-
+ 
               case 'PasswordFormField': {
                 return (
                   <FieldWrapper fieldId={fieldId} key={fieldId}>
@@ -521,7 +521,7 @@ export const RegisterCustomerForm = ({
                   </FieldWrapper>
                 );
               }
-
+ 
               default:
                 return null;
             }
@@ -544,13 +544,13 @@ export const RegisterCustomerForm = ({
             </Field>
           )}
         </div>
- 
-        <FormSubmit asChild>
+        <div className="flex justify-center">
+        <FormSubmit asChild className="flex justify-center">
           <SubmitButton messages={{ submit: t('submit'), submitting: t('submitting') }} />
         </FormSubmit>
+        </div>
       </Form>
+     
     </>
   );
 };
- 
- 

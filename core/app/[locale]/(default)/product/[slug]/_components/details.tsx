@@ -12,7 +12,7 @@ import { ReviewSummary, ReviewSummaryFragment } from './review-summary';
 import TabComponnet from '../_components/tab';
 import { log } from 'console';
 import { GetCurrencyList } from '~/components/ui/header/currency';
-import { CurrencyTextWrapper } from './exclvat';
+import ProductPriceDisplay from './exclvat';
 
 
 
@@ -108,81 +108,13 @@ export const Details = ({ product }: Props) => {
 
         </div>
       )}
-
-      
-      {product.prices && (
-        <div className="my-6 text-2xl font-bold lg:text-3xl .productView-price .price--main">
-          {showPriceRange ? (
-            <span className=' .productView-price .price--main'>
-
-              {format.number(product.prices.priceRange.min.value, {
-                style: 'currency',
-                currency: product.prices.price.currencyCode,
-              })}{' '}
-              -{' '}
-              {format.number(product.prices.priceRange.max.value, {
-                style: 'currency',
-                currency: product.prices.price.currencyCode,
-              })}
-            </span>
-          ) : (
-            <>
-              {product.prices.retailPrice?.value !== undefined && (
-                <span>
-                  {t('Prices.msrp')}:{' '}
-                  <span className="line-through">
-                    {format.number(product.prices.retailPrice.value, {
-                      style: 'currency',
-                      currency: product.prices.price.currencyCode,
-                    })}
-                  </span>
-                  <br />
-                </span>
-              )}
-              {product.prices.salePrice?.value !== undefined &&
-                product.prices.basePrice?.value !== undefined ? (
-                <>
-                  <span>
-                    {t('Prices.was')}:{' '}
-                    <span className="line-through">
-                      {format.number(product.prices.basePrice.value, {
-                        style: 'currency',
-                        currency: product.prices.price.currencyCode,
-                      })}
-                    </span>
-                  </span>
-                  <br />
-                  <span className=' .productView-price .price--main'>
-                    {t('Prices.now')}:{' '}
-                    {format.number(product.prices.price.value, {
-                      style: 'currency',
-                      currency: product.prices.price.currencyCode,
-                    })}
-                  </span>
-                </>
-              ) : (
-                product.prices.price.value && (
-                  <>
-                  <span className='.productView-price .price--main'>
-
-                    {format.number(product.prices.price.value, {
-                      style: 'currency',
-                      currency: product.prices.price.currencyCode,
-
-                    })}
-
-
-                  </span>
-                  
-                  </>
-                )
-              )}
-            </>
-          )}
-        </div>
-      )}
+     
 {/* <GetCurrencyList /> */}
-<CurrencyTextWrapper />
+{/* <CurrencyTextWrapper /> */}
+
+<ProductPriceDisplay 
+        product={product} 
+      />
       <ProductForm data={product} />
       <div className="feefo-reviews">
         <img

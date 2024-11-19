@@ -53,7 +53,7 @@
     "title": "Register Account",
     "heading": "New Account",
     "Form": {
-      "submit": "Create Account",
+      "submit": "CREATE ACCOUNT",
       "submitting": "Creating account...",
       "recaptchaText": "Pass ReCAPTCHA check",
       "confirmPassword": "Passwords don't match"
@@ -247,7 +247,7 @@
   },
   "Cart": {
     "title": "Cart",
-    "heading": "Your cart",
+    "heading": "Your Cart",
     "empty": "Your cart is empty",
     "emptyDetails": "Looks like you have not added anything to your cart. Go ahead & explore top categories",
     "proceedToCheckout": "checkout",

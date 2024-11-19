@@ -1900,3 +1900,40 @@ height: 32px;
 .cart-page .cart-checkout-btn{
     text-transform: uppercasei;
 }
+
+
+li.flex.items-center.BREADCRUMBS > .hover\:text-primary:hover {
+    color: #7F7F7F !important;
+}
+li.flex.items-center.BREADCRUMBS > .hover\:text-primary {
+    color: #a5a5a5 !important;
+}
+ 
+li.flex.items-center > a.hover\:text-\[\#a5a5a5\].focus-visible\:outline-none.focus-visible\:ring-4.focus-visible\:ring-primary\/20.text-custom-blue.font-extrabold
+{
+    color: #a5a5a5 !important;
+}
+.relative >.border-grays-200 {
+    border-color: #dcdcdc !important;
+ 
+}
+.relative >.border-grays-200:focus {
+    box-shadow: none;
+    border-color: #ca9618 !important;
+}
+.hover\:border-primary:hover {
+    --tw-border-opacity: 1;
+    border-color: #dcdcdc !important;
+}
+.hover\:border-primary:focus {
+    --tw-border-opacity: 1;
+    border-color: #ca9618 !important;
+}
+ 
+#field-12 {
+    order: 1;
+  }
+ 
+#field-13 {
+    order: 2;
+  }
