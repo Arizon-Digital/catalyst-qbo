@@ -75,10 +75,10 @@ const Header = ({
       <div className="navbar">
         <a className="contact-link" href="/about-us"><i className="contact-link"></i> About Us</a>
         <GetCurrencyList />
-        <a href="#" className="contact-link"><Inbox size={15} /> Home</a>
-        <a href="#" className="contact-link"><Phone size={15} /> USA : 646 878 6265</a>
-        <a href="#" className="contact-link"><Phone size={15} /> CAN : 438 800 3601</a>
-        <a href="#" className="contact-link"><Phone size={15} /> INT : +44 113 537 2137</a>
+        <a href="/contact-us" className="contact-link"><Inbox size={15} /> Contact US</a>
+        <a href="tel:646 895 6362" className="contact-link"><Phone size={15} /> USA: 646 895 6362 </a>
+        <a href="tel:438 800 0618" className="contact-link"><Phone size={15} /> CAN: 438 800 0618</a>
+        <a href="tel:+44 113 537 3762" className="contact-link"><Phone size={15} /> INT: +44 113 537 3762</a>
       </div>
       <header>
         <div className="header-2 relative nmd:static nmd:gap-[25px] p-[0] nmd:py-[25px] flex items-center justify-center">
