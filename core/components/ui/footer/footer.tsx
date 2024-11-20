@@ -85,9 +85,9 @@ const Footer = ({
                 </Fragment>
               ))}
             </address>
-            <p id="address"> UK - 0808 168 1234</p>
-            <p id="address"> USA - 646 895 6246 / 619 354 1821</p>
-            <p id="address"> Canada - 438 800 0605</p>
+            <p id="address" className="footer-contact"> UK - 0808 168 1234</p>
+            <p id="address" className="footer-contact"> USA - 646 895 6246 / 619 354 1821</p>
+            <p id="address" className="footer-contact"> Canada - 438 800 0605</p>
             {Boolean(contactInformation?.phone) && (
 
               <p id="address"> International- {contactInformation?.phone}</p>

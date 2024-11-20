@@ -38,18 +38,25 @@ export const MiniCart = ({cartItems,closeModal, cartId}: {cartItems: any, closeM
   return (
     <div className="relative" ref={cartRef}>
       {/* Cart Icon */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="relative p-2 hover:bg-gray-100 rounded-full"
-        aria-label="Shopping cart"
-      >
-        <ShoppingCart className="h-6 w-6" />
-        {hasItems && (
-          <span className="absolute -right-1 -top-1 min-w-[24px] rounded-[28px] border-2 border-white bg-primary px-1 py-px text-center text-xs font-semibold leading-normal text-white">
-            {cartItems?.lineItems?.totalQuantity}
-          </span>
-        )}
-      </button>
+     
+
+<button
+  onClick={() => setIsOpen(!isOpen)}
+  className="relative flex items-center gap-2 p-2 hover:bg-gray-100 rounded-full"
+  aria-label="Shopping cart"
+>
+  {/* Shopping Cart Icon */}
+  <ShoppingCart className="h-6 w-6" />
+
+  {/* Badge for Cart Quantity */}
+  <span className="absolute -right-3 -top-1 h-[24px] w-[24px] flex items-center justify-center rounded-full bg-[#1c2541] text-xs font-bold text-white">
+  {cartItems?.lineItems?.totalQuantity}
+  </span>
+
+  {/* Cart Label */}
+  <span className="text-[#1c2541] font-medium text-sm">Cart</span>
+</button>
+
  
       {/* Popup Cart */}
       {isOpen && (
