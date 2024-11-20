@@ -84,7 +84,7 @@ export default async function Cart() {
   let cartQty = lineItems?.reduce(function (total, cartItems) {
     return total + cartItems?.quantity;
   }, 0);
-  let cartItemsText = cartQty > 1 ? ' Items' : ' Item';
+  let cartItemsText = cartQty > 1 ? ' items' : ' item';
 
   return (
     <div className="cart-page mt-[-60px] flex flex-col justify-center">

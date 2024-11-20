@@ -410,11 +410,7 @@ td.flex.flex-1.flex-col.gap-2 {
     width: 95%;
     margin-left: 9%;
 }
-h2.page-heading {
-    font-size: 30px;
-    font-weight: 400;
-    margin-left: 12px;
-}
+
 nav.grid.flex-auto.auto-cols-frr.gap-8.sm\:grid-flow-col {
     background-color: #1a2348 !important;
 }
@@ -942,7 +938,7 @@ label.inline-flex.w-full.items-center.justify-between {
         overflow: auto;
         font-family: Oswald, arial, sans-serif;
         font-weight: 700;
-        letter-spacing: 2px;
+        letter-spacing: 1px;
         font-size: 15px;
     }
       
@@ -1937,3 +1933,14 @@ li.flex.items-center > a.hover\:text-\[\#a5a5a5\].focus-visible\:outline-none.fo
 #field-13 {
     order: 2;
   }
+
+
+  address#address {
+    line-height: 1.5;
+    font-weight: 400;
+}
+.w-\[33px\]
+{
+    width: 50px !important;
+    height: 60px !important;
+}
