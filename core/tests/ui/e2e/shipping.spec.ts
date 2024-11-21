@@ -16,7 +16,7 @@ async function addEstimatedShippingCosts(
   await page.getByLabel('Suburb/city').fill(city);
   await page.getByLabel('Zip/Postcode').fill(zip);
 
-  await page.getByRole('button', { name: 'Estimate shipping' }).click();
+  await page.getByRole('button', { name: 'CALCULATE SHIPPING' }).click();
   await page.getByRole('button', { name: 'Update shipping costs' }).click();
 }
 

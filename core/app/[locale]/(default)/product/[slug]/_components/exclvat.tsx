@@ -79,17 +79,13 @@ const ProductPriceDisplay = ({ product }: Props) => {
       )}
       {currency === 'GBP' && (
         <>
-          <p>Inc. VAT:</p>
-          <p>
-            {renderPrice(prices.price.value, prices.price.currencyCode)}
-          </p>
-          <p>Excl. VAT:</p>
-          <p>
-            {renderPrice(
+          <p className='pricevat'> <span className='prvat'> {renderPrice(prices.price.value, prices.price.currencyCode)} </span><span className='vat'> Inc. VAT</span></p>
+          
+          <p className='pricevats'> <span className='prvat'> {renderPrice(
               excludeTax?.price?.value || (prices.price.value / 1.2), 
               excludeTax?.price?.currencyCode || currency
-            )}
-          </p>
+            )} </span><span className='vat'>Excl. VAT</span></p>
+          
         </>
       )}
     </>

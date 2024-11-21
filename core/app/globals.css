@@ -954,6 +954,24 @@ label.inline-flex.w-full.items-center.justify-between {
         display: flex;
         padding: 0 0 20px;
     }
+    span.vat {
+        color: #ca9618;
+        font-size: 20px;
+        display: inline-block;
+        padding-left: 5px;
+        font-weight: 700;
+    }
+    span.prvat {
+        font-size: 35px;
+        margin-top: .375rem;
+        line-height: 1;
+        color: #1a2348;
+        font-weight: 700;
+    }
+    p.pricevat {
+        margin-top: 63px;
+        padding-top: 12px;
+    }
 .p-5 {
 margin-bottom: 50px;
 padding: 15px 25px;
@@ -1214,7 +1232,6 @@ width: auto;
         font-weight: 400;
         line-height: 1.5;
         font-family: "Roboto Slab", serif;
-        font-weight: 300 !important;
         color: #000;
     }
     
@@ -1708,6 +1725,9 @@ width: auto;
         .cart-page .cart-page-col2{
             width: 400px;
         }
+        p.pricevat {
+            width: 250px;
+        }
     }
 
     @media screen and (min-width: 769px){
@@ -1880,7 +1900,7 @@ height: 32px;
     border: 1px solid #ca9618;
     font-size: 13px !important;
     padding: 9px 24px;
-    width: 60%;
+    width: 65%;
     height: 35px;
     border-radius: 4px;
     background: #ca9618;
@@ -1956,4 +1976,5 @@ article.emthemesModez-newsletterForm {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
 }
