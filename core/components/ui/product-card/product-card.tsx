@@ -60,9 +60,11 @@ const ProductCard = async ({ id, name, href, image, price, subtitle, product }: 
           </Link>
         </h3>
         {subtitle && <p className="text-base text-gray-500 brand">{subtitle}</p>}
+        <div className='cardprice'>
         <ProductPriceDisplay
         product={product} 
       />
+      </div>
       </div>
     </div>
   );

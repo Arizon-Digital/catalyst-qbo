@@ -968,10 +968,7 @@ label.inline-flex.w-full.items-center.justify-between {
         color: #1a2348;
         font-weight: 700;
     }
-    p.pricevat {
-        margin-top: 63px;
-        padding-top: 12px;
-    }
+    
     .priced{
         display: flex;
     flex-direction: column;
@@ -986,6 +983,17 @@ label.inline-flex.w-full.items-center.justify-between {
         line-height: 1;
         margin-top: 12px;
         margin-bottom: 12px;
+    }
+    .cardprice {
+        color: #1a2348;
+        font-weight: 700;
+        /* color: #a5a5a5; */
+        font-size: 1rem;
+        /* margin-top: .375rem; */
+        line-height: 1;
+        /* margin-top: 12px; */
+        /* margin-bottom: 12px; */
+        text-align: center;
     }
 .p-5 {
 margin-bottom: 50px;
