@@ -1,8 +1,8 @@
 'use client';
  
-import { ShoppingCart } from 'lucide-react';
+import { Badge, ShoppingCart } from 'lucide-react';
 import { useLocale } from 'next-intl';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { z } from 'zod';
  
 import Minicart from '../ui/header/minicart';
