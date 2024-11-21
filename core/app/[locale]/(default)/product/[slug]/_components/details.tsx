@@ -100,22 +100,26 @@ export const Details = ({ product }: Props) => {
         </div>
 
       )}
-      {Boolean(product.weight) && (
-        <div>
-          <h3 className="font-semibold flex productView-info-name">Bulk Pricing  <p className="pr productView-info-value ">:
-            <a href="https://www.qualitybearingsonline.com/bulk-pricing/" onClick="event.stopPropagation();">Click Here to Enquire</a>
-          </p></h3>
 
-        </div>
-      )}
-     
-{/* <GetCurrencyList /> */}
-{/* <CurrencyTextWrapper /> */}
+      
+        {Boolean(product.weight) && (
+          <div>
+            <h3 className="font-semibold flex productView-info-name">Bulk Pricing  <p className="pr productView-info-value ">:
+              <a href="https://www.qualitybearingsonline.com/bulk-pricing/" onClick="event.stopPropagation();">Click Here to Enquire</a>
+            </p></h3>
 
-<ProductPriceDisplay 
-        product={product} 
-      />
-      <ProductForm data={product} />
+          </div>
+        )}
+    <div className='priced'>
+        {/* <GetCurrencyList /> */}
+        {/* <CurrencyTextWrapper /> */}
+      <span className='cntpriced'>
+        <ProductPriceDisplay
+          product={product}
+        />
+</span>
+        <ProductForm data={product} />
+      </div>
       <div className="feefo-reviews">
         <img
           alt="Feefo logo"

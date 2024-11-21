@@ -60,7 +60,7 @@ const ProductPriceDisplay = ({ product }: Props) => {
             </>
           )}
           {displayPrices.salePrice?.value !== undefined &&
-          displayPrices.basePrice?.value !== undefined ? (
+            displayPrices.basePrice?.value !== undefined ? (
             <>
               {t('Prices.was')}: {' '}
               {renderPrice(displayPrices.basePrice.value, displayPrices.price.currencyCode)}
@@ -80,12 +80,12 @@ const ProductPriceDisplay = ({ product }: Props) => {
       {currency === 'GBP' && (
         <>
           <p className='pricevat'> <span className='prvat'> {renderPrice(prices.price.value, prices.price.currencyCode)} </span><span className='vat'> Inc. VAT</span></p>
-          
+
           <p className='pricevats'> <span className='prvat'> {renderPrice(
-              excludeTax?.price?.value || (prices.price.value / 1.2), 
-              excludeTax?.price?.currencyCode || currency
-            )} </span><span className='vat'>Excl. VAT</span></p>
-          
+            excludeTax?.price?.value || (prices.price.value / 1.2),
+            excludeTax?.price?.currencyCode || currency
+          )} </span><span className='vat'>Excl. VAT</span></p>
+
         </>
       )}
     </>
