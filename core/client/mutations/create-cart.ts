@@ -1,4 +1,4 @@
-import { getSessionCustomerId } from '~/auth';
+import { getSessionCustomerAccessToken } from '~/auth';
 
 import { client } from '..';
 import { graphql, VariablesOf } from '../graphql';
@@ -21,7 +21,7 @@ type CreateCartInput = Variables['createCartInput'];
 type LineItems = CreateCartInput['lineItems'];
 
 export const createCart = async (cartItems: LineItems) => {
-  const customerId = await getSessionCustomerId();
+  const customerAccessToken = await getSessionCustomerAccessToken();
   let currencyCode: string = await getCurrencyCodeFn() || 'CAD';
 
   const response = await client.fetch({
@@ -32,7 +32,7 @@ export const createCart = async (cartItems: LineItems) => {
         currencyCode: currencyCode
       },
     },
-    customerId,
+    customerAccessToken,
     fetchOptions: { cache: 'no-store' },
   });
 

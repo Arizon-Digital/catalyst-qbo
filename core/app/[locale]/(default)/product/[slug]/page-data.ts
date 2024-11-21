@@ -1,6 +1,6 @@
 import { cache } from 'react';
- 
-import { getSessionCustomerId } from '~/auth';
+
+import { getSessionCustomerAccessToken } from '~/auth';
 import { client } from '~/client';
 import { ProductItemFragment } from '~/client/fragments/product-item';
 import { graphql, VariablesOf } from '~/client/graphql';
@@ -76,12 +76,13 @@ type Variables = VariablesOf<typeof ProductPageQuery>;
 export type CurrencyCode = Variables['currencyCode'];
  
 export const getProduct = cache(async (variables: Variables) => {
-  const customerId = await getSessionCustomerId();
+  const customerAccessToken = await getSessionCustomerAccessToken();
+
   const { data } = await client.fetch({
     document: ProductPageQuery,
     variables,
-    customerId,
-    fetchOptions: customerId ? { cache: 'no-store' } : { next: { revalidate } },
+    customerAccessToken,
+    fetchOptions: customerAccessToken ? { cache: 'no-store' } : { next: { revalidate } },
   });
  
   return data.site.product;

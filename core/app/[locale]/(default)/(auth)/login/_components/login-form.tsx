@@ -1,8 +1,8 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { ChangeEvent, useState } from 'react';
-import { useFormState, useFormStatus } from 'react-dom';
+import { ChangeEvent, useActionState, useState } from 'react';
+import { useFormStatus } from 'react-dom';
 import { Breadcrumbs as ComponentsBreadcrumbs } from '~/components/ui/breadcrumbs';
 
 import { Link } from '~/components/link';
@@ -41,7 +41,7 @@ export const LoginForm = () => {
 
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [isPasswordValid, setIsPasswordValid] = useState(true);
-  const [state, formAction] = useFormState(login, { status: 'idle' });
+  const [state, formAction] = useActionState(login, { status: 'idle' });
   const { accountState } = useAccountStatusContext();
 
   const isFormInvalid = state?.status === 'error';
@@ -75,7 +75,7 @@ export const LoginForm = () => {
           <p>{t('Form.error')}</p>
         </Message>
       )}
-      <Form action={formAction} className="mb-14 flex flex-col gap-3 md:p-8 lg:p-0">
+      <Form action={formAction} className="mb-8 flex flex-col gap-3 md:mb-14">
         <Field className="relative space-y-2 pb-7" name="email">
           <FieldLabel htmlFor="email">Email Address:</FieldLabel>
           <FieldControl asChild>
@@ -90,7 +90,7 @@ export const LoginForm = () => {
             />
           </FieldControl>
           <FieldMessage
-            className="absolute inset-x-0 bottom-0 inline-flex w-full text-sm text-error"
+            className="absolute inset-x-0 bottom-0 inline-flex w-full text-xs text-error"
             match="valueMissing"
           >
             {t('Form.enterEmailMessage')}
@@ -109,21 +109,21 @@ export const LoginForm = () => {
             />
           </FieldControl>
           <FieldMessage
-            className="absolute inset-x-0 bottom-0 inline-flex w-full text-sm text-error"
+            className="absolute inset-x-0 bottom-0 inline-flex w-full text-xs text-error"
             match="valueMissing"
           >
             {t('Form.entePasswordMessage')}
           </FieldMessage>
         </Field>
-        <div className="flex flex-col items-start md:flex-row md:items-center md:justify-start md:gap-10">
+        <div className="flex flex-col items-start md:flex-row md:items-center md:justify-start md:gap-2">
           <FormSubmit asChild>
             <SubmitButton />
           </FormSubmit>
           <Link
-            className="my-5 inline-flex items-center justify-start font-semiboldd text-primary hover:text-secondary md:my-0 reset"
-            href="/reset"
+            className="my-5 inline-flex items-center justify-start font-semibold text-primary hover:text-secondary md:my-0"
+            href="/login/forgot-password"
           >
-            {t('Form.resetPassword')}
+            {t('Form.forgotPassword')}
           </Link>
         </div>
       </Form>
