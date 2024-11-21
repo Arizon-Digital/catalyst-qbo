@@ -15,15 +15,17 @@ interface Currency {
 export const GetCurrencyList = () => {
   const [currency, setCurrency] = useState([]);
   const [currencyCode, setCurrencyCode] = useState('');
+  const [showExclTax, setShowExclTax] = useState(false);
   const router = useRouter();
-  const getCommonContext:any = useCommonContext();
+  const getCommonContext: any = useCommonContext();
+
   useEffect(() => {
     const getCurrencyData = async () => {
-      let currencyCookieData: string = await getCurrencyCodeFn() || 'CAD';
+      let currencyCookieData: string = (await getCurrencyCodeFn()) || 'CAD';
       setCurrencyCodeFn(currencyCookieData);
       setCurrencyCode(currencyCookieData);
       getCommonContext.setCurrencyCodeFn(currencyCookieData);
-      let currencyData: any = await getCurrencyListData();
+    let currencyData: any = await getCurrencyListData();
       let currencyOptions: any = currencyData?.map(
         ({
           code,
@@ -35,22 +37,24 @@ export const GetCurrencyList = () => {
           value: code,
           label: name,
         }),
-      )
+      );
       setCurrency(currencyOptions);
-    }
+      setShowExclTax(currencyCookieData === 'GBP');
+    };
     getCurrencyData();
-  }, [currencyCode]);
-  
+  }, []);
+
   const onCurrencyChange = (currencyCode: string) => {
     setCurrencyCodeFn(currencyCode);
     setCurrencyCode(currencyCode);
     getCommonContext.setCurrencyCodeFn(currencyCode);
+    setShowExclTax(currencyCode === 'GBP');
     router.refresh();
   };
-  
 
   return (
-    <Select
+    <div>
+      <Select
         name={`currency-selection`}
         id={`currency-selection`}
         options={currency}
@@ -58,6 +62,7 @@ export const GetCurrencyList = () => {
         placeholder='Select Currency'
         onValueChange={(value: string) => onCurrencyChange(value)}
       />
+      {showExclTax && <p className="tax-label">exclusive of tax.</p>}
+    </div>
   );
 };
-

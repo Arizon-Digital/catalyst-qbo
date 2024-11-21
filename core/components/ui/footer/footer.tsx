@@ -73,11 +73,12 @@ const Footer = ({
 
       {/* Contact Information Section */}
       <div className="flex flex-col gap-4">
-        <p id="address"> Quality Bearings Online Ltd</p>
+        
         {Boolean(contactInformation) && (
           <>
             <address className="not-italic" id="address">
-              {contactInformation?.address?.split('\n').map((line) => (
+            <p id="address"> Quality Bearings Online Ltd</p>
+            {contactInformation?.address?.split('\n').map((line) => (
                 <Fragment key={line}>
                   {line}
                   <br />

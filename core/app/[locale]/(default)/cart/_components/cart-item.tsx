@@ -13,6 +13,7 @@ const PhysicalItemFragment = graphql(`
     name
     brand
     sku
+     url
     image {
       url: urlTemplate(lossy: true)
     }
@@ -71,6 +72,7 @@ const DigitalItemFragment = graphql(`
     name
     brand
     sku
+     url
     image {
       url: urlTemplate(lossy: true)
     }
@@ -231,12 +233,15 @@ export const CartItem = ({ currencyCode, product }: Props) => {
  
           {/* Product name and SKU */}
           <td className="">
+          
             <p className="text-xl font-bold md:text-2xl" id="cartbrandname">
               {product.brand}
             </p>
+            
             <p className="text-xl font-bold md:text-2xl" id="cartproductname">
               {product.name}
             </p>
+            
           </td>
  
           {/* Original price */}

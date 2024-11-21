@@ -69,7 +69,7 @@ export const ShippingEstimator = ({ checkout, shippingCountries }: Props) => {
               onClick={() => setShowShippingInfo((open) => !open)}
               variant="subtle"
             >
-              {showShippingInfo ? t('cancel') : ('Calculate Shipping')}
+              {showShippingInfo ? <span className="italic">{t('cancel')}</span> : ('Calculate Shipping')}
             </Button>
           )}
         </div>

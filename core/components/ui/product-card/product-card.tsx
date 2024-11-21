@@ -6,6 +6,10 @@ import { Compare } from './compare';
 import QuickView from './Quickview';
 import { getProductData } from '~/components/common-functions';
 import { AddToCartButton } from './AddToCartButton';
+import ProductPriceDisplay from '~/app/[locale]/(default)/product/[slug]/_components/exclvat';
+
+
+
  
 interface Props {
   id: string;
@@ -34,7 +38,7 @@ const ProductCard = async ({ id, name, href, image, price, subtitle, product }: 
   };
  
   return (
-    <div className="group relative flex flex-col overflow-visible">
+    <div className="group product-card relative flex flex-col overflow-visible">
       <div className="relative flex justify-center pb-3">
         <div className="relative flex-auto aspect-square">
           {image ? (
@@ -56,7 +60,11 @@ const ProductCard = async ({ id, name, href, image, price, subtitle, product }: 
           </Link>
         </h3>
         {subtitle && <p className="text-base text-gray-500 brand">{subtitle}</p>}
-        <span className='price'>{price}</span>
+        <div className='cardprice'>
+        <ProductPriceDisplay
+        product={product} 
+      />
+      </div>
       </div>
     </div>
   );

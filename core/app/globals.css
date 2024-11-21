@@ -303,6 +303,7 @@ div#tabsection1 {
 ul li:nth-child(1) thead.table-head tr th:nth-child(2) {
     width: 12em;
 }
+
 div#nav-menu-viewport {
     color: #000;
     margin-top: -120px;
@@ -409,11 +410,7 @@ td.flex.flex-1.flex-col.gap-2 {
     width: 95%;
     margin-left: 9%;
 }
-h2.page-heading {
-    font-size: 30px;
-    font-weight: 400;
-    margin-left: 12px;
-}
+
 nav.grid.flex-auto.auto-cols-frr.gap-8.sm\:grid-flow-col {
     background-color: #1a2348 !important;
 }
@@ -908,7 +905,7 @@ label.inline-flex.w-full.items-center.justify-between {
         height: 44px !important;
     }
     .newsletter-container {
-        width: 77em;
+        /* width: 70px; */
         margin-left: 121px;
         font-size: 16px;
     }
@@ -941,7 +938,7 @@ label.inline-flex.w-full.items-center.justify-between {
         overflow: auto;
         font-family: Oswald, arial, sans-serif;
         font-weight: 700;
-        letter-spacing: 2px;
+        letter-spacing: 1px;
         font-size: 15px;
     }
       
@@ -956,6 +953,63 @@ label.inline-flex.w-full.items-center.justify-between {
       .footer-images {
         display: flex;
         padding: 0 0 20px;
+    }
+    span.vat {
+        color: #ca9618;
+        font-size: 20px;
+        display: inline-block;
+        padding-left: 5px;
+        font-weight: 700;
+    }
+    span.prvat {
+        font-size: 35px;
+        margin-top: .375rem;
+        line-height: 1;
+        color: #1a2348;
+        font-weight: 700;
+    }
+
+    .product-card span.vat{
+        color: #ca9618;
+        font-size: 10px;
+        display: inline-block;
+        padding-left: 5px;
+        font-weight: 700;
+    }
+    .product-card span.prvat {
+        font-size: 15px;
+        margin-top: .375rem;
+        line-height: 1;
+        color: #1a2348;
+        font-weight: 700;
+
+    }
+    
+    .priced{
+        display: flex;
+    flex-direction: column;
+    width: 300px;
+    }
+    span.cntpriced {
+        color: #1a2348;
+        font-weight: 700;
+        /* color: #a5a5a5; */
+        font-size: 35px;
+        margin-top: .375rem;
+        line-height: 1;
+        margin-top: 12px;
+        margin-bottom: 12px;
+    }
+    .cardprice {
+        color: #1a2348;
+        font-weight: 700;
+        /* color: #a5a5a5; */
+        font-size: 1rem;
+        /* margin-top: .375rem; */
+        line-height: 1;
+        /* margin-top: 12px; */
+        /* margin-bottom: 12px; */
+        text-align: center;
     }
 .p-5 {
 margin-bottom: 50px;
@@ -1217,7 +1271,6 @@ width: auto;
         font-weight: 400;
         line-height: 1.5;
         font-family: "Roboto Slab", serif;
-        font-weight: 300 !important;
         color: #000;
     }
     
@@ -1711,6 +1764,9 @@ width: auto;
         .cart-page .cart-page-col2{
             width: 400px;
         }
+        p.pricevat {
+            width: 250px;
+        }
     }
 
     @media screen and (min-width: 769px){
@@ -1883,7 +1939,7 @@ height: 32px;
     border: 1px solid #ca9618;
     font-size: 13px !important;
     padding: 9px 24px;
-    width: 60%;
+    width: 65%;
     height: 35px;
     border-radius: 4px;
     background: #ca9618;
@@ -1898,4 +1954,66 @@ height: 32px;
 
 .cart-page .cart-checkout-btn{
     text-transform: uppercasei;
+}
+
+
+li.flex.items-center.BREADCRUMBS > .hover\:text-primary:hover {
+    color: #7F7F7F !important;
+}
+li.flex.items-center.BREADCRUMBS > .hover\:text-primary {
+    color: #a5a5a5 !important;
+}
+ 
+li.flex.items-center > a.hover\:text-\[\#a5a5a5\].focus-visible\:outline-none.focus-visible\:ring-4.focus-visible\:ring-primary\/20.text-custom-blue.font-extrabold
+{
+    color: #a5a5a5 !important;
+}
+.relative >.border-grays-200 {
+    border-color: #dcdcdc !important;
+ 
+}
+.relative >.border-grays-200:focus {
+    box-shadow: none;
+    border-color: #ca9618 !important;
+}
+.hover\:border-primary:hover {
+    --tw-border-opacity: 1;
+    border-color: #dcdcdc !important;
+}
+.hover\:border-primary:focus {
+    --tw-border-opacity: 1;
+    border-color: #ca9618 !important;
+}
+ 
+#field-12 {
+    order: 1;
+  }
+ 
+#field-13 {
+    order: 2;
+  }
+
+
+  address#address {
+    line-height: 1.5;
+    font-weight: 400;
+}
+.w-\[33px\]
+{
+    width: 50px !important;
+    height: 60px !important;
+}
+.newsletter-container {
+    margin-right: 130px;
+}
+.footer-contact {
+    margin-bottom: -10px;
+}
+@media screen and (min-width: 768px) and (max-width: 1024px){
+article.emthemesModez-newsletterForm {
+    margin-left: -100px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 }

@@ -67,12 +67,15 @@ export const Footer = async () => {
       }
       logo={data.settings ? logoTransformer(data.settings) : undefined}
       paymentIcons={[
-        <AmazonIcon key="amazon" />,
+        
         <AmericanExpressIcon key="americanExpress" />,
-        <ApplePayIcon key="apple" />,
         <MastercardIcon key="mastercard" />,
         <PayPalIcon key="paypal" />,
         <VisaIcon key="visa" />,
+        <ApplePayIcon key="apple" />,
+        
+        
+        
       ]}
       sections={sections}
       socialMediaLinks={data.settings?.socialMediaLinks

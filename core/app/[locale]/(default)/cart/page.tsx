@@ -69,7 +69,7 @@ export default async function Cart() {
   const breadcrumbs: any = [
     {
       label: 'YOUR CART',
-      href: '#',
+      href: '/cart/',
     },
   ];
   const cart = data.site.cart;
@@ -84,9 +84,10 @@ export default async function Cart() {
   let cartQty = lineItems?.reduce(function (total, cartItems) {
     return total + cartItems?.quantity;
   }, 0);
-  let cartItemsText = cartQty > 1 ? ' Items' : ' Item';
+  let cartItemsText = cartQty > 1 ? ' items' : ' item';
 
   return (
+    
     <div className="cart-page mt-[-60px] flex flex-col justify-center">
       <ComponentsBreadcrumbs breadcrumbs={breadcrumbs} />
       <h1 className="cart-heading mb-[0.75rem] text-[25px] font-normal">{`${t('heading')} (${cartQty}${cartItemsText})`}</h1>
@@ -107,6 +108,7 @@ export default async function Cart() {
               <CartItem currencyCode={cart.currencyCode} key={product.entityId} product={product} />
             ))}
           </table>
+        
           <ul className="cart-item-tab rounded-[4px] border border-[#dcdcdc] py-[6px] text-[1rem] md:hidden">
             {lineItems.map((product) => (
               <CartItem currencyCode={cart.currencyCode} key={product.entityId} product={product} />
@@ -209,17 +211,7 @@ export default async function Cart() {
         </div>
       </div>
       <CartViewed checkout={checkout} currencyCode={cart.currencyCode} lineItems={lineItems} />
-      <div data-content-region="cart_below_content">
-        <script
-          type="text/javascript"
-          src="https://api.feefo.com/api/javascript/quality-bearings-online"
-          async
-        ></script>{' '}
-        <div
-          id="feefo-service-review-carousel-widgetIdd"
-          className="feefo-review-carousel-widget-service reviews"
-        ></div>
-      </div>
+      
     </div>
   );
 }

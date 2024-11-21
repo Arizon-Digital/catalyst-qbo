@@ -12,13 +12,11 @@ import { localeLanguageRegionMap } from '~/i18n/routing';
  
 import { Link } from '../link';
 import { Button } from '../ui/button';
-import { Dropdown } from '../ui/dropdown';
 import { Header as ComponentsHeader } from '../ui/header';
  
 import { logout } from './_actions/logout';
 import { HeaderFragment } from './fragment';
 import { QuickSearch } from './quick-search';
- 
  
 interface Props {
   cart: ReactNode;
@@ -36,10 +34,6 @@ export const Header = async ({ cart }: Props) => {
  
   const data = readFragment(HeaderFragment, response).site;
  
-  /**  To prevent the navigation menu from overflowing, we limit the number of categories to 6.
-   To show a full list of categories, modify the `slice` method to remove the limit.
-   Will require modification of navigation menu styles to accommodate the additional categories.
-   */
   const categoryTree = data.categoryTree.slice(0, 6);
  
   const links = categoryTree.map(({ name, path, children }) => ({
@@ -59,42 +53,51 @@ export const Header = async ({ cart }: Props) => {
     <ComponentsHeader
       account={
         customerId ? (
-          <Dropdown
-            items={[
-              { href: '/account', label: t('Account.myAccount') },
-              { href: '/account/addresses', label: t('Account.addresses') },
-              { href: '/account/settings', label: t('Account.accountSettings') },
-              { action: logout, name: t('Account.logout') },
-            ]}
-            trigger={
-              <Button
-                aria-label={t('Account.account')}
-                className="p-3 text-black hover:bg-transparent hover:text-primary"
-                variant="subtle"
+          <div className="flex items-center">
+            <div className='user-icon'> 
+              <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="6" r="4" stroke="#000000" stroke-width="1"></circle>
+                <path d="M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="#000000" stroke-width="1" fill="none"></path>
+                <line x1="4" y1="20" x2="20" y2="20" stroke="#000000" stroke-width="1" stroke-linecap="round"></line>
+              </svg>
+            </div>    
+            <div className='flex sign/registration'>
+              <Link 
+                href="/account"
+                className="flex items-center p-3"
+                aria-label={t('Account.myAccount')}
               >
-                <User>
-                  <title>{t('Account.account')}</title>
-                </User>
-              </Button>
-             
-            }
-          />
-         
+                Account
+              </Link>
+              <form action={logout}>
+                <Button 
+                  type="submit"
+                  variant="subtle" 
+                  className="p-3 hover:bg-transparent"
+                >
+                 Sign Out
+                </Button>
+              </form>
+            </div>            
+          </div>
         ) : (
           <div className="flex items-center">
-            <div className='user-icon'> <User/> </div>  
-   <div className='flex sign/registration'>
-   <Link aria-label="Login" className="flex items-center p-3" href="/login">
-{/* Add margin-right to space the icon from the text */}
-    Sign In
-  </Link>
-  <Link aria-label="Registration" className="p-3" href="/register/">
-    Register
-  </Link>
- 
-    </div>            
- 
-</div>
+            <div className='user-icon'> 
+              <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="6" r="4" stroke="#000000" stroke-width="1"></circle>
+                <path d="M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="#000000" stroke-width="1" fill="none"></path>
+                <line x1="4" y1="20" x2="20" y2="20" stroke="#000000" stroke-width="1" stroke-linecap="round"></line>
+              </svg>
+            </div>    
+            <div className='flex sign/registration'>
+              <Link aria-label="Login" className="flex items-center p-3" href="/login">
+                Sign In
+              </Link>
+              <Link aria-label="Registration" className="p-3" href="/register/">
+                Register
+              </Link>
+            </div>            
+          </div>
         )
       }
       activeLocale={locale}
@@ -140,4 +143,3 @@ export const HeaderSkeleton = () => (
     </div>
   </header>
 );
- 
