@@ -905,7 +905,7 @@ label.inline-flex.w-full.items-center.justify-between {
         height: 44px !important;
     }
     .newsletter-container {
-        width: 70px;
+        /* width: 70px; */
         margin-left: 121px;
         font-size: 16px;
     }
@@ -1943,4 +1943,17 @@ li.flex.items-center > a.hover\:text-\[\#a5a5a5\].focus-visible\:outline-none.fo
 {
     width: 50px !important;
     height: 60px !important;
+}
+.newsletter-container {
+    margin-right: 130px;
+}
+.footer-contact {
+    margin-bottom: -10px;
+}
+@media screen and (min-width: 768px) and (max-width: 1024px){
+article.emthemesModez-newsletterForm {
+    margin-left: -100px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 }
