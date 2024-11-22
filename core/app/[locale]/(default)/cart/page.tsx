@@ -190,7 +190,7 @@ export default async function Cart() {
                       x="1"
                       y="20"
                       fontFamily="Arial, sans-serif"
-                      font-size="20"
+                      fontSize="20"
                       fill="#000000"
                       font-weight="bold"
                     >
@@ -200,7 +200,7 @@ export default async function Cart() {
                       x="20"
                       y="20"
                       fontFamily="Arial, sans-serif"
-                      font-size="20"
+                      fontSize="20"
                       fill="#000000"
                     >
                       Pay
