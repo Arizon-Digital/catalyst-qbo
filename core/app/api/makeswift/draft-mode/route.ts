@@ -3,7 +3,9 @@ import { NextRequest } from 'next/server';
 
 export const GET = async (request: NextRequest) => {
   if (request.headers.get('x-makeswift-api-key') === process.env.MAKESWIFT_SITE_API_KEY) {
-    await draftMode().enable();
+    const draft = await draftMode();
+
+    draft.enable();
   }
 
   return new Response(null);
