@@ -6,11 +6,15 @@ import { Link } from '~/components/link';
 import { useCart } from '~/lib/hooks/useCart';
 import { RemoveFromCartButton } from '~/app/[locale]/(default)/cart/_components/remove-from-cart-button';
 import { CheckoutButtonPopUp } from './checkout-button';
+// import { imageManagerImageUrl } from '~/lib/store-assets';
+import { BcImage } from '~/components/bc-image';
+import { Image } from '@makeswift/runtime/controls';
  
 export const MiniCart = ({cartItems,closeModal, cartId}: {cartItems: any, closeModal:any, cartId: string}) => {
   const [isOpen, setIsOpen] = useState(false);
   const cartRef = useRef<HTMLDivElement>(null);
   const { cart, loading, removeItem } = useCart();
+  // const minicart = imageManagerImageUrl('mini-cart-icon', '50w');
  
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -42,11 +46,12 @@ export const MiniCart = ({cartItems,closeModal, cartId}: {cartItems: any, closeM
 
 <button
   onClick={() => setIsOpen(!isOpen)}
-  className="relative flex items-center gap-2 p-2 hover:bg-gray-100 rounded-full"
+  className="relative flex items-center gap-2 p-2 rounded-full"
   aria-label="Shopping cart"
 >
   {/* Shopping Cart Icon */}
-  <ShoppingCart className="h-6 w-6" />
+  {/* <ShoppingCart className="h-6 w-6" /> */}
+  <img src="https://cdn11.bigcommerce.com/s-ur7wjnshy8/images/stencil/original/image-manager/mini-cart-icon.png" alt="mini-cart"  width="50" height="50"/>
 
   {/* Badge for Cart Quantity */}
   <span className="absolute -right-3 -top-1 h-[24px] w-[24px] flex items-center justify-center rounded-full bg-[#1c2541] text-xs font-bold text-white">
