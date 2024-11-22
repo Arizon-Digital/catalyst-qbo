@@ -77,9 +77,7 @@ const Header = ({
         <a className="contact-link" href="/about-us"><i className="contact-link"></i> About Us</a>
         <GetCurrencyList />
         <a href="/contact-us" className="contact-link"><Inbox size={15} /> Contact US</a>
-        <a href="tel:646 895 6362" className="contact-link"><Phone size={15} /> USA: 646 895 6362 </a>
         <a href="tel:438 800 0618" className="contact-link"><Phone size={15} /> CAN: 438 800 0618</a>
-        <a href="tel:+44 113 537 3762" className="contact-link"><Phone size={15} /> INT: +44 113 537 3762</a>
       </div>
       <header>
         <div className="header-2 relative nmd:static nmd:gap-[25px] p-[0] nmd:py-[25px] flex items-center justify-center">
@@ -211,12 +209,12 @@ const Header = ({
           <article className="hb-item">
             <div className="hb-card">
               <figure className="hb-image">
-                <a href="https://www.qualitybearingsonline.com/customer-service/" title="Excellent Customer Service">
+                <a href="https://www.qualitybearingsonline.com/customer-service/" title="Free Delivery Over $200.00">
                   <img src="https://www.qualitybearingsonline.com/content/NewSite/Customer-Service.png" alt="Customer Service" />
                 </a>
               </figure>
               <div className="hb-text">
-                <a href="https://www.qualitybearingsonline.com/customer-service/" title="Excellent Customer Service">Excellent Customer<br />Service</a>
+                <a href="https://www.qualitybearingsonline.com/customer-service/" title="Excellent Customer Service">Free Delivery <br />Over $200.00</a>
               </div>
             </div>
           </article>

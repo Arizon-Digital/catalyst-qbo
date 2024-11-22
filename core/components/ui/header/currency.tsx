@@ -61,6 +61,7 @@ export const GetCurrencyList = () => {
         value={currencyCode}
         placeholder='Select Currency'
         onValueChange={(value: string) => onCurrencyChange(value)}
+        
       />
       {showExclTax && <p className="tax-label">exclusive of tax.</p>}
     </div>
