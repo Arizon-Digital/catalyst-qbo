@@ -99,24 +99,23 @@ export const Details = ({ product, optionValueIds }: Props) => {
 
       )}
 
-      
-        {Boolean(product.weight) && (
-          <div>
-            <h3 className="font-semibold flex productView-info-name">Bulk Pricing  <p className="pr productView-info-value ">:
-              <a href="https://www.qualitybearingsonline.com/bulk-pricing/" onClick="event.stopPropagation();">Click Here to Enquire</a>
-            </p></h3>
 
-          </div>
-        )}
-    <div className='priced'>
+      {Boolean(product.weight) && (
+        <div>
+          <h3 className="font-semibold flex productView-info-name">Bulk Pricing  <p className="pr productView-info-value ">:
+            <a href="https://www.qualitybearingsonline.com/bulk-pricing/" onClick="event.stopPropagation();">Click Here to Enquire</a>
+          </p></h3>
+
+        </div>
+      )}
+      <div className='priced'>
         {/* <GetCurrencyList /> */}
         {/* <CurrencyTextWrapper /> */}
-        
-      <span className='cntpriced'>
-        <ProductPriceDisplay
-          product={product}
-        />
-</span>
+        <span className='cntpriced'>
+          <ProductPriceDisplay
+            product={product}
+          />
+        </span>
         <ProductForm data={product} />
       </div>
       <div className="feefo-reviews">
