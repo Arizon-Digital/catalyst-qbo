@@ -63,7 +63,7 @@ export const GetCurrencyList = () => {
         onValueChange={(value: string) => onCurrencyChange(value)}
 
       />
-      {showExclTax && <p className="tax-label">exclusive of tax.</p>}
+     
     </div>
   );
 };
