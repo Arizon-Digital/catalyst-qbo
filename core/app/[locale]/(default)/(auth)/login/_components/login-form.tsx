@@ -120,7 +120,7 @@ export const LoginForm = () => {
             <SubmitButton />
           </FormSubmit>
           <Link
-            className="my-5 inline-flex items-center justify-start font-semibold text-primary hover:text-secondary md:my-0"
+            className="my-5 inline-flex items-center justify-start font-semibold  hover:text-secondary md:my-0"
             href="/login/forgot-password"
           >
             {t('Form.forgotPassword')}

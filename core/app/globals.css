@@ -795,7 +795,7 @@ div#Canada a {
     p#createanaccount {
         background: #fff;
         font-family: "Roboto Slab", serif;
-        font-weight: 300;
+        font-weight: 500;
         font-size: 16px;
     }
  form.text-base.mb-14.flex.flex-col.gap-3.md\:p-8.lg\:p-0 {
@@ -814,6 +814,7 @@ div#Canada a {
  ul.list-disc.ps-4 {
     display: flow !important;
     margin-left: 36px;
+    font-weight: 300;
 }
 div#background {
     background-color: white;
@@ -876,6 +877,7 @@ label.inline-flex.w-full.items-center.justify-between {
     }
     a#register {
         width: 60% !important;
+        text-transform: uppercase;
     }
     
     .flex.sign\/registration {
@@ -1998,3 +2000,115 @@ li.flex.items-center > a.hover\:text-\[\#a5a5a5\].focus-visible\:outline-none.fo
     width: 50px !important;
     height: 60px !important;
 }
+
+
+
+.flex.flex-col.gap-4.f1 {
+    padding-right: 250px;
+}
+nav.grid.auto-cols-fr.gap-8.sm\:grid-flow-col {
+    padding-right: 250px;
+}
+section.section-flex {
+    margin-left: 100px;
+    margin-top: 50px;
+}
+ 
+.section-flex {
+    display: flex;
+    flex-direction: column;
+  }
+ 
+  @media (min-width: 768px) {
+    .section-flex {
+      flex-direction: row;
+    }
+  }
+  @media (min-width: 700px) and (max-width: 900px) {
+    section.section-flex{
+        margin-top: 100px;
+        margin-left: 50px;
+    }
+    .flex.flex-col.gap-4.f1 {
+        padding-right: 10px;
+    }
+    nav.grid.auto-cols-fr.gap-8.sm\:grid-flow-col {
+        padding-right: 10px;
+    }
+    .newsletter-container{
+        margin-left: 50px;  
+    }
+    }
+    @media (min-width: 900px) and (max-width: 1100px) {
+    section.section-flex{
+        margin-top: 100px;
+        margin-left: 100px;
+    }
+    .flex.flex-col.gap-4.f1 {
+        padding-right: 10px;
+    }
+    nav.grid.auto-cols-fr.gap-8.sm\:grid-flow-col {
+        padding-right: 10px;
+    }
+    }
+    @media (min-width: 1100px) and (max-width: 1280px) {
+    section.section-flex{
+        margin-top: 100px;
+        margin-left: 150px;
+    }
+    .flex.flex-col.gap-4.f1 {
+        padding-right: 200px;
+    }
+    nav.grid.auto-cols-fr.gap-8.sm\:grid-flow-col {
+        padding-right: 200px;
+    }
+    }
+    @media (min-width: 1280px) and (max-width: 1440px) {
+        section.section-flex{
+            margin-top: 100px;
+            margin-left: 150px;
+        }
+        .flex.flex-col.gap-4.f1 {
+            padding-right: 200px;
+        }
+        nav.grid.auto-cols-fr.gap-8.sm\:grid-flow-col {
+            padding-right: 200px;
+        }
+        }
+    @media  (min-width: 2560px) {
+        article.emthemesModez-newsletterForm {
+            margin-left: 400px;
+        }
+    section.section-flex{
+        margin-top: 100px;
+        margin-left: 400px;
+    }
+    .flex.flex-col.gap-4.f1 {
+        padding-right: 500px;
+    }
+    nav.grid.auto-cols-fr.gap-8.sm\:grid-flow-col {
+        padding-right: 500px;
+    }
+    }
+    @media (max-width: 600px) {
+        .flex.gap-6 {
+            margin-left: 10px;
+            gap: 1rem;
+        }
+    section.section-flex{
+        margin-top: 10px;
+        margin-left: 50px;
+    }
+    .flex.flex-col.gap-4.f1 {
+        padding-right: 10px;
+    }
+    nav.grid.auto-cols-fr.gap-8.sm\:grid-flow-col {
+        padding-right: 10px;
+    }
+    .newsletter-container{
+        margin-right: 10px;
+    }
+    form.form {
+        margin-left: 15px;
+    }
+    }

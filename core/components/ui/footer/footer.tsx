@@ -1,42 +1,42 @@
 import { Fragment, ReactNode } from 'react';
-
+ 
 import { BcImage } from '~/components/bc-image';
 import { Link as CustomLink } from '~/components/link';
 import { cn } from '~/lib/utils';
 import { Phone, Inbox } from 'lucide-react';
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
-
+ 
 import { Locale } from './locale';
 import CookieConsent from '~/components/header/cookie-consent';
 import { NewsLetterSubscriptions } from './news-letter-subscription';
 import { getChannelIdFromLocale } from '~/channels.config';
-
-
+ 
+ 
 interface Image {
   altText: string;
   src: string;
 }
-
+ 
 interface Link {
   href: string;
   label: string;
 }
-
+ 
 interface Section {
   title?: string;
   links: Link[];
 }
-
+ 
 interface SocialMediaLink {
   href: string;
   icon: ReactNode;
 }
-
+ 
 interface ContactInformation {
   address?: string;
   phone?: string;
 }
-
+ 
 interface Props {
   className?: string;
   contactInformation?: ContactInformation;
@@ -46,7 +46,7 @@ interface Props {
   sections: Section[]; // Sections for navigation links
   socialMediaLinks?: SocialMediaLink[];
 }
-
+ 
 const Footer = ({
   className,
   contactInformation,
@@ -69,39 +69,39 @@ const Footer = ({
         </div>
       </article>
     </nav>
-    <section className="flex flex-col gap-8 border-t border-gray-200 px-4 py-10 sm:px-10 md:flex-row lg:gap-4 lg:px-12 2xl:px-0">
-
+    <section className="section-flex ">
+ 
       {/* Contact Information Section */}
-      <div className="flex flex-col gap-4">
-        
+      <div className="flex flex-col gap-4 f1">
+       
         {Boolean(contactInformation) && (
           <>
             <address className="not-italic" id="address">
             <p id="address"> Quality Bearings Online Ltd</p>
-            {contactInformation?.address?.split('\n').map((line) => (
+            {/* {contactInformation?.address?.split('\n').map((line) => (
                 <Fragment key={line}>
                   {line}
                   <br />
                 </Fragment>
-              ))}
+              ))} */}
             </address>
-            <p id="address" className="footer-contact"> UK - 0808 168 1234</p>
-            <p id="address" className="footer-contact"> USA - 646 895 6246 / 619 354 1821</p>
+            {/* <p id="address" className="footer-contact"> UK - 0808 168 1234</p>
+            <p id="address" className="footer-contact"> USA - 646 895 6246 / 619 354 1821</p> */}
             <p id="address" className="footer-contact"> Canada - 438 800 0605</p>
-            {Boolean(contactInformation?.phone) && (
-
+            {/* {Boolean(contactInformation?.phone) && (
+ 
               <p id="address"> International- {contactInformation?.phone}</p>
-
-
-            )}
+ 
+ 
+            )} */}
           </>
         )}
-
+ 
         <a className="contactus" href="/contact-us">
-
+ 
           <p id="address">Contact us</p>
         </a>
-
+ 
         {/* Social Media Links */}
         {Boolean(socialMediaLinks) && (
           <nav aria-label="Social media links" className="block">
@@ -117,9 +117,9 @@ const Footer = ({
           </nav>
         )}
       </div>
-
-
-      <nav className="grid flex-auto auto-cols-fr gap-8 sm:grid-flow-col">
+ 
+ 
+      <nav className="grid auto-cols-fr gap-8 sm:grid-flow-col">
         {sections.map((section) => (
           <div key={section.title}>
             <h3 className="mb-4 text-lg font-bold" id='footer headings'>Navigation </h3>
@@ -161,14 +161,15 @@ const Footer = ({
                 <a href="/sitemap">Sitemap</a>
               </li>
             </ul>
-
+ 
           </div>
         ))}
       </nav>
-
+ 
       {/* Additional Section */}
       <div className="flex flex-col gap-4">
-        <h3 className="mb-4 text-lg font-bold">Additional Section</h3>
+        <img src="https://cdn11.bigcommerce.com/s-ur7wjnshy8/images/stencil/original/image-manager/footer-logo.png"></img>
+        {/* <h3 className="mb-4 text-lg font-bold">Additional Section</h3> */}
         <article className="footer-info-col footer-info-col--other">
           <div className="footer-images footer-images-flex">
             <img src="https://cdn11.bigcommerce.com/s-03842/content/../product_images/uploaded_images/sc21.png" alt="Supply Chains Solutions" height="75" width="300" />
@@ -192,36 +193,36 @@ const Footer = ({
               </li>
             </ul>
           </div>
-
+ 
           <div className="footer-apps footer-apps-desktop">
             <h2 className="footer-info-heading">Follow Us on Social Media</h2>
             <ul className='socialmedia'>
               <li className='contactfooter'>
-                <a href="https://www.facebook.com" className="contact-links" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.facebook.com/qualitybearings" className="contact-links" target="_blank" rel="noopener noreferrer">
                   <FaFacebook size={35} />
                 </a>
               </li>
               <li className='contactfooter'>
-                <a href="https://www.instagram.com" className="contact-links" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.instagram.com/qualitybearings/" className="contact-links" target="_blank" rel="noopener noreferrer">
                   <FaInstagram size={35} />
                 </a>
               </li>
               <li className='contactfooter'>
-                <a href="https://www.linkedin.com" className="contact-links" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/company/quality-bearings-online-limited/" className="contact-links" target="_blank" rel="noopener noreferrer">
                   <FaLinkedin size={35} />
                 </a>
               </li>
             </ul>
           </div>
-
-
-
-
+ 
+ 
+ 
+ 
           <div data-content-region="ssl_site_seal--global"></div>
         </article>
       </div>
     </section>
-
+ 
     <section className="flex flex-col gap-10 border-t border-gray-200 px-4 py-8 sm:gap-8 sm:px-10 sm:py-6 lg:hidden lg:px-12 2xl:px-0">
       <Locale />
       <div className="flex w-full flex-col justify-between gap-10 sm:flex-row sm:gap-8">
@@ -229,7 +230,7 @@ const Footer = ({
         <p className="textscopy">{copyright}</p>
       </div>
     </section>
-
+ 
     <section className="hidden justify-between gap-8 border-t border-gray-200 px-4 py-6 sm:px-10 lg:flex lg:px-12 2xl:px-0" id="borderfooter">
       <p className="textscopy">{copyright}</p>
       <div className="flex gap-8">
@@ -242,7 +243,8 @@ const Footer = ({
     <CookieConsent />
   </footer>
 );
-
+ 
 Footer.displayName = 'Footer';
-
+ 
 export { Footer };
+ 
