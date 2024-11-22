@@ -152,7 +152,7 @@ const Footer = ({
                 <a href="/customer-reviews">Customer Reviews</a>
               </li>
               <li className='navigationfooter'>
-                <a href="/terms-conditions">Terms & Conditions</a>
+                <a href="/terms-and-conditions">Terms & Conditions</a>
               </li>
               <li className='navigationfooter'>
                 <a href="/blog">Blog</a>
