@@ -51,7 +51,7 @@ export const CartIcon = ({ count: serverCount }: CartIconProps) => {
     <>
       <span className="sr-only">Cart Items</span>
       <ShoppingCart aria-hidden="true" />
-      <Badge>{count}</Badge>
+      {/* <Badge>{count}</Badge> */}
     </>
   );
 };
