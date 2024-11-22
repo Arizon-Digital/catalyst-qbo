@@ -23,7 +23,7 @@ test('Edit product quantity in cart', async ({ page }) => {
   await page.getByRole('link', { name: 'Cart Items 1' }).click();
 
   await expect(page.getByRole('heading', { level: 1, name: 'Your cart' })).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Proceed to checkout' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Checkout now' })).toBeVisible();
 
   await page.getByRole('button', { name: 'Increase count' }).click();
 
@@ -33,12 +33,12 @@ test('Edit product quantity in cart', async ({ page }) => {
   await expect(page.getByRole('link', { name: 'Cart Items 1' })).toBeVisible();
 });
 
-test('Proceed to checkout', async ({ page }) => {
+test('Checkout now', async ({ page }) => {
   await page.getByRole('link', { name: 'Cart Items 1' }).click();
 
   await expect(page.getByRole('heading', { level: 1, name: 'Your cart' })).toBeVisible();
 
-  await page.getByRole('button', { name: 'Proceed to checkout' }).click();
+  await page.getByRole('button', { name: 'Checkout now' }).click();
 
   await page.waitForURL('**/checkout', {
     waitUntil: 'networkidle',

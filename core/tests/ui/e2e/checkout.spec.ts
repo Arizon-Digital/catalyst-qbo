@@ -60,7 +60,7 @@ test.describe('desktop', () => {
     await page.getByRole('button', { name: 'Add to Cart' }).first().isEnabled();
     await page.getByRole('link', { name: 'Cart Items 1' }).click();
     await page.getByRole('heading', { level: 1, name: 'Your cart' }).click();
-    await page.getByRole('button', { name: 'Proceed to checkout' }).click();
+    await page.getByRole('button', { name: 'Checkout now' }).click();
     await page
       .getByLabel('Email')
       .fill(faker.internet.email({ firstName, lastName, provider: 'example.com' }));
@@ -95,7 +95,7 @@ test.describe('desktop', () => {
     await page.getByRole('button', { name: 'Add to Cart' }).first().isEnabled();
     await page.getByRole('link', { name: 'Cart Items 1' }).click();
     await page.getByRole('heading', { level: 1, name: 'Your cart' }).click();
-    await page.getByRole('button', { name: 'Proceed to checkout' }).click();
+    await page.getByRole('button', { name: 'Checkout now' }).click();
 
     await page.waitForRequest('**/internalapi/v1/store/countries');
     await page
@@ -130,7 +130,7 @@ test.describe('mobile', () => {
     await page.getByRole('button', { name: 'Add to Cart' }).first().isEnabled();
     await page.getByRole('link', { name: 'Cart Items 1' }).click();
     await page.getByRole('heading', { level: 1, name: 'Your cart' }).click();
-    await page.getByRole('button', { name: 'Proceed to checkout' }).click();
+    await page.getByRole('button', { name: 'Checkout now' }).click();
     await page
       .getByLabel('Email')
       .fill(faker.internet.email({ firstName, lastName, provider: 'example.com' }));

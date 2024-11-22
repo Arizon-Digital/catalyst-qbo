@@ -14,7 +14,7 @@ test.beforeEach(async ({ page }) => {
   await page.getByRole('link', { name: 'Cart Items 1' }).click();
 
   await expect(page.getByRole('heading', { level: 1, name: 'Your cart' })).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Proceed to checkout' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Checkout now' })).toBeVisible();
 
   await page.getByRole('button', { name: 'Add' }).nth(1).click();
 });
@@ -47,7 +47,7 @@ test('Coupon code fails', async ({ page }) => {
 });
 
 test('Apply coupon on checkout', async ({ page }) => {
-  await page.getByRole('button', { name: 'Proceed to checkout' }).click();
+  await page.getByRole('button', { name: 'Checkout now' }).click();
 
   await expect(page.getByRole('link', { name: 'Coupon/Gift Certificate' })).toBeVisible();
   await expect(page.getByText('Total (USD) $225.00')).toBeVisible();

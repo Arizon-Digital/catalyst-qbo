@@ -13,7 +13,7 @@ const InternalButton = () => {
 
   return (
     <Button className="cart-checkout-btn mt-6 p-[14px_36px] h-[45px]" loading={pending} loadingText={t('loading')}>
-      {t('proceedToCheckout')}
+      CHECKOUT NOW
     </Button>
   );
 };
