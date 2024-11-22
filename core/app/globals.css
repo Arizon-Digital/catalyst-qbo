@@ -8,6 +8,10 @@
     width: 20%;
     margin-bottom: 5px;
 }
+p.recently {
+    font-size: 17px;
+    font-weight: 300;
+}
 .title {
     font-weight: 400;
     font-size: 1rem;
