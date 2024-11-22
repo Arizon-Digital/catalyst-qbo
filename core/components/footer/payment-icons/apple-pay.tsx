@@ -7,6 +7,6 @@ export const ApplePayIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({ 
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <text x="1" y="20" font-family="Arial, sans-serif" font-size="20" fill="#ffffff" font-weight="bold">G</text><text x="20" y="20" font-family="Arial, sans-serif" font-size="20" fill="#ffffff">Pay</text>
+    <text x="1" y="20" fontFamily="Arial, sans-serif" font-size="20" fill="#ffffff" font-weight="bold">G</text><text x="20" y="20" fontFamily="Arial, sans-serif" font-size="20" fill="#ffffff">Pay</text>
   </svg>
 );

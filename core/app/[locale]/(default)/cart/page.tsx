@@ -189,7 +189,7 @@ export default async function Cart() {
                     <text
                       x="1"
                       y="20"
-                      font-family="Arial, sans-serif"
+                      fontFamily="Arial, sans-serif"
                       font-size="20"
                       fill="#000000"
                       font-weight="bold"
@@ -199,7 +199,7 @@ export default async function Cart() {
                     <text
                       x="20"
                       y="20"
-                      font-family="Arial, sans-serif"
+                      fontFamily="Arial, sans-serif"
                       font-size="20"
                       fill="#000000"
                     >

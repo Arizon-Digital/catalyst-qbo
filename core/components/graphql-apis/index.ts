@@ -2,7 +2,7 @@
 
 import { client } from "~/client";
 import { graphql } from "~/client/graphql";
-import { getSessionCustomerId } from "~/auth";
+import { getSessionCustomerAccessToken } from "~/auth";
 
 
 const GET_RECENTLY_VIEWED_PRODUCTS = graphql(`
@@ -38,7 +38,7 @@ const GET_RECENTLY_VIEWED_PRODUCTS = graphql(`
 `);
 
 export const getRecentlyViewedProducts = async (productIds: any, currencyCode: any) => {
-    const customerId = await getSessionCustomerId();
+    const customerAccessToken = await getSessionCustomerAccessToken();
     const { data } = await client.fetch({
         document: GET_RECENTLY_VIEWED_PRODUCTS,
         variables: {productIds: productIds, currencyCode: currencyCode}

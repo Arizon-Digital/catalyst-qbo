@@ -13,7 +13,7 @@ export default async function DefaultLayout({ params, children }: Props) {
   const { locale } = await params;
 
   setRequestLocale(locale);
-
+  console.log('========innn layout=======');
   return (
     <>
       <Suspense fallback={<HeaderSkeleton />}>
