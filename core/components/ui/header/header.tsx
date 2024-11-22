@@ -233,7 +233,7 @@ const Header = ({
             <div className="hb-card">
               <figure className="hb-image">
                 <a href="https://www.qualitybearingsonline.com/blogcelebrating-our-10-year-anniversary-crowned-with-the-queens-award/" title="Queen's Award For Enterprise For International Trade">
-                  <img src="https://store-03842.mybigcommerce.com/content/Queens_Award_Logo_black.png" alt="Queen's Award For Enterprise For International Trade" />
+                  <img className='queenlogo'src="https://store-03842.mybigcommerce.com/content/Queens_Award_Logo_black.png" alt="Queen's Award For Enterprise For International Trade" />
                 </a>
               </figure>
               <div className="hb-text">
