@@ -288,7 +288,7 @@
     },
     "SubmitShippingInfo": {
       "spinnerText": "Submitting...",
-      "submitText": "Estimate shipping"
+      "submitText": "CALCULATE SHIPPING"
     },
     "ShippingCost": {
       "shippingOptions": "Available options",

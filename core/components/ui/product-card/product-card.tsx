@@ -38,7 +38,7 @@ const ProductCard = async ({ id, name, href, image, price, subtitle, product }: 
   };
  
   return (
-    <div className="group relative flex flex-col overflow-visible">
+    <div className="group product-card relative flex flex-col overflow-visible">
       <div className="relative flex justify-center pb-3">
         <div className="relative flex-auto aspect-square">
           {image ? (
@@ -60,9 +60,11 @@ const ProductCard = async ({ id, name, href, image, price, subtitle, product }: 
           </Link>
         </h3>
         {subtitle && <p className="text-base text-gray-500 brand">{subtitle}</p>}
+        <div className='cardprice'>
         <ProductPriceDisplay
         product={product} 
       />
+      </div>
       </div>
     </div>
   );

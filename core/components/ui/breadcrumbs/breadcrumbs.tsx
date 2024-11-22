@@ -17,7 +17,7 @@ interface Props {
 const Breadcrumbs = ({ breadcrumbs, className }: Props) => {
   return (
     <nav aria-label="Breadcrumb" className={className}>
-      <ul className="div-breadcrumb flex flex-wrap items-center justify-center sm:justify-center md:justify-center lg:justify-center py-4 text-base font-normal leading-8 tracking-tight text-[#7F7F7F]">
+      <ul className="div-breadcrumb flex flex-wrap items-left justify-left sm:justify-left md:justify-left lg:justify-left py-4 text-base font-normal leading-8 tracking-tight text-[#7F7F7F]">
         <Fragment key='HOME'>
           <li className="flex items-center BREADCRUMBS ">
             <CustomLink
