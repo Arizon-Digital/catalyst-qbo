@@ -5,9 +5,8 @@ import { useLocale } from 'next-intl';
 import { useEffect, useState } from 'react';
 import { z } from 'zod';
  
-import Minicart from '../ui/header/minicart';
- 
 import { useCart } from './cart-provider';
+import Minicart from '../ui/header/minicart';
 
 const CartQuantityResponseSchema = z.object({
   count: z.number(),
@@ -27,7 +26,7 @@ export const CartIcon = ({ count: serverCount }: CartIconProps) => {
   useEffect(() => {
     async function fetchCartQuantity() {
       const response = await fetch(`/api/cart-quantity/?locale=${locale}`);
-      const parsedData = CartQuantityResponseSchema.parse(await response.json());
+      const parsedData: any = CartQuantityResponseSchema.parse(await response.json());
       setCartItems(parsedData?.cartItems);
       setCount(parsedData.count);
       setCartId(parsedData?.cartId);
@@ -50,8 +49,7 @@ export const CartIcon = ({ count: serverCount }: CartIconProps) => {
   return (
     <>
       <span className="sr-only">Cart Items</span>
-      <ShoppingCart aria-hidden="true" />
-      {/* <Badge>{count}</Badge> */}
+      <Minicart cartItems={cartItems} cartId={cartId} closeModal="" />
     </>
   );
 };

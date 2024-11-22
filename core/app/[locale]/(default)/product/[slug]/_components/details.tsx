@@ -9,12 +9,11 @@ import { ProductForm } from './product-form';
 import { ProductFormFragment } from './product-form/fragment';
 import { ProductSchema, ProductSchemaFragment } from './product-schema';
 import { ReviewSummary, ReviewSummaryFragment } from './review-summary';
-import TabComponnet from '../_components/tab';
-import { log } from 'console';
+import { Suspense } from 'react';
+import { getOptionValueIds } from '../page';
+import { Prices } from './prices';
 import { GetCurrencyList } from '~/components/ui/header/currency';
 import ProductPriceDisplay from './exclvat';
-
-
 
 
 
@@ -51,7 +50,6 @@ export const DetailsFragment = graphql(
       brand {
         name
       }
-      ...PricingFragment
     }
   `,
   [
@@ -59,20 +57,20 @@ export const DetailsFragment = graphql(
     ProductSchemaFragment,
     ProductFormFragment,
     ProductItemFragment,
-    PricingFragment,
   ],
 );
 
 
 interface Props {
   product: FragmentOf<typeof DetailsFragment>;
+  optionValueIds: ReturnType<typeof getOptionValueIds>;
 }
 
-export const Details = ({ product }: Props) => {
+export const Details = ({ product, optionValueIds }: Props) => {
   const t = useTranslations('Product.Details');
   const format = useFormatter();
 
-  const customFields = removeEdgesAndNodes(product.customFields);
+  const customFields = (product?.customFields) ? removeEdgesAndNodes(product.customFields) : [];
 
   const showPriceRange =
     product.prices?.priceRange.min.value !== product.prices?.priceRange.max.value;
@@ -113,6 +111,7 @@ export const Details = ({ product }: Props) => {
     <div className='priced'>
         {/* <GetCurrencyList /> */}
         {/* <CurrencyTextWrapper /> */}
+        
       <span className='cntpriced'>
         <ProductPriceDisplay
           product={product}

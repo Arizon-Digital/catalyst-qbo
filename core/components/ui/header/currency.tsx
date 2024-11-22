@@ -25,7 +25,7 @@ export const GetCurrencyList = () => {
       setCurrencyCodeFn(currencyCookieData);
       setCurrencyCode(currencyCookieData);
       getCommonContext.setCurrencyCodeFn(currencyCookieData);
-    let currencyData: any = await getCurrencyListData();
+      let currencyData: any = await getCurrencyListData();
       let currencyOptions: any = currencyData?.map(
         ({
           code,
@@ -35,7 +35,7 @@ export const GetCurrencyList = () => {
           name: string;
         }) => ({
           value: code,
-          label: name,
+          label: code,
         }),
       );
       setCurrency(currencyOptions);
@@ -61,7 +61,7 @@ export const GetCurrencyList = () => {
         value={currencyCode}
         placeholder='Select Currency'
         onValueChange={(value: string) => onCurrencyChange(value)}
-        
+
       />
       {showExclTax && <p className="tax-label">exclusive of tax.</p>}
     </div>

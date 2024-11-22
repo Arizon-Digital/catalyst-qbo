@@ -1,7 +1,7 @@
 
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { Breadcrumbs } from '~/components/breadcrumbs';
 import { ProductCard } from '~/components/product-card';
@@ -23,13 +23,14 @@ import { ProductGridSwitcher } from './ProductGridSwitcher';
 interface Props {
   params: {
     slug: string;
-    locale: LocaleType;
+    locale: string;
   };
   searchParams: Record<string, string | string[] | undefined>;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const categoryId = Number(params.slug);
+  const { slug } = await params;
+  const categoryId = Number(slug);
 
   const data = await getCategoryPageData({
     categoryId,
@@ -50,9 +51,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function Category({ params: { locale, slug }, searchParams }: Props) {
-  unstable_setRequestLocale(locale);
 
+export default async function Category(props: Props) {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
+
+  const { locale, slug } = params;
+
+  setRequestLocale(locale);
   const t = await getTranslations('Category');
 
   const categoryId = Number(slug);

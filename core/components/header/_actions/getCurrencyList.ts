@@ -33,11 +33,11 @@ export const getCurrencyListData = cache(async () => {
 });
 
 export const getCurrencyCodeFn = async () => {
-  return await cookies().get('currencyCode')?.value;
+  return (await cookies()).get('currencyCode')?.value;
 }
 
 export const setCurrencyCodeFn = async (cookieValue: string) => {
-  await cookies().set({
+  (await cookies()).set({
     name: 'currencyCode',
     value: cookieValue,
     httpOnly: true,

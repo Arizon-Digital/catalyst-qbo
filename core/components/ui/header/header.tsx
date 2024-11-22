@@ -70,7 +70,6 @@ const Header = ({
   const closeModal = () => {
     setIsModalOpen(false);
   };
-  
   return (
     <div className={cn('relative', className)}>
       <div className="navbar">
@@ -103,23 +102,23 @@ const Header = ({
                 <div className="header-cart-div flex items-center absolute right-0 pr-[10px] nmd:pr-0 nmd:static">
                   <nav className="header-viewedItems nmd:block hidden">
                     <div className="text">
+                      {' '}
                       <ViewedItemsPopover />
                     </div>
                   </nav>
-                  <nav className="header-cart-icon pl-10px nmd:p-0">{cart} </nav>
-                  {/* <nav className="header-cart-icon pl-10px nmd:p-0">
+                  <nav className="header-cart-icon pl-10px nmd:p-0">
                     <button onClick={handleCartClick}>
                     {cart}
-                  </button> </nav> */}
+                  </button> </nav>
                   <div className="flex flex-col items-center gap-0 flex-wrap pl-[5px]">
                     <div className="text">
-                     
                       <ScrollToTop />
                       {isModalOpen && <div className='m-6 bg-white w-[1px] h-[1px] hidden'> <Minicart cartItems={''} cartId="" closeModal={closeModal}/></div>}
                       <DoofinderScriptLoader />
                       <HubspotChat portalId={139717848} />
                     </div>
                     <div className="texts">
+                      {' '}
                       
                     </div>
                     {activeLocale && locales.length > 0 ? (

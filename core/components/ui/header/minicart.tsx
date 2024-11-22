@@ -1,34 +1,31 @@
 'use client';
- 
+
 import { useState, useRef, useEffect } from 'react';
 import { ShoppingCart } from 'lucide-react';
 import { Link } from '~/components/link';
 import { useCart } from '~/lib/hooks/useCart';
 import { RemoveFromCartButton } from '~/app/[locale]/(default)/cart/_components/remove-from-cart-button';
 import { CheckoutButtonPopUp } from './checkout-button';
-// import { imageManagerImageUrl } from '~/lib/store-assets';
-import { BcImage } from '~/components/bc-image';
-import { Image } from '@makeswift/runtime/controls';
- 
-export const MiniCart = ({cartItems,closeModal, cartId}: {cartItems: any, closeModal:any, cartId: string}) => {
+
+export const MiniCart = ({ cartItems, closeModal, cartId }: { cartItems: any, closeModal: any, cartId: string }) => {
   const [isOpen, setIsOpen] = useState(false);
   const cartRef = useRef<HTMLDivElement>(null);
   const { cart, loading, removeItem } = useCart();
   // const minicart = imageManagerImageUrl('mini-cart-icon', '50w');
- 
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
         setIsOpen(false);
       }
     };
- 
+
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
- 
+
   const hasItems = cartItems?.lineItems?.physicalItems && cartItems.lineItems.physicalItems.length > 0;
- 
+
   const handleRemoveItem = async (itemId: string) => {
     try {
       await removeItem(itemId);
@@ -38,40 +35,40 @@ export const MiniCart = ({cartItems,closeModal, cartId}: {cartItems: any, closeM
       // Handle error appropriately
     }
   };
- 
+
   return (
     <div className="relative" ref={cartRef}>
       {/* Cart Icon */}
-     
 
-<button
-  onClick={() => setIsOpen(!isOpen)}
-  className="relative flex items-center gap-2 p-2 rounded-full"
-  aria-label="Shopping cart"
->
-  {/* Shopping Cart Icon */}
-  {/* <ShoppingCart className="h-6 w-6" /> */}
-  <img src="https://cdn11.bigcommerce.com/s-ur7wjnshy8/images/stencil/original/image-manager/mini-cart-icon.png" alt="mini-cart"  width="50" height="50"/>
 
-  {/* Badge for Cart Quantity */}
-  <span className="absolute -right-3 -top-1 h-[24px] w-[24px] flex items-center justify-center rounded-full bg-[#1c2541] text-xs font-bold text-white">
-  {cartItems?.lineItems?.totalQuantity}
-  </span>
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="relative flex items-center gap-2 p-2 rounded-full"
+        aria-label="Shopping cart"
+      >
+        {/* Shopping Cart Icon */}
+        {/* <ShoppingCart className="h-6 w-6" /> */}
+        <img src="https://cdn11.bigcommerce.com/s-ur7wjnshy8/images/stencil/original/image-manager/mini-cart-icon.png" alt="mini-cart" width="50" height="50" />
 
-  {/* Cart Label */}
-  <span className="text-[#1c2541] font-medium text-sm">Cart</span>
-</button>
+        {/* Badge for Cart Quantity */}
+        <span className="absolute -right-3 -top-1 h-[24px] w-[24px] flex items-center justify-center rounded-full bg-[#1c2541] text-xs font-bold text-white">
+          {cartItems?.lineItems?.totalQuantity}
+        </span>
 
- 
+        {/* Cart Label */}
+        <span className="text-[#1c2541] font-medium text-sm">Cart</span>
+      </button>
+
+
       {/* Popup Cart */}
       {isOpen && (
         <div className="absolute right-0 top-12 w-96 z-50 bg-white rounded-lg border border-gray-200 shadow-sm">
           <div className="p-4">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-lg font-semibold">Shopping Cart</h2>
-             
+
             </div>
- 
+
             <div className="max-h-96 overflow-y-auto">
               {hasItems ? (
                 <>
@@ -119,7 +116,7 @@ export const MiniCart = ({cartItems,closeModal, cartId}: {cartItems: any, closeM
                 </div>
               )}
             </div>
- 
+
             {hasItems && (
               <div className="mt-4 space-y-2">
                 <CheckoutButtonPopUp cartId={cartId} />
@@ -137,5 +134,5 @@ export const MiniCart = ({cartItems,closeModal, cartId}: {cartItems: any, closeM
     </div>
   );
 };
- 
+
 export default MiniCart;
