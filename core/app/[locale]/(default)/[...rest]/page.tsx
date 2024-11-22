@@ -44,4 +44,3 @@ export default async function CatchAllPage({ params }: { params: CatchAllParams 
 }
 
 export const runtime = 'nodejs';
-export const dynamic = 'force-dynamic';

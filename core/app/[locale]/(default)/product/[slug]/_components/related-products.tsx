@@ -2,7 +2,7 @@ import { removeEdgesAndNodes } from '@bigcommerce/catalyst-client';
 import { getTranslations } from 'next-intl/server';
 
 import { cookies } from 'next/headers';
-import { getSessionCustomerId } from '~/auth';
+import { getSessionCustomerAccessToken } from '~/auth';
 import { client } from '~/client';
 import { graphql } from '~/client/graphql';
 import { revalidate } from '~/client/revalidate-target';
@@ -36,13 +36,13 @@ interface Props {
 export const RelatedProducts = async ({ productId }: Props) => {
   const t = await getTranslations('Product.Carousel');
   const currencyCode = (await cookies()).get('currencyCode')?.value as CurrencyCode | undefined;
-  const customerId = await getSessionCustomerId();
+  const customerAccessToken = await getSessionCustomerAccessToken();
 
   const { data } = await client.fetch({
     document: RelatedProductsQuery,
     variables: { entityId: productId, currencyCode: currencyCode },
-    customerId,
-    fetchOptions: customerId ? { cache: 'no-store' } : { next: { revalidate } },
+    customerAccessToken,
+    fetchOptions: customerAccessToken ? { cache: 'no-store' } : { next: { revalidate } },
   });
 
   const product = data.site.product;

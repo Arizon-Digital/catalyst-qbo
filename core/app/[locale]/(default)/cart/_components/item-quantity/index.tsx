@@ -171,6 +171,8 @@ export const ItemQuantity = ({ product }: { product: Product }) => {
       toast.error(t('errorMessage'), {
         icon: <AlertCircle className="text-error-secondary" />,
       });
+
+      setProductQuantity(quantity);
     }
   };
   const handleQuantityChange = (e: { target: { value: any } }) => {
@@ -235,7 +237,7 @@ export const ItemQuantity = ({ product }: { product: Product }) => {
                   d="M7 14l5-5 5 5"
                   stroke="black"
                   strokeWidth="1"
-                  stroke-linecap="round"
+                  strokeLinecap="round"
                   stroke-linejoin="round"
                 />
               </svg>

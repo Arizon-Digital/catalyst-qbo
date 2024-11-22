@@ -22,7 +22,8 @@ export async function handleAddToCart(
   const productEntityId = Number(data.product_id);
   const quantity = Number(data.quantity);
 
-  const cartId = cookies().get('cartId')?.value;
+  const cookieStore = await cookies();
+  const cartId = cookieStore.get('cartId')?.value;
 
   let cart;
   let cartData: any = {};
@@ -179,7 +180,7 @@ export async function handleAddToCart(
       cartData = cartDataValue;
     }
 
-    cookies().set({
+    cookieStore.set({
       name: 'cartId',
       value: cart.entityId,
       httpOnly: true,

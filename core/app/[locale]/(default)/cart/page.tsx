@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers';
 import { getTranslations } from 'next-intl/server';
 import { Breadcrumbs as ComponentsBreadcrumbs } from '~/components/ui/breadcrumbs';
-import { getSessionCustomerId } from '~/auth';
+import { getSessionCustomerAccessToken } from '~/auth';
 import { client } from '~/client';
 import { graphql } from '~/client/graphql';
 import { TAGS } from '~/client/tags';
@@ -45,7 +45,9 @@ export async function generateMetadata() {
 }
 
 export default async function Cart() {
-  const cartId = cookies().get('cartId')?.value;
+  const cookieStore = await cookies();
+
+  const cartId = cookieStore.get('cartId')?.value;
 
   if (!cartId) {
     return <EmptyCart />;
@@ -53,12 +55,12 @@ export default async function Cart() {
 
   const t = await getTranslations('Cart');
 
-  const customerId = await getSessionCustomerId();
+  const customerAccessToken = await getSessionCustomerAccessToken();
 
   const { data } = await client.fetch({
     document: CartPageQuery,
     variables: { cartId },
-    customerId,
+    customerAccessToken,
     fetchOptions: {
       cache: 'no-store',
       next: {
@@ -187,8 +189,8 @@ export default async function Cart() {
                     <text
                       x="1"
                       y="20"
-                      font-family="Arial, sans-serif"
-                      font-size="20"
+                      fontFamily="Arial, sans-serif"
+                      fontSize="20"
                       fill="#000000"
                       font-weight="bold"
                     >
@@ -197,8 +199,8 @@ export default async function Cart() {
                     <text
                       x="20"
                       y="20"
-                      font-family="Arial, sans-serif"
-                      font-size="20"
+                      fontFamily="Arial, sans-serif"
+                      fontSize="20"
                       fill="#000000"
                     >
                       Pay

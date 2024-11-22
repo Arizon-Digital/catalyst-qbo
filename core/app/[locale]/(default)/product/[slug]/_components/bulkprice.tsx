@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { FragmentOf, graphql } from '~/client/graphql';
 import HubspotContactForm  from './hubspot';
-import DoofinderScriptLoader  from './Doofinder';
 
 
 // GraphQL fragment for Bulk Pricing
@@ -38,7 +37,6 @@ const Bulk: React.FC<Props> = ({ product }) => {
             For bulk discount on this product, contact our dedicated sales team today by filling out the form below:
           </p>
           <HubspotContactForm />
-          <DoofinderScriptLoader />
         </div>
       </div>
     );

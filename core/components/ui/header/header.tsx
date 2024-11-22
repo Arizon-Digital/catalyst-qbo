@@ -70,6 +70,7 @@ const Header = ({
   const closeModal = () => {
     setIsModalOpen(false);
   };
+  
   return (
     <div className={cn('relative', className)}>
       <div className="navbar">
