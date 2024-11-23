@@ -1001,7 +1001,9 @@ label.inline-flex.w-full.items-center.justify-between {
         font-weight: 700;
 
     }
-    
+    .minicart {
+        text-align: left;
+    }
     .priced{
     width: 300px;
     }

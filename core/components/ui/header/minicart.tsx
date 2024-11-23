@@ -88,14 +88,14 @@ export const MiniCart = ({ cartItems, closeModal, cartId }: { cartItems: any, cl
                         )}
                       </div>
                       <div className="flex-1">
-                        <h3 className="font-medium text-sm">{item.name}</h3>
-                        <p className="text-sm text-gray-500">Brand: {item.brand}</p>
+                        <h3 className="font-medium text-sm minicart">{item.name}</h3>
+                        <p className="text-sm text-gray-500 minicart">Brand: {item.brand}</p>
                         <div className="mt-2 flex justify-between items-center">
                           <div className="flex items-center gap-2">
-                            <span className="text-sm">Qty: {item.quantity}</span>
+                            <span className="text-sm minicart">Qty: {item.quantity}</span>
                           </div>
                           <div>
-                            <p className="text-sm">Price: £{item.extendedSalePrice.value}</p>
+                            <p className="text-sm minicart">Price: C${item.extendedSalePrice.value}</p>
                           </div>
                         </div>
                         <div className="mt-2 flex justify-end">
