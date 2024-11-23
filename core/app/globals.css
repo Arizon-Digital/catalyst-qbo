@@ -1965,8 +1965,10 @@ height: 32px;
     background-color: white;
 }
 
-.cart-page .cart-checkout-btn{
+.cart-page .cart-checkout-btn {
     text-transform: uppercase;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
 }
 
 

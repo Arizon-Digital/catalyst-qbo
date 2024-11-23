@@ -94,7 +94,7 @@ export const CheckoutSummary = async ({ checkout, geography }: Props) => {
         </div>
       )} */}
 
-      <div className="flex cart-gtotal justify-between border-t border-t-gray-200 py-3 text-xl font-bold lg:text-2xl">
+      <div className="flex cart-gtotal justify-between border-t border-t-gray-200 py-3 text-medium font-bold lg:text-2xl">
         Grand Total:
         <span>
           {format.number(grandTotal?.value || 0, {
