@@ -1,7 +1,3 @@
-
-
-
-
 "use client"
 
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
@@ -89,9 +85,9 @@ const Header = ({
       {/* Sticky part: Top bar and Main Header */}
       <div className={`${
         isScrolled 
-          ? 'fixed top-0 left-0 right-0 w-full shadow-lg animate-slideDown' 
+          ? 'fixed top-0 left-0 right-0 w-full shadow-lg animate-slideDown z-[100]' 
           : 'relative'
-        } bg-white z-50 transition-all duration-300`}>
+        } bg-white transition-all duration-300`}>
         {/* Top navbar */}
         <div className="w-full bg-white border-b border-gray-100">
           <div className="navbar">
@@ -163,10 +159,10 @@ const Header = ({
       {/* Spacer div - Only shown when header is fixed */}
       {isScrolled && <div className="h-[150px]" />}
 
-      {/* Non-sticky part: Navigation Menu */}
-      <div className="bg-white border-b border-gray-100">
+      {/* Navigation Menu with fixed gap and z-index */}
+      <div className="bg-white border-b border-gray-100 relative z-[60]">
         <NavigationMenuPrimitive.Root id="nav-menu-root" className="hidden lg:block">
-          <NavigationMenuPrimitive.List id="nav-menu-list" className="flex items-center gap-2 lg:gap-4">
+          <NavigationMenuPrimitive.List id="nav-menu-list" className="flex items-center gap-2 lg:gap-4 justify-center">
             {links.map((link) =>
               link.groups && link.groups.length > 0 ? (
                 <NavigationMenuPrimitive.Item id={`nav-menu-item-${link.href}`} key={link.href}>
@@ -186,28 +182,38 @@ const Header = ({
                   
                   <NavigationMenuPrimitive.Content
                     id={`nav-menu-content-${link.href}`}
-                    className="flex flex-wrap !justify-center gap-20 2xl:container data-[motion^=from-]:animate-in data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 sm:px-10 lg:px-12 2xl:mx-auto 2xl:px-0"
+                    className="absolute left-0 w-full bg-white z-[70] shadow-lg"
                   >
-                    {link.groups.map((group) => (
-                      <ul id={`nav-menu-group-${group.href}`} className="flex flex-col w-[25%]" key={group.href}>
-                        <li id={`nav-menu-group-item-${group.href}`}>
-                          <NavigationMenuPrimitive.Link asChild>
-                            <CustomLink id={`nav-menu-group-link-${group.href}`} className="block p-3 font-semibold" href={group.href}>
-                              {group.label}
-                            </CustomLink>
-                          </NavigationMenuPrimitive.Link>
-                        </li>
-                        {group.links?.map((nestedLink) => (
-                          <li id={`nav-menu-nested-item-${nestedLink.href}`} key={nestedLink.href}>
+                    <div className="flex flex-wrap justify-center gap-6 py-4 px-4 mx-auto max-w-7xl">
+                      {link.groups.map((group) => (
+                        <ul id={`nav-menu-group-${group.href}`} className="flex flex-col w-56" key={group.href}>
+                          <li id={`nav-menu-group-item-${group.href}`}>
                             <NavigationMenuPrimitive.Link asChild>
-                              <CustomLink id={`nav-menu-nested-link-${nestedLink.href}`} className="block p-3" href={nestedLink.href}>
-                                {nestedLink.label}
+                              <CustomLink 
+                                id={`nav-menu-group-link-${group.href}`} 
+                                className="block p-2 font-semibold border-b border-gray-100 mb-2" 
+                                href={group.href}
+                              >
+                                {group.label}
                               </CustomLink>
                             </NavigationMenuPrimitive.Link>
                           </li>
-                        ))}
-                      </ul>
-                    ))}
+                          {group.links?.map((nestedLink) => (
+                            <li id={`nav-menu-nested-item-${nestedLink.href}`} key={nestedLink.href}>
+                              <NavigationMenuPrimitive.Link asChild>
+                                <CustomLink 
+                                  id={`nav-menu-nested-link-${nestedLink.href}`} 
+                                  className="block p-2 hover:bg-gray-50 text-gray-600 hover:text-gray-900" 
+                                  href={nestedLink.href}
+                                >
+                                  {nestedLink.label}
+                                </CustomLink>
+                              </NavigationMenuPrimitive.Link>
+                            </li>
+                          ))}
+                        </ul>
+                      ))}
+                    </div>
                   </NavigationMenuPrimitive.Content>
                 </NavigationMenuPrimitive.Item>
               ) : (
@@ -222,7 +228,10 @@ const Header = ({
             )}
           </NavigationMenuPrimitive.List>
 
-          <NavigationMenuPrimitive.Viewport id="nav-menu-viewport" className="absolute start-0 top-full z-50 w-full bg-white pb-12 pt-6 shadow-xl duration-200 animate-in slide-in-from-top-5" />
+          <NavigationMenuPrimitive.Viewport 
+            id="nav-menu-viewport" 
+            className="absolute start-0 top-full w-full bg-white shadow-lg z-[65]" 
+          />
         </NavigationMenuPrimitive.Root>
       </div>
 
@@ -232,36 +241,36 @@ const Header = ({
           <article className="hb-item">
             <div className="hb-card">
               <figure className="hb-image">
-                <a href="https://www.qualitybearingsonline.com/customer-service/" title="Free Delivery Over $200.00">
+                <a href="/customer-service/" title="Free Delivery Over $200.00">
                   <img src="https://www.qualitybearingsonline.com/content/NewSite/Customer-Service.png" alt="Customer Service" />
                 </a>
               </figure>
               <div className="hb-text">
-                <a href="https://www.qualitybearingsonline.com/customer-service/" title="Excellent Customer Service">Free Delivery <br />Over $200.00</a>
+                <a href="/customer-service/" title="Excellent Customer Service">Free Delivery <br />Over $200.00</a>
               </div>
             </div>
           </article>
           <article className="hb-item">
             <div className="hb-card">
               <figure className="hb-image">
-                <a href="https://www.qualitybearingsonline.com/delivery-information/" title="1-3 Day Delivery Available">
+                <a href="/delivery-information/" title="1-3 Day Delivery Available">
                   <img src="https://www.qualitybearingsonline.com/content/NewSite/UK-Delivery.png" alt="USA Delivery" />
                 </a>
               </figure>
               <div className="hb-text">
-                <a href="https://www.qualitybearingsonline.com/delivery-information/" title="1-3 Day DHL &amp; UPS Delivery">1-3 Day DHL &amp; UPS<br />Delivery</a>
+                <a href="/delivery-information/" title="1-3 Day DHL &amp; UPS Delivery">1-3 Day DHL &amp; UPS<br />Delivery</a>
               </div>
             </div>
           </article>
           <article className="hb-item">
             <div className="hb-card">
               <figure className="hb-image">
-                <a href="https://www.qualitybearingsonline.com/blogcelebrating-our-10-year-anniversary-crowned-with-the-queens-award/" title="Queen's Award For Enterprise For International Trade">
+                <a href="/blogcelebrating-our-10-year-anniversary-crowned-with-the-queens-award/" title="Queen's Award For Enterprise For International Trade">
                   <img className='queenlogo' src="https://store-03842.mybigcommerce.com/content/Queens_Award_Logo_black.png" alt="Queen's Award For Enterprise For International Trade" />
                 </a>
               </figure>
               <div className="hb-text">
-                <a target="_self" href="https://www.qualitybearingsonline.com/blogcelebrating-our-10-year-anniversary-crowned-with-the-queens-award/" title="Queen's Award For Enterprise For International Trade">Queen's Award For<br />Enterprise Winners</a>
+                <a target="_self" href="/blogcelebrating-our-10-year-anniversary-crowned-with-the-queens-award/" title="Queen's Award For Enterprise For International Trade">Queen's Award For<br />Enterprise Winners</a>
               </div>
             </div>
           </article>
@@ -280,7 +289,7 @@ const Header = ({
           <article className="hb-item">
             <div className="hb-card">
               <figure className="hb-image hb-image-full">
-                <a href="https://www.feefo.com/reviews/quality-bearings-online" target="_blank" data-tagrocket-clicked-outboundlink="1">
+                <a href="https://www.feefo.com/reviews/quality-bearings-online" target="_blank" rel="noopener noreferrer" data-tagrocket-clicked-outboundlink="1">
                   <img className='feefo' alt="Feefo logo" src="https://api.feefo.com/api/logo?merchantidentifier=quality-bearings-online&amp;template=Service-Stars-Yellow-150x38.png" title="Our customer Feefo rating" />
                 </a>
               </figure>
