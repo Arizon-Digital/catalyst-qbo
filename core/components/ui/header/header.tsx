@@ -160,7 +160,7 @@ const Header = ({
       {isScrolled && <div className="h-[150px]" />}
 
       {/* Navigation Menu with fixed gap and z-index */}
-      <div className="bg-white border-b border-gray-100 relative z-[60]">
+      <div className="bg-white border-b border-gray-100 relative ">
         <NavigationMenuPrimitive.Root id="nav-menu-root" className="hidden lg:block">
           <NavigationMenuPrimitive.List id="nav-menu-list" className="flex items-center gap-2 lg:gap-4 justify-center">
             {links.map((link) =>
