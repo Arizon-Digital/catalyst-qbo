@@ -95,7 +95,7 @@ const QuickView = ({
     >
       <path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0a4.5 4.5 0 1 1-.01-8.99A4.5 4.5 0 0 1 14 10.5c0 2.49-2.01 4.5-4.5 4.5z"/>
     </svg>
-        Quick View
+        QUICK VIEW
       </button>
  
       <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>

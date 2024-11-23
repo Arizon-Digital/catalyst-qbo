@@ -82,8 +82,9 @@ const ProductCard = ({
             <div className="h-full w-full bg-gray-200" />
           )}
           <div className='opacity-0 hover:opacity-100'>
-          <AddToCartButton addToCardData={addToCardData} product={product} />
           <QuickView product={product} />
+          <AddToCartButton addToCardData={addToCardData} product={product} />
+         
           </div>
         </div>
       </div>

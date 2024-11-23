@@ -246,7 +246,7 @@ const Header = ({
                 </a>
               </figure>
               <div className="hb-text">
-                <a href="/customer-service/" title="Excellent Customer Service">Free Delivery <br />Over $200.00</a>
+                <a href="/customer-service/" title="Free Delivery Over $200.00">Free Delivery <br />Over $200.00</a>
               </div>
             </div>
           </article>
