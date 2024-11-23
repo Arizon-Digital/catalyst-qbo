@@ -25,8 +25,8 @@ function CommonReducer(state: any, action: any) {
     return {
       items: {
         open: action.payload,
-        currencyCode: { ...state.items.currencyCode },
-        cartId: {... state.items.cartId}
+        currencyCode: state.items.currencyCode,
+        cartId: state.items.cartId
       },
     };
   } else if(action.type === 'CURRENCY_CODE') {
@@ -34,14 +34,14 @@ function CommonReducer(state: any, action: any) {
       items: {
         open: state.items.open,
         currencyCode: action.payload,
-        cartId: {... state.items.cartId}
+        cartId: state.items.cartId
       },
     };
   } else if(action.type === 'CART_ID') {
     return {
       items: {
         open: state.items.open,
-        currencyCode: { ...state.items.currencyCode },
+        currencyCode:  state.items.currencyCode,
         cartId: action.payload,
       },
     };

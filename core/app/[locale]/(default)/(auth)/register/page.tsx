@@ -7,6 +7,12 @@ import { bypassReCaptcha } from '~/lib/bypass-recaptcha';
 import { RegisterCustomerForm } from './_components/register-customer-form';
 import { getRegisterCustomerQuery } from './page-data';
 
+const FALLBACK_COUNTRY = {
+  entityId: 226,
+  name: 'United States',
+  code: 'US',
+};
+
 export async function generateMetadata() {
   const t = await getTranslations('Register');
 
@@ -33,20 +39,35 @@ export default async function Register() {
     notFound();
   }
 
-  const { addressFields, customerFields, reCaptchaSettings } = registerCustomerData;
+  const {
+    addressFields,
+    customerFields,
+    countries,
+    defaultCountry = FALLBACK_COUNTRY.name,
+    reCaptchaSettings,
+  } = registerCustomerData;
+
   const reCaptcha = await bypassReCaptcha(reCaptchaSettings);
 
+  const {
+    code = FALLBACK_COUNTRY.code,
+    entityId = FALLBACK_COUNTRY.entityId,
+    statesOrProvinces,
+  } = countries.find(({ name }) => name === defaultCountry) || {};
+
   return (
-    <div className="mx-auto mb-10 mt-8 text-base lg:w-2/3 pageheading"id='width'>
+    <div className="mx-auto mb-10 mt-8 text-base lg:w-2/3 pageheading" id='width'>
       <ComponentsBreadcrumbs
-          className="login-div login-breadcrumb mx-auto mt-[6rem] w-[80%] px-[1px]"
-          breadcrumbs={breadcrumbs}
-        />
+        className="login-div login-breadcrumb mx-auto mt-[6rem] w-[80%] px-[1px]"
+        breadcrumbs={breadcrumbs}
+      />
       <h1 className="my-6 text-4xl font-black lg:my-8 lg:text-5xl heading">{t('heading')}</h1>
       <RegisterCustomerForm
         addressFields={addressFields}
         customerFields={customerFields}
         reCaptchaSettings={reCaptcha}
+        countries={countries}
+        defaultCountry={{ entityId, code, states: statesOrProvinces ?? [] }}
       />
     </div>
   );

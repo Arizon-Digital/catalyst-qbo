@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import { BcImage } from '~/components/bc-image';
 import { Link } from '~/components/link';
 import { cn } from '~/lib/utils';
@@ -8,23 +8,58 @@ import { getProductData } from '~/components/common-functions';
 import { AddToCartButton } from './AddToCartButton';
 import ProductPriceDisplay from '~/app/[locale]/(default)/product/[slug]/_components/exclvat';
 
+interface Image {
+  altText: string;
+  src: string;
+}
 
+type Price =
+  | string
+  | {
+      type: 'sale';
+      currentValue: string;
+      previousValue: string;
+    }
+  | {
+      type: 'range';
+      minValue: string;
+      maxValue: string;
+    };
 
- 
-interface Props {
+interface Product {
   id: string;
   name: string;
   href: string;
-  image: {
-    altText: string;
-    src: string;
-  };
-  price: string;
+  image?: Image;
+  price?: Price;
   subtitle?: string;
-  addToCart?: any;
+  badge?: string;
+}
+
+interface Props extends Product {
+  addToCart?: ReactNode;
+  className?: string;
+  imagePriority?: boolean;
+  imageSize?: 'square' | 'tall' | 'wide';
+  showCompare?: boolean;
+  product?: any;
 }
  
-const ProductCard = async ({ id, name, href, image, price, subtitle, product }: Props) => {
+const ProductCard = ({
+  addToCart,
+  className,
+  image,
+  imagePriority = false,
+  imageSize,
+  href,
+  price,
+  id,
+  showCompare = true,
+  subtitle,
+  name,
+  product,
+  ...props
+}: Props) => {
  
   const addToCardData = {
     defaultImage: {
@@ -70,4 +105,6 @@ const ProductCard = async ({ id, name, href, image, price, subtitle, product }: 
   );
 };
  
-export { ProductCard };
+ProductCard.displayName = 'ProductCard';
+
+export { ProductCard, type Price };

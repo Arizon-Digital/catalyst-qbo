@@ -1,13 +1,14 @@
 // QuickView.tsx
 'use client';
  
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { X, ChevronUp, ChevronDown } from 'lucide-react';
 import { Details } from '~/app/[locale]/(default)/product/[slug]/_components/details';
 import { Gallery } from '~/app/[locale]/(default)/product/[slug]/_components/gallery';
 import { Warranty } from '~/app/[locale]/(default)/product/[slug]/_components/warranty';
 import { Description } from '~/app/[locale]/(default)/product/[slug]/_components/description';
+import { useCommonContext } from '~/components/common-context/common-provider';
  
 interface Image {
   altText: string;
@@ -30,12 +31,34 @@ type Price =
 interface QuickViewProps {
   product: any;
 }
- 
+
+const getProductData = async (productContext: any, product: any) => {
+  let currencyCode: any = await productContext.getCurrencyCode;
+  const productData: any = await fetch(`/api/get-product/?productId=${product?.entityId}&currencyCode=${currencyCode}`).then(data => {
+    return data.json();
+  })
+  .then(data => {
+    return data;
+  })
+  .catch(err => {
+    console.log(err);
+  });
+  return productData;
+}
+
 const QuickView = ({
   product
 }: QuickViewProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [quantity, setQuantity] = useState(1);
+  const [productInfo, setProductInfo] = useState(product);
+  const productContext = useCommonContext();
+
+  const openQuickView = async() => {
+    setIsOpen(true);
+    let productData = await getProductData(productContext, product);
+    setProductInfo(productData);
+  }
  
   const handleIncrement = () => {
     setQuantity(prev => prev + 1);
@@ -46,11 +69,11 @@ const QuickView = ({
       setQuantity(prev => prev - 1);
     }
   };
- 
+  
   return (
     <>
       <button
-        onClick={() => setIsOpen(true)}
+        onClick={() => openQuickView()}
         className="absolute left-[10%] top-[40%] hover:opacity-100  transition-all duration-300
           bg-orange-500 hover:bg-white h-[40px] 
           text-white hover:text-orange-500
@@ -87,13 +110,13 @@ const QuickView = ({
  
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="mb-12 mt-4 lg:grid lg:grid-cols-2 lg:gap-8 a1">
-                <Gallery product={product} />
-                <Details product={product} />
+                <Gallery product={productInfo} />
+                <Details product={productInfo} />
                
               </div>
               <div className="lg:col-span-2"  id='tabsection1'>
-                <Description product={product} />
-                <Warranty product={product} />
+                <Description product={productInfo} />
+                <Warranty product={productInfo} />
               </div>
               </div>
             </div>

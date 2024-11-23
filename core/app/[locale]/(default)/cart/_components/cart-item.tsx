@@ -6,6 +6,7 @@ import { ItemQuantity } from './item-quantity';
 import { RemoveItem } from './remove-item';
 import { Trash2 } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
+import { imageManagerImageUrl } from '~/lib/store-assets';
 
 const PhysicalItemFragment = graphql(`
   fragment PhysicalItemFragment on CartPhysicalItem {
@@ -207,7 +208,7 @@ const DeleteConfirmationDialog = ({
 export const CartItem = ({ currencyCode, product }: Props) => {
   const format = useFormatter();
 
-  const deleteIcon = 'https://cdn11.bigcommerce.com/s-ur7wjnshy8/images/stencil/320w/image-manager/delete.jpg';
+  const deleteIcon = imageManagerImageUrl('delete.png', '24w');
 
   return (
     <>

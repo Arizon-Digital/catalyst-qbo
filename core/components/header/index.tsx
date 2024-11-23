@@ -108,7 +108,7 @@ export const Header = async ({ cart }: Props) => {
               <ShoppingCart aria-label="cart" />
             }
           >
-            {cart}
+          {cart}
           </Suspense>
         </div>
       }

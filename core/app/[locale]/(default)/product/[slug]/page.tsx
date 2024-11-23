@@ -106,7 +106,7 @@ export default async function Product(props: Props) {
  
       <div className="mb-12 mt-4 lg:grid lg:grid-cols-2 lg:gap-8">
         <Gallery product={product} />
-        <Details product={product} />
+        <Details optionValueIds={optionValueIds} product={product} />
        
       </div>
       <div className="lg:col-span-2"  id='tabsection'>

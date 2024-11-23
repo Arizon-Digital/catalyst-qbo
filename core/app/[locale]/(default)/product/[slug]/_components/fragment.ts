@@ -3,7 +3,7 @@ import { graphql } from '~/client/graphql';
 
 export const DetailsFragment = graphql(`
   fragment DetailsFragment on Product {
-    prices {
+    prices(includeTax: true, currencyCode: $currencyCode) {
       price {
         value
         currencyCode
