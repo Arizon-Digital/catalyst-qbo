@@ -227,7 +227,7 @@ const Header = ({
       </div>
 
       {/* Banner Section */}
-      <section className="header-banner bg-white py-4 border-t border-gray-200">
+      <section className="header-banner bg-white  border-t border-gray-200">
         <div className="container row">
           <article className="hb-item">
             <div className="hb-card">

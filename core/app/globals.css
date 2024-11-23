@@ -742,6 +742,7 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
  button#currency-selection {
     width: auto;
     color: #fff;
+    margin-top: -8px;
 }
  input#search_query {
 
@@ -945,6 +946,7 @@ label.inline-flex.w-full.items-center.justify-between {
         border-left: 1px solid rgba(255, 255, 255, .2);
     }
     .navbar {
+        height:37px;
         display: flex;
         justify-content: center;
         margin: auto;
