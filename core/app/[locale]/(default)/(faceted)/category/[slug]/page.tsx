@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
@@ -87,19 +86,36 @@ export default async function Category(props: Props) {
           width={1230}
         />
       )}
-      
-      <div className="md:mb-8 lg:flex lg:flex-row lg:items-center lg:justify- sortbutton">
-        <p className="mb-4 text-4xl font-black lg:mb-0 lg:text-5xl categorybtn" id='categorybtn'>
+
+      <div className="lg:justify- sortbutton mt-2 md:mb-8 lg:flex lg:flex-row lg:items-center">
+        <p className="categorybtn mb-4 text-4xl font-black lg:mb-0 lg:text-5xl" id="categorybtn">
           Can't Find What You Are Looking For?
         </p>
-        <div className="form-field pdp">
-          <input 
-            className="form-input" 
-            type="text" 
-            name="q" 
-            placeholder="Filter products by name or part number..." 
-            data-search-in-category=""
-          />
+
+        <div className="">
+          <div className="form-field pdp">
+            <input
+              className="form-input w-full"
+              type="text"
+              name="q"
+              placeholder="Filter products by name or part number..."
+              data-search-in-category=""
+            />
+          </div>
+          <div className="flex justify-between">
+            <div className="sort order ml-[70px]">
+              <SortBy />
+            </div>
+            <div className='flex gap-4'>
+              {/* Grid Switcher */}
+              <div className="flex items-center justify-between rounded-[4px] border border-[#dcdcdc] px-[10px]">
+                <ProductGridSwitcher />
+              </div>
+              <div className='rounded-[4px] border border-[#dcdcdc] px-[10px]'>
+                <p>Products Per Page: 100</p>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="flex flex-col items-center gap-3 whitespace-nowrap md:flex-row">
@@ -120,13 +136,9 @@ export default async function Category(props: Props) {
         </div>
       </div>
 
-      <div className="sort order">
-        <SortBy />
-      </div>
-
       <div className="grid grid-cols-4 gap-8">
         <FacetedSearch
-          className="mb-8 hidden lg:block"
+          className="mb-8 hidden h-max lg:block"
           facets={search.facets.items}
           headingId="desktop-filter-heading"
           pageType="category"
@@ -142,13 +154,8 @@ export default async function Category(props: Props) {
             {t('products')}
           </h2>
 
-          {/* Grid Switcher */}
-          <div className="flex justify-between items-center mb-6">
-            <ProductGridSwitcher />
-          </div>
-
           {/* Product Grid */}
-          <div className="product-grid grid gap-6 grid-cols-2 sm:grid-cols-3 sm:gap-8">
+          <div className="product-grid grid grid-cols-2 gap-6 sm:grid-cols-3 sm:gap-8">
             {products.map((product, index) => (
               <ProductCard
                 imagePriority={index <= 3}
@@ -174,7 +181,3 @@ export default async function Category(props: Props) {
 }
 
 export const runtime = 'edge';
-
-
-
-

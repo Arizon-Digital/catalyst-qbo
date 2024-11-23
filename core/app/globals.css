@@ -3,10 +3,7 @@
 @tailwind utilities;
 
 .sort.order {
-    margin-top: -60px;
-    margin-left: 312px;
     width: 20%;
-    margin-bottom: 5px;
 }
 p.recently {
     font-size: 17px;
@@ -2023,6 +2020,32 @@ li.flex.items-center > a.hover\:text-\[\#a5a5a5\].focus-visible\:outline-none.fo
     height: 60px !important;
 }
 
+.product-grid .plp-img-div-parent{
+    align-self: center;
+    margin-inline: 0;    
+}
+
+.product-grid.grid-cols-4 .plp-img-div-parent{
+    height: 150px;
+    width: 150px;    
+    align-self: center;
+    margin-inline: 0;
+}
+
+
+.product-grid.grid-cols-5 .plp-img-div-parent{
+    height: 110px;
+    width: 110px;    
+    align-self: center;
+    margin-inline: 0;
+}
+
+.product-grid.grid-cols-6 .plp-img-div-parent{
+    height: 100px;
+    width: 100px;
+    align-self: center;
+    margin-inline: 0;
+}
 
 
 .flex.flex-col.gap-4.f1 {

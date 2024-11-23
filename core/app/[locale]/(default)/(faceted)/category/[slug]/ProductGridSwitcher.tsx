@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 
 export const ProductGridSwitcher = () => {
   const [columns, setColumns] = useState(3);
-  const gridOptions = [1, 2, 3, 5, 6];
+  const gridOptions = [1, 2, 3,4, 5, 6];
 
   const handleColumnChange = (option: number) => {
     setColumns(option);
@@ -16,6 +16,7 @@ export const ProductGridSwitcher = () => {
         'grid-cols-1',
         'grid-cols-2',
         'grid-cols-3',
+        'grid-cols-4',
         'grid-cols-5',
         'grid-cols-6',
         'sm:grid-cols-2',
@@ -32,7 +33,7 @@ export const ProductGridSwitcher = () => {
   };
 
   return (
-    <div className="mb-6 flex gap-2 items-center">
+    <div className="flex gap-2 items-center">
       <span className="text-sm font-medium mr-2">View:</span>
       {gridOptions.map((option) => (
         <button
