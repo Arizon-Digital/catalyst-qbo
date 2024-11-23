@@ -601,6 +601,9 @@ h3.text-xl.font-bold.lg\:text-2xl {
     font-size: 1rem !important;
     text-align: center !important;
 }
+.lg\:text-2xl{
+    font-size:16px !important;
+}
 .lg\:text-4xl {
     text-decoration: underline;
     font-size: 25px !important;
