@@ -95,7 +95,7 @@ export const MiniCart = ({ cartItems, closeModal, cartId }: { cartItems: any, cl
                           
                           <div>
                             <span className="text-sm minicart">Price: </span>
-                            <ProductPriceDisplay
+                            <span className='minicartprice'><ProductPriceDisplay
                               product={{
                                 prices: {
                                   price: {
@@ -105,6 +105,7 @@ export const MiniCart = ({ cartItems, closeModal, cartId }: { cartItems: any, cl
                                 }
                               }}
                             />
+                            </span>
                           </div>
                         </div>
                         <div className="mt-2 flex justify-end">
