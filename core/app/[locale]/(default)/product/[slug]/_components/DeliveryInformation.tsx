@@ -51,7 +51,7 @@ const Deliveryinformation: React.FC<Props> = ({ product }) => {
             </tr>
             <tr>
               <td>$0.00 to $200.00</td>
-              <td>$10.00</td>
+              <td>$15.00</td>
             </tr>
             <tr>
               <td>Over $200.00</td>
