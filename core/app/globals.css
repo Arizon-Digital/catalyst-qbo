@@ -1003,8 +1003,6 @@ label.inline-flex.w-full.items-center.justify-between {
     }
     
     .priced{
-        display: flex;
-    flex-direction: column;
     width: 300px;
     }
     span.cntpriced {
