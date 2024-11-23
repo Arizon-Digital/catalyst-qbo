@@ -12,7 +12,7 @@ const InternalButton = () => {
 
   return (
     <Button className="block w-full bg-primary text-white text-center py-2 rounded-md hover:bg-primary/90" loading={pending} loadingText={t('loading')}>
-      CHECKOUT
+      CHECKOUT NOW
     </Button>
   );
 };
