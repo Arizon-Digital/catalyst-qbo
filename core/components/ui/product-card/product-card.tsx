@@ -39,8 +39,8 @@ const ProductCard = async ({ id, name, href, image, price, subtitle, product }: 
  
   return (
     <div className="group product-card relative flex flex-col overflow-visible">
-      <div className="relative flex justify-center pb-3">
-        <div className="relative flex-auto aspect-square">
+      <div className="relative flex justify-center pb-3 plp-img-div-parent">
+        <div className="relative flex-auto aspect-square plp-img-div">
           {image ? (
             <BcImage alt={image.altText} className="object-contain" fill src={image.src} />
           ) : (
