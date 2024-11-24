@@ -42,7 +42,7 @@ const Breadcrumbs = ({ breadcrumbs, className }: Props) => {
                   aria-current={isLast ? `page` : undefined}
                   className={cn(
                     'font-normal hover:text-[#a5a5a5] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20',
-                    isLast ? 'text-custom-blue font-extrabold' : 'text-[#7F7F7F]'
+                    isLast ? 'text-custom-blue font-normal' : 'text-[#7F7F7F]'
                   )}
                   href={href}
                 >
