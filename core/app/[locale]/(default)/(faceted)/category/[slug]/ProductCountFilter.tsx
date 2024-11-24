@@ -32,23 +32,24 @@ const ProductCountFilter = () => {
   if (!isClient) {
     return (
       <div className='rounded-[4px] border border-[#dcdcdc] px-[10px] py-2'>
-        <span>20 Products</span>
+        <span>Products Per Page: 20</span>
       </div>
     );
   }
 
   return (
-    <div className='rounded-[4px] border border-[#dcdcdc] px-[10px] py-2'>
+    <div className='rounded-[4px] border border-[#dcdcdc] px-[10px] py-2 flex items-center gap-2'>
+      <span>Products Per Page:</span>
       <select
         value={productsPerPage}
         onChange={handleCountChange}
         className="bg-transparent outline-none"
       >
-        <option value="8">8 Products</option>
-        <option value="12">12 Products</option>
-        <option value="20">20 Products</option>
-        <option value="26">26 Products</option>
-        <option value="40">40 Products</option>
+        <option value="8">8</option>
+        <option value="12">12</option>
+        <option value="20">20</option>
+        <option value="26">26</option>
+        <option value="40">40</option>
       </select>
     </div>
   );
