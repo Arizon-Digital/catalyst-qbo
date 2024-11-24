@@ -281,10 +281,17 @@ export default async function Category(props: Props) {
         />
       )}
 
-      <div className="lg:justify- sortbutton mt-2 md:mb-8 lg:flex lg:flex-row lg:items-center">
-        <p className="categorybtn mb-4 text-4xl font-black lg:mb-0 lg:text-5xl" id="categorybtn">
-          Can't Find What You Are Looking For?
-        </p>
+<div className="lg:justify- sortbutton mt-2 md:mb-8 lg:flex lg:flex-row lg:items-center">
+  <a 
+    href="/cant-find-what-you-are-looking-for/" 
+    className="categorybtn mb-4 text-4xl font-black lg:mb-0 lg:text-5xl hover:text-blue-600 transition-colors duration-200"
+    id="categorybtn"
+    target="_blank" 
+    rel="noopener noreferrer" 
+  >
+    Can't Find What You Are Looking For?
+  </a>
+
 
         <div className="">
           <div className="form-field pdp">
@@ -345,7 +352,7 @@ export default async function Category(props: Props) {
             {t('products')}
           </h2>
 
-          <div className="product-grid grid grid-cols-2 gap-6 sm:grid-cols-3 sm:gap-8">
+          <div className="product-grid grid grid-cols-4 gap-6 sm:gap-8">
             {products.map((product, index) => (
               <ProductCard
                 imagePriority={index <= 3}
