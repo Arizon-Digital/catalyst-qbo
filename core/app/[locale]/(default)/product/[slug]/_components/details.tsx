@@ -13,6 +13,7 @@ import TabComponnet from '../_components/tab';
 import { log } from 'console';
 import { GetCurrencyList } from '~/components/ui/header/currency';
 import ProductPriceDisplay from './exclvat';
+import { Suspense } from 'react';
  
  
  
@@ -72,7 +73,7 @@ export const Details = ({ product }: Props) => {
   const t = useTranslations('Product.Details');
   const format = useFormatter();
  
-  const customFields = removeEdgesAndNodes(product.customFields);
+  const customFields = (product?.customFields) ? removeEdgesAndNodes(product.customFields) : [];
  
   const showPriceRange =
     product.prices?.priceRange.min.value !== product.prices?.priceRange.max.value;
@@ -113,11 +114,11 @@ export const Details = ({ product }: Props) => {
     <div className='priced'>
         {/* <GetCurrencyList /> */}
         {/* <CurrencyTextWrapper /> */}
-      <span className='cntpriced'>
-        <ProductPriceDisplay
-          product={product}
-        />
-</span>
+        <span className='cntpriced'>
+          <ProductPriceDisplay
+            product={product}
+          />
+        </span>
         <ProductForm data={product} />
       </div>
       <div className="feefo-reviews">
