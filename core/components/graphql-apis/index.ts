@@ -3,6 +3,9 @@
 import { client } from "~/client";
 import { graphql } from "~/client/graphql";
 import { getSessionCustomerAccessToken } from "~/auth";
+import { CartItemFragment } from "~/app/[locale]/(default)/cart/_components/cart-item";
+import { TAGS } from "~/client/tags";
+import { cookies } from "next/headers";
 
 
 const GET_RECENTLY_VIEWED_PRODUCTS = graphql(`
@@ -37,11 +40,42 @@ const GET_RECENTLY_VIEWED_PRODUCTS = graphql(`
     }
 `);
 
+const UpdateCurrencyQuery = graphql(`
+  mutation cartCurrencyUpdate($cartEntityId: String!, $currencyCode: String!) {
+    cart {
+      updateCartCurrency(input: {cartEntityId: $cartEntityId, data: {currencyCode: $currencyCode}}) {
+        cart {
+          entityId
+          currencyCode
+          lineItems {
+            ...CartItemFragment
+          }
+        }
+      }
+    }
+  }
+`, [CartItemFragment],);
+
 export const getRecentlyViewedProducts = async (productIds: any, currencyCode: any) => {
-    const customerAccessToken = await getSessionCustomerAccessToken();
-    const { data } = await client.fetch({
-        document: GET_RECENTLY_VIEWED_PRODUCTS,
-        variables: {productIds: productIds, currencyCode: currencyCode}
+  const { data } = await client.fetch({
+    document: UpdateCurrencyQuery,
+    variables: {productIds: productIds, currencyCode: currencyCode}
+  });
+  return data?.site.products;
+}
+
+export const updateCartCurrency = async (currencyCode: string) => {
+  const cookieStore = await cookies();
+  const cookieCartId = cookieStore.get('cartId')?.value;
+  if(cookieCartId) {
+    const {data}  = await client.fetch({
+      document: UpdateCurrencyQuery,
+      variables: {cartEntityId: cookieCartId, currencyCode: currencyCode},
+      fetchOptions: {
+        cache: 'no-store'
+      },
     });
-    return data?.site.products;
+    return data?.cart?.updateCartCurrency?.cart;
+  }
+  return null;
 }
