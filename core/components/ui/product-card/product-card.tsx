@@ -73,7 +73,7 @@ const ProductCard = ({
 
   return (
     <div className="product-card group relative flex flex-col overflow-visible">
-      <div className="plp-img-div-parent relative flex justify-center pb-3">
+      <div className="plp-img-div-parent relative flex justify-center">
         <div className="plp-img-div relative aspect-square flex-auto">
           {image ? (
             <BcImage alt={image.altText} className="object-contain" fill src={image.src} />

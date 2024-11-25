@@ -38,12 +38,12 @@ const ProductCountFilter = () => {
   }
 
   return (
-    <div className='rounded-[4px] border border-[#dcdcdc] px-[10px] py-2 flex items-center gap-2'>
+    <div className='rounded-[4px] border border-[#dcdcdc] px-[10px] py-2 flex items-center gap-2 hover:border-[#ca9618]'>
       <span>Products Per Page:</span>
       <select
         value={productsPerPage}
         onChange={handleCountChange}
-        className="bg-transparent outline-none"
+        className="bg-transparent outline-none text-[#131313]"
       >
         <option value="8">8</option>
         <option value="12">12</option>

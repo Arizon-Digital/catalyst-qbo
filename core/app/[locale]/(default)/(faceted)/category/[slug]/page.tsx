@@ -82,7 +82,7 @@ export default async function Category(props: Props) {
   const { hasNextPage, hasPreviousPage, endCursor, startCursor } = productsCollection.pageInfo;
 
   return (
-    <div className="group">
+    <div className="group mt-[-30px]">
       <Breadcrumbs category={category} />
       {category.defaultImage && (
         <div className='w-full'>
@@ -96,11 +96,11 @@ export default async function Category(props: Props) {
         </div>
       )}
 
-      <div className="lg:justify- sortbutton plp-filter-parent mt-2 gap-[20px] md:mb-8 lg:flex lg:flex-row lg:items-center">
-        <div className="font-oswald flex w-[20%] items-center justify-center rounded-[8px] border-[7px] border-[#CA9619] bg-[#CA9619] pb-[12px] pl-[18px] pr-[18px] pt-[12px] text-[18px] font-normal text-white no-underline">
+      <div className="lg:justify- sortbutton plp-filter-parent mt-2 md:mb-8 lg:flex lg:flex-row lg:items-center">
+        <div className="font-oswald flex w-[25%] items-center justify-center rounded-[8px] border-[7px] border-[#CA9619] bg-[#CA9619] pb-[12px] pl-[18px] pr-[18px] pt-[12px] text-[18px] font-normal text-white no-underline">
           <a
+            className="categorybtn mb-4 text-[18px] font-black transition-colors duration-200 hover:text-[#131313] lg:mb-0"
             href="/wecan'find"
-            className="categorybtn mb-4 text-[18px] font-black transition-colors duration-200 hover:text-blue-600 lg:mb-0"
             id="categorybtn"
             target="_blank"
             rel="noopener noreferrer"
@@ -109,22 +109,22 @@ export default async function Category(props: Props) {
           </a>
         </div>
 
-        <div className="plp-filters w-[80%]">
-          <div className="form-field pdp">
+        <div className="plp-filters w-[80%] ml-[2.3%]">
+          <div className="form-field pdp hover:border-[#ca9618]">
             <input
-              className="form-input w-full"
+              className="form-input w-full "
               type="text"
               name="q"
               placeholder="Filter products by name or part number..."
               data-search-in-category=""
             />
           </div>
-          <div className="flex items-start justify-between">
-            <div className="sort order flex items-center justify-between rounded-[4px] border border-[#dcdcdc]">
+          <div className="flex items-start justify-between text-[#a5a5a5]">
+            <div className="sort order flex items-center justify-between rounded-[4px] border border-[#dcdcdc] hover:border-[#ca9618]">
               <SortBy />
             </div>
             <div className="product-list-modification flex gap-4">
-              <div className="flex items-center justify-between rounded-[4px] border border-[#dcdcdc] px-[10px] py-2">
+              <div className="flex items-center justify-between rounded-[4px] hover:border-[#ca9618] border border-[#dcdcdc] px-[10px] py-2 ">
                 <ProductGridSwitcher />
               </div>
               <ProductCountFilter />
@@ -132,7 +132,7 @@ export default async function Category(props: Props) {
           </div>
         </div>
 
-        <div className="show-filters-div flex flex-col gap-3 whitespace-nowrap md:flex-row">
+        <div className="show-filters-div flex flex-col gap-3 whitespace-nowrap md:flex-row mt-[1rem]">
           <MobileSideNav>
             <FacetedSearch
               facets={search.facets.items}
