@@ -60,18 +60,16 @@ export default async function Category(props: Props) {
   const t = await getTranslations('Category');
 
   const categoryId = Number(slug);
-  
+
   // Get limit from searchParams or default to 50
-  const limit = typeof searchParams.limit === 'string' 
-    ? parseInt(searchParams.limit) 
-    : 50;
+  const limit = typeof searchParams.limit === 'string' ? parseInt(searchParams.limit) : 50;
 
   const [{ category, categoryTree }, search] = await Promise.all([
     getCategoryPageData({ categoryId }),
-    fetchFacetedSearch({ 
-      ...searchParams, 
-      category: categoryId, 
-      limit 
+    fetchFacetedSearch({
+      ...searchParams,
+      category: categoryId,
+      limit,
     }),
   ]);
 
@@ -87,26 +85,31 @@ export default async function Category(props: Props) {
     <div className="group">
       <Breadcrumbs category={category} />
       {category.defaultImage && (
-        <BcImage
-          alt={category.defaultImage.altText}
-          height={250}
-          src={category.defaultImage.url}
-          width={1230}
-        />
+        <div className='w-full'>
+          <BcImage
+            className='!w-full'
+            alt={category.defaultImage.altText}
+            height={250}
+            src={category.defaultImage.url}
+            width={1230}
+          />
+        </div>
       )}
 
-<div className="lg:justify- sortbutton mt-2 md:mb-8 lg:flex lg:flex-row lg:items-center id=categorybtn">
-  <a className="categorybtn mb-4 text-4xl font-black lg:mb-0 lg:text-5xl" 
-    href="/cant-find-what-you-are-looking-for/" 
-    className="categorybtn mb-4 text-4xl font-black lg:mb-0 lg:text-5xl hover:text-blue-600 transition-colors duration-200"
-    id="categorybtn"
-    target="_blank" 
-    rel="noopener noreferrer" 
-  >
-    Can't Find What You Are Looking For?
-  </a>
-  
-        <div className="">
+      <div className="lg:justify- sortbutton plp-filter-parent mt-2 gap-[20px] md:mb-8 lg:flex lg:flex-row lg:items-center">
+        <div className="font-oswald flex w-[20%] items-center justify-center rounded-[8px] border-[7px] border-[#CA9619] bg-[#CA9619] pb-[12px] pl-[18px] pr-[18px] pt-[12px] text-[18px] font-normal text-white no-underline">
+          <a
+            href="/cant-find-what-you-are-looking-for/"
+            className="categorybtn mb-4 text-[18px] font-black transition-colors duration-200 hover:text-blue-600 lg:mb-0"
+            id="categorybtn"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Can't Find What You Are Looking For?
+          </a>
+        </div>
+
+        <div className="plp-filters w-[80%]">
           <div className="form-field pdp">
             <input
               className="form-input w-full"
@@ -116,12 +119,12 @@ export default async function Category(props: Props) {
               data-search-in-category=""
             />
           </div>
-          <div className="flex justify-between">
-            <div className="sort order ml-[70px]">
+          <div className="flex items-start justify-between">
+            <div className="sort order flex items-center justify-between rounded-[4px] border border-[#dcdcdc]">
               <SortBy />
             </div>
-            <div className='flex gap-4'>
-              <div className="flex items-center justify-between rounded-[4px] border border-[#dcdcdc] px-[10px]">
+            <div className="product-list-modification flex gap-4">
+              <div className="flex items-center justify-between rounded-[4px] border border-[#dcdcdc] px-[10px] py-2">
                 <ProductGridSwitcher />
               </div>
               <ProductCountFilter />
@@ -129,7 +132,7 @@ export default async function Category(props: Props) {
           </div>
         </div>
 
-        <div className="flex flex-col items-center gap-3 whitespace-nowrap md:flex-row">
+        <div className="show-filters-div flex flex-col gap-3 whitespace-nowrap md:flex-row">
           <MobileSideNav>
             <FacetedSearch
               facets={search.facets.items}
@@ -139,7 +142,7 @@ export default async function Category(props: Props) {
               <SubCategories categoryTree={categoryTree} />
             </FacetedSearch>
           </MobileSideNav>
-          <div className="flex w-full flex-col items-start gap-4 md:flex-row md:items-center md:justify-end md:gap-6">
+          <div className="flex w-max flex-col items-start gap-4 md:flex-row md:items-center md:justify-end md:gap-6">
             <div className="order-3 py-4 text-base font-semibold md:order-2 md:py-0">
               {t('sortBy', { items: productsCollection.collectionInfo?.totalItems ?? 0 })}
             </div>
