@@ -47,10 +47,9 @@ span.price {
     margin-bottom: 10px;
 }
 aside.mb-8.hidden.lg\:block {
-    padding: 1.5rem;
+    padding: 14px;
     border: 1px solid #dcdcdc;
     border-radius: 4px;
-    margin: 0 -1.125rem;
     background-color: #fff;
 }
 p#categorybtn {
@@ -607,8 +606,7 @@ div#feefo-service-review-carousel-widgetIdd {
 }
 
 .group.relative.flex.flex-col.overflow-visible {
-    border-color: #dcdcdc !important;
-    border: solid 1px !important;
+    border: 1px solid #dcdcdc !important;
     border-radius: 4px;
     -webkit-box-shadow: 0 3px 0 #dcdcdc;
     box-shadow: 0 3px 0 #dcdcdc;
@@ -2275,4 +2273,18 @@ section.section-flex {
 
 .product-grid.grid-cols-1 .plp-product-content{
     width: 50%;
+}
+
+.product-grid.grid-cols-4 .plp-img-div .plp-product-btn-hover button:first-child{
+    bottom: 10%;
+    top: unset;
+}
+
+.product-card.group{
+    padding-bottom: 10px;
+}
+
+.plp-filters .product-list-modification button,
+.group .sort.order button{
+    color: #131313;
 }
