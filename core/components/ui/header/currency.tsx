@@ -5,7 +5,6 @@ import { Select } from '~/components/ui/form';
 import { useRouter } from '~/i18n/routing';
 import { getCurrencyListData, getCurrencyCodeFn, setCurrencyCodeFn } from "~/components/header/_actions/getCurrencyList";
 import { useCommonContext } from '~/components/common-context/common-provider';
-import { updateCartCurrency } from "~/components/graphql-apis";
 
 interface Currency {
   code: string;
@@ -45,8 +44,7 @@ export const GetCurrencyList = () => {
     getCurrencyData();
   }, []);
 
-  const onCurrencyChange = async (currencyCode: string) => {
-    let data = await updateCartCurrency(currencyCode);
+  const onCurrencyChange = (currencyCode: string) => {
     setCurrencyCodeFn(currencyCode);
     setCurrencyCode(currencyCode);
     getCommonContext.setCurrencyCodeFn(currencyCode);
@@ -69,3 +67,6 @@ export const GetCurrencyList = () => {
     </div>
   );
 };
+
+
+
