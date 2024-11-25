@@ -307,6 +307,33 @@ svg#nav-menu-chevron-\/adhesives-lubricants\/ {
     width: 20px;
     margin-bottom: 5px;
 }
+svg#nav-menu-chevron-\/default-path\/ball-bearings{
+    height: 16px !important;
+    width: 20px;
+    margin-bottom: 5px;
+}
+svg#nav-menu-chevron-\/default-path\/brands {
+    height: 16px !important;
+    width: 20px;
+    margin-bottom: 5px;
+}
+svg#nav-menu-chevron-\/default-path\/housings-and-inserts {
+    height: 16px !important;
+    width: 20px;
+    margin-bottom: 5px;
+
+}
+svg#nav-menu-chevron-\/default-path\/linear {
+    height: 16px !important;
+    width: 20px;
+    margin-bottom: 5px;
+}
+svg#nav-menu-chevron-\/default-path\/maintenance-tools {
+    height: 16px !important;
+    width: 20px;
+    margin-bottom: 5px;
+}
+
 
 div#nav-menu-viewport {
     color: #000;
