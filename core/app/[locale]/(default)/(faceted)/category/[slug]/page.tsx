@@ -99,7 +99,7 @@ export default async function Category(props: Props) {
       <div className="lg:justify- sortbutton plp-filter-parent mt-2 gap-[20px] md:mb-8 lg:flex lg:flex-row lg:items-center">
         <div className="font-oswald flex w-[20%] items-center justify-center rounded-[8px] border-[7px] border-[#CA9619] bg-[#CA9619] pb-[12px] pl-[18px] pr-[18px] pt-[12px] text-[18px] font-normal text-white no-underline">
           <a
-            href="/cant-find-what-you-are-looking-for/"
+            href="/wecan'find"
             className="categorybtn mb-4 text-[18px] font-black transition-colors duration-200 hover:text-blue-600 lg:mb-0"
             id="categorybtn"
             target="_blank"
