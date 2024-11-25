@@ -93,7 +93,7 @@ const Header = ({
           <div className="navbar">
             <a className="contact-link" href="/about-us"><i className="contact-link"></i> About Us</a>
             <GetCurrencyList />
-            <a href="/contact-us" className="contact-link"><Inbox size={15} /> Contact US</a>
+            <a href="/contact-us" className="contact-link"><Inbox size={15} /> Contact Us</a>
             <a href="tel:438 800 0618" className="contact-link"><Phone size={15} /> CAN: 438 800 0618</a>
           </div>
         </div>
