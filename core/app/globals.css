@@ -970,9 +970,7 @@ label.inline-flex.w-full.items-center.justify-between {
         margin-right: 12px;
         
     }
-    a.contact-link {
-        border-left: 1px solid rgba(255, 255, 255, .2);
-    }
+   
     .navbar {
         height:37px;
         display: flex;
