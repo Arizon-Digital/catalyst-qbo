@@ -10,12 +10,14 @@ import ProductPriceDisplay from '~/app/[locale]/(default)/product/[slug]/_compon
 import { RemoveItem } from '~/app/[locale]/(default)/cart/_components/remove-item';
 import { MiniCartIcon } from '~/components/common-images';
 import { BcImage } from '~/components/bc-image';
+import { getCartData } from '~/components/common-functions';
 
-export const MiniCart = ({ cartItems, closeModal, cartId, count }: { cartItems: any, closeModal: any, cartId: string, count: number }) => {
+export const MiniCart = ({ cartId, count }: { cartId: string, count: number }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [removeError, setRemoveError] = useState<string | null>(null);
+  const [cartItems, setCartItems] = useState([]);
+  const [hasItems, setHasItems] = useState(0);
   const cartRef = useRef<HTMLDivElement>(null);
-  const { cart, loading } = useCart();
   const [miniBag, setMiniBag] = useState();
 
   useEffect(() => {
@@ -34,11 +36,19 @@ export const MiniCart = ({ cartItems, closeModal, cartId, count }: { cartItems: 
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const hasItems = cartItems?.lineItems?.physicalItems && cartItems.lineItems.physicalItems.length > 0;
+  const loadMiniBag = async() => {
+    setIsOpen(true);
+    let cartData = await getCartData();
+    if(cartData?.lineItems?.physicalItems) {
+      setCartItems(cartData);
+      if(cartData?.lineItems?.physicalItems.length > 0) {
+        setHasItems(1);
+      }
+    }
+  }
 
   const handleRemoveItem = async (e: React.FormEvent<HTMLFormElement>, lineItemEntityId: string) => {
     e.preventDefault();
-    alert(lineItemEntityId)
     try {
       const result = RemoveItem({
         lineItemEntityId
@@ -59,7 +69,7 @@ export const MiniCart = ({ cartItems, closeModal, cartId, count }: { cartItems: 
   return (
     <div className="relative" ref={cartRef}>
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => loadMiniBag()}
         className="relative flex items-center gap-2 p-2 rounded-full"
         aria-label="Shopping cart"
       >
