@@ -1,14 +1,21 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { getCurrencyCodeFn } from "~/components/header/_actions/getCurrencyList";
 
 const DoofinderScriptLoader = () => {
+  const [currency, setCurrency] = useState('CAD');
   useEffect(() => {
+    const getCurrencyCode = async() => {
+      let currencyCode: any = await getCurrencyCodeFn();
+      setCurrency(currencyCode);
+    }
+    getCurrencyCode();
     if (typeof window !== "undefined") {
       const dfLayerOptions = {
         installationId: 'c0f78410-3a01-422e-bb3d-1a441ec81c85',
         zone: 'eu1',
-        currency: 'CAD'
+        currency: currency
       };
 
       // Dynamically inject the script
@@ -28,7 +35,7 @@ const DoofinderScriptLoader = () => {
         s.parentNode.insertBefore(r, s);
       })(document, 'script', 'https://cdn.doofinder.com/livelayer/1/js/loader.min.js');
     }
-  }, []);
+  }, [currency]);
 
   return <div>{/* You can add any additional UI here if needed */}</div>;
 };
