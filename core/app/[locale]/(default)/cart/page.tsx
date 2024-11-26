@@ -214,7 +214,7 @@ export default async function Cart() {
         </div>
       </div>
       <CartViewed checkout={checkout} currencyCode={cart.currencyCode} lineItems={lineItems} />
-      
+      <div id="feefo-service-review-floating-widgetId"></div>
     </div>
   );
 }

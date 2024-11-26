@@ -58,7 +58,7 @@ const UpdateCurrencyQuery = graphql(`
 
 export const getRecentlyViewedProducts = async (productIds: any, currencyCode: any) => {
   const { data } = await client.fetch({
-    document: UpdateCurrencyQuery,
+    document: GET_RECENTLY_VIEWED_PRODUCTS,
     variables: {productIds: productIds, currencyCode: currencyCode}
   });
   return data?.site.products;

@@ -35,7 +35,6 @@ export async function generateStaticParams() {
 
 export default async function CatchAllPage(props: Props) {
   const params: any = await props.params;
-  const { locale, rest } = params;
   const path = `/${params.rest.join('/')}`;
 
   const snapshot = await client.getPageSnapshot(path, {
