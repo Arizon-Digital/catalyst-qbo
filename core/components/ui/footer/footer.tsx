@@ -182,12 +182,12 @@ const Footer = ({
             <h2 className="footer-info-heading">Download Our New Mobile App</h2>
             <ul className='downaload'>
               <li className='payment'>
-                <a href="https://play.google.com/store/apps/details?id=com.qualitybearingsonline.qualitybearingsonline" title="Get the Quality Bearings Online App on Google Play Store" target="_blank">
+                <a href="https://play.google.com/store/apps/details?id=com.qualitybearingsonline.qualitybearingsonline" className='opacity-[0.5] transition-opacity duration-500 hover:opacity-[1]' title="Get the Quality Bearings Online App on Google Play Store" target="_blank">
                   <img src="https://cdn11.bigcommerce.com/s-03842/content/../content/NewSite/Product-Images/Google%20Play%20Store%20Icon.png" alt="Google Play Store" width="150" />
                 </a>
               </li>
               <li>
-                <a href="https://apps.apple.com/us/app/quality-bearings-online/id1480671392?ls=1" title="Get the Quality Bearings Online App on The Apple App Store" target="_blank">
+                <a href="https://apps.apple.com/us/app/quality-bearings-online/id1480671392?ls=1" className='opacity-[0.5] transition-opacity duration-500 hover:opacity-[1]' title="Get the Quality Bearings Online App on The Apple App Store" target="_blank">
                   <img src="https://cdn11.bigcommerce.com/s-03842/content/../content/NewSite/Product-Images/Apple%20Store%20Icon.png" alt="Apple App Store" width="150" />
                 </a>
               </li>
@@ -199,17 +199,17 @@ const Footer = ({
             <ul className='socialmedia'>
               <li className='contactfooter'>
                 <a href="https://www.facebook.com/qualitybearings" className="contact-links" target="_blank" rel="noopener noreferrer">
-                  <FaFacebook size={35} />
+                  <FaFacebook size={30} className='opacity-[0.5] transition-opacity duration-500 hover:opacity-[1]'/>
                 </a>
               </li>
               <li className='contactfooter'>
                 <a href="https://www.instagram.com/qualitybearings/" className="contact-links" target="_blank" rel="noopener noreferrer">
-                  <FaInstagram size={35} />
+                  <FaInstagram size={35} className='opacity-[0.5] transition-opacity duration-500 hover:opacity-[1]'/>
                 </a>
               </li>
               <li className='contactfooter'>
                 <a href="https://www.linkedin.com/company/quality-bearings-online-limited/" className="contact-links" target="_blank" rel="noopener noreferrer">
-                  <FaLinkedin size={35} />
+                  <FaLinkedin size={35} className='opacity-[0.5] transition-opacity duration-500 hover:opacity-[1]'/>
                 </a>
               </li>
             </ul>
