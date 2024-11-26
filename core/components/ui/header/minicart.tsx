@@ -11,7 +11,7 @@ import { RemoveItem } from '~/app/[locale]/(default)/cart/_components/remove-ite
 import { MiniCartIcon } from '~/components/common-images';
 import { BcImage } from '~/components/bc-image';
 
-export const MiniCart = ({ cartItems, closeModal, cartId }: { cartItems: any, closeModal: any, cartId: string }) => {
+export const MiniCart = ({ cartItems, closeModal, cartId, count }: { cartItems: any, closeModal: any, cartId: string, count: number }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [removeError, setRemoveError] = useState<string | null>(null);
   const cartRef = useRef<HTMLDivElement>(null);
@@ -63,15 +63,15 @@ export const MiniCart = ({ cartItems, closeModal, cartId }: { cartItems: any, cl
         className="relative flex items-center gap-2 p-2 rounded-full"
         aria-label="Shopping cart"
       >
-        <BcImage 
+        {miniBag && <BcImage 
           src={miniBag}
           alt="mini-cart" 
           width="50" 
           height="50" 
-        />
+        />}
 
         <span className="absolute -right-3 -top-1 h-[24px] w-[24px] flex items-center justify-center rounded-full bg-[#1c2541] text-xs font-bold text-white">
-          {cartItems?.lineItems?.totalQuantity}
+          {count}
         </span>
 
         <span className="text-[#1c2541] font-medium text-sm">Cart</span>
