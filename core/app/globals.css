@@ -448,7 +448,6 @@ section.flex.flex-col.gap-8.border-t.border-gray-200.px-4.py-10.sm\:px-10.md\:fl
     margin-right: 120px;
 }
 button#signinbutton {
-    width: 30% !important;
     height: 45px;
 }
 .reset{
@@ -2212,6 +2211,14 @@ section.section-flex {
 
 
     @media (max-width: 600px) {
+        div#tabsection {
+            background-color: unset;
+           border: none;
+          border-radius: unset;
+          box-shadow: unset;
+          margin-top: 0;
+          margin-bottom: 0;
+        }
     table.prod-desc-tbl{
     width:30%;
     }

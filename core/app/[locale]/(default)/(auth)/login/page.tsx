@@ -43,7 +43,7 @@ export default async function Login({ params }: Props) {
           breadcrumbs={breadcrumbs}
         />
       <h2 className="text-h2 mb-8 text-4xl font-black lg:text-5xl" id='signinheading'>Sign in</h2>
-      <div className="mb-12 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8">
+      <div className="mb-12 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8 mt-[2rem]">
         <LoginForm />
         <div className="flex flex-col gap-4 bg-gray-100 p-8" id='background'>
           <h3 className="text-h5 mb-3" id='newcustomer'>{t('CreateAccount.heading')}</h3>
