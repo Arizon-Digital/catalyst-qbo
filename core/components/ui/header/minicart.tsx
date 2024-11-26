@@ -1,5 +1,3 @@
-
-
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
@@ -9,12 +7,13 @@ import { useCart } from '~/lib/hooks/useCart';
 import { RemoveFromCartButton } from '~/app/[locale]/(default)/cart/_components/remove-from-cart-button';
 import { CheckoutButtonPopUp } from './checkout-button';
 import ProductPriceDisplay from '~/app/[locale]/(default)/product/[slug]/_components/exclvat';
-
+import { RemoveItem } from '~/app/[locale]/(default)/cart/_components/remove-item';
 
 export const MiniCart = ({ cartItems, closeModal, cartId }: { cartItems: any, closeModal: any, cartId: string }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [removeError, setRemoveError] = useState<string | null>(null);
   const cartRef = useRef<HTMLDivElement>(null);
-  const { cart, loading, removeItem } = useCart();
+  const { cart, loading } = useCart();
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -29,11 +28,23 @@ export const MiniCart = ({ cartItems, closeModal, cartId }: { cartItems: any, cl
 
   const hasItems = cartItems?.lineItems?.physicalItems && cartItems.lineItems.physicalItems.length > 0;
 
-  const handleRemoveItem = async (itemId: string) => {
+  const handleRemoveItem = async (e: React.FormEvent<HTMLFormElement>, lineItemEntityId: string) => {
+    e.preventDefault();
+    alert(lineItemEntityId)
     try {
-      await removeItem(itemId);
+      const result = RemoveItem({
+        lineItemEntityId
+      });
+
+      if (result.status === 'error') {
+        setRemoveError(result.error || 'Failed to remove item');
+        console.error('Error removing item:', result.error);
+      } else {
+        setRemoveError(null);
+      }
     } catch (error) {
       console.error('Error removing item:', error);
+      setRemoveError('Failed to remove item');
     }
   };
 
@@ -63,6 +74,9 @@ export const MiniCart = ({ cartItems, closeModal, cartId }: { cartItems: any, cl
           <div className="p-4">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-lg font-semibold">Shopping Cart</h2>
+              {removeError && (
+                <p className="text-red-500 text-sm">{removeError}</p>
+              )}
             </div>
 
             <div className="max-h-96 overflow-y-auto">
@@ -90,30 +104,27 @@ export const MiniCart = ({ cartItems, closeModal, cartId }: { cartItems: any, cl
                         <div className="mt-2 flex justify-between items-center">
                           <div className="flex items-center gap-2">
                             <span className="text-sm minicart">Qty: {item.quantity}</span>
-
                           </div>
                           
                           <div>
                             <span className="text-sm minicart">Price: </span>
                             <div className='miniprice'>
-                            <ProductPriceDisplay
-                              product={{
-                                prices: {
-                                  price: {
-                                    value: item.extendedSalePrice.value,
-                                    currencyCode: item.extendedSalePrice.currencyCode
+                              <ProductPriceDisplay
+                                product={{
+                                  prices: {
+                                    price: {
+                                      value: item.extendedSalePrice.value,
+                                      currencyCode: item.extendedSalePrice.currencyCode
+                                    }
                                   }
-                                }
-                              }}
-                            />
+                                }}
+                              />
                             </div>
                           </div>
                         </div>
                         <div className="mt-2 flex justify-end">
-                          <form onSubmit={(e) => {
-                            e.preventDefault();
-                            handleRemoveItem(item.id);
-                          }}>
+                          <form onSubmit={(e) => handleRemoveItem(e, item.entityId)}>
+                            <input type="hidden" name="lineItemEntityId" value={item.entityId} />
                             <RemoveFromCartButton icon="trash" />
                           </form>
                         </div>

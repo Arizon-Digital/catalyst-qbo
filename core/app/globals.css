@@ -1266,6 +1266,10 @@ width: auto;
         
 
     }
+    .delivery-image{
+        width:160px;
+
+    }
     li.navigationfooter:hover {
         text-decoration: underline; /* Underline on hover */
         color: #eaeaea; /* Change color on hover */
@@ -2006,6 +2010,7 @@ height: 32px;
 }
 
 
+
 li.flex.items-center.BREADCRUMBS > .hover\:text-primary:hover {
     color: #7F7F7F !important;
 }
@@ -2059,7 +2064,9 @@ li.flex.items-center > a.hover\:text-\[\#a5a5a5\].focus-visible\:outline-none.fo
     margin-inline: 0;
 }
 
-
+.deliverytable{
+    width:100%;
+}
 .product-grid.grid-cols-5 .plp-img-div-parent{
     height: 110px;
     width: 110px;    
@@ -2184,3 +2191,102 @@ section.section-flex {
         margin-left: 15px;
     }
     }
+
+
+
+
+
+
+
+
+
+    @media (max-width: 600px) {
+    table.prod-desc-tbl{
+    width:30%;
+    }
+    .product-info-hr{
+    width:30%;
+    }
+    .product-details-dd {
+        width: 100%;
+    }
+    .product-details-logo {
+        /* margin-bottom: 50px; */
+        height: 27px;
+        /* width: auto; */
+        margin-left: 200px;
+        margin-top: -26px;
+    }
+    span.product-details-item {
+        display: block;
+        margin-left: 9px;
+        width: auto !important;
+    }
+    .value {
+        width: 250px;
+    }
+    .custom-field {
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        /* margin-left: 9px; */
+        margin-bottom: 7px;
+        flex-direction: column;
+    }
+    div#Canada p {
+        Width: 80%;
+        background: #fff;
+        font-family: Roboto Slab, serif;
+        font-weight: 300;
+        font-size: 16px;
+    }
+    div#Canada h3 {
+        width: 80%;
+    }
+    .delivery123{
+        width:50%;
+    }
+    .delivery1234{
+        align:left;
+        width:50%;
+    }
+    .deliverytable{
+        width:auto;
+    }
+    div#Canada h4 {
+        width: 80%;
+        color: #000;
+        font-family: Roboto Slab, Arial, Helvetica, sans-serif;
+        line-height: 1.25;
+        margin-bottom: .75rem;
+        font-weight: 600;
+        margin-top: 2.25rem;
+        font-size: 16px;
+        padding-bottom: 25px;
+    }
+    .delivery-image{
+        width:80px;
+
+    }
+    .productView-bulk-tabContent > p{
+        width:80%;
+    }
+    
+    .input{
+        width: max-content;
+    }
+    label{
+        width: max-content; 
+    }
+    .hs-form-cd97e866-8d59-4ca7-8252-23dacae92004_7bd3ab07-b0d3-4b06-a1b3-f09fe9750ade.hs-form {
+        width: max-content;
+    }
+    .hs-custom-style fieldset {
+        margin-right: 0 !important;
+        width: max-content;
+    }
+    .hs_email.hs-email.hs-fieldtype-text.field.hs-form-field {
+        width: max-content;
+    }
+}
+

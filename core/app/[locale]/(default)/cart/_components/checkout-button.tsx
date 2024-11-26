@@ -26,3 +26,7 @@ export const CheckoutButton = ({ cartId }: { cartId: string }) => {
     </form>
   );
 };
+
+
+
+

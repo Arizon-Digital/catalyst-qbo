@@ -33,17 +33,17 @@ const Deliveryinformation: React.FC<Props> = ({ product }) => {
         <table className="delivery-info" style={{ width: '100%' }} border="0px solid #ffffff">
           <tbody>
             <tr>
-              <td width="70%">
+              <td width="70%" className="delivery123">
                 <h2 style={{ fontFamily: 'Roboto Slab' }}>1-3 Day Service</h2>
               </td>
-              <td align="center" width="30%">
-                <img src="https://cdn11.bigcommerce.com/s-03842/content/NewSite/Icons/DHL.jpg" alt="DHL logo" width="160px" />
+              <td align="center" width="30%"className="delivery1234">
+                <img src="https://cdn11.bigcommerce.com/s-03842/content/NewSite/Icons/DHL.jpg" alt="DHL logo"  className="delivery-image"/>
               </td>
             </tr>
           </tbody>
         </table>
         <br />
-        <table className="deliverytable" style={{ width: '100%' }} align="center">
+        <table className="deliverytable" >
           <tbody>
             <tr>
               <th style={{ width: '50%' }}>Order Value</th>
