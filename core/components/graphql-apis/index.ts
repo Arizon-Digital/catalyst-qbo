@@ -75,6 +75,17 @@ export const updateCartCurrency = async (currencyCode: string) => {
         cache: 'no-store'
       },
     });
+    let cartId = data?.cart?.updateCartCurrency?.cart?.entityId;
+    if(cartId) {
+      cookieStore.set({
+        name: 'cartId',
+        value: cartId,
+        httpOnly: true,
+        sameSite: 'lax',
+        secure: true,
+        path: '/',
+      });
+    }
     return data?.cart?.updateCartCurrency?.cart;
   }
   return null;

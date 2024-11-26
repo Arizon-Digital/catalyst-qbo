@@ -8,14 +8,22 @@ import { RemoveFromCartButton } from '~/app/[locale]/(default)/cart/_components/
 import { CheckoutButtonPopUp } from './checkout-button';
 import ProductPriceDisplay from '~/app/[locale]/(default)/product/[slug]/_components/exclvat';
 import { RemoveItem } from '~/app/[locale]/(default)/cart/_components/remove-item';
+import { MiniCartIcon } from '~/components/common-images';
+import { BcImage } from '~/components/bc-image';
 
 export const MiniCart = ({ cartItems, closeModal, cartId }: { cartItems: any, closeModal: any, cartId: string }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [removeError, setRemoveError] = useState<string | null>(null);
   const cartRef = useRef<HTMLDivElement>(null);
   const { cart, loading } = useCart();
+  const [miniBag, setMiniBag] = useState();
 
   useEffect(() => {
+    const miniBagIcons = async() => {
+      let minicartIcon: any = await  MiniCartIcon();
+      setMiniBag(minicartIcon);
+    }
+    miniBagIcons();
     const handleClickOutside = (event: MouseEvent) => {
       if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
         setIsOpen(false);
@@ -55,8 +63,8 @@ export const MiniCart = ({ cartItems, closeModal, cartId }: { cartItems: any, cl
         className="relative flex items-center gap-2 p-2 rounded-full"
         aria-label="Shopping cart"
       >
-        <img 
-          src="https://cdn11.bigcommerce.com/s-ur7wjnshy8/images/stencil/original/image-manager/mini-cart-icon.png" 
+        <BcImage 
+          src={miniBag}
           alt="mini-cart" 
           width="50" 
           height="50" 
