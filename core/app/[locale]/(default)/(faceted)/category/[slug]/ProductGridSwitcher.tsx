@@ -43,10 +43,10 @@ export const ProductGridSwitcher = () => {
           <button
             key={option}
             onClick={() => handleColumnChange(option)}
-            className={`px-2 py-1 rounded text-sm ${
+            className={`px-2 py-1 rounded text-sm border border-[#dcdcdc]  ${
               columns === option
-                ? 'bg-blue-600 text-white'
-                : 'hover:bg-gray-200 text-gray-800'
+                ? 'bg-white !border-[#ca9618]  text-black'
+                : ' hover:border-[#ca9618]'
             } transition-colors duration-200`}
           >
             {option}

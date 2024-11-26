@@ -158,3 +158,6 @@ export const MiniCart = ({ cartItems, closeModal, cartId }: { cartItems: any, cl
 };
 
 export default MiniCart;
+
+
+

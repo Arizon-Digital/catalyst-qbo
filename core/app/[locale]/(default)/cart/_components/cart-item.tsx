@@ -1,10 +1,11 @@
+
 import { useFormatter } from 'next-intl';
 import Link from 'next/link';
+import { ShoppingCart, Trash2 } from 'lucide-react';
 import { FragmentOf, graphql } from '~/client/graphql';
 import { BcImage } from '~/components/bc-image';
 import { ItemQuantity } from './item-quantity';
 import { RemoveItem } from './remove-item';
-import { Trash2 } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { imageManagerImageUrl } from '~/lib/store-assets';
 
@@ -183,7 +184,7 @@ const DeleteConfirmationDialog = ({
           <Dialog.Title className="flex justify-center mb-4">
             <ExclamationIcon />
           </Dialog.Title>
-          <Dialog.Description className="text-gray-600 mb-6">
+          <Dialog.Description className="text-gray-600 mb-6 text-center">
             Are you sure you want to delete this item?
           </Dialog.Description>
 
@@ -208,14 +209,12 @@ const DeleteConfirmationDialog = ({
 export const CartItem = ({ currencyCode, product }: Props) => {
   const format = useFormatter();
 
-  const deleteIcon = imageManagerImageUrl('delete.png', '24w');
-
   return (
     <>
       <tbody className="cart-item-desk border border-[#CFD8DC]">
         <tr className="relative">
           {/* Image */}
-          <td className="product-td-img w-[80px]">
+          <td className="product-td-img w-[80px] relative">
             {product.image?.url ? (
               <Link href={product.url} className="product-img-div flex justify-center items-center">
                 <BcImage
@@ -261,9 +260,9 @@ export const CartItem = ({ currencyCode, product }: Props) => {
               <ItemQuantity product={product} />
               {/* Remove Item */}
               <div className="deleteIcon-div hidden md:block">
-                <DeleteConfirmationDialog product={product} currencyCode={currencyCode} deleteIcon={deleteIcon}>
+                <DeleteConfirmationDialog product={product} currencyCode={currencyCode} deleteIcon="">
                   <button className="flex items-center">
-                    <img src={deleteIcon} alt="Remove item" className="w-5 h-5" />
+                    <Trash2 className="w-5 h-5 text-gray-600 hover:text-blue-600 transition-colors" />
                   </button>
                 </DeleteConfirmationDialog>
               </div>
@@ -281,8 +280,12 @@ export const CartItem = ({ currencyCode, product }: Props) => {
           </td>
         </tr>
       </tbody>
+
       <li className="cart-item-tab border-b border-b-[#CFD8DC] px-[12px] pt-[12px]">
-        <div className='flex gap-[20px] items-center min-h-[100px]'>
+        <div className='flex gap-[20px] items-center min-h-[100px] relative'>
+          <div className="absolute top-2 right-2">
+            <ShoppingCart className="w-5 h-5 text-gray-600" />
+          </div>
           <Link href={product.url} className="product-td-img w-[80px] h-[80px] flex items-center justify-center">
             {product.image?.url ? (
               <BcImage
@@ -325,9 +328,9 @@ export const CartItem = ({ currencyCode, product }: Props) => {
               <ItemQuantity product={product} />
               {/* Remove Item */}
               <div className="deleteIcon-div hidden md:block">
-                <DeleteConfirmationDialog product={product} currencyCode={currencyCode} deleteIcon={deleteIcon}>
+                <DeleteConfirmationDialog product={product} currencyCode={currencyCode} deleteIcon="">
                   <button className="flex items-center">
-                    <img src={deleteIcon} alt="Remove item" className="w-5 h-5" />
+                    <Trash2 className="w-5 h-5 text-gray-600 hover:text-red-600 transition-colors" />
                   </button>
                 </DeleteConfirmationDialog>
               </div>

@@ -1,4 +1,4 @@
-import React, {ReactNode} from 'react';
+import React, { ReactNode } from 'react';
 import { BcImage } from '~/components/bc-image';
 import { Link } from '~/components/link';
 import { cn } from '~/lib/utils';
@@ -44,7 +44,7 @@ interface Props extends Product {
   showCompare?: boolean;
   product?: any;
 }
- 
+
 const ProductCard = ({
   addToCart,
   className,
@@ -60,7 +60,6 @@ const ProductCard = ({
   product,
   ...props
 }: Props) => {
- 
   const addToCardData = {
     defaultImage: {
       url: image.src,
@@ -71,41 +70,43 @@ const ProductCard = ({
     subtitle,
     cartCount: 1,
   };
- 
+
   return (
-    <div className="group product-card relative flex flex-col overflow-visible">
-      <div className="relative flex justify-center pb-3 plp-img-div-parent">
-        <div className="relative flex-auto aspect-square plp-img-div">
+    <div className="product-card group relative flex flex-col overflow-visible">
+      <div className="plp-img-div-parent relative flex justify-center">
+        <div className="plp-img-div relative aspect-square flex-auto">
           {image ? (
             <BcImage alt={image.altText} className="object-contain" fill src={image.src} />
           ) : (
             <div className="h-full w-full bg-gray-200" />
           )}
-          <div className='opacity-0 hover:opacity-100'>
-          <QuickView product={product} />
-          <AddToCartButton addToCardData={addToCardData} product={product} />
-         
+          <div className="opacity-0 hover:opacity-100 plp-product-btn-hover">
+            <QuickView product={product} />
+            <AddToCartButton addToCardData={addToCardData} product={product} />
           </div>
         </div>
       </div>
- 
-      <div className="flex flex-col gap-1">
-        <h3 className="text-xl font-bold title">
+
+      <div className="plp-product-content flex flex-col gap-1">
+        <h3 className="title text-xl font-bold">
           <Link href={href}>
             <span>{name}</span>
           </Link>
         </h3>
-        {subtitle && <p className="text-base text-gray-500 brand">{subtitle}</p>}
-        <div className='cardprice'>
-        <ProductPriceDisplay
-        product={product} 
-      />
+        {subtitle && <p className="brand text-base text-gray-500">{subtitle}</p>}
+        <div className="cardprice">
+          <ProductPriceDisplay product={product} />
+        </div>
       </div>
+
+      <div className="plp-product-btn">
+        <QuickView product={product} />
+        <AddToCartButton addToCardData={addToCardData} product={product} />
       </div>
     </div>
   );
 };
- 
+
 ProductCard.displayName = 'ProductCard';
 
 export { ProductCard, type Price };
