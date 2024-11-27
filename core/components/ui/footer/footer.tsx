@@ -99,7 +99,7 @@ const Footer = ({
  
         <a className="contactus" href="/contact-us">
  
-          <p id="address">Contact us</p>
+          <p id="address">Contact Us</p>
         </a>
  
         {/* Social Media Links */}
