@@ -287,7 +287,7 @@ const Carousel = ({ className, title, pageSize = 5, products, ...props }: Props)
     <div
       aria-labelledby={titleId}
       aria-roledescription="carousel"
-      className={cn('relative', className)}
+      className={cn('relative pdp-products', className)}
       onKeyDownCapture={handleKeyDown}
       role="region"
       {...props}
