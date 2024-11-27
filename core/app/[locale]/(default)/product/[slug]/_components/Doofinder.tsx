@@ -15,7 +15,7 @@ const DoofinderScriptLoader = () => {
     getCurrencyCode();
     if (typeof window !== "undefined") {
       let dfLayerOptions = {
-        installationId: '82a4ba46-5b09-45b3-aa2b-df39cc81f8ec',
+        installationId: 'c0f78410-3a01-422e-bb3d-1a441ec81c85',
         zone: 'eu1',
         currency: currency
       };
