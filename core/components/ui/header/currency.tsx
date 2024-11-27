@@ -22,10 +22,6 @@ export const GetCurrencyList = () => {
 
   useEffect(() => {
     const getCurrencyData = async () => {
-      let currencyCookieData: string = (await getCurrencyCodeFn()) || 'CAD';
-      setCurrencyCodeFn(currencyCookieData);
-      setCurrencyCode(currencyCookieData);
-      getCommonContext.setCurrencyCodeFn(currencyCookieData);
       let currencyData: any = await getCurrencyListData();
       let currencyOptions: any = currencyData?.map(
         ({
@@ -40,6 +36,10 @@ export const GetCurrencyList = () => {
         }),
       );
       setCurrency(currencyOptions);
+      let currencyCookieData: string = (await getCurrencyCodeFn()) || 'CAD';
+      setCurrencyCodeFn(currencyCookieData);
+      setCurrencyCode(currencyCookieData);
+      getCommonContext.setCurrencyCodeFn(currencyCookieData);
       setShowExclTax(currencyCookieData === 'GBP');
     };
     getCurrencyData();
