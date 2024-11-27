@@ -14,15 +14,16 @@ export const login = async (_previousState: unknown, formData: FormData) => {
       email: formData.get('email'),
       password: formData.get('password'),
     });
-    
+
     await signIn('credentials', {
       ...credentials,
       // We want to use next/navigation for the redirect as it
       // follows basePath and trailing slash configurations.
       redirect: false,
     });
-   
-    redirect({ href: process.env.STENCIL_URL + '/account.php?action=order_status', locale });
+
+    redirect({ href: '/account/', locale });
+    // redirect({ href: process.env.STENCIL_URL + '/account.php?action=order_status', locale });
   } catch (error: unknown) {
     rethrow(error);
 
