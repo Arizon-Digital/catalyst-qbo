@@ -18,6 +18,7 @@ export const MiniCart = ({ count }: { count: number }) => {
   const cartRef = useRef<HTMLDivElement>(null);
   const [miniBag, setMiniBag] = useState();
   const [cartId, setCartId] = useState('');
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const miniBagIcons = async() => {
@@ -38,6 +39,7 @@ export const MiniCart = ({ count }: { count: number }) => {
   }, []);
   const loadMiniBag = async() => {
     setIsOpen(true);
+    setLoading(true);
     let cartData = await getCartData();
     if(cartData?.lineItems?.physicalItems) {
       setCartItems(cartData);
@@ -45,6 +47,7 @@ export const MiniCart = ({ count }: { count: number }) => {
         setHasItems(true);
       }
     }
+    setLoading(false);
   }
 
   const handleRemoveItem = async (e: React.FormEvent<HTMLFormElement>, lineItemEntityId: string) => {
@@ -152,9 +155,12 @@ export const MiniCart = ({ count }: { count: number }) => {
                   ))}
                 </>
               ) : (
-                <div className="text-center py-8 text-gray-500">
+              <>
+              {loading && <>Loading....</>}
+              {!loading && <div className="text-center py-8 text-gray-500">
                   Your cart is empty
-                </div>
+                </div>}
+              </>
               )}
             </div>
 
