@@ -133,11 +133,6 @@ const Header = ({
                     <div className="flex flex-col items-center gap-0 flex-wrap pl-[5px]">
                       <div className="text">
                         <ScrollToTop />
-                        {isModalOpen && (
-                          <div className='m-6 bg-white w-[1px] h-[1px] hidden'>
-                            <Minicart cartItems={''} cartId="" closeModal={closeModal}/>
-                          </div>
-                        )}
                         <DoofinderScriptLoader />
                         <HubspotChat portalId={139717848} />
                       </div>
@@ -185,8 +180,8 @@ const Header = ({
                     className="absolute left-0 w-full bg-white z-[70] shadow-lg"
                   >
                     <div className="flex flex-wrap justify-center gap-6 py-4 px-4 mx-auto max-w-7xl">
-                      {link.groups.map((group) => (
-                        <ul id={`nav-menu-group-${group.href}`} className="flex flex-col w-56" key={group.href}>
+                      {link.groups.map((group, index) => (
+                        <ul id={`nav-menu-group-${group.href}`} className="flex flex-col w-56" key={`${index}-${group.href}`}>
                           <li id={`nav-menu-group-item-${group.href}`}>
                             <NavigationMenuPrimitive.Link asChild>
                               <CustomLink 
