@@ -64,7 +64,7 @@ export default async function Category(props: Props) {
   const categoryId = Number(slug);
 
   // Get limit from searchParams or default to 50
-  const limit = typeof searchParams.limit === 'string' ? parseInt(searchParams.limit) : 50;
+  const limit = typeof searchParams.limit === 'string' ? parseInt(searchParams.limit) : 20;
 
   const [{ category, categoryTree }, search] = await Promise.all([
     getCategoryPageData({ categoryId }),

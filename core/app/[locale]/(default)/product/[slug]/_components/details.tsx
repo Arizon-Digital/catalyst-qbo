@@ -117,6 +117,7 @@ export const Details = ({ product }: Props) => {
         <span className='cntpriced'>
           <ProductPriceDisplay
             product={product}
+            page="product"
           />
         </span>
         <ProductForm data={product} />
