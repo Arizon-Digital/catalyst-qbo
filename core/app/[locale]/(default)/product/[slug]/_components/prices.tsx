@@ -91,11 +91,11 @@ const getProductPrices = cache(async (variables: ProductPricesQueryVariables) =>
 
 export const Prices = async ({ entityId, optionValueIds }: ProductPricesQueryVariables) => {
   const currencyCode = (await cookies()).get('currencyCode')?.value as CurrencyCode | undefined;
-  console.log('========currencyCode=======', currencyCode);
+  
   const product = await getProductPrices({ entityId, optionValueIds, currencyCode });
   const t = await getTranslations('Product.Details');
   const format = await getFormatter();
-  console.log('=========product======', JSON.stringify(product));
+  
   const showPriceRange =
     product?.prices?.priceRange.min.value !== product?.prices?.priceRange.max.value;
 
