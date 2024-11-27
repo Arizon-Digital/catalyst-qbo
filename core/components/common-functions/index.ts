@@ -20,4 +20,9 @@ export const getCartData = async() => {
     return await getCart(cartId);
   }
 }
+
+export const getCurrencyCodeData = async() => {
+  const cookieStore = await cookies();
+  return cookieStore.get('currencyCode')?.value;
+}
  

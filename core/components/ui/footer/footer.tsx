@@ -124,40 +124,40 @@ const Footer = ({
           <div key={section.title}>
             <h3 className="mb-4 text-lg font-bold" id='footer headings'>Navigation </h3>
             <ul className="flex flex-col gap-4">
-              <li className='navigationfooter'>
+              <li className='navigationfooter opacity-[0.5] transition-opacity duration-500 hover:opacity-[0.5]'>
                 <a href="/">Home</a>
               </li>
-              <li className='navigationfooter'>
+              <li className='navigationfooter opacity-[0.5] transition-opacity duration-500 hover:opacity-[0.5]'>
                 <a href="/about-us">About Us</a>
               </li>
-              <li className='navigationfooter'>
+              <li className='navigationfooter opacity-[0.5] transition-opacity duration-500 hover:opacity-[0.5]'>
                 <a href="/10-year-anniversary">10 Year Anniversary</a>
               </li>
-              <li className='navigationfooter'>
+              <li className='navigationfooter opacity-[0.5] transition-opacity duration-500 hover:opacity-[0.5]'>
                 <a href="/contact-us">Contact Us</a>
               </li>
-              <li className='navigationfooter'>
+              <li className='navigationfooter opacity-[0.5] transition-opacity duration-500 hover:opacity-[0.5]'>
                 <a href="/customer-service">Customer Service</a>
               </li>
-              <li className='navigationfooter'>
+              <li className='navigationfooter opacity-[0.5] transition-opacity duration-500 hover:opacity-[0.5]'>
                 <a href="/delivery-information">Delivery Information</a>
               </li>
-              <li className='navigationfooter'>
+              <li className='navigationfooter opacity-[0.5] transition-opacity duration-500 hover:opacity-[0.5]'>
                 <a href="/faqs">FAQS</a>
               </li>
-              <li className='navigationfooter'>
+              <li className='navigationfooter opacity-[0.5] transition-opacity duration-500 hover:opacity-[0.5]'>
                 <a href="/privacy-policy">Privacy Policy</a>
               </li>
-              <li className='navigationfooter'>
+              <li className='navigationfooter opacity-[0.5] transition-opacity duration-500 hover:opacity-[0.5]'>
                 <a href="/customer-reviews">Customer Reviews</a>
               </li>
-              <li className='navigationfooter'>
+              <li className='navigationfooter opacity-[0.5] transition-opacity duration-500 hover:opacity-[0.5]'>
                 <a href="/terms-and-conditions">Terms & Conditions</a>
               </li>
-              <li className='navigationfooter'>
+              <li className='navigationfooter opacity-[0.5] transition-opacity duration-500 hover:opacity-[0.5]'>
                 <a href="/blog">Blog</a>
               </li>
-              <li className='navigationfooter'>
+              <li className='navigationfooter opacity-[0.5] transition-opacity duration-500 hover:opacity-[0.5]'>
                 <a href="/sitemap">Sitemap</a>
               </li>
             </ul>

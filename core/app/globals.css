@@ -2398,3 +2398,7 @@ section.section-flex {
 .group .sort.order button{
     color: #131313;
 }
+
+.pdp-products .plp-product-btn{
+    display: none;
+}
