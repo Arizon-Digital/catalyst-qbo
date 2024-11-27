@@ -60,7 +60,7 @@ const Footer = ({
   <footer className={cn('2xl:container 2xl:mx-auto', className)} {...props}>
     <nav className="grid flex-auto auto-cols-frr gap-8 sm:grid-flow-col">
       <article className="emthemesModez-newsletterForm" data-section-type="newsletterSubscription">
-        <div className="newsletter-container" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+        <div className="newsletter-container">
           <h5 className="footer-info-heading" id='headingin' style={{ margin: 0 }}>Subscribe Today</h5>
           <p id='font size' style={{ margin: 0 }}>
             Be the first to know about exclusive deals, new product lines, company announcements, and industry news.
@@ -87,7 +87,7 @@ const Footer = ({
             </address>
             {/* <p id="address" className="footer-contact"> UK - 0808 168 1234</p>
             <p id="address" className="footer-contact"> USA - 646 895 6246 / 619 354 1821</p> */}
-            <p id="address" className="footer-contact"> Canada - 438 800 0605</p>
+            <p id="address" className="footer-contact"> Canada - 438 800 0819</p>
             {/* {Boolean(contactInformation?.phone) && (
  
               <p id="address"> International- {contactInformation?.phone}</p>
@@ -99,7 +99,7 @@ const Footer = ({
  
         <a className="contactus" href="/contact-us">
  
-          <p id="address">Contact us</p>
+          <p id="address">Contact Us</p>
         </a>
  
         {/* Social Media Links */}
@@ -200,7 +200,7 @@ const Footer = ({
               <li className='contactfooter'>
                 <a href="https://www.facebook.com/qualitybearings" className="contact-links" target="_blank" rel="noopener noreferrer">
                   <FaFacebook size={30} className='opacity-[0.5] transition-opacity duration-500 hover:opacity-[1]'/>
-                </a>
+                 </a>
               </li>
               <li className='contactfooter'>
                 <a href="https://www.instagram.com/qualitybearings/" className="contact-links" target="_blank" rel="noopener noreferrer">

@@ -31,7 +31,7 @@ export default async function ChangePassword({ searchParams }: Props) {
   if (customerId && customerToken) {
     return (
       <div className="mx-auto my-6 max-w-4xl pageheading">
-        <h2 className="mb-8 text-4xl font-black lg:text-5xl">{t('heading')}</h2>
+        <h2 className="mb-8 text-4xl font-black lg:text-5xl font form">{t('heading')}</h2>
         <ChangePasswordForm customerId={customerId} customerToken={customerToken} />
       </div>
     );

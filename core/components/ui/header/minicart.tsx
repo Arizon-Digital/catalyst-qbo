@@ -1,27 +1,28 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { ShoppingCart } from 'lucide-react';
 import { Link } from '~/components/link';
-import { useCart } from '~/lib/hooks/useCart';
 import { RemoveFromCartButton } from '~/app/[locale]/(default)/cart/_components/remove-from-cart-button';
 import { CheckoutButtonPopUp } from './checkout-button';
 import ProductPriceDisplay from '~/app/[locale]/(default)/product/[slug]/_components/exclvat';
 import { RemoveItem } from '~/app/[locale]/(default)/cart/_components/remove-item';
 import { MiniCartIcon } from '~/components/common-images';
 import { BcImage } from '~/components/bc-image';
-import { getCartData } from '~/components/common-functions';
+import { getCartData, getCartId } from '~/components/common-functions';
 
-export const MiniCart = ({ cartId, count }: { cartId: string, count: number }) => {
+export const MiniCart = ({ count }: { count: number }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [removeError, setRemoveError] = useState<string | null>(null);
   const [cartItems, setCartItems] = useState([]);
-  const [hasItems, setHasItems] = useState(0);
+  const [hasItems, setHasItems] = useState(false);
   const cartRef = useRef<HTMLDivElement>(null);
   const [miniBag, setMiniBag] = useState();
+  const [cartId, setCartId] = useState('');
 
   useEffect(() => {
     const miniBagIcons = async() => {
+      let getCartIdData: any = await getCartId();
+      setCartId(getCartIdData);
       let minicartIcon: any = await  MiniCartIcon();
       setMiniBag(minicartIcon);
     }
@@ -35,14 +36,13 @@ export const MiniCart = ({ cartId, count }: { cartId: string, count: number }) =
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
-
   const loadMiniBag = async() => {
     setIsOpen(true);
     let cartData = await getCartData();
     if(cartData?.lineItems?.physicalItems) {
       setCartItems(cartData);
       if(cartData?.lineItems?.physicalItems.length > 0) {
-        setHasItems(1);
+        setHasItems(true);
       }
     }
   }
