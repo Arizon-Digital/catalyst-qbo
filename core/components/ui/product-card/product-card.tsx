@@ -99,6 +99,12 @@ const ProductCard = ({
         <div className="cardprice">
           <ProductPriceDisplay product={product} />
         </div>
+        {/* Add Compare Section Here */}
+        {showCompare && (
+          <div className="compare-section mt-2">
+            <Compare id={id} image={image} name={name} />
+          </div>
+        )}
       </div>
 
       <div className="plp-product-btn">
