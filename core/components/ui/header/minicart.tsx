@@ -5,7 +5,7 @@ import { Link } from '~/components/link';
 import { RemoveFromCartButton } from '~/app/[locale]/(default)/cart/_components/remove-from-cart-button';
 import { CheckoutButtonPopUp } from './checkout-button';
 import ProductPriceDisplay from '~/app/[locale]/(default)/product/[slug]/_components/exclvat';
-import { RemoveItem } from '~/app/[locale]/(default)/cart/_components/remove-item';
+import { removeItem } from '~/app/[locale]/(default)/cart/_actions/remove-item';
 import { MiniCartIcon } from '~/components/common-images';
 import { BcImage } from '~/components/bc-image';
 import { getCartData, getCartId } from '~/components/common-functions';
@@ -18,6 +18,7 @@ export const MiniCart = ({ count }: { count: number }) => {
   const cartRef = useRef<HTMLDivElement>(null);
   const [miniBag, setMiniBag] = useState();
   const [cartId, setCartId] = useState('');
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const miniBagIcons = async() => {
@@ -38,6 +39,7 @@ export const MiniCart = ({ count }: { count: number }) => {
   }, []);
   const loadMiniBag = async() => {
     setIsOpen(true);
+    setLoading(true);
     let cartData = await getCartData();
     if(cartData?.lineItems?.physicalItems) {
       setCartItems(cartData);
@@ -45,15 +47,16 @@ export const MiniCart = ({ count }: { count: number }) => {
         setHasItems(true);
       }
     }
+    setLoading(false);
   }
 
   const handleRemoveItem = async (e: React.FormEvent<HTMLFormElement>, lineItemEntityId: string) => {
     e.preventDefault();
     try {
-      const result = RemoveItem({
+      const result = await removeItem({
         lineItemEntityId
       });
-
+      loadMiniBag();
       if (result.status === 'error') {
         setRemoveError(result.error || 'Failed to remove item');
         console.error('Error removing item:', result.error);
@@ -128,6 +131,7 @@ export const MiniCart = ({ count }: { count: number }) => {
                             <span className="text-sm minicart">Price: </span>
                             <div className='miniprice'>
                               <ProductPriceDisplay
+                                page="bag"
                                 product={{
                                   prices: {
                                     price: {
@@ -151,9 +155,12 @@ export const MiniCart = ({ count }: { count: number }) => {
                   ))}
                 </>
               ) : (
-                <div className="text-center py-8 text-gray-500">
+              <>
+              {loading && <>Loading....</>}
+              {!loading && <div className="text-center py-8 text-gray-500">
                   Your cart is empty
-                </div>
+                </div>}
+              </>
               )}
             </div>
 
