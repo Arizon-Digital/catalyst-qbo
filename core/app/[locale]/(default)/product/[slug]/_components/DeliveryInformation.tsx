@@ -50,12 +50,12 @@ const Deliveryinformation: React.FC<Props> = ({ product }) => {
               <th style={{ width: '50%' }}>Delivery Cost</th>
             </tr>
             <tr>
-              <td>$0.00 to $200.00</td>
-              <td>$15.00</td>
+              <td className="deliverytable-d1">$0.00 to $200.00</td>
+              <td className="deliverytable-d1">$15.00</td>
             </tr>
             <tr>
-              <td>Over $200.00</td>
-              <td>Free Of Charge</td>
+              <td className="deliverytable-d2">Over $200.00</td>
+              <td className="deliverytable-d2">Free Of Charge</td>
             </tr>
           </tbody>
         </table>

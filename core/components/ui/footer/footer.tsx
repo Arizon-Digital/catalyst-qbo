@@ -60,7 +60,7 @@ const Footer = ({
   <footer className={cn('2xl:container 2xl:mx-auto', className)} {...props}>
     <nav className="grid flex-auto auto-cols-frr gap-8 sm:grid-flow-col">
       <article className="emthemesModez-newsletterForm" data-section-type="newsletterSubscription">
-        <div className="newsletter-container" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+        <div className="newsletter-container">
           <h5 className="footer-info-heading" id='headingin' style={{ margin: 0 }}>Subscribe Today</h5>
           <p id='font size' style={{ margin: 0 }}>
             Be the first to know about exclusive deals, new product lines, company announcements, and industry news.
@@ -200,7 +200,7 @@ const Footer = ({
               <li className='contactfooter'>
                 <a href="https://www.facebook.com/qualitybearings" className="contact-links" target="_blank" rel="noopener noreferrer">
                   <FaFacebook size={30} className='opacity-[0.5] transition-opacity duration-500 hover:opacity-[1]'/>
-                </a>
+                 </a>
               </li>
               <li className='contactfooter'>
                 <a href="https://www.instagram.com/qualitybearings/" className="contact-links" target="_blank" rel="noopener noreferrer">
