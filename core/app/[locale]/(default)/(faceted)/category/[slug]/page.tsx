@@ -20,6 +20,8 @@ import { SubCategories } from './_components/sub-categories';
 import { getCategoryPageData } from './page-data';
 import { ProductGridSwitcher } from './ProductGridSwitcher';
 
+// import { Breadcrumbs } from '~/components/ui/breadcrumbs/breadcrumbs';
+
 interface Props {
   params: {
     slug: string;
@@ -83,23 +85,23 @@ export default async function Category(props: Props) {
 
   return (
     <div className="group mt-[-30px]">
-      <Breadcrumbs category={category} />
+      <Breadcrumbs category={category}  />
       {category.defaultImage && (
         <div className='w-full'>
           <BcImage
             className='!w-full'
             alt={category.defaultImage.altText}
             height={250}
-            src={category.defaultImage.url}
+            src={category.defaultImage.url}            
             width={1230}
           />
         </div>
       )}
 
       <div className="lg:justify- sortbutton plp-filter-parent mt-2 md:mb-8 lg:flex lg:flex-row lg:items-center">
-        <div className="font-oswald flex w-[25%] items-center justify-center rounded-[8px] border-[7px] border-[#CA9619] bg-[#CA9619] pb-[12px] pl-[18px] pr-[18px] pt-[12px] text-[18px] font-normal text-white no-underline">
+        <div className="font-oswald flex w-[19.5%] items-center justify-center rounded-[8px] border-[7px] border-[#CA9619] bg-[#CA9619] pb-[12px] pl-[18px] pr-[18px] pt-[12px] text-[18px] font-normal text-white no-underline">
           <a
-            className="categorybtn mb-4 text-[18px] font-black transition-colors duration-200 hover:text-[#131313] lg:mb-0"
+            className="categorybtn mb-4 transition-colors duration-200 hover:text-[#131313] lg:mb-0 text-[18px] font-[400] w-full text-center tracking-[-1px]"
             href="/wecan'find"
             id="categorybtn"
             target="_blank"
@@ -109,7 +111,7 @@ export default async function Category(props: Props) {
           </a>
         </div>
 
-        <div className="plp-filters w-[80%] ml-[2.3%]">
+        <div className="plp-filters w-[80%] ml-[2.3%] font-[300]">
           <div className="form-field pdp hover:border-[#ca9618]">
             <input
               className="form-input w-full "
@@ -150,9 +152,9 @@ export default async function Category(props: Props) {
         </div>
       </div>
 
-      <div className="grid grid-cols-4 gap-8">
-        <FacetedSearch
-          className="mb-8 hidden h-max lg:block"
+      <div className='flex justify-start flex-wrap'>
+      <FacetedSearch
+          className="mb-8 hidden h-max lg:block w-[19.3%] text-[#1d1d1d]"
           facets={search.facets.items}
           headingId="desktop-filter-heading"
           pageType="category"
@@ -160,13 +162,16 @@ export default async function Category(props: Props) {
           <SubCategories categoryTree={categoryTree} />
         </FacetedSearch>
 
+      <div className="grid grid-cols-4 gap-8 ml-[2.3%] w-[78.2%] products-grid-parent">
+        
+
         <section
           aria-labelledby="product-heading"
-          className="col-span-4 group-has-[[data-pending]]:animate-pulse lg:col-span-3"
+          className="col-span-4 group-has-[[data-pending]]:animate-pulse"
         >
-          <h2 className="sr-only" id="product-heading">
+          <h1 className="sr-only static w-[unset] h-[unset] m-0 text-[24px] font-[600] mb-[10px] tracking-[0.15px] text-[#1d1d1d]" id="product-heading">
             {t('products')}
-          </h2>
+          </h1>
 
           <div className="product-grid grid grid-cols-4 gap-6 sm:gap-8">
             {products.map((product, index) => (
@@ -186,6 +191,7 @@ export default async function Category(props: Props) {
             startCursor={startCursor ?? undefined}
           />
         </section>
+      </div>
       </div>
 
       <CategoryViewed category={category} categoryId={categoryId} products={products} />

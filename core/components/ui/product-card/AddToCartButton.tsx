@@ -39,13 +39,13 @@ export const AddToCartButton = ({ addToCardData, product }: AddToCartButtonProps
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='w-full'>
         <input name="product_id" type="hidden" value={product?.entityId} />
-          <Button style={{ top: "25px" }}
+          <Button 
             loading={isPending}
             loadingText="processing"
             type="submit"
-            className="absolute hover:opacity-100 bottom-0 left-[10%] right-0  transition-all duration-300 h-[40px] top-[25px] bg-orange-500  text-white  w-[80%] flex items-center justify-center gap-2 py-2.5 px-4 font-[600] text-sm border border-orange-500 shadow-sm z-10"
+            className=" transition-all duration-300 h-[40px] bg-orange-500  text-white  w-full flex items-center justify-center gap-2 py-2.5 px-4 font-[600] text-sm border border-orange-500 shadow-sm z-10"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"

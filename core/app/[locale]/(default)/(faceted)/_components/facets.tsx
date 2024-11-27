@@ -105,7 +105,7 @@ export const Facets = ({ facets, pageType }: Props) => {
                   onCheckedChange={submitForm}
                   value={brand.entityId}
                 />
-                <Label className="cursor-pointer ps-3" htmlFor={id} id={labelId}>
+                <Label className="cursor-pointer ps-3 text-[15px] font-[400]" htmlFor={id} id={labelId}>
                   {brand.name}
                   <ProductCount
                     count={brand.productCount}

@@ -37,7 +37,7 @@ export const ProductGridSwitcher = () => {
 
   return (
     <div className="flex items-center gap-2">
-      <span className="text-sm font-medium">Column:</span>
+      <span className="text-sm">Column:</span>
       <div className="flex gap-1">
         {gridOptions.map((option) => (
           <button

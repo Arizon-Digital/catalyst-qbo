@@ -74,13 +74,13 @@ const QuickView = ({
     <>
       <button
         onClick={() => openQuickView()}
-        className="absolute left-[10%] top-[40%] hover:opacity-100  transition-all duration-300
+        className="  transition-all duration-300
           bg-orange-500 hover:bg-white h-[40px] 
           text-white hover:text-orange-500
-          w-[80%] flex items-center justify-center gap-2 py-2.5 px-4
+           flex items-center justify-center gap-2 py-2.5 px-4
           font-semibold text-sm
           border border-orange-500
-          shadow-sm z-10"
+          shadow-sm z-10 w-full"
       ><svg
       xmlns="http://www.w3.org/2000/svg"
       width="24"

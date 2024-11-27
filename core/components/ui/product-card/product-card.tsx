@@ -76,11 +76,11 @@ const ProductCard = ({
       <div className="plp-img-div-parent relative flex justify-center">
         <div className="plp-img-div relative aspect-square flex-auto">
           {image ? (
-            <BcImage alt={image.altText} className="object-contain" fill src={image.src} />
+            <BcImage alt={image.altText} className="!static object-contain" fill src={image.src} />
           ) : (
             <div className="h-full w-full bg-gray-200" />
           )}
-          <div className="opacity-0 hover:opacity-100 plp-product-btn-hover">
+          <div className="plp-product-btn-hover opacity-0 hover:opacity-100 w-full h-full flex flex-col gap-[20px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/3">
             <QuickView product={product} />
             <AddToCartButton addToCardData={addToCardData} product={product} />
           </div>
@@ -93,7 +93,9 @@ const ProductCard = ({
             <span>{name}</span>
           </Link>
         </h3>
-        {subtitle && <p className="brand text-base text-gray-500">{subtitle}</p>}
+        {subtitle && (
+          <p className="brand mb-[4px] text-[16px] font-[300] text-[#a5a5a5]">{subtitle}</p>
+        )}
         <div className="cardprice">
           <ProductPriceDisplay product={product} />
         </div>

@@ -17,7 +17,7 @@ interface Props {
 const Breadcrumbs = ({ breadcrumbs, className }: Props) => {
   return (
     <nav aria-label="Breadcrumb" className={className}>
-      <ul className="div-breadcrumb flex flex-wrap items-center justify-center sm:justify-left md:justify-left lg:justify-left py-4 text-base font-normal leading-8 tracking-tight text-[#7F7F7F]">
+      <ul className="div-breadcrumb uppercase font-[300] flex flex-wrap items-center sm:justify-left md:justify-left lg:justify-left py-4 !pl-[0] text-[13px] leading-8 tracking-tight text-[#7F7F7F]">
         <Fragment key='HOME'>
           <li className="flex items-center BREADCRUMBS ">
             <CustomLink
@@ -41,8 +41,8 @@ const Breadcrumbs = ({ breadcrumbs, className }: Props) => {
                 <CustomLink
                   aria-current={isLast ? `page` : undefined}
                   className={cn(
-                    'font-normal hover:text-[#a5a5a5] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20',
-                    isLast ? 'text-custom-blue font-normal' : 'text-[#7F7F7F]'
+                    'hover:text-[#7f7f7f] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20',
+                    isLast ? 'text-custom-blue' : 'text-[#a5a5a5]'
                   )}
                   href={href}
                 >
@@ -50,8 +50,8 @@ const Breadcrumbs = ({ breadcrumbs, className }: Props) => {
                 </CustomLink>
               </li>
               {!isLast ? (
-                <span className="mx-1">
-                  <ChevronRight aria-hidden="true" size={20} />
+                <span className="">
+                  <ChevronRight aria-hidden="true" strokeWidth={1} size={20} />
                 </span>
               ) : null}
             </Fragment>

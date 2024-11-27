@@ -107,15 +107,15 @@
       }
     },
     "SortBy": {
-      "ariaLabel": "Sort by:",
-      "featuredItems": "Featured items",
-      "bestSellingItems": "Best selling items",
-      "newestItems": "Newest items",
+      "ariaLabel": "Sort By:",
+      "featuredItems": "Featured Items",
+      "bestSellingItems": "Best Selling Items",
+      "newestItems": "Newest Items",
       "aToZ": "A to Z",
       "zToA": "Z to A",
-      "byReview": "By review",
-      "priceAscending": "Price: ascending",
-      "priceDescending": "Price: descending",
+      "byReview": "By Review",
+      "priceAscending": "Price: Ascending",
+      "priceDescending": "Price: Descending",
       "relevance": "Relevance"
     }
   },
