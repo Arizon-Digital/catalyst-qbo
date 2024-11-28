@@ -253,13 +253,6 @@
   "Deliveryinformation": {
     "title": "Deliveryinformation"
   },
-  "Product.Bulk": {
-    "title": "Bulkpricing"
-  },
-  "Product.TechData": {
-    "title": "Techcnical Data"
-  },
-  
   "Cart": {
     "title": "Cart",
     "heading": "Your Cart",
@@ -355,6 +348,12 @@
     }
   },
   "Product": {
+    "TechData": {
+      "title": "Techcnical Data"
+    },
+    "Bulk": {
+      "title": "Bulkpricing"
+    },
     "loading": "Loading...",
     "Carousel": {
       "relatedProducts": "Related products"
