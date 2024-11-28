@@ -86,6 +86,7 @@ export default async function Category(props: Props) {
   return (
     <div className="group mt-[-30px]">
       <Breadcrumbs category={category}  />
+      
       {category.defaultImage && (
         <div className='w-full'>
           <BcImage

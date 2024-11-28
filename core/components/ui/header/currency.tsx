@@ -53,9 +53,10 @@ export const GetCurrencyList = () => {
     setShowExclTax(currencyCode === 'GBP');
     router.refresh();
   };
-
+  
   return (
     <div>
+      {currencyCode && <span className="currency">Select Currency:</span>}
       <Select
         name={`currency-selection`}
         id={`currency-selection`}

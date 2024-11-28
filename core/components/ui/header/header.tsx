@@ -82,7 +82,7 @@ const Header = ({
 
   return (
     <>
-      {/* Sticky part: Top bar and Main Header */}
+     
       <div className={`${
         isScrolled 
           ? 'fixed top-0 left-0 right-0 w-full shadow-lg animate-slideDown z-[100]' 
@@ -151,10 +151,10 @@ const Header = ({
         </header>
       </div>
 
-      {/* Spacer div - Only shown when header is fixed */}
+      
       {isScrolled && <div className="h-[150px]" />}
 
-      {/* Navigation Menu with fixed gap and z-index */}
+      
       <div className="bg-white border-b border-gray-100 relative ">
         <NavigationMenuPrimitive.Root id="nav-menu-root" className="hidden lg:block">
           <NavigationMenuPrimitive.List id="nav-menu-list" className="flex items-center gap-2 lg:gap-4 justify-center">

@@ -46,6 +46,8 @@ export function SubCategories({ categoryTree }: Props) {
         {categoryTree[0].children.map((category) => (
           <li key={category.entityId}>
             <Link href={category.path}>{category.name}</Link>
+
+           
           </li>
         ))}
       </ul>
