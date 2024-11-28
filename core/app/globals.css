@@ -956,7 +956,10 @@ label.inline-flex.w-full.items-center.justify-between {
         margin: 0;
         padding: 0;
     }
-
+    .buttongroup {
+        display: flex;
+        width: auto;
+    }
     .p-21.text-leftt.bg-\[\#e7f5f8\] {
        
         margin-left: 12px;
