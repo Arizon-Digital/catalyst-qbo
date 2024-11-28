@@ -249,6 +249,7 @@ export const CartItem = ({ currencyCode, product }: Props) => {
               id="cartproductname"
             >
               {product.name}
+              
             </Link>
           </td>
 

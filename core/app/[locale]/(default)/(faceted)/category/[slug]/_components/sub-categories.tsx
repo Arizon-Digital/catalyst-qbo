@@ -8,6 +8,7 @@ export const CategoryTreeFragment = graphql(`
     categoryTree(rootEntityId: $categoryId) {
       entityId
       name
+      description
       path
       children {
         entityId

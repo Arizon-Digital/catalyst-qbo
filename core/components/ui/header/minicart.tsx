@@ -89,7 +89,7 @@ export const MiniCart = ({ count }: { count: number }) => {
 
         <span className="text-[#1c2541] font-medium text-sm">Cart</span>
       </button>
-
+      
       {isOpen && (
         <div className="absolute right-0 top-12 w-96 z-50 bg-white rounded-lg border border-gray-200 shadow-sm">
           <div className="p-4">
@@ -99,7 +99,7 @@ export const MiniCart = ({ count }: { count: number }) => {
                 <p className="text-red-500 text-sm">{removeError}</p>
               )}
             </div>
-
+          
             <div className="max-h-96 overflow-y-auto">
               {hasItems ? (
                 <>
@@ -120,7 +120,7 @@ export const MiniCart = ({ count }: { count: number }) => {
                       </div>
                       <div className="flex-1">
                         <h3 className="font-medium text-sm minicart">{item.name}</h3>
-                        <p className="text-sm text-gray-500 minicart">Brand: {item.brand}</p>
+                        <p className="text-sm text-gray-500 minicart">SKU: </p>
                         
                         <div className="mt-2 flex justify-between items-center">
                           <div className="flex items-center gap-2">
