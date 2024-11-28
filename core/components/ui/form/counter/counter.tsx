@@ -98,7 +98,7 @@ const Counter = forwardRef<ElementRef<'input'>, Props>(
     };
  
     return (
-      <div className={cn('relative w-[120px]', className)}>
+      <div className={cn('relative w-[120px] h-[34px]', className)}>
         <button
           aria-hidden="true"
           aria-label="Decrease count"
@@ -112,7 +112,7 @@ const Counter = forwardRef<ElementRef<'input'>, Props>(
           tabIndex={-1}
           type="button"
         >
-          <ChevronDown  />
+          <ChevronDown width={16} height={16} className='text-[#4f4f4f]' strokeWidth={2.2} stroke='#4f4f4f' />
         </button>
  
         <button
@@ -128,12 +128,12 @@ const Counter = forwardRef<ElementRef<'input'>, Props>(
           tabIndex={-1}
           type="button"
         >
-          <ChevronUp />
+          <ChevronUp width={16} height={16}  className='text-[#4f4f4f]' strokeWidth={2.2} stroke='#4f4f4f'/>
         </button>
  
         <input
           className={cn(
-            'peer/input w-full border-2 border-gray-200 px-12 py-2.5 text-center text-base placeholder:text-gray-500 focus-visible:outline-none [&::-webkit-inner-spin-button]:appearance-none',
+            'peer/input w-full border-2 h-[34px] border-gray-200 px-12 py-2.5 text-center text-base placeholder:text-gray-500 focus-visible:outline-none [&::-webkit-inner-spin-button]:appearance-none',
             error &&
               'border-error-secondary',
           )}
