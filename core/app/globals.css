@@ -978,6 +978,16 @@ label.inline-flex.w-full.items-center.justify-between {
         color: #1a2348;
         font-weight: 700;
     }
+    .currencyfont {
+        color: #ffffff;
+        float: left;
+        padding: 12px;
+        color: #fff;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 700;
+        margin-top: -8px;
+    }
     .miniprice span.vat{
         color: #ca9618;
         font-size: 10px;
