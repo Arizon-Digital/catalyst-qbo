@@ -90,7 +90,7 @@ export default async function Cart() {
 
   return (
     
-    <div className="cart-page mt-[-60px] flex flex-col justify-center">
+    <div className="cart-page mt-[0px] flex flex-col justify-center">
       <ComponentsBreadcrumbs breadcrumbs={breadcrumbs} />
       <h1 className="cart-heading mb-[0.75rem] text-[25px] font-normal">{`${t('heading')} (${cartQty}${cartItemsText})`}</h1>
       <div className="cart-cols flex gap-[25px]">

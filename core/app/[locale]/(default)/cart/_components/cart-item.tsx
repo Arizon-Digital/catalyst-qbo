@@ -250,7 +250,7 @@ export const CartItem = ({ currencyCode, product }: Props) => {
               {format.number(product.originalPrice.value, {
                 style: 'currency',
                 currency: currencyCode,
-              })}
+              }) }
             </p>
           </td>
 
