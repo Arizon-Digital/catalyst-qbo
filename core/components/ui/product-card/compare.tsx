@@ -49,14 +49,20 @@ export const Compare = ({ id, image, name }: Props) => {
   };
 
   return (
-    <div className="flex items-center gap-3">
+    <div className="p-0 compare-div-parent transition-all duration-300
+          bg-[#ca9618] hover:bg-[#fff] 
+          text-[#ffffff] hover:text-[#ca9618]
+           flex items-center justify-center gap-2 
+          text-[13px] font-[700] text-sm
+          border border-[#ca9618]
+          shadow-sm z-10 w-full rounded-[4px] py-[3px]">
       <Checkbox
         checked={checkedState}
-        className="h-4 w-4"
+        className="!h-[17px] !w-[17px] compare-btn-checkbox"
         id={checkboxId}
         onCheckedChange={handleOnCheckedChange}
       />
-      <Label className="font-normal" htmlFor={checkboxId}>
+      <Label className="compare-label-text font-[700] text-[15]" htmlFor={checkboxId}>
         Compare
       </Label>
     </div>

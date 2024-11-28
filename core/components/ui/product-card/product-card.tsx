@@ -80,9 +80,15 @@ const ProductCard = ({
           ) : (
             <div className="h-full w-full bg-gray-200" />
           )}
-          <div className="plp-product-btn-hover opacity-0 hover:opacity-100 w-full h-full flex flex-col gap-[20px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/3">
+          <div className="plp-product-btn-hover opacity-0 hover:opacity-100 w-[110%] left-[-5%] h-full flex flex-col gap-[10px] absolute top-[10%] ">
             <QuickView product={product} />
             <AddToCartButton addToCardData={addToCardData} product={product} />
+            {/* Add Compare Section Here */}
+        {showCompare && (
+          <div className="compare-section">
+            <Compare id={id} image={image} name={name} />
+          </div>
+        )}
           </div>
         </div>
       </div>
@@ -99,16 +105,17 @@ const ProductCard = ({
         <div className="cardprice">
           <ProductPriceDisplay product={product} />
         </div>
-        {/* Add Compare Section Here */}
-        {showCompare && (
-          <div className="compare-section mt-2">
-            <Compare id={id} image={image} name={name} />
-          </div>
-        )}
+        
       </div>
 
       <div className="plp-product-btn">
         <QuickView product={product} />
+        {/* Add Compare Section Here */}
+        {showCompare && (
+          <div className="compare-section flex justify-center items-center">
+            <Compare id={id} image={image} name={name} />
+          </div>
+        )}
         <AddToCartButton addToCardData={addToCardData} product={product} />
       </div>
     </div>
