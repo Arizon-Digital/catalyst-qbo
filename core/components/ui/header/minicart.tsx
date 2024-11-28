@@ -165,7 +165,7 @@ export const MiniCart = ({ count }: { count: number }) => {
             </div>
 
             {hasItems && (
-              <div className="mt-4 space-y-2">
+              <div className="mt-4 space-y-2 buttongroup">
                 <CheckoutButtonPopUp cartId={cartId} />
                 <Link
                   href="/cart"
