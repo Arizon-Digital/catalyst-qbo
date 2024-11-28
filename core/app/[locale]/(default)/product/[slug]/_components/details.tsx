@@ -126,13 +126,20 @@ export const Details = ({ product }: Props) => {
         <ProductForm data={product} />
       </div>
       <div className="feefo-reviews">
-        <img
-          alt="Feefo logo"
-          border="0"
-          src={`https://api.feefo.com/api/logo?merchantidentifier=quality-bearings-online&vendorref=${product.sku}&servicedefault=true`}
-          title="Our Feefo product rating"
-        />
-      </div>
+  <a
+    href={`https://www.feefo.com/reviews/quality-bearings-online`}
+    target="_blank"
+    
+  >
+    <img
+      alt="Feefo logo"
+      border="0"
+      src={`https://api.feefo.com/api/logo?merchantidentifier=quality-bearings-online&vendorref=${product.sku}&servicedefault=true`}
+      title="Our Feefo product rating"
+    />
+  </a>
+</div>
+
  
  
       <div className="product-payments flex gap-[10px]">
