@@ -85,21 +85,23 @@ const Header = ({
      
       <div className={`${
         isScrolled 
-          ? 'fixed top-0 left-0 right-0 w-full shadow-lg animate-slideDown z-[100]' 
+          ? 'fixed top-0 left-0 right-0 w-full shadow-lg animate-slideDown z-[1000]' 
           : 'relative'
         } bg-white transition-all duration-300`}>
         {/* Top navbar */}
-        <div className="w-full bg-white border-b border-gray-100">
+        <div className="relative z-[1] w-full bg-white border-b border-gray-100">
           <div className="navbar">
             <a className="contact-link" href="/about-us"><i className="contact-link"></i> About Us</a>
-            <GetCurrencyList />
+            <div className="relative ">
+                <GetCurrencyList />
+            </div>
             <a href="/contact-us" className="contact-link"><Inbox size={15} /> Contact Us</a>
             <a href="tel:438 800 0618" className="contact-link"><Phone size={15} /> CAN: 438 800 0618</a>
           </div>
         </div>
 
         {/* Main header */}
-        <header className="w-full border-b border-gray-100">
+        <header className="z-900 w-full border-b border-gray-100">
           <div className="header-2 relative nmd:static nmd:gap-[25px] p-[0] nmd:py-[25px] flex items-center justify-center">
             <CustomLink className="header-logo-a w-full flex nmd:w-[calc((400/1600)*100vw)]" href="/">
               {typeof logo === 'object' ? (

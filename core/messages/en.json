@@ -250,6 +250,16 @@
       "print": "Print"
     }
   },
+  "Deliveryinformation": {
+    "title": "Deliveryinformation"
+  },
+  "Product.Bulk": {
+    "title": "Bulkpricing"
+  },
+  "Product.TechData": {
+    "title": "Techcnical Data"
+  },
+  
   "Cart": {
     "title": "Cart",
     "heading": "Your Cart",

@@ -55,9 +55,10 @@ export const GetCurrencyList = () => {
   };
   
   return (
-    <div>
+    <div className="bg-red-900">
       {currencyCode && <span className="currency">Select Currency:</span>}
       <Select
+        
         name={`currency-selection`}
         id={`currency-selection`}
         options={currency}
