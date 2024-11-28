@@ -978,6 +978,11 @@ label.inline-flex.w-full.items-center.justify-between {
         color: #1a2348;
         font-weight: 700;
     }
+    div#radix-\:r1o\: {
+        pointer-events: auto;
+        z-index: 9999;
+        margin-top: 190px;
+    }
     .currencyfont {
         color: #ffffff;
         float: left;
