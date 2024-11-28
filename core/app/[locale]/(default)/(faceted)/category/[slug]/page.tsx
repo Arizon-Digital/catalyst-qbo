@@ -88,16 +88,21 @@ export default async function Category(props: Props) {
       <Breadcrumbs category={category}  />
       
       {category.defaultImage && (
-        <div className='w-full'>
-          <BcImage
-            className='!w-full'
-            alt={category.defaultImage.altText}
-            height={250}
-            src={category.defaultImage.url}            
-            width={1230}
-          />
-        </div>
-      )}
+  <div className="relative w-full">
+    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+      <div className="bg-gray-200/90 px-16 py-8 rounded">
+        <h1 className="text-4xl font-bold" style={{ color: '#1a2348' }}>{category.name}</h1>
+      </div>
+    </div>
+    <BcImage
+      className="!w-full"
+      alt={category.defaultImage.altText}
+      height={250}
+      src={category.defaultImage.url}            
+      width={1230}
+    />
+  </div>
+)}
       
 
       <div className="lg:justify- sortbutton plp-filter-parent mt-2 md:mb-8 lg:flex lg:flex-row lg:items-center">

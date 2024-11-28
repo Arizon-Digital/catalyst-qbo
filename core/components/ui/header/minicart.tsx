@@ -1,3 +1,5 @@
+
+
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
@@ -37,13 +39,16 @@ export const MiniCart = ({ count }: { count: number }) => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
   const loadMiniBag = async() => {
     setIsOpen(true);
     setLoading(true);
     let cartData = await getCartData();
+    console.log('Full cart data:', cartData); // Debug log
     if(cartData?.lineItems?.physicalItems) {
       setCartItems(cartData);
       if(cartData?.lineItems?.physicalItems.length > 0) {
+        console.log('Physical items:', cartData.lineItems.physicalItems); // Debug log
         setHasItems(true);
       }
     }
@@ -103,7 +108,9 @@ export const MiniCart = ({ count }: { count: number }) => {
             <div className="max-h-96 overflow-y-auto">
               {hasItems ? (
                 <>
-                  {cartItems?.lineItems?.physicalItems?.map((item: any) => (
+                  {cartItems?.lineItems?.physicalItems?.map((item: any) => {
+                    console.log('Individual item:', item); // Debug log
+                    return (
                     <div key={item.id} className="flex gap-4 py-4 border-b">
                       <div className="w-20 h-20 bg-gray-100 rounded">
                         {item.imageUrl ? (
@@ -120,7 +127,7 @@ export const MiniCart = ({ count }: { count: number }) => {
                       </div>
                       <div className="flex-1">
                         <h3 className="font-medium text-sm minicart">{item.name}</h3>
-                        <p className="text-sm text-gray-500 minicart">SKU: </p>
+                        <p className="text-sm text-gray-500 minicart">SKU: {item.sku || item.productCode || item.variantId || 'N/A'}</p>
                         
                         <div className="mt-2 flex justify-between items-center">
                           <div className="flex items-center gap-2">
@@ -153,7 +160,7 @@ export const MiniCart = ({ count }: { count: number }) => {
                         </div>
                       </div>
                     </div>
-                  ))}
+                  )})}
                 </>
               ) : (
               <>
@@ -184,6 +191,3 @@ export const MiniCart = ({ count }: { count: number }) => {
 };
 
 export default MiniCart;
-
-
-
