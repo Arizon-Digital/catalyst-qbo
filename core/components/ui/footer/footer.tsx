@@ -143,7 +143,7 @@ const Footer = ({
                 <a href="/delivery-information">Delivery Information</a>
               </li>
               <li className='navigationfooter opacity-[0.5] transition-opacity duration-500 hover:opacity-[0.5]'>
-                <a href="/faqs">FAQS</a>
+                <a href="/faqs">FAQs</a>
               </li>
               <li className='navigationfooter opacity-[0.5] transition-opacity duration-500 hover:opacity-[0.5]'>
                 <a href="/privacy-policy">Privacy Policy</a>

@@ -65,7 +65,7 @@ export const NewsLetterSubscriptions = ({ channelId} : {channelId: any}) => {
               loadingText="processing"
               type="submit"
             >
-              Subscribe
+              SUBSCRIBE
             </Button>
           </div>
         </div>
