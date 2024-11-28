@@ -966,7 +966,18 @@ label.inline-flex.w-full.items-center.justify-between {
         margin-right: 12px;
         
     }
-   
+    .currecncy {
+        display: flex;
+        color: #fff;
+        margin-top: 5px;
+    }
+    .miniprice.span.prvat {
+        font-size: 18px ;
+        margin-top: .375rem;
+        line-height: 1;
+        color: #1a2348;
+        font-weight: 700;
+    }
     .navbar {
         height:37px;
         display: flex;
