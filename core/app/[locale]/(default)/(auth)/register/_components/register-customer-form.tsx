@@ -264,7 +264,7 @@ export const RegisterCustomerForm = ({
         </Message>
       )}
       <Form action={onSubmit} onClick={preSubmitFieldsValidation} ref={form}>
-        <div className="mb-4 grid grid-cols-1 gap-y-3 sm:grid-cols-2 sm:gap-x-6">
+        <div className="mb-4 grid grid-cols-1 gap-y-3 sm:grid-cols-2 sm:gap-x-4 register-page-parent">
 
           {customerFields
             .filter((field) => !CUSTOMER_FIELDS_TO_EXCLUDE.includes(field.entityId))

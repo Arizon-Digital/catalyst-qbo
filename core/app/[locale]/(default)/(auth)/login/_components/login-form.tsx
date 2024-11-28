@@ -97,7 +97,7 @@ export const LoginForm = () => {
           </FieldMessage>
         </Field>
         <Field className="relative space-y-2 pb-7"id='password' name="password">
-          <FieldLabel htmlFor="password">Password:</FieldLabel>
+          <FieldLabel className='leading-[1.5] font-[300]' htmlFor="password">Password:</FieldLabel>
           <FieldControl asChild>
             <Input
               error={!isPasswordValid}

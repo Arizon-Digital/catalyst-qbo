@@ -18,7 +18,7 @@ interface PicklistOrTextProps {
 }
 
 export const PicklistOrText = ({ defaultValue, field, name, options }: PicklistOrTextProps) => (
-  <Field className="relative space-y-2 pb-7" name={name}>
+  <Field className="relative space-y-2" name={name}>
     <FieldLabel
       className="font-semibold"
       htmlFor={`field-${field.entityId}`}

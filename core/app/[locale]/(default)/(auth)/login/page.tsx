@@ -38,10 +38,12 @@ export default async function Login({ params }: Props) {
 
   return (
     <div className="mx-auto my-6 max-w-4xl pageheading">
+      <div className='flex justify-center items-center'>
        <ComponentsBreadcrumbs
-          className="login-div login-breadcrumb mx-auto mt-[6rem] w-[80%] px-[1px]"
+          className="login-div login-breadcrumb mx-auto px-[1px]"
           breadcrumbs={breadcrumbs}
         />
+        </div>
       <h2 className="text-h2 mb-8 text-4xl font-black lg:text-5xl" id='signinheading'>Sign in</h2>
       <div className="mb-12 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8 mt-[2rem]">
         <LoginForm />

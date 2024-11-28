@@ -56,12 +56,14 @@ export default async function Register() {
   } = countries.find(({ name }) => name === defaultCountry) || {};
 
   return (
-    <div className="mx-auto mb-10 mt-8 text-base lg:w-2/3 pageheading" id='width'>
+    <div className="mx-auto mb-10 register-page-parent text-base lg:w-2/3 pageheading" id='width'>
+     <div className='flex items-center justify-center'>
       <ComponentsBreadcrumbs
-        className="login-div login-breadcrumb mx-auto mt-[6rem] w-[80%] px-[1px]"
+        className="login-div login-breadcrumb mx-auto  px-[1px]"
         breadcrumbs={breadcrumbs}
       />
-      <h1 className="my-6 text-4xl font-black lg:my-8 lg:text-5xl heading">{t('heading')}</h1>
+      </div>
+      <h1 className="my-6 text-[24px] font-[400] lg:my-8 lg:text-5xl heading">{t('heading')}</h1>
       <RegisterCustomerForm
         addressFields={addressFields}
         customerFields={customerFields}

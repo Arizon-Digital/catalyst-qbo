@@ -165,11 +165,11 @@ export const MiniCart = ({ count }: { count: number }) => {
             </div>
 
             {hasItems && (
-              <div className="mt-4 space-y-2">
+              <div className="mt-4 space-y-2 flex flex-row gap-[10px]">
                 <CheckoutButtonPopUp cartId={cartId} />
                 <Link
                   href="/cart"
-                  className="block w-full border border-gray-200 text-center py-2 rounded-md hover:bg-gray-100"
+                  className=" w-full border !text-[13px] !p-[9px_12px] flex items-center justify-center  !mt-0 border-gray-200 text-center py-2 rounded-md hover:bg-gray-100"
                 >
                   VIEW CART
                 </Link>

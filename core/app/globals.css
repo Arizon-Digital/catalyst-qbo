@@ -518,7 +518,7 @@ div#width {
     margin-top: 6rem !important;
 }
 .pageheading {
-    margin-top: 1rem !important;
+    margin-top: 0px !important;
 }
 .reset:hover {
     color: blue !important;
@@ -648,8 +648,8 @@ article.emthemesModez-newsletterForm {
     margin-top: 15px !important;
 }
 .font-semibold {
-    font-weight: 700 !important;
-    font-size: 16px !important;
+    font-weight: 700 ;
+    font-size: 16px ;
 }
 button.relative.flex.items-center.justify-center.border-2.border-primary.text-base.font-semibold.leading-6.focus-visible\:outline-none.focus-visible\:ring-4.focus-visible\:ring-primary\/20.disabled\:border-gray-400.border-none.bg-transparent.hover\:bg-opacity-10.hover\:text-secondary.disabled\:text-gray-400.disabled\:hover\:bg-transparent.disabled\:hover\:text-gray-400.w-fit.p-0.text-primary.hover\:bg-transparent {
     text-transform: none;
@@ -1420,12 +1420,7 @@ width: auto;
         font-weight: 700;
     }
       
-      @media screen and (max-width: 500px) {
-        .navbar a {
-          float: none;
-          display: block;
-        }
-      }
+      
     
 
       .HoverCardContent {
@@ -2377,6 +2372,21 @@ section.section-flex {
     color: #131313;
 }
 
+.register-page-parent > div > div label{
+    line-height: 1.5;
+    font-weight: 300;
+} 
+
+.register-page-parent > div > div label > span{
+    color: #a5a5a5;
+    font-size: .625rem;
+    font-weight: 300;
+}
+
+.pdp-products .plp-product-btn-hover{
+    width: 100%;
+    left: 0%;
+}
 
 @media screen and (max-width: 1024px) {
 
@@ -2455,6 +2465,10 @@ form.form {
     margin-left: 270px;
     margin-top: -26px;
 }
+}
+
+.register-page-parent .login-breadcrumb ul{
+    padding-top: 0;
 }
 
 .deliverytable-d1{
@@ -2592,4 +2606,14 @@ form.form {
         width: auto;
     }
 }
+
+@media screen and (max-width: 500px) {
+    .navbar a {
+      float: none;
+      display: block;
+    }
+    .product-grid{
+        grid-template-columns: auto;
+    }
+  }
 

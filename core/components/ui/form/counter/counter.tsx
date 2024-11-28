@@ -112,7 +112,7 @@ const Counter = forwardRef<ElementRef<'input'>, Props>(
           tabIndex={-1}
           type="button"
         >
-          <ChevronDown />
+          <ChevronDown  />
         </button>
  
         <button
