@@ -2312,6 +2312,18 @@ section.section-flex {
     justify-content: space-between;
 }
 
+.product-grid.grid-cols-6 .compare-section{
+    display: none;
+}
+
+.product-grid.grid-cols-3 .compare-section{
+    top: 33%;
+}
+
+.product-grid.grid-cols-2 .compare-section{
+    top: 30%;
+}
+
 .product-grid.grid-cols-1 .plp-img-div-parent{
     margin: 0;
     padding: 0;
