@@ -127,7 +127,9 @@ export const MiniCart = ({ count }: { count: number }) => {
                       </div>
                       <div className="flex-1">
                         <h3 className="font-medium text-sm minicart">{item.name}</h3>
-                        <p className="text-sm text-gray-500 minicart">SKU: {item.sku || item.productCode || item.variantId || 'N/A'}</p>
+                        
+
+                        <p className="text-sm text-gray-500 minicart">SKU: {item.sku }</p>
                         
                         <div className="mt-2 flex justify-between items-center">
                           <div className="flex items-center gap-2">
