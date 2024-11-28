@@ -171,7 +171,8 @@ interface ProductSearch {
 const getProductSearchResults = cache(
   async ({ limit = 9, after, before, sort, filters }: ProductSearch) => {
     const customerAccessToken = await getSessionCustomerAccessToken();
-    const currencyCode = (await cookies()).get('currencyCode')?.value as CurrencyCode | undefined;
+    const cookieStore = await cookies();
+    const currencyCode = cookieStore.get('currencyCode')?.value as CurrencyCode || 'CAD';
     const filterArgs = { filters, sort };
     const paginationArgs = before ? { last: limit, before } : { first: limit, after };
 

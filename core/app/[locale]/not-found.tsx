@@ -34,7 +34,7 @@ const NotFoundQuery = graphql(
 
 export default async function NotFound() {
   const t = await getTranslations('NotFound');
-  const currencyCode = (await cookies()).get('currencyCode')?.value as CurrencyCode | undefined;
+  const currencyCode = (await cookies()).get('currencyCode')?.value as CurrencyCode || 'CAD';
 
   const { data } = await client.fetch({
     document: NotFoundQuery,

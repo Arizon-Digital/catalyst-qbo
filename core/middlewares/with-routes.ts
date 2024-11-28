@@ -311,6 +311,7 @@ export const withRoutes: MiddlewareFactory = () => {
       }
 
       case 'Category': {
+        postfix = '';
         url = `/${locale}/category/${node.entityId}${postfix}`;
         break;
       }
@@ -353,7 +354,6 @@ export const withRoutes: MiddlewareFactory = () => {
     }
 
     const rewriteUrl = new URL(url, request.url);
-
     rewriteUrl.search = request.nextUrl.search;
 
     return NextResponse.rewrite(rewriteUrl);

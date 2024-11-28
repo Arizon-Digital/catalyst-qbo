@@ -12,11 +12,13 @@ export const ProductCardCarousel = ({
   products,
   showCart,
   showCompare,
+  page,
 }: {
   title: string;
   products: Product[];
   showCart?: boolean;
   showCompare?: boolean;
+  page?: string;
 }) => {
   if (products.length === 0) {
     return null;
@@ -29,6 +31,7 @@ export const ProductCardCarousel = ({
       product={product}
       showCart={showCart}
       showCompare={showCompare}
+      page={page}
     />
   ));
 

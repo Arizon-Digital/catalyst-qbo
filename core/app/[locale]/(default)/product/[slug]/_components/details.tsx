@@ -119,6 +119,7 @@ export const Details = ({ product }: Props) => {
           <ProductPriceDisplay
             product={product}
             page="product"
+            currencyData=""
           />
           </Suspense>
         </span>

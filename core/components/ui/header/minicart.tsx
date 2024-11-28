@@ -132,6 +132,7 @@ export const MiniCart = ({ count }: { count: number }) => {
                             <div className='miniprice'>
                               <ProductPriceDisplay
                                 page="bag"
+                                currencyData={item?.extendedSalePrice?.currencyCode}
                                 product={{
                                   prices: {
                                     price: {

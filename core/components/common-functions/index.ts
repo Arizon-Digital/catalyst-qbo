@@ -23,6 +23,6 @@ export const getCartData = async() => {
 
 export const getCurrencyCodeData = async() => {
   const cookieStore = await cookies();
-  return cookieStore.get('currencyCode')?.value;
+  return cookieStore.get('currencyCode')?.value || 'CAD';
 }
  

@@ -1,10 +1,10 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, Suspense } from 'react';
 import { BcImage } from '~/components/bc-image';
 import { Link } from '~/components/link';
 import { cn } from '~/lib/utils';
 import { Compare } from './compare';
 import QuickView from './Quickview';
-import { getProductData } from '~/components/common-functions';
+import { getCurrencyCodeData } from '~/components/common-functions';
 import { AddToCartButton } from './AddToCartButton';
 import ProductPriceDisplay from '~/app/[locale]/(default)/product/[slug]/_components/exclvat';
 
@@ -43,9 +43,10 @@ interface Props extends Product {
   imageSize?: 'square' | 'tall' | 'wide';
   showCompare?: boolean;
   product?: any;
+  page?:string;
 }
 
-const ProductCard = ({
+const ProductCard = async ({
   addToCart,
   className,
   image,
@@ -58,8 +59,16 @@ const ProductCard = ({
   subtitle,
   name,
   product,
+  page,
   ...props
 }: Props) => {
+  let currencyCode: any = '';
+  let pageData = 'card';
+  if(page) {
+    pageData = page;
+  } else {
+    currencyCode = await getCurrencyCodeData() || undefined;
+  }
   const addToCardData = {
     defaultImage: {
       url: image.src,
@@ -103,7 +112,9 @@ const ProductCard = ({
           <p className="brand mb-[4px] text-[16px] font-[300] text-[#a5a5a5]">{subtitle}</p>
         )}
         <div className="cardprice">
-          <ProductPriceDisplay product={product} page="product"/>
+          <Suspense>  
+          <ProductPriceDisplay product={product} page={pageData} currencyData={currencyCode}/>
+          </Suspense>
         </div>
         
       </div>

@@ -10,43 +10,56 @@ import { getProductPrices } from '~/components/graphql-apis';
 interface Props {
   product: any;
   page: string;
+  currencyData: string;
 }
 
-const ProductPriceDisplay = ({ product, page }: Props) => {
+const ProductPriceDisplay = ({ product, page, currencyData }: Props) => {
   const t = useTranslations('Product.Details');
   const format = useFormatter();
   const [priceData, setPriceData] = useState({});
-  const [currency, setCurrency] = useState('');
   const [showExclTax, setShowExclTax] = useState(false);
   const getCommonContext: any = useCommonContext();
 
+  if(!currencyData || page == 'product') {
+    currencyData = getCommonContext.getCurrencyCode;
+  }
+
   useEffect(() => {
-    const fetchProductPrice = async ({ entityId, optionValueIds, currencyCode }: { entityId: any, optionValueIds: any, currencyCode: any }) => {
-      setCurrency(currencyCode);
-      const product: any = await getProductPrices({ entityId, optionValueIds, currencyCode });
+    if (page == 'bag' || page == 'card') {
       setPriceData(product);
-      if (currencyCode == 'GBP') {
-        setShowExclTax(true);
-      } else {
-        setShowExclTax(false);
-      }
-    }
-    if (page == 'bag') {
-      setPriceData(product);
-      if (getCommonContext.getCurrencyCode == 'GBP') {
+      if (currencyData == 'GBP') {
         setShowExclTax(true);
       } else {
         setShowExclTax(false);
       }
     } else {
-      fetchProductPrice({ entityId: product?.entityId, optionValueIds: [], currencyCode: getCommonContext.getCurrencyCode });
+      const fetchProductPrice = async ({ entityId, optionValueIds, currencyCode }: { entityId: any, optionValueIds: any, currencyCode: any }) => {
+        const product: any = await getProductPrices({ entityId, optionValueIds, currencyCode });
+        setPriceData(product);
+        if (currencyCode == 'GBP') {
+          setShowExclTax(true);
+        } else {
+          setShowExclTax(false);
+        }
+      }
+
+      if (page == 'bag' || page == 'card') {
+        setPriceData(product);
+        if (currencyData == 'GBP') {
+          setShowExclTax(true);
+        } else {
+          setShowExclTax(false);
+        }
+      } else {
+        fetchProductPrice({ entityId: product?.entityId, optionValueIds: [], currencyCode: currencyData });
+      }
     }
-  }, [setCurrency, setShowExclTax]);
+  }, [setShowExclTax]);
 
   if (!priceData?.prices) return null;
 
   const { prices, excludeTax }: { prices: any, excludeTax: any } = priceData;
-  const displayPrices = showExclTax && currency === 'GBP' ? excludeTax : prices;
+  const displayPrices = showExclTax && currencyData === 'GBP' ? excludeTax : prices;
 
   const showPriceRange =
     displayPrices?.priceRange?.min.value !== displayPrices?.priceRange?.max.value;
@@ -58,7 +71,7 @@ const ProductPriceDisplay = ({ product, page }: Props) => {
     })?.replace('CA$', 'C$');
   };
 
-  if (currency === 'GBP') {
+  if (currencyData === 'GBP') {
     return (
       <>
         <p className='pricevat'>
@@ -71,7 +84,7 @@ const ProductPriceDisplay = ({ product, page }: Props) => {
           <span className='prvat'>
             {renderPrice(
               excludeTax?.price?.value || (prices.price.value / 1.2),
-              excludeTax?.price?.currencyCode || currency
+              excludeTax?.price?.currencyCode || currencyData
             )}
           </span>
           <span className='vat'>Excl. VAT</span>
