@@ -103,7 +103,7 @@ const ProductCard = ({
           <p className="brand mb-[4px] text-[16px] font-[300] text-[#a5a5a5]">{subtitle}</p>
         )}
         <div className="cardprice">
-          <ProductPriceDisplay product={product} />
+          <ProductPriceDisplay product={product} page="product"/>
         </div>
         
       </div>

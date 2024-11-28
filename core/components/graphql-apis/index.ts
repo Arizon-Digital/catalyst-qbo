@@ -1,11 +1,12 @@
 'use server';
 
 import { client } from "~/client";
-import { graphql } from "~/client/graphql";
+import { graphql, VariablesOf } from "~/client/graphql";
 import { getSessionCustomerAccessToken } from "~/auth";
 import { CartItemFragment } from "~/app/[locale]/(default)/cart/_components/cart-item";
 import { TAGS } from "~/client/tags";
 import { cookies } from "next/headers";
+import { revalidate } from "~/client/revalidate-target";
 
 
 const GET_RECENTLY_VIEWED_PRODUCTS = graphql(`
@@ -39,6 +40,86 @@ const GET_RECENTLY_VIEWED_PRODUCTS = graphql(`
         }
     }
 `);
+
+
+const ProductPricesQuery = graphql(`
+  query ProductPrices($entityId: Int!, $optionValueIds: [OptionValueId!], $currencyCode: currencyCode) {
+    site {
+      product(entityId: $entityId, optionValueIds: $optionValueIds) {
+        prices(includeTax: true, currencyCode: $currencyCode) {
+          price {
+            value
+            currencyCode
+          }
+          basePrice {
+            value
+            currencyCode
+          }
+          retailPrice {
+            value
+            currencyCode
+          }
+          salePrice {
+            value
+            currencyCode
+          }
+          priceRange {
+            min {
+              value
+              currencyCode
+            }
+            max {
+              value
+              currencyCode
+            }
+          }
+        }
+        excludeTax: prices(currencyCode: $currencyCode) {
+          price {
+            value
+            currencyCode
+          }
+          basePrice {
+            value
+            currencyCode
+          }
+          retailPrice {
+            value
+            currencyCode
+          }
+          salePrice {
+            value
+            currencyCode
+          }
+          priceRange {
+            min {
+              value
+              currencyCode
+            }
+            max {
+              value
+              currencyCode
+            }
+          }
+        }
+      }
+    }
+  }
+`);
+
+type ProductPricesQueryVariables = VariablesOf<typeof ProductPricesQuery>;
+
+export const getProductPrices = (async (variables: ProductPricesQueryVariables) => {
+  const customerAccessToken = await getSessionCustomerAccessToken();
+  const { data } = await client.fetch({
+    document: ProductPricesQuery,
+    variables,
+    customerAccessToken,
+    fetchOptions: { next: { revalidate } },
+  });
+
+  return data.site.product;
+});
 
 const UpdateCurrencyQuery = graphql(`
   mutation cartCurrencyUpdate($cartEntityId: String!, $currencyCode: String!) {

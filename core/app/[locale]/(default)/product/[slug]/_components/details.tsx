@@ -115,9 +115,12 @@ export const Details = ({ product }: Props) => {
         {/* <GetCurrencyList /> */}
         {/* <CurrencyTextWrapper /> */}
         <span className='cntpriced'>
+          <Suspense>
           <ProductPriceDisplay
             product={product}
+            page="product"
           />
+          </Suspense>
         </span>
         <ProductForm data={product} />
       </div>
