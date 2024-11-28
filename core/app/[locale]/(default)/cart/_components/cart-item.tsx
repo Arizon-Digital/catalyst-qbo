@@ -1,4 +1,5 @@
 
+
 import { useFormatter } from 'next-intl';
 import Link from 'next/link';
 import { ShoppingCart, Trash2 } from 'lucide-react';
@@ -209,6 +210,13 @@ const DeleteConfirmationDialog = ({
 export const CartItem = ({ currencyCode, product }: Props) => {
   const format = useFormatter();
 
+  const formatCurrency = (value: number) => {
+    return format.number(value, {
+      style: 'currency',
+      currency: currencyCode,
+    })?.replace('CA$', 'C$');
+  };
+
   return (
     <>
       <tbody className="cart-item-desk border border-[#CFD8DC]">
@@ -247,10 +255,7 @@ export const CartItem = ({ currencyCode, product }: Props) => {
           {/* Original price */}
           <td className="price cart">
             <p className="text-lg font-bold">
-              {format.number(product.originalPrice.value, {
-                style: 'currency',
-                currency: currencyCode,
-              }) }
+              {formatCurrency(product.originalPrice.value)}
             </p>
           </td>
 
@@ -272,10 +277,7 @@ export const CartItem = ({ currencyCode, product }: Props) => {
           {/* Sale price */}
           <td className="price cart">
             <p className="text-lg font-bold">
-              {format.number(product.extendedSalePrice.value, {
-                style: 'currency',
-                currency: currencyCode,
-              })}
+              {formatCurrency(product.extendedSalePrice.value)}
             </p>
           </td>
         </tr>
@@ -316,10 +318,7 @@ export const CartItem = ({ currencyCode, product }: Props) => {
           <div className='flex flex-col cart-item-tab-val-div1'>
             <p>Price : </p>
             <p className="text-lg font-bold">
-              {format.number(product.originalPrice.value, {
-                style: 'currency',
-                currency: currencyCode,
-              })}
+              {formatCurrency(product.originalPrice.value)}
             </p>
           </div>
           <div className="cart-qunRem flex flex-col cart-item-tab-val-div1">
@@ -339,10 +338,7 @@ export const CartItem = ({ currencyCode, product }: Props) => {
           <div className='flex flex-col cart-item-tab-val-div1'>
             <p>Total : </p>
             <p className="text-lg font-bold">
-              {format.number(product.extendedSalePrice.value, {
-                style: 'currency',
-                currency: currencyCode,
-              })}
+              {formatCurrency(product.extendedSalePrice.value)}
             </p>
           </div>
         </div>
