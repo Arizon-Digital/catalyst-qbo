@@ -126,6 +126,7 @@ export const MiniCart = ({ count }: { count: number }) => {
                         )}
                       </div>
                       <div className="flex-1">
+                      <h3 className="text-sm text-gray-500 minicart">{item.brand}</h3>
                         <h3 className="font-medium text-sm minicart">{item.name}</h3>
                         
 
