@@ -133,11 +133,9 @@ export const MiniCart = ({ count }: { count: number }) => {
                         
                         <div className="mt-2 flex justify-between items-center">
                           <div className="flex items-center gap-2">
-                            <span className="text-sm minicart">Qty: {item.quantity}</span>
-                          </div>
+                            <span className="text-sm minicart"> {item.quantity} x</span>
+                            <div>
                           
-                          <div>
-                            <span className="text-sm minicart">Price: </span>
                             <div className='miniprice'>
                               <ProductPriceDisplay
                                 page="bag"
@@ -153,6 +151,9 @@ export const MiniCart = ({ count }: { count: number }) => {
                               />
                             </div>
                           </div>
+                          </div>
+                          
+                          
                         </div>
                         <div className="mt-2 flex justify-end">
                           <form onSubmit={(e) => handleRemoveItem(e, item.entityId)}>
