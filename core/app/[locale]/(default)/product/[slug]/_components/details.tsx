@@ -9,15 +9,9 @@ import { ProductForm } from './product-form';
 import { ProductFormFragment } from './product-form/fragment';
 import { ProductSchema, ProductSchemaFragment } from './product-schema';
 import { ReviewSummary, ReviewSummaryFragment } from './review-summary';
-import TabComponnet from '../_components/tab';
-import { log } from 'console';
-import { GetCurrencyList } from '~/components/ui/header/currency';
 import ProductPriceDisplay from './exclvat';
 import { Suspense } from 'react';
- 
- 
- 
- 
+import BulkPricing from './BulkPricing';
  
 export const DetailsFragment = graphql(
   `
@@ -104,12 +98,7 @@ export const Details = ({ product }: Props) => {
  
      
         {Boolean(product.weight) && (
-          <div>
-            <h3 className="font-semibold flex productView-info-name">Bulk Pricing  <p className="pr productView-info-value ">:
-              <a href="/bulkpricing/" onClick="event.stopPropagation();"> Click Here to Enquire</a>
-            </p></h3>
- 
-          </div>
+          <BulkPricing />
         )}
     <div className='priced'>
         {/* <GetCurrencyList /> */}
