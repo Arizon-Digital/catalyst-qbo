@@ -87,7 +87,7 @@ const Footer = ({
             </address>
             {/* <p id="address" className="footer-contact"> UK - 0808 168 1234</p>
             <p id="address" className="footer-contact"> USA - 646 895 6246 / 619 354 1821</p> */}
-            <p id="address" className="footer-contact"> Canada - 438 800 0819</p>
+            <p id="address" className="footer-contact"> Canada - 438 793 4642</p>
             {/* {Boolean(contactInformation?.phone) && (
  
               <p id="address"> International- {contactInformation?.phone}</p>
@@ -235,7 +235,7 @@ const Footer = ({
       <p className="textscopy">{copyright}</p>
       <div className="flex gap-8">
         <Locale />
-        <div className="flex gap-6" id="payment-icons">
+        <div className="flex gap-1 opacity-[0.5] transition-opacity duration-500 hover:opacity-[1]" id="payment-icons">
           {paymentIcons}
         </div>
       </div>

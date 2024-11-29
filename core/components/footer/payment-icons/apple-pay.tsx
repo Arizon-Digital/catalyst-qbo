@@ -3,7 +3,7 @@ import React from 'react';
 export const ApplePayIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({ ...props }) => (
   <svg
     fill="currentColor"
-    width="57" height="32" viewBox="0 0 57 32"
+    width="60" height="25" viewBox="0 0 57 32"
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
