@@ -75,12 +75,13 @@ const ViewedItemsPopover = () => {
       </Popover.Trigger>
       <Popover.Portal>
         <Popover.Content
-          className="fixed bg-white rounded-md p-6 z-50"
+          className="fixed bg-white rounded-md p-6 !z-99999 recent-view-dropdown"
           style={{
             top: '190px',
             right: '-190px',
             transform: 'translate(-50%, -50%)',
             width: '290px',
+           
           }}
           sideOffset={5}
         >

@@ -262,7 +262,9 @@ div#warp:hover{
 .IconButton:focus {
 	box-shadow: 0 0 0 2px var(--violet-7);
 }
-
+div[data-radix-popper-content-wrapper] {
+    z-index: 9999 !important;
+}
 .Fieldset {
 	display: flex;
 	gap: 20px;
