@@ -1786,6 +1786,19 @@ width: auto;
 
     @media screen and (max-width: 769px){
 
+        header .mini-cart-btn{
+            margin-right: 6px;
+        }
+    
+        header .mini-cart-count{
+            top: 15%;
+        }
+    
+        header .mini-cart-text{
+            position: relative;
+            top: 5px;
+        }
+
         .product-grid.grid-cols-2 .plp-img-div,
     .product-grid.grid-cols-3 .plp-img-div,
     .product-grid.grid-cols-4 .plp-img-div,
@@ -2226,6 +2239,11 @@ section.section-flex {
         font-family: "Roboto Slab", serif;
         display: block;
     }
+
+
+
+
+
     p#font\ size {
         font-weight: 400;
         font-size: 1rem;
