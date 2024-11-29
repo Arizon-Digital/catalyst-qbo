@@ -5,6 +5,17 @@
 .sort.order {
     width: max-content;
 }
+
+footer .newsletter-container form fieldset{
+    padding: 0;
+}
+footer .newsletter-container{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
 p.recently {
     font-size: 17px;
     font-weight: 300;
@@ -942,9 +953,9 @@ label.inline-flex.w-full.items-center.justify-between {
     }
     .newsletter-container {
         /* width: 70px; */
-        margin-left: 121px;
+        margin-inline: 3%;
         font-size: 16px;
-        margin-right: 120px;
+        
     }
     p#font\ size {
         font-weight: 400;
@@ -1063,7 +1074,7 @@ label.inline-flex.w-full.items-center.justify-between {
         text-align: left;
     }
     .priced{
-    width: 300px;
+    max-width: 300px;
     }
     span.cntpriced {
         color: #1a2348;
@@ -2119,12 +2130,9 @@ section.section-flex {
         display: none !important;
     }
     .newsletter-container {
-        width: auto; 
-         margin-left: 0px;
+         margin-inline: 0px !important;
         font-size: 16px;
-        display: block !important;
-        align-items: center;
-        gap: 16px;
+        flex-direction: column !important;
     }
     nav.grid.flex-auto.auto-cols-fr.gap-8.sm\:grid-flow-col {
         width: auto;
@@ -2167,7 +2175,6 @@ section.section-flex {
     h5#headingin {
         font-size: 20px;
         text-transform: capitalize;
-        margin: 0 0 1.5rem !important;
         text-align: center !important;
         font-family: "Roboto Slab", serif;
         display: block;
@@ -2235,9 +2242,7 @@ section.section-flex {
     nav.grid.auto-cols-fr.gap-8.sm\:grid-flow-col {
         padding-right: 10px;
     }
-    .newsletter-container{
-        margin-left: 50px;  
-    }
+    
     }
     @media (min-width: 900px) and (max-width: 1100px) {
     section.section-flex{
@@ -2256,6 +2261,8 @@ section.section-flex {
         margin-top: 100px;
         margin-left: 150px;
     }
+
+
     .flex.flex-col.gap-4.f1 {
         padding-right: 200px;
     }
@@ -2292,7 +2299,7 @@ section.section-flex {
     }
     @media (max-width: 600px) {
         .flex.gap-6 {
-            margin-left: 10px;
+            margin-inline: 10px;
             gap: 1rem;
         }
     section.section-flex{
@@ -2308,10 +2315,11 @@ section.section-flex {
     .newsletter-container{
         margin-right: 10px;
     }
-    form.form {
-        margin-left: 15px;
+
+
     }
-    }
+
+
 
 
 
@@ -2419,6 +2427,13 @@ section.section-flex {
     }
 }
 
+div#warp input{
+    height: 50px !important;
+    flex: unset;
+}
+div#warp button{
+    height: 50px;
+}
 
 .product-grid.grid-cols-1 .group.product-card{
     flex-direction: row;
@@ -2437,6 +2452,11 @@ section.section-flex {
 
 .product-grid.grid-cols-2 .compare-section{
     top: 30%;
+}
+
+.form-input.form-prefixPostfix-input{
+    font-size: 1rem;
+    color: #000 !Important;
 }
 
 .product-grid.grid-cols-1 .plp-img-div-parent{
@@ -2571,10 +2591,6 @@ section.section-flex {
 }
 
 @media (min-width: 700px) and (max-width: 900px) {
-form.form {
-    
-    width: 500px;
-}
 .product-details-logo {
     height: 27px;
     width: auto;
@@ -2682,12 +2698,7 @@ form.form {
         background-color: #ffffff;
         width: auto;
     }
-    .newsletter-container{
-        display: flex;
-    align-items: center;
-    gap: 16px;
-    flex-direction: column;
-    }
+
     .form-prefixPostfix{
         width: auto;
     }
@@ -2697,21 +2708,36 @@ form.form {
         background-color: #ffffff;
         width: auto;
     }
-    .newsletter-container{
-        display: flex;
-    align-items: center;
-    gap: 16px;
-    flex-direction: column;
-    }
     .form-prefixPostfix{
         width: auto;
     }
 }
 @media (max-width: 600px) {
-    div#warp {
-        background-color: #ffffff;
-        width: 93%;
+
+    footer .newsletter-container form,
+    footer .newsletter-container form fieldset,
+    footer .newsletter-container form fieldset div.form-field,
+    footer .newsletter-container form fieldset div.form-field div#warp,
+    footer .newsletter-container form fieldset div.form-field div#warp input,
+    footer .newsletter-container form fieldset div.form-field div#warp button{
+        width: 100% !important;
     }
+
+    footer .newsletter-container form fieldset div.form-field div#warp{
+        margin-inline: 20px;
+    }
+    div#warp {
+        background-color: transparent;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    div#warp input{
+        border-radius: 4px !important;
+    }
+
     .newsletter-container{
         display: flex;
     align-items: center;
