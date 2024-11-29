@@ -34,8 +34,7 @@ export const Header = async ({ cart }: Props) => {
  
   const data = readFragment(HeaderFragment, response).site;
  
-  const categoryTree = data.categoryTree.slice(0, 6);
- 
+  const categoryTree = data.categoryTree;
   const links = categoryTree.map(({ name, path, children }) => ({
     label: name,
     href: path,
@@ -48,7 +47,6 @@ export const Header = async ({ cart }: Props) => {
       })),
     })),
   }));
- 
   return (
     <ComponentsHeader
       account={
