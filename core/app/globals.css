@@ -1134,7 +1134,12 @@ width: auto;
     margin-left: 5px;
     text-transform: uppercase;
       }
-      
+      div#radix-\:R1aj2rmlt7\: {
+        background-color: #1a2348;
+        color: #ffff !important;
+        z-index: 99999;
+        width: 85%;
+    }
       .product-details-logo {
         height: 27px;
         width: auto;
