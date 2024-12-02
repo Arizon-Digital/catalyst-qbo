@@ -15,6 +15,9 @@ footer .newsletter-container{
     gap: 20px;
     align-items: center;
 }
+div#radix-\:R9i5a7rrrqtlfb\: {
+    z-index: 999999 !important;
+}
 ul#nav-menu-list {
     align-items: center;
     display: flex;
@@ -1202,7 +1205,7 @@ width: auto;
       .product-details-logo {
         height: 27px;
         width: auto;
-        margin-left: 1100px;
+        margin-left: 1130px;
         margin-top: -26px;
     }
     .custom-field {
