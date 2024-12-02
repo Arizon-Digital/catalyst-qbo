@@ -10,7 +10,7 @@ import { Link as CustomLink } from '~/components/link';
 import { cn } from '~/lib/utils';
 import { type Locale, LocaleSwitcher } from './locale-switcher';
 import { MobileNav } from './mobile-nav';
-import Minicart from '../header/minicart';
+import Minicart, { MiniCart } from '../header/minicart';
 import ViewedItemsPopover from './ViewedItemsPopover';
 import DoofinderScriptLoader from '~/app/[locale]/(default)/product/[slug]/_components/Doofinder';
 import HubspotChat from '~/app/[locale]/(default)/product/[slug]/_components/Chatbot';
@@ -182,9 +182,10 @@ const Header = ({
                         <ViewedItemsPopover />
                       </div>
                     </nav>
-                    <nav className="header-cart-icon pl-10px nmd:p-0">
+                    <MiniCart />
+                    {/* <nav className="header-cart-icon pl-10px nmd:p-0">
                       <button onClick={handleCartClick}>{cart}</button>
-                    </nav>
+                    </nav> */}
                     <div className="flex flex-col flex-wrap items-center gap-0 pl-[5px]">
                       <div className="text">
                         <ScrollToTop />
