@@ -84,7 +84,7 @@ const TechData: React.FC<Props> = ({ product }) => {
           {product.sku && (
             <>
               <span className="product-details-item">
-                <strong>SKU:</strong> <div className='value'>{product.sku}</div>
+                <strong>SKU:</strong> <div className='value text-gray-500 text-sm'>{product.sku}</div>
               </span>
             </>
           )}

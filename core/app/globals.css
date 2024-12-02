@@ -403,7 +403,7 @@ td.flex.flex-1.flex-col.gap-2 {
     font-weight: 400;
 }
 .productView-bulk-tabContent {
-    width: 95%;
+    width: 100%;
     margin-left: 15px;
 }
 
@@ -1687,7 +1687,47 @@ width: auto;
         background-color: #ffffff;
     }
     @media (max-width: 600px) {
+        .prod-desc-tbl{
+            width:10% !important;
+        }
+        p.custom {
+            width: 70%;
+            float: right;
+            font-family: Roboto Slab, serif;
+            font-size: 12px;
+        }
+        .delivery-image {
+            margin-left: -50px;
+            width: 80px;
+        }
+        .Deliveryinformation{
+            margin-left:0px;
+        }
+        .delivery123 {
+            width: 30%;
+        }
+        .mb-12.mt-4.lg\:grid.lg\:grid-cols-2.lg\:gap-8 {
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+        .gap-\[10px\] {
+            gap: 5px;
+        }
+        .feefo-reviews {
+            margin-bottom: 20px;
+            margin-top: 15px !important;
+        }
+        .tech-data{
+            margin-left:0px;
+        }
+        h2.page-heading {
+            font-size: 20px;
+        }
         .bg-\[\#e7f5f8\] {
+            
+            border: 1px solid #dcdcdc;
+            border-radius: 4px;
+            box-shadow: 0 3px #dcdcdc;
             --tw-bg-opacity: 1;
             background-color: #ffffff;
         }
@@ -2363,6 +2403,10 @@ section.section-flex {
     }
     }
     @media (max-width: 600px) {
+        .productView-bulk-tabContent {
+            width: 80%;
+            margin-left: 15px;
+        }
         .flex.gap-6 {
             margin-inline: 10px;
             gap: 1rem;
@@ -2416,8 +2460,11 @@ section.section-flex {
         /* margin-bottom: 50px; */
         height: 27px;
         /* width: auto; */
-        margin-left: 200px;
+        margin-left: 150px;
         margin-top: -26px;
+    }
+    .value {
+        width: 200px;
     }
     span.product-details-item {
         display: block;

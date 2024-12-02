@@ -32,7 +32,7 @@ const Bulk: React.FC<Props> = ({ product }) => {
       <div className="tab-content" id="tab-bulk" data-emthemesmodez-mobile-collapse>
         <h2 className="page-heading">Bulk Pricing</h2>
         <hr className="product-info-hr" />
-        <div className="productView-bulk-tabContent" data-emthemesmodez-mobile-collapse-content>
+        <div className="productView-bulk-tabContent overflow-x-hidden" data-emthemesmodez-mobile-collapse-content>
           <p>
             For bulk discount on this product, contact our dedicated sales team today by filling out the form below:
           </p>
@@ -43,11 +43,11 @@ const Bulk: React.FC<Props> = ({ product }) => {
   }
 
   return (
-    <div className="tab-content" id="tab-bulk" data-emthemesmodez-mobile-collapse>
+    <div className="tab-content m-0 p-0 " id="tab-bulk" data-emthemesmodez-mobile-collapse>
       <h2 className="page-heading">Bulk Pricing</h2>
       <hr className="product-info-hr" />
       <div className="productView-bulk-tabContent" data-emthemesmodez-mobile-collapse-content>
-        <ul className="bulk-pricing-list">
+      ----  <ul className="bulk-pricing-list">
           {product.bulk_discount_rates.map((rate, index) => (
             <li key={index} className="bulk-pricing-item">
               <span className="bulk-pricing-range" id="bulk-pricing-range">
