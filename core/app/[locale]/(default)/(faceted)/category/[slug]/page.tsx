@@ -88,12 +88,13 @@ export default async function Category(props: Props) {
       <Breadcrumbs category={category}  />
       
       {category.defaultImage && (
-  <div className="relative w-full">
-    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
-      <div className="bg-gray-200/90 px-16 py-8 rounded">
-        <h1 className="text-4xl font-bold" style={{ color: '#1a2348' }}>{category.name}</h1>
-      </div>
-    </div>
+ <div className="relative w-full">
+ <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+   <div className="bg-gray-200/90 px-16 py-8 rounded" style={{ backgroundColor: 'rgba(245,245,245,.9)' }}>
+     <h1 className="text-4xl font-bold" style={{ color: '#1a2348' }}>{category.name}</h1>
+   </div>
+ </div>
+
     <BcImage
       className="!w-full"
       alt={category.defaultImage.altText}
@@ -176,9 +177,9 @@ export default async function Category(props: Props) {
           aria-labelledby="product-heading"
           className="col-span-4 group-has-[[data-pending]]:animate-pulse"
         >
-          <h1 className="sr-only static w-[unset] h-[unset] m-0 text-[24px] font-[600] mb-[10px] tracking-[0.15px] text-[#1d1d1d]" id="product-heading">
+          {/* <h1 className="sr-only static w-[unset] h-[unset] m-0 text-[24px] font-[600] mb-[10px] tracking-[0.15px] text-[#1d1d1d]" id="product-heading">
             {t('products')}
-          </h1>
+          </h1> */}
 
           <div className="product-grid grid grid-cols-4 gap-6 sm:gap-8">
             {products.map((product, index) => (
