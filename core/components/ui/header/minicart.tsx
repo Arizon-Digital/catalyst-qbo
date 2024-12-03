@@ -51,6 +51,9 @@ export const MiniCart = ({ count }: { count: number }) => {
         console.log('Physical items:', cartData.lineItems.physicalItems); // Debug log
         setHasItems(true);
       }
+    } else {
+      setCartItems([]);
+      setHasItems(false);
     }
     setLoading(false);
   }
