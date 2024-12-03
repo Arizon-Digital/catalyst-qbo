@@ -1,23 +1,23 @@
 'use client';
- 
+
 import { Badge, ShoppingCart } from 'lucide-react';
 import { useLocale } from 'next-intl';
 import { useEffect, useState } from 'react';
 import { z } from 'zod';
- 
+
 import { useCart } from './cart-provider';
 import Minicart from '../ui/header/minicart';
 
 const CartQuantityResponseSchema = z.object({
   count: z.number(),
-  cartItems: z.any()
+  cartItems: z.any(),
 });
- 
+
 interface CartIconProps {
   count?: number;
   cartObj?: any;
 }
- 
+
 export const CartIcon = ({ count: serverCount }: CartIconProps) => {
   const { count, setCount } = useCart();
   const [cartItems, setCartItems] = useState([]);
@@ -41,11 +41,11 @@ export const CartIcon = ({ count: serverCount }: CartIconProps) => {
       void fetchCartQuantity();
     }
   }, [serverCount, locale, setCount]);
- 
+
   if (!count) {
     return <ShoppingCart aria-label="cart" />;
   }
- 
+
   return (
     <>
       <span className="sr-only">Cart Items</span>
@@ -53,4 +53,3 @@ export const CartIcon = ({ count: serverCount }: CartIconProps) => {
     </>
   );
 };
- 

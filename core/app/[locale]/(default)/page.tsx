@@ -1,27 +1,33 @@
 import { Page as MakeswiftPage } from '@makeswift/runtime/next';
-import { getSiteVersion } from '@makeswift/runtime/next/server';
 import { notFound } from 'next/navigation';
 
-import { defaultLocale } from '~/i18n/routing';
+import { defaultLocale, locales } from '~/i18n/routing';
 import { client } from '~/lib/makeswift/client';
+import { getSiteVersion } from '~/lib/makeswift/draft-mode';
 import '~/lib/makeswift/components';
 
-interface Props {
-  params: {
+export default async function Home({
+  params,
+}: {
+  params: Promise<{
     locale: string;
-  };
-}
+  }>;
+}) {
+  const { locale } = await params;
+  if (!locales.includes(locale)) return notFound();
 
-export default async function Home(props : Props) {
-  const params = await props.params;
+  const siteVersion = await getSiteVersion();
 
-  const { locale } = params;
+  console.log('@@@ Home page', { siteVersion, locale });
+
   const snapshot = await client.getPageSnapshot('/', {
-    siteVersion: await getSiteVersion(),
+    siteVersion,
     locale: locale === defaultLocale ? undefined : locale,
   });
 
   if (snapshot == null) return notFound();
+
+  console.log('@@@ Home page', { snapshot });
 
   return <MakeswiftPage snapshot={snapshot} />;
 }

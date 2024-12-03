@@ -252,8 +252,24 @@ const getRouteInfo = async (request: NextRequest, event: NextFetchEvent) => {
   }
 };
 
-export const withRoutes: MiddlewareFactory = () => {
+// See https://github.com/vercel/next.js/blob/main/packages/next/src/server/lib/server-action-request-meta.ts
+const isServerAction = ({ method, headers }: NextRequest) =>
+  method === 'POST' &&
+  (headers.get('next-action') != null ||
+    headers.get('content-type') === 'application/x-www-form-urlencoded' ||
+    headers.get('content-type')?.startsWith('multipart/form-data'));
+
+export const withRoutes: MiddlewareFactory = (next) => {
   return async (request, event) => {
+    const serverAction = isServerAction(request);
+    console.log('@@@ withRoutes middleware', { request, event, serverAction });
+    // Behind the scenes, Next.js server actions are translated into `POST` requests
+    // that get handled by the framework; don't interfere with these requests
+    // https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations#behavior
+    if (serverAction) {
+      return next(request, event);
+    }
+
     const locale = request.headers.get('x-bc-locale') ?? '';
 
     const { route, status } = await getRouteInfo(request, event);
