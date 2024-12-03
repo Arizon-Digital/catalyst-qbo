@@ -7,7 +7,13 @@ import { bypassReCaptcha } from '~/lib/bypass-recaptcha';
 
 import { ResetPasswordForm } from './_components/reset-password-form';
 import { ResetPasswordFormFragment } from './_components/reset-password-form/fragment';
-
+import { Breadcrumbs as ComponentsBreadcrumbs } from '~/components/ui/breadcrumbs';
+const breadcrumbs: any = [
+  {
+    label: 'Forgot Password',
+    href: '/login/forgot-password/',
+  },
+];
 const ResetPageQuery = graphql(
   `
     query ResetPageQuery {
@@ -42,7 +48,8 @@ export default async function Reset() {
   const recaptchaSettings = await bypassReCaptcha(data.site.settings?.reCaptcha);
 
   return (
-    <div className="mx-auto my-6 max-w-4xl pageheading">
+    <div className="mx-auto my-6 max-w-[35rem] pageheading">
+      <ComponentsBreadcrumbs breadcrumbs={breadcrumbs} className="mb-8 text-4xl font-black lg:text-5xl"/>
       <h2 className="mb-8 text-4xl font-black lg:text-5xl">{t('heading')}</h2>
       <ResetPasswordForm reCaptchaSettings={recaptchaSettings} />
     </div>
