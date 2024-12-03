@@ -3,6 +3,10 @@ import { PropsWithChildren } from 'react';
 
 import { TabNavigation, TabType } from './_components/tab-navigation';
 
+const tabList = ['orders', 'addresses', 'wishlists', 'settings'] as const;
+
+export type TabType = (typeof tabList)[number];
+
 interface Props extends PropsWithChildren {
   params: Promise<{ locale: string; tab?: TabType }>;
 }
@@ -13,6 +17,13 @@ export default async function AccountTabLayout({ children, params }: Props) {
   setRequestLocale(locale);
 
   const t = await getTranslations('Account.Home');
+
+  const tabsTitles = {
+    addresses: t('addresses'),
+    wishlists: t('wishlists'),
+    settings: t('settings'),
+    orders: t('orders')
+  };
 
   return (
     <>

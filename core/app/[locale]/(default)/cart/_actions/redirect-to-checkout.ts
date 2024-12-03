@@ -32,9 +32,7 @@ export const redirectToCheckout = async (formData: FormData) => {
     customerAccessToken,
   });
 
-  
-  // const url = data.cart.createCartRedirectUrls.redirectUrls?.redirectedCheckoutUrl;
-  const url = redirect({ href: process.env.STENCIL_URL + '/account.php?action=order_status', locale });
+  const url = data.cart.createCartRedirectUrls.redirectUrls?.redirectedCheckoutUrl;
 
   if (!url) {
     throw new Error('Invalid checkout url.');

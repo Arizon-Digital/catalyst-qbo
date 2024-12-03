@@ -22,8 +22,8 @@ export const login = async (_previousState: unknown, formData: FormData) => {
       redirect: false,
     });
 
-    // redirect({ href: '/account/', locale });
-    redirect({ href: process.env.STENCIL_URL + '/account.php?action=order_status', locale });
+    redirect({ href: '/account/', locale });
+    // redirect({ href: process.env.STENCIL_URL + '/account.php?action=order_status', locale });
   } catch (error: unknown) {
     rethrow(error);
 

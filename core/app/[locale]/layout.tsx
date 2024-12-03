@@ -12,6 +12,7 @@ import '../globals.css';
 import { client } from '~/client';
 import { graphql } from '~/client/graphql';
 import { revalidate } from '~/client/revalidate-target';
+import { MakeswiftProvider } from '~/lib/makeswift/provider';
 
 import { Notifications } from '../notifications';
 import { Providers } from '../providers';
@@ -94,15 +95,17 @@ export default async function RootLayout({ params, children }: Props) {
   const messages = await getMessages();
 
   return (
-    <html className={` font-sans`} lang={locale}>
+    <html className={`font-sans`} lang={locale}>
       <head>
         <DraftModeScript />
       </head>
       <body className="flex h-screen min-w-[375px] flex-col">
         <Notifications />
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <Providers>{children}</Providers>
-        </NextIntlClientProvider>
+        <MakeswiftProvider>
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            <Providers>{children}</Providers>
+          </NextIntlClientProvider>
+        </MakeswiftProvider>
         <VercelComponents />
       </body>
     </html>
