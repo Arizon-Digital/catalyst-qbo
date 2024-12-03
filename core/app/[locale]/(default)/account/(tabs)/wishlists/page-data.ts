@@ -8,6 +8,8 @@ import { PricingFragment } from '~/client/fragments/pricing';
 import { graphql, VariablesOf } from '~/client/graphql';
 
 import { GalleryFragment } from '../../../product/[slug]/_components/gallery/fragment';
+import { cookies } from 'next/headers';
+import { CurrencyCode } from '~/app/api/get-product/route';
 
 const WishlistsQuery = graphql(
   `
@@ -17,6 +19,7 @@ const WishlistsQuery = graphql(
       $before: String
       $first: Int
       $last: Int
+      $currencyCode: currencyCode
     ) {
       customer {
         wishlists(filters: $filters, after: $after, before: $before, first: $first, last: $last) {
@@ -66,11 +69,12 @@ interface GetWishlists {
 
 export const getWishlists = cache(async ({ limit = 3, before, after, filters }: GetWishlists) => {
   const customerAccessToken = await getSessionCustomerAccessToken();
+  const currencyCode = (await cookies()).get('currencyCode')?.value as CurrencyCode || 'CAD';
   const paginationArgs = before ? { last: limit, before } : { first: limit, after };
 
   const response = await client.fetch({
     document: WishlistsQuery,
-    variables: { ...filters, ...paginationArgs },
+    variables: { ...filters, ...paginationArgs, currencyCode },
     fetchOptions: { cache: 'no-store' },
     customerAccessToken,
   });
