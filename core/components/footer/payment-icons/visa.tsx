@@ -3,7 +3,7 @@ import React from 'react';
 export const VisaIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({ ...props }) => (
   <svg
     fill="currentColor"
-    width="60" height="25" viewBox="0 0 49 32"
+    width="48" height="40" viewBox="0 0 49 32"
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >

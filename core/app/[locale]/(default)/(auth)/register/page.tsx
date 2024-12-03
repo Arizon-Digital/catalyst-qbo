@@ -63,7 +63,7 @@ export default async function Register() {
         breadcrumbs={breadcrumbs}
       />
       </div>
-      <h1 className="my-6 text-[24px] font-[400] lg:my-8 lg:text-5xl heading">{t('heading')}</h1>
+      <h1 className="my-6 text-[25px] leading-[1] font-[400] lg:my-8 lg:text-5xl heading">{t('heading')}</h1>
       <RegisterCustomerForm
         addressFields={addressFields}
         customerFields={customerFields}

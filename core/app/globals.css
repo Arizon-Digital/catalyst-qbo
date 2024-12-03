@@ -116,6 +116,9 @@ p#categorybtn {
     color: #fff !important;
     border-radius: 4px !important;
 }
+button#subscribe{
+    border-radius: 0px !important;
+}
 .Label {
     font-size: 18px;
     color: var(--violet-11);
@@ -1282,6 +1285,7 @@ width: auto;
         vertical-align: bottom;
     }
     .lg\:text-5xl {
+        font-size: 25px;
         line-height: 1;
         text-align: center;
         font-weight: 400;
@@ -2878,5 +2882,10 @@ div#warp button{
     .product-grid{
         grid-template-columns: auto;
     }
+  }
+
+  .lg\:text-5xl{
+    margin-bottom: 10px !important;
+    font-size:25px !important;
   }
   

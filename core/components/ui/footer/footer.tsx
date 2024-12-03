@@ -235,7 +235,7 @@ const Footer = ({
       <p className="textscopy">{copyright}</p>
       <div className="flex gap-8">
         <Locale />
-        <div className="flex gap-1 opacity-[0.5] transition-opacity duration-500 hover:opacity-[1]" id="payment-icons">
+        <div className="flex gap-3 opacity-[0.9] transition-opacity duration-500" id="payment-icons">
           {paymentIcons}
         </div>
       </div>
