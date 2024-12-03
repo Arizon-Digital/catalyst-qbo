@@ -27,7 +27,7 @@ export const GetCurrencyList = () => {
       let currencyCookieData: string = (await getCurrencyCodeFn()) || 'CAD';
       setCurrencyCodeFn(currencyCookieData);
       setCurrencyCode(currencyCookieData);
-      getCommonContext.setCurrencyCodeFn(currencyCookieData);
+      // getCommonContext.setCurrencyCodeFn(currencyCookieData);
       setShowExclTax(currencyCookieData === 'GBP');
     };
     getCurrencyData();

@@ -6,7 +6,6 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Breadcrumbs } from '~/components/breadcrumbs';
 import { ProductCard } from '~/components/product-card';
 import { Pagination } from '~/components/ui/pagination';
-import { LocaleType } from '~/i18n/routing';
 import { BcImage } from '~/components/bc-image';
 import ProductCountFilter from './ProductCountFilter';
 
@@ -207,4 +206,4 @@ export default async function Category(props: Props) {
   );
 }
 
-export const runtime = 'edge';
+export const runtime = 'nodejs';

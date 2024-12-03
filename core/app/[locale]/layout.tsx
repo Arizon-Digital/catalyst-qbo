@@ -1,4 +1,4 @@
-import { DraftModeScript } from '@makeswift/runtime/next/server';
+// import { DraftModeScript } from '@makeswift/runtime/next/server';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
@@ -13,6 +13,7 @@ import { client } from '~/client';
 import { graphql } from '~/client/graphql';
 import { revalidate } from '~/client/revalidate-target';
 import { MakeswiftProvider } from '~/lib/makeswift/provider';
+import { DraftModeScript } from '~/lib/makeswift/draft-mode/draft-mode-script';
 
 import { Notifications } from '../notifications';
 import { Providers } from '../providers';
@@ -87,6 +88,7 @@ interface Props extends PropsWithChildren {
 
 export default async function RootLayout({ params, children }: Props) {
   const { locale } = await params;
+  console.log('@@@ RootLayout', { locale });
 
   // need to call this method everywhere where static rendering is enabled
   // https://next-intl-docs.vercel.app/docs/getting-started/app-router#add-setRequestLocale-to-all-layouts-and-pages

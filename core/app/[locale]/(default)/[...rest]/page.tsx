@@ -1,9 +1,9 @@
 import { Page as MakeswiftPage } from '@makeswift/runtime/next';
-import { getSiteVersion } from '@makeswift/runtime/next/server';
 import { notFound } from 'next/navigation';
 
 import { defaultLocale, locales } from '~/i18n/routing';
 import { client } from '~/lib/makeswift/client';
+import { getSiteVersion } from '~/lib/makeswift/draft-mode';
 
 interface CatchAllParams {
   locale: string;
@@ -27,16 +27,24 @@ export async function generateStaticParams() {
 
 export default async function CatchAllPage({ params }: { params: Promise<CatchAllParams> }) {
   const { rest, locale } = await params;
+  if (!locales.includes(locale)) return notFound();
+
   const path = `/${rest.join('/')}`;
+  const siteVersion = await getSiteVersion();
+
+  console.log('@@@ CatchAllPage', { path, siteVersion, locale });
 
   const snapshot = await client.getPageSnapshot(path, {
-    siteVersion: await getSiteVersion(),
+    siteVersion,
     locale: locale === defaultLocale ? undefined : locale,
   });
 
   if (snapshot == null) return notFound();
 
+  console.log('@@@ CatchAllPage', { snapshot });
+
   return <MakeswiftPage snapshot={snapshot} />;
 }
 
 export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';

@@ -37,14 +37,15 @@ export const getCurrencyCodeFn = async () => {
 }
 
 export const setCurrencyCodeFn = async (cookieValue: string) => {
-  (await cookies()).set({
-    name: 'currencyCode',
-    value: cookieValue,
-    httpOnly: true,
-    sameSite: 'lax',
-    secure: true,
-    path: '/',
-  });
+  console.log('-- server action: setCurrencyCodeFn');
+  // (await cookies()).set({
+  //   name: 'currencyCode',
+  //   value: cookieValue,
+  //   httpOnly: true,
+  //   sameSite: 'lax',
+  //   secure: true,
+  //   path: '/',
+  // });
   return true;
 }
  
