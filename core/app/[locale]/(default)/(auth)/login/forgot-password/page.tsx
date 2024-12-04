@@ -51,7 +51,7 @@ export default async function Reset() {
     <div className="mx-auto my-6 max-w-[35rem] pageheading">
       <ComponentsBreadcrumbs breadcrumbs={breadcrumbs} className="mb-8 text-4xl font-black lg:text-5xl"/>
       <h2 className="mb-8 text-4xl font-black lg:text-5xl">{t('heading')}</h2>
-      <ResetPasswordForm reCaptchaSettings={recaptchaSettings} />
+      < ResetPasswordForm reCaptchaSettings={recaptchaSettings} />
     </div>
   );
 }

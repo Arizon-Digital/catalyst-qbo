@@ -290,7 +290,7 @@
       "statePlaceholder": "Select state",
       "city": "Suburb/city",
       "cityPlaceholder": "City",
-      "postcode": "Zip/Postcode",
+      "postcode": "Postal Code",
       "postcodePlaceholder": "Postal code",
       "errorMessage": "Something went wrong, please try again."
     },
