@@ -49,7 +49,7 @@ export const CartIcon = ({ count: serverCount }: CartIconProps) => {
   return (
     <>
       <span className="sr-only">Cart Items</span>
-      <Minicart count={count} cartId={cartId} />
+      {/*<Minicart count={count}/>*/}
     </>
   );
 };

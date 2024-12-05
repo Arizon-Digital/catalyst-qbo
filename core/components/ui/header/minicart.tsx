@@ -43,7 +43,7 @@ export const MiniCart = ({ count }: { count: number }) => {
   const loadMiniBag = async() => {
     setIsOpen(true);
     setLoading(true);
-    let cartData = await getCartData();
+    let cartData: any = await getCartData();
     console.log('Full cart data:', cartData); // Debug log
     if(cartData?.lineItems?.physicalItems) {
       setCartItems(cartData);
