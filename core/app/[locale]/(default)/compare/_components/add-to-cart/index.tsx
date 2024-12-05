@@ -3,7 +3,7 @@
 import { FragmentOf } from 'gql.tada';
 import { AlertCircle, Check } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { useTransition } from 'react';
+import { useId, useTransition } from 'react';
 import { toast } from 'react-hot-toast';
  
 import { AddToCartButton } from '~/components/add-to-cart-button';
@@ -26,6 +26,7 @@ export const AddToCart = ({ data: product }: { data: FragmentOf<typeof AddToCart
   const t = useTranslations('Compare.AddToCart');
   const cart = useCart();
   const cartContext = useCommonContext();
+  const toastId = useId();
   const [isPending, startTransition] = useTransition();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -57,7 +58,7 @@ export const AddToCart = ({ data: product }: { data: FragmentOf<typeof AddToCart
           </span>
         </div>
       ),
-      { icon: <Check className="text-success-secondary" /> },
+      { icon: <Check className="text-success-secondary" />, id: toastId },
     );
 
     startTransition(async () => {
@@ -66,8 +67,9 @@ export const AddToCart = ({ data: product }: { data: FragmentOf<typeof AddToCart
       if (result.error) {
         cart.decrement(quantity);
 
-        toast.error(t('error'), {
+        toast.error(result.error, {
           icon: <AlertCircle className="text-error-secondary" />,
+          id: toastId,
         });
       }
     });

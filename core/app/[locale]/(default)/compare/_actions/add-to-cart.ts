@@ -1,13 +1,16 @@
 'use server';
- 
+
 import { revalidateTag } from 'next/cache';
 import { cookies } from 'next/headers';
- 
-import { addCartLineItem } from '~/client/mutations/add-cart-line-item';
-import { createCart } from '~/client/mutations/create-cart';
+
+import {
+  addCartLineItem,
+  assertAddCartLineItemErrors,
+} from '~/client/mutations/add-cart-line-item';
+import { assertCreateCartErrors, createCart } from '~/client/mutations/create-cart';
 import { getCart } from '~/client/queries/get-cart';
 import { TAGS } from '~/client/tags';
- 
+
 export const addToCart = async (data: FormData) => {
   const productEntityId = Number(data.get('product_id'));
 
@@ -15,13 +18,12 @@ export const addToCart = async (data: FormData) => {
   const cartId = cookieStore.get('cartId')?.value;
 
   let cart;
-  let cartData: any = {};
- 
+
   try {
     cart = await getCart(cartId);
- 
+
     if (cart) {
-      cart = await addCartLineItem(cart.entityId, {
+      const addCartLineItemResponse = await addCartLineItem(cart.entityId, {
         lineItems: [
           {
             productEntityId,
@@ -29,28 +31,28 @@ export const addToCart = async (data: FormData) => {
           },
         ],
       });
- 
+
+      assertAddCartLineItemErrors(addCartLineItemResponse);
+
+      cart = addCartLineItemResponse.data.cart.addCartLineItems?.cart;
+
       if (!cart?.entityId) {
-        return { status: 'error', error: 'Failed to add product to cart.', items: cartData };
+        return { status: 'error', error: 'Failed to add product to cart.' };
       }
-      let cartDataValue: any = await getCart(cart?.entityId);
-      if(cartDataValue?.lineItems?.physicalItems) {
-        cartData = cartDataValue;
-      }
+
       revalidateTag(TAGS.cart);
- 
-      return { status: 'success', data: cart, items: cartData };
+
+      return { status: 'success', data: cart };
     }
- 
-    cart = await createCart([{ productEntityId, quantity: 1 }]);
- 
+
+    const createCartResponse = await createCart([{ productEntityId, quantity: 1 }]);
+
+    assertCreateCartErrors(createCartResponse);
+
+    cart = createCartResponse.data.cart.createCart?.cart;
+
     if (!cart?.entityId) {
-      return { status: 'error', error: 'Failed to add product to cart.', items: cartData };
-    }
-    
-    let cartDataValue: any = await getCart(cart?.entityId);
-    if(cartDataValue?.lineItems?.physicalItems) {
-      cartData = cartDataValue;
+      return { status: 'error', error: 'Failed to add product to cart.' };
     }
 
     cookieStore.set({
@@ -61,16 +63,15 @@ export const addToCart = async (data: FormData) => {
       secure: true,
       path: '/',
     });
- 
+
     revalidateTag(TAGS.cart);
- 
-    return { status: 'success', data: cart, items: cartData };
+
+    return { status: 'success', data: cart };
   } catch (error: unknown) {
     if (error instanceof Error) {
-      return { status: 'error', error: error.message, items: cartData };
+      return { status: 'error', error: error.message };
     }
- 
-    return { status: 'error', error: 'Something went wrong. Please try again.', items: cartData };
+
+    return { status: 'error', error: 'Something went wrong. Please try again.' };
   }
 };
- 

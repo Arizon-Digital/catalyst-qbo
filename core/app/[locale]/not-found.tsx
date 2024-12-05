@@ -35,6 +35,7 @@ const NotFoundQuery = graphql(
 export default async function NotFound() {
   const t = await getTranslations('NotFound');
   const currencyCode = (await cookies()).get('currencyCode')?.value as CurrencyCode || 'CAD';
+  const ct = await getTranslations('Components.Header.MiniCart');
 
   const { data } = await client.fetch({
     document: NotFoundQuery,
@@ -52,7 +53,7 @@ export default async function NotFound() {
         <Header
           cart={
             <CartLink>
-              <ShoppingCart aria-label="cart" />
+              <ShoppingCart aria-label={ct('cart')} />
             </CartLink>
           }
         />
