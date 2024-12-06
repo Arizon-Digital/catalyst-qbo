@@ -2891,6 +2891,6 @@ div#warp button{
   }
   
   
-  /* .text-white {
-    width: 100%;
-  } */
+  .register-page-parent .login-breadcrumb ul {
+    padding-bottom: 15px;
+}

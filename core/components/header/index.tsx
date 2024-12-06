@@ -62,7 +62,7 @@ export const Header = async ({ cart }: Props) => {
             <div className='flex sign/registration'>
               <Link 
                 href="/account"
-                className="flex items-center p-3"
+                className="flex items-center p-0"
                 aria-label={t('Account.myAccount')}
               >
                 Account
@@ -71,7 +71,7 @@ export const Header = async ({ cart }: Props) => {
                 <Button 
                   type="submit"
                   variant="subtle" 
-                  className="p-3 hover:bg-transparent"
+                  className="p-0 hover:bg-transparent"
                 >
                  Sign Out
                 </Button>
