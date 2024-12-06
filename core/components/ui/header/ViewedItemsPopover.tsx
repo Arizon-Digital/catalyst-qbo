@@ -77,10 +77,11 @@ const ViewedItemsPopover = () => {
         <Popover.Content
           className="fixed bg-white rounded-md p-6 !z-99999 recent-view-dropdown"
           style={{
-            top: '190px',
+            top: '350px',
             right: '-190px',
             transform: 'translate(-50%, -50%)',
             width: '290px',
+            
            
           }}
           sideOffset={5}
@@ -89,13 +90,13 @@ const ViewedItemsPopover = () => {
           <div className="mt-4">
             <ViewedItems recentlyViewed={recentlyViewed} /> 
           </div>
-          <div style={{ display: "flex", marginTop: '20px', justifyContent: "flex-end" }}>
+          {/* <div style={{ display: "flex", marginTop: '20px', justifyContent: "flex-end" }}>
             <Popover.Close asChild>
               <button className="Button bg-green-500 text-white px-4 py-2 rounded" aria-label="Close">
                 Close
               </button>
             </Popover.Close>
-          </div>
+          </div> */}
           <Popover.Arrow className="PopoverArrow" />
         </Popover.Content>
       </Popover.Portal>
