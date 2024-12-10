@@ -233,7 +233,7 @@ const Footer = ({
  
     <section className="hidden justify-between gap-8 border-t border-gray-200 px-4 py-6 sm:px-10 lg:flex lg:px-12 2xl:px-0" id="borderfooter">
       <p className="textscopy">{copyright}</p>
-      <div className="flex gap-8">
+      <div className="flex gap-8 ml-[100px]">
         <Locale />
         <div className="flex gap-3 opacity-[0.9] transition-opacity duration-500" id="payment-icons">
           {paymentIcons}

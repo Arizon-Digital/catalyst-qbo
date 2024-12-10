@@ -127,7 +127,7 @@ export const ResetPasswordForm = ({ reCaptchaSettings }: Props) => {
         </Message>
       )}
 
-      <p className="mb-4 text-base">{t('description')}</p>
+      <p className="mb-4 text-base font-extralight">{t('description')}</p>
 
       <Form action={onSubmit} className="mb-14 flex flex-col gap-4 md:py-4 lg:p-0" ref={form}>
         <Field className="relative space-y-2 pb-7" name="email">

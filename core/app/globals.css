@@ -942,7 +942,7 @@ label.inline-flex.w-full.items-center.justify-between {
     }
       span.search-icon {
         color: #fff !important;
-        width: 102px;
+        width: 85px;
     }
       .form-input {
         flex: 1; /* Ensures the input takes up most of the space */
@@ -1073,7 +1073,7 @@ label.inline-flex.w-full.items-center.justify-between {
         margin: auto;
         width: 100%;
         background-color: #000;
-        overflow: auto;
+        /* overflow: auto; */
         font-family: Oswald, arial, sans-serif;
         font-weight: 700;
         letter-spacing: 1px;
@@ -2890,3 +2890,12 @@ div#warp button{
     font-size:25px !important;
   }
   
+  
+  .register-page-parent .login-breadcrumb ul {
+    padding-bottom: 15px;
+}
+
+div#radix-\:Rmkomtlfb\: {
+    height: 500px;
+    overflow-x: auto;
+}
