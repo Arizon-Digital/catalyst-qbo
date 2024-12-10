@@ -24,13 +24,16 @@ export const GetCurrencyList = () => {
         }),
       );
       setCurrency(currencyOptions);
-      let currencyCookieData: string = (await getCurrencyCodeFn()) || 'CAD';
+      /*let currencyCookieData: string = (await getCurrencyCodeFn()) || 'CAD';
       setCurrencyCodeFn(currencyCookieData);
       setCurrencyCode(currencyCookieData);
       getCommonContext.setCurrencyCodeFn(currencyCookieData);
-      setShowExclTax(currencyCookieData === 'GBP');
+      setShowExclTax(currencyCookieData === 'GBP');*/
     };
+    let currencyCodeData = getCommonContext.getCurrencyCode || 'CAD';
     getCurrencyData();
+    setCurrencyCode(currencyCodeData);
+    setShowExclTax(currencyCodeData === 'GBP');
   }, []);
 
   const onCurrencyChange = async (currencyCode: string) => {
