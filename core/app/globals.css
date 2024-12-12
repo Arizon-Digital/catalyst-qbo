@@ -2568,8 +2568,21 @@ div#warp button{
     justify-content: space-between;
 }
 
-.product-grid.grid-cols-6 .compare-section{
-    display: none;
+.product-grid.grid-cols-6 .quick-view-btn svg,
+.product-grid.grid-cols-6 .plp-addtocart-btn svg,
+.product-grid.grid-cols-6 .compare-div-parent button{
+    width: 20px;
+    height: 20px;
+}
+.product-grid.grid-cols-6 .compare-div-parent{
+    padding: 0px;
+}
+
+.product-grid.grid-cols-6 .quick-view-btn span,
+.product-grid.grid-cols-6 .plp-addtocart-btn span,
+.product-grid.grid-cols-6 .compare-div-parent label{
+    font-weight: 600;
+    font-size: 12px;
 }
 
 .product-grid.grid-cols-3 .compare-section{
@@ -2607,6 +2620,10 @@ div#warp button{
     display: flex;
     flex-direction: column;
     gap:10px;
+}
+
+.product-grid.grid-cols-1 .plp-product-btn .compare-div-parent{
+    height: 30px;
 }
 .product-grid.grid-cols-1 .plp-product-btn button{
     position: static;
