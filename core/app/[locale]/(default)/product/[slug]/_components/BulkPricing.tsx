@@ -8,8 +8,8 @@ export default function BulkPricing() {
 
   return (
     <div>
-      <h3 className="font-semibold flex productView-info-name">Bulk Pricing  <p className="pr productView-info-value ">:
-        <a href="/bulkpricing/" onClick={() => clickEventhandler}> Click Here to Enquire</a>
+      <h3 className="font-semibold flex productView-info-name">Bulk Pricing  <p className="pr productView-info-value">:
+        <a href="/bulkpricing/" onClick={() => clickEventhandler}> <span className="underline hover:text-blue-500 capitalize">Click Here to Enquire</span></a>
       </p></h3>
     </div>
   );

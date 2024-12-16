@@ -3,7 +3,7 @@ import React from 'react';
 export const AmazonIcon: React.FC<React.ComponentPropsWithoutRef<'svg'>> = ({ ...props }) => (
   <svg
     fill="currentColor"
-     width="70" height="32" viewBox="0 0 70 32"
+     width="48" height="40" viewBox="0 0 70 32"
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >

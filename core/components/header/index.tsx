@@ -55,14 +55,14 @@ export const Header = async ({ cart }: Props) => {
             <div className='user-icon'> 
               <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="12" cy="6" r="4" stroke="#000000" strokeWidth="1"></circle>
-                <path d="M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="#000000" strokeWidthh="1" fill="none"></path>
+                <path d="M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="#000000" strokeWidth="1" fill="none"></path>
                 <line x1="4" y1="20" x2="20" y2="20" stroke="#000000" strokeWidth="1" strokeLinecap="round"></line>
               </svg>
             </div>    
             <div className='flex sign/registration'>
               <Link 
                 href="/account"
-                className="flex items-center p-3"
+                className="flex items-center p-0"
                 aria-label={t('Account.myAccount')}
               >
                 Account
@@ -71,7 +71,7 @@ export const Header = async ({ cart }: Props) => {
                 <Button 
                   type="submit"
                   variant="subtle" 
-                  className="p-3 hover:bg-transparent"
+                  className="p-0 hover:bg-transparent"
                 >
                  Sign Out
                 </Button>

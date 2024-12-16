@@ -116,6 +116,9 @@ p#categorybtn {
     color: #fff !important;
     border-radius: 4px !important;
 }
+button#subscribe{
+    border-radius: 0px !important;
+}
 .Label {
     font-size: 18px;
     color: var(--violet-11);
@@ -412,7 +415,7 @@ td.flex.flex-1.flex-col.gap-2 {
     font-weight: 400;
 }
 .productView-bulk-tabContent {
-    width: 95%;
+    width: 100%;
     margin-left: 15px;
 }
 
@@ -666,6 +669,7 @@ div#feefo-service-review-carousel-widgetIdd {
 }
 
 .group.relative.flex.flex-col.overflow-visible {
+    width:450px;
     border: 1px solid #dcdcdc !important;
     border-radius: 4px;
     -webkit-box-shadow: 0 3px 0 #dcdcdc;
@@ -938,7 +942,7 @@ label.inline-flex.w-full.items-center.justify-between {
     }
       span.search-icon {
         color: #fff !important;
-        width: 102px;
+        width: 85px;
     }
       .form-input {
         flex: 1; /* Ensures the input takes up most of the space */
@@ -1069,7 +1073,7 @@ label.inline-flex.w-full.items-center.justify-between {
         margin: auto;
         width: 100%;
         background-color: #000;
-        overflow: auto;
+        /* overflow: auto; */
         font-family: Oswald, arial, sans-serif;
         font-weight: 700;
         letter-spacing: 1px;
@@ -1282,6 +1286,7 @@ width: auto;
         vertical-align: bottom;
     }
     .lg\:text-5xl {
+        font-size: 25px;
         line-height: 1;
         text-align: center;
         font-weight: 400;
@@ -1696,7 +1701,47 @@ width: auto;
         background-color: #ffffff;
     }
     @media (max-width: 600px) {
+        .prod-desc-tbl{
+            width:10% !important;
+        }
+        p.custom {
+            width: 70%;
+            float: right;
+            font-family: Roboto Slab, serif;
+            font-size: 12px;
+        }
+        .delivery-image {
+            margin-left: -50px;
+            width: 80px;
+        }
+        .Deliveryinformation{
+            margin-left:10px;
+        }
+        .delivery123 {
+            width: 30%;
+        }
+        .mb-12.mt-4.lg\:grid.lg\:grid-cols-2.lg\:gap-8 {
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+        .gap-\[10px\] {
+            gap: 5px;
+        }
+        .feefo-reviews {
+            margin-bottom: 20px;
+            margin-top: 15px !important;
+        }
+        .tech-data{
+            margin-left:0px;
+        }
+        h2.page-heading {
+            font-size: 20px;
+        }
         .bg-\[\#e7f5f8\] {
+            
+            border: 1px solid #dcdcdc;
+            border-radius: 4px;
+            box-shadow: 0 3px #dcdcdc;
             --tw-bg-opacity: 1;
             background-color: #ffffff;
         }
@@ -2372,6 +2417,10 @@ section.section-flex {
     }
     }
     @media (max-width: 600px) {
+        .productView-bulk-tabContent {
+            width: 80%;
+            margin-left: 15px;
+        }
         .flex.gap-6 {
             margin-inline: 10px;
             gap: 1rem;
@@ -2425,8 +2474,11 @@ section.section-flex {
         /* margin-bottom: 50px; */
         height: 27px;
         /* width: auto; */
-        margin-left: 200px;
+        margin-left: 150px;
         margin-top: -26px;
+    }
+    .value {
+        width: 200px;
     }
     span.product-details-item {
         display: block;
@@ -2516,8 +2568,21 @@ div#warp button{
     justify-content: space-between;
 }
 
-.product-grid.grid-cols-6 .compare-section{
-    display: none;
+.product-grid.grid-cols-6 .quick-view-btn svg,
+.product-grid.grid-cols-6 .plp-addtocart-btn svg,
+.product-grid.grid-cols-6 .compare-div-parent button{
+    width: 20px;
+    height: 20px;
+}
+.product-grid.grid-cols-6 .compare-div-parent{
+    padding: 0px;
+}
+
+.product-grid.grid-cols-6 .quick-view-btn span,
+.product-grid.grid-cols-6 .plp-addtocart-btn span,
+.product-grid.grid-cols-6 .compare-div-parent label{
+    font-weight: 600;
+    font-size: 12px;
 }
 
 .product-grid.grid-cols-3 .compare-section{
@@ -2555,6 +2620,10 @@ div#warp button{
     display: flex;
     flex-direction: column;
     gap:10px;
+}
+
+.product-grid.grid-cols-1 .plp-product-btn .compare-div-parent{
+    height: 30px;
 }
 .product-grid.grid-cols-1 .plp-product-btn button{
     position: static;
@@ -2833,3 +2902,17 @@ div#warp button{
     }
   }
 
+  .lg\:text-5xl{
+    margin-bottom: 10px !important;
+    font-size:25px !important;
+  }
+  
+  
+  .register-page-parent .login-breadcrumb ul {
+    padding-bottom: 15px;
+}
+
+div#radix-\:Rmkomtlfb\: {
+    height: 500px;
+    overflow-x: auto;
+}

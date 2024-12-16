@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
@@ -84,32 +83,36 @@ export default async function Category(props: Props) {
   const { hasNextPage, hasPreviousPage, endCursor, startCursor } = productsCollection.pageInfo;
 
   return (
-    <div className="group mt-[-30px]">
-      <Breadcrumbs category={category}  />
-      
-      {category.defaultImage && (
- <div className="relative w-full">
- <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
-   <div className="bg-gray-200/90 px-16 py-8 rounded" style={{ backgroundColor: 'rgba(245,245,245,.9)' }}>
-     <h1 className="text-4xl font-bold" style={{ color: '#1a2348' }}>{category.name}</h1>
-   </div>
- </div>
+    <div className="group mt-[-30px] [&_.product-item-plp]:!w-[unset]">
+      <Breadcrumbs category={category} />
 
-    <BcImage
-      className="!w-full"
-      alt={category.defaultImage.altText}
-      height={250}
-      src={category.defaultImage.url}            
-      width={1230}
-    />
-  </div>
-)}
-      
+      {category.defaultImage && (
+        <div className="relative w-full">
+          <div className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 transform">
+            <div
+              className="rounded bg-gray-200/90 px-16 py-8"
+              style={{ backgroundColor: 'rgba(245,245,245,.9)' }}
+            >
+              <h1 className="text-4xl font-bold" style={{ color: '#1a2348' }}>
+                {category.name}
+              </h1>
+            </div>
+          </div>
+
+          <BcImage
+            className="!w-full"
+            alt={category.defaultImage.altText}
+            height={250}
+            src={category.defaultImage.url}
+            width={1230}
+          />
+        </div>
+      )}
 
       <div className="lg:justify- sortbutton plp-filter-parent mt-2 md:mb-8 lg:flex lg:flex-row lg:items-center">
         <div className="font-oswald flex w-[19.5%] items-center justify-center rounded-[8px] border-[7px] border-[#CA9619] bg-[#CA9619] pb-[12px] pl-[18px] pr-[18px] pt-[12px] text-[18px] font-normal text-white no-underline">
           <a
-            className="categorybtn mb-4 transition-colors duration-200 hover:text-[#131313] lg:mb-0 text-[18px] font-[400] w-full text-center tracking-[-1px]"
+            className="categorybtn mb-4 w-full text-center text-[18px] font-[400] tracking-[-1px] transition-colors duration-200 hover:text-[#131313] lg:mb-0"
             href="/wecan'find"
             id="categorybtn"
             target="_blank"
@@ -119,10 +122,10 @@ export default async function Category(props: Props) {
           </a>
         </div>
 
-        <div className="plp-filters w-[80%] ml-[2.3%] font-[300]">
+        <div className="plp-filters ml-[2.3%] w-[80%] font-[300]">
           <div className="form-field pdp hover:border-[#ca9618]">
             <input
-              className="form-input w-full "
+              className="form-input w-full"
               type="text"
               name="q"
               placeholder="Filter products by name or part number..."
@@ -134,7 +137,7 @@ export default async function Category(props: Props) {
               <SortBy />
             </div>
             <div className="product-list-modification flex gap-4">
-              <div className="flex items-center justify-between rounded-[4px] hover:border-[#ca9618] border border-[#dcdcdc] px-[10px] py-2 ">
+              <div className="flex items-center justify-between rounded-[4px] border border-[#dcdcdc] px-[10px] py-2 hover:border-[#ca9618]">
                 <ProductGridSwitcher />
               </div>
               <ProductCountFilter />
@@ -142,7 +145,7 @@ export default async function Category(props: Props) {
           </div>
         </div>
 
-        <div className="show-filters-div flex flex-col gap-3 whitespace-nowrap md:flex-row mt-[1rem]">
+        <div className="show-filters-div mt-[1rem] flex flex-col gap-3 whitespace-nowrap md:flex-row">
           <MobileSideNav>
             <FacetedSearch
               facets={search.facets.items}
@@ -160,9 +163,9 @@ export default async function Category(props: Props) {
         </div>
       </div>
 
-      <div className='flex justify-start flex-wrap'>
-      <FacetedSearch
-          className="mb-8 hidden h-max lg:block w-[19.3%] text-[#1d1d1d]"
+      <div className="flex flex-wrap justify-start">
+        <FacetedSearch
+          className="mb-8 hidden h-max w-[19.3%] text-[#1d1d1d] lg:block"
           facets={search.facets.items}
           headingId="desktop-filter-heading"
           pageType="category"
@@ -170,36 +173,34 @@ export default async function Category(props: Props) {
           <SubCategories categoryTree={categoryTree} />
         </FacetedSearch>
 
-      <div className="grid grid-cols-4 gap-8 ml-[2.3%] w-[78.2%] products-grid-parent">
-        
-
-        <section
-          aria-labelledby="product-heading"
-          className="col-span-4 group-has-[[data-pending]]:animate-pulse"
-        >
-          <h1 className="sr-only static w-[unset] h-[unset] m-0 text-[24px] font-[600] mb-[10px] tracking-[0.15px] text-[#1d1d1d]" id="product-heading">
+        <div className="products-grid-parent ml-[2.3%] grid w-[78.2%] grid-cols-4 gap-8">
+          <section
+            aria-labelledby="product-heading"
+            className="col-span-4 group-has-[[data-pending]]:animate-pulse"
+          >
+            {/* <h1 className="sr-only static w-[unset] h-[unset] m-0 text-[24px] font-[600] mb-[10px] tracking-[0.15px] text-[#1d1d1d]" id="product-heading">
             {t('products')}
-          </h1>
+          </h1> */}
 
-          <div className="product-grid grid grid-cols-4 gap-6 sm:gap-8">
-            {products.map((product, index) => (
-              <ProductCard
-                imagePriority={index <= 3}
-                imageSize="wide"
-                key={product.entityId}
-                product={product}
-              />
-            ))}
-          </div>
+            <div className="product-grid grid grid-cols-4 gap-6 sm:gap-8">
+              {products.map((product, index) => (
+                <ProductCard
+                  imagePriority={index <= 3}
+                  imageSize="wide"
+                  key={product.entityId}
+                  product={product}
+                />
+              ))}
+            </div>
 
-          <Pagination
-            endCursor={endCursor ?? undefined}
-            hasNextPage={hasNextPage}
-            hasPreviousPage={hasPreviousPage}
-            startCursor={startCursor ?? undefined}
-          />
-        </section>
-      </div>
+            <Pagination
+              endCursor={endCursor ?? undefined}
+              hasNextPage={hasNextPage}
+              hasPreviousPage={hasPreviousPage}
+              startCursor={startCursor ?? undefined}
+            />
+          </section>
+        </div>
       </div>
 
       <CategoryViewed category={category} categoryId={categoryId} products={products} />

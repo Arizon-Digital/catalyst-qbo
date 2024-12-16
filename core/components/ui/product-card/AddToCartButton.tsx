@@ -45,7 +45,7 @@ export const AddToCartButton = ({ addToCardData, product }: AddToCartButtonProps
           loading={isPending}
           loadingText="processing"
           type="submit"
-          className="z-10 flex w-full plp-addtocart-btn items-center justify-center gap-2 rounded-[4px] !border !border-[#ca9618] bg-[#ca9618] p-0 text-[13px] text-sm font-[700] text-[#ffffff] shadow-sm transition-all duration-300 hover:bg-[#fff] hover:text-[#ca9618]"
+          className="z-10 flex w-full plp-addtocart-btn items-center justify-center gap-2 rounded-[4px] !border !border-[#ca9618] bg-[#ca9618] p-0 text-[13px] font-[700] text-[#ffffff] shadow-sm transition-all duration-300 hover:bg-[#fff] hover:text-[#ca9618]"
         >
           <div className="flex items-center justify-center gap-[5px]">
             <svg

@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Suspense } from 'react';
- 
+
 import { Breadcrumbs } from '~/components/breadcrumbs';
 
 import { Description } from './_components/description';
@@ -15,7 +15,7 @@ import { Reviews } from './_components/reviews';
 import { Warranty } from './_components/warranty';
 import { CurrencyCode, getProduct } from './page-data';
 import { cookies } from 'next/headers';
- 
+
 interface Props {
   params: Promise<{ slug: string; locale: string }>;
   searchParams: Promise<Record<string, string | string[] | undefined>>;
@@ -23,7 +23,7 @@ interface Props {
 
 function getOptionValueIds({ searchParams }: { searchParams: Awaited<Props['searchParams']> }) {
   const { slug, ...options } = searchParams;
- 
+
   return Object.keys(options)
     .map((option) => ({
       optionEntityId: Number(option),
@@ -45,16 +45,16 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     entityId: productId,
     optionValueIds,
     useDefaultOptionSelections: true,
-    currencyCode
+    currencyCode,
   });
- 
+
   if (!product) {
     return {};
   }
- 
+
   const { pageTitle, metaDescription, metaKeywords } = product.seo;
   const { url, altText: alt } = product.defaultImage || {};
- 
+
   return {
     title: pageTitle || product.name,
     description: metaDescription || `${product.plainTextDescription.slice(0, 150)}...`,
@@ -81,49 +81,50 @@ export default async function Product(props: Props) {
   setRequestLocale(locale);
 
   const t = await getTranslations('Product');
- 
+
   const productId = Number(slug);
- 
+
   const optionValueIds = getOptionValueIds({ searchParams });
   const currencyCode = (await cookies()).get('currencyCode')?.value as CurrencyCode | undefined;
- 
+
   const product = await getProduct({
     entityId: productId,
     optionValueIds,
     useDefaultOptionSelections: true,
-    currencyCode
+    currencyCode,
   });
- 
+
   if (!product) {
     return notFound();
   }
- 
+
   const category = removeEdgesAndNodes(product.categories).at(0);
- 
+
   return (
     <>
       {category && <Breadcrumbs category={category} />}
- 
+
       <div className="mb-12 mt-4 lg:grid lg:grid-cols-2 lg:gap-8">
         <Gallery product={product} />
         <Details optionValueIds={optionValueIds} product={product} />
-       
       </div>
-      <div className="lg:col-span-2"  id='tabsection'>
+      <div className="lg:col-span-2" id="tabsection">
         <Description product={product} />
         <Warranty product={product} />
         <Suspense fallback={t('loading')}>
           {/* <Reviews productId={product.entityId} /> */}
         </Suspense>
       </div>
- 
+
       <Suspense fallback={t('loading')}>
-        <RelatedProducts productId={product.entityId} />
+        <div className="related-product-pdp [&_.product-item-plp]:!w-[unset]">
+          <RelatedProducts productId={product.entityId} />
+        </div>
       </Suspense>
- 
+
       <ProductViewed product={product} />
     </>
   );
 }
- 
+
 export const runtime = 'edge';
