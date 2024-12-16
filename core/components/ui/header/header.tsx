@@ -182,7 +182,7 @@ const Header = ({
                         <ViewedItemsPopover />
                       </div>
                     </nav>
-                    <MiniCart />
+                    {/* <MiniCart /> */}
                     {/* <nav className="header-cart-icon pl-10px nmd:p-0">
                       <button onClick={handleCartClick}>{cart}</button>
                     </nav> */}
