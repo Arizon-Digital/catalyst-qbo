@@ -232,7 +232,7 @@ const Header = ({
                     <ChevronDown
                       id={`nav-menu-chevron-${link.href}`}
                       aria-hidden="true"
-                      className="cursor-pointer transition duration-200"
+                      className="cursor-pointer transition duration-200 h-4 w-4"
                     />
                   </NavigationMenuPrimitive.Trigger>
 
