@@ -94,11 +94,11 @@ const Header = ({
       >
         {/* Top navbar */}
         <div className="relative z-[1] w-full border-b border-gray-100 bg-white">
-          <div className="navbar">
+          <div className="navbar navbar-black [&_select-currency]:p-0 [&_select-currency]:h-[unset] ">
             <a className="contact-link" href="/about-us">
               <i className="contact-link"></i> About Us
             </a>
-            <div className="relative">
+            <div className="relative flex items-center">
               <GetCurrencyList />
             </div>
             <a href="/contact-us" className="contact-link">
@@ -182,7 +182,7 @@ const Header = ({
                         <ViewedItemsPopover />
                       </div>
                     </nav>
-                    {/*<MiniCart /> */}
+                    <MiniCart />
                     {/* <nav className="header-cart-icon pl-10px nmd:p-0">
                       <button onClick={handleCartClick}>{cart}</button>
                     </nav> */}
@@ -210,10 +210,10 @@ const Header = ({
       {isScrolled && <div className="h-[150px]" />}
 
       <div className="relative border-b border-gray-100 bg-white">
-        <NavigationMenuPrimitive.Root id="nav-menu-root" className="hidden lg:block">
+        <NavigationMenuPrimitive.Root id="nav-menu-root" className="hidden lg:block nav-root-ele">
           <NavigationMenuPrimitive.List
             id="nav-menu-list"
-            className="flex items-center justify-center gap-2 lg:gap-4"
+            className="flex items-center justify-center gap-2 lg:gap-4 flex-wrap navbar-list-blue"
           >
             {links.map((link) =>
               link.groups && link.groups.length > 0 ? (
@@ -224,7 +224,7 @@ const Header = ({
                   >
                     <CustomLink
                       id={`nav-menu-link-${link.href}`}
-                      className="p-3 font-semibold"
+                      className="font-[700] text-[15px]"
                       href={link.href}
                     >
                       {link.label}

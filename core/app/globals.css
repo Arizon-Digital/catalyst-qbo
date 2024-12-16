@@ -23,7 +23,7 @@ ul#nav-menu-list {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    margin-right: 18%;
+    padding-inline: 5%;
     width: 100%;
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -829,7 +829,6 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
  button#currency-selection {
     width: auto;
     color: #fff;
-    margin-top: -8px;
 }
  input#search_query {
 
@@ -1052,12 +1051,10 @@ label.inline-flex.w-full.items-center.justify-between {
     .currencyfont {
         color: #ffffff;
         float: left;
-        padding: 12px;
         color: #fff;
         text-decoration: none;
         font-size: 15px;
         font-weight: 700;
-        margin-top: -8px;
     }
     .miniprice span.vat{
         color: #ca9618;
@@ -1069,7 +1066,6 @@ label.inline-flex.w-full.items-center.justify-between {
     .navbar {
         height:37px;
         display: flex;
-        justify-content: center;
         margin: auto;
         width: 100%;
         background-color: #000;
@@ -2224,6 +2220,29 @@ section.section-flex {
 .section-flex {
     display: flex;
     flex-direction: column;
+}
+
+.navbar-black button.select-currency{
+    height: unset;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0;
+    border: none;
+}
+
+.navbar-black button.select-currency svg{
+    position: static;
+}
+
+.navbar-black button.select-currency span{
+    line-height: unset;
+}
+
+.nav-root-ele .navbar-list-blue{
+    font-family: Oswald, sans-serif;
+    
 }
  
   @media (min-width: 768px) {

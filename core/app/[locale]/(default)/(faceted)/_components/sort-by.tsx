@@ -14,7 +14,7 @@ export function SortBy() {
   const [isPending, startTransition] = useTransition();
 
   const t = useTranslations('FacetedGroup.SortBy');
-  const value = searchParams.get('sort') ?? 'featured';
+  const value = searchParams.get('sort') ?? 'best_selling';
 
   const onSort = (sortValue: string) => {
     const params = new URLSearchParams(searchParams);

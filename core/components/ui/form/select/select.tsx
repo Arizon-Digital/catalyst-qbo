@@ -26,7 +26,7 @@ const Select = forwardRef<ElementRef<typeof SelectPrimitive.Trigger>, Props>(
         <SelectPrimitive.Trigger
           aria-label={label}
           className={cn(
-            'border text-[16px] text-[#454545] font-[300] border-[#dcdcdc] capitalize pop-up-container h-[50px] p-2.5  rounded-[3px]  tracking-[0.5px] group relative flex w-full items-center justify-[unset] gap-[20px] text-base hover:border-primary focus-visible:border-primary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20 disabled:bg-gray-100 disabled:hover:border-gray-200 data-[placeholder]:text-gray-500',
+            'border text-[16px] text-[#454545] font-[300] border-[#dcdcdc] capitalize select-currency pop-up-container h-[50px] p-2.5  rounded-[3px]  tracking-[0.5px] group relative flex w-full items-center justify-[unset] gap-[20px] text-base hover:border-primary focus-visible:border-primary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20 disabled:bg-gray-100 disabled:hover:border-gray-200 data-[placeholder]:text-gray-500',
             error &&
               'border-error-secondary hover:border-error focus-visible:border-error-secondary focus-visible:ring-error-secondary/20 disabled:border-gray-200',
           )}

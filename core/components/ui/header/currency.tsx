@@ -46,12 +46,12 @@ export const GetCurrencyList = () => {
   };
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-1">
       {currencyCode && (
-        <span className="text-sm font-medium currencyfont">Select Currency:</span>
+        <span className="text-[15px] font-medium currencyfont">Select Currency:</span>
       )}
       <Select
-        className="w-28 bg-transparent text-white border-none focus:ring-0"
+        className="w-28  bg-transparent text-white border-none focus:ring-0"
         name="currency-selection"
         id="currency-selection"
         options={currency}

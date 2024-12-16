@@ -40,14 +40,12 @@ export function SubCategories({ categoryTree }: Props) {
 
   return (
     <div className="mb-4">
-      <h3 className="p-[8px_18px] border-b border-b-[#dcdcdc] font-[700] text-[15px]">{t('subCategories')}</h3>
+      <h3 className="p-[8px_18px] border-b border-b-[#dcdcdc] font-[700] text-[15px]">{categoryTree[0]?.name}</h3>
 
       <ul className="flex flex-col gap-4 p-[8px_18px] font-[500] text-[15px]">
         {categoryTree[0].children.map((category) => (
           <li key={category.entityId}>
             <Link href={category.path}>{category.name}</Link>
-
-           
           </li>
         ))}
       </ul>
