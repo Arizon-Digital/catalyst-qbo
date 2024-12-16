@@ -2232,6 +2232,13 @@ section.section-flex {
     border: none;
 }
 
+.navbar-black button.select-currency:hover,
+.navbar-black button.select-currency:active,
+.navbar-black button.select-currency:focus{
+    outline: none !important;
+    border: none !important;
+}
+
 .navbar-black button.select-currency svg{
     position: static;
 }
@@ -2240,9 +2247,30 @@ section.section-flex {
     line-height: unset;
 }
 
+.navbar.navbar-black .currency-items:hover{
+    color: #ca9618 !important;
+    cursor: pointer !important;
+}
+
 .nav-root-ele .navbar-list-blue{
     font-family: Oswald, sans-serif;
-    
+
+}
+
+.navbar.navbar-black .contact-link,
+.navbar.navbar-black .currencyfont,
+.navbar-black button.select-currency span{
+    font-size: 15px;
+    font-weight: 700;
+    font-family: Oswald, Arial, sans-serif;
+    letter-spacing: normal;
+    line-height: normal;
+}
+
+.navbar.navbar-black .contact-link:hover,
+.navbar.navbar-black .select-currency:hover,
+.navbar.navbar-black .lucide-chevron-down :hover{
+    color: #ca9618 !important;
 }
  
   @media (min-width: 768px) {
