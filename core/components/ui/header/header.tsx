@@ -98,7 +98,7 @@ const Header = ({
             <a className="contact-link" href="/about-us">
               <i className="contact-link"></i> About Us
             </a>
-            <div className="relative flex items-center">
+            <div className="relative currency-list-parent flex items-center [&_.select-currency]:!pr-[12px]  !pl-[12px] !border-l !border-l-[#fff3] ">
               <GetCurrencyList />
             </div>
             <a href="/contact-us" className="contact-link">
@@ -232,7 +232,7 @@ const Header = ({
                     <ChevronDown
                       id={`nav-menu-chevron-${link.href}`}
                       aria-hidden="true"
-                      className="cursor-pointer transition duration-200"
+                      className="cursor-pointer transition duration-200 h-4 w-4"
                     />
                   </NavigationMenuPrimitive.Trigger>
 

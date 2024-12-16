@@ -46,7 +46,7 @@ export const GetCurrencyList = () => {
   };
 
   return (
-    <div className="flex items-center gap-1">
+    <div className="flex items-center gap-1 currency-items hover:!text-[#ca9618] hover:!cursor-pointer">
       {currencyCode && (
         <span className="text-[15px] font-medium currencyfont">Select Currency:</span>
       )}
