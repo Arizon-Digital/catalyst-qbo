@@ -114,9 +114,8 @@ export default async function Category(props: Props) {
         <div className="font-oswald flex w-[19.5%] items-center justify-center rounded-[8px] border-[7px] border-[#CA9619] bg-[#CA9619] pb-[12px] pl-[18px] pr-[18px] pt-[12px] text-[18px] font-normal text-white no-underline">
           <Link
             className="categorybtn mb-4 w-full text-center text-[18px] font-[400] tracking-[-1px] transition-colors duration-200 hover:text-[#131313] lg:mb-0"
-            href="/wecan'find"
+            href="/can't-find-what-you-are-looking-for"
             id="categorybtn"
-            target="_blank"
             rel="noopener noreferrer"
           >
             Can't Find What You Are Looking For?

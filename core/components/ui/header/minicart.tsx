@@ -78,7 +78,7 @@ export const MiniCart = ({ count }: { count: number }) => {
     <div className="relative" ref={cartRef}>
       <button
         onClick={() => loadMiniBag()}
-        className="relative flex items-center gap-2 p-2 rounded-full mini-cart-btn"
+        className="relative flex items-end gap-2 p-2 rounded-full mini-cart-btn"
         aria-label="Shopping cart"
       >
         {miniBag && <BcImage 
@@ -88,11 +88,11 @@ export const MiniCart = ({ count }: { count: number }) => {
           height="50" 
         />}
 
-        <span className="absolute -right-3 mini-cart-count -top-1 h-[24px] w-[24px] flex items-center justify-center rounded-full bg-[#1c2541] text-xs font-bold text-white">
+        <span className="absolute right-1.5 mini-cart-count top-5 h-[20px] w-[30px] hidden sm:flex items-center justify-center rounded-full bg-[#1c2541] text-xs font-bold mini-cart-badge">
           {count}
         </span>
 
-        <span className="text-[#1c2541] mini-cart-text font-medium text-sm">Cart</span>
+        <span className="text-[#1c2541] mini-cart-text hidden sm:block font-light text-sm">Cart</span>
       </button>
       
       {isOpen && (
