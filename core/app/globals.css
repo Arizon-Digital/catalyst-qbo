@@ -3007,6 +3007,17 @@ div#radix-\:Rmkomtlfb\: {
 }
 
 @media (min-width: 1261px) {
+    .css-sbz8zg {
+        padding-right: 290px !important;
+        width: 9999px;
+        position: absolute;
+        top: 0;
+        right: -90px;
+        bottom: 0;
+        /* left: 50px; */
+        /* border-radius: inherit; */
+        /* overflow: hidden; */
+    }
     .container, .emthemesModez-section--alt .emthemesModez-section-inner {
         max-width: 77.625rem;
         padding: 0 2.25rem;
