@@ -1206,6 +1206,9 @@ width: auto;
         z-index: 99999;
         width: 85%;
     }
+    .heading {
+        margin-top: 0px !important;
+    }
       .product-details-logo {
         height: 27px;
         width: auto;
