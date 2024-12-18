@@ -1209,6 +1209,28 @@ width: auto;
     .heading {
         margin-top: 0px !important;
     }
+    .faqtablink:active, .faqtablink:focus, .faqtablink:hover {
+        border-bottom-color: #ca9618;
+        background: #fff;
+        color: #1a2348;
+    }
+    .faqtablink {
+        background-color: #1a2348;
+        border: none;
+        border-bottom: 2px solid #fff;
+        border-top: 2px solid #fff;
+        color: #fff;
+        cursor: pointer;
+        display: inline-block;
+        font-weight: 500;
+        padding: 14px 16px;
+        width: 170px;
+    }
+    button, input, optgroup, select, textarea {
+        color: inherit;
+        font: inherit;
+        margin: 0;
+    }
       .product-details-logo {
         height: 27px;
         width: auto;
@@ -2978,4 +3000,15 @@ div#radix-\:Rmkomtlfb\: {
 
 .mini-cart-badge{
     color: #fff;
+}
+.container .container {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+@media (min-width: 1261px) {
+    .container, .emthemesModez-section--alt .emthemesModez-section-inner {
+        max-width: 77.625rem;
+        padding: 0 2.25rem;
+    }
 }
