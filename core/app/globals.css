@@ -3012,7 +3012,7 @@ div#radix-\:Rmkomtlfb\: {
         width: 9999px;
         position: absolute;
         top: 0;
-        right: -90px;
+        left: -90px !important;
         bottom: 0;
         /* left: 50px; */
         /* border-radius: inherit; */
