@@ -241,7 +241,7 @@ export const ItemQuantity = ({ product }: { product: Product }) => {
                   stroke-linejoin="round"
                 />
               </svg>
-              <title>{t('submitIncreaseText')}</title>
+              <title>{/*t('submitIncreaseText')*/}</title>
             </div>
         </SubmitButton>
       </form>

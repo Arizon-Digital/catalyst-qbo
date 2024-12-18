@@ -17,6 +17,8 @@ import { cn } from '~/lib/utils';
  
 import { AddToCart } from './_components/add-to-cart';
 import { AddToCartFragment } from './_components/add-to-cart/fragment';
+import { cookies } from 'next/headers';
+import { CurrencyCode } from '../product/[slug]/page-data';
  
 const MAX_COMPARE_LIMIT = 10;
  
@@ -39,7 +41,7 @@ const CompareParamsSchema = z.object({
  
 const ComparePageQuery = graphql(
   `
-    query ComparePageQuery($entityIds: [Int!], $first: Int) {
+    query ComparePageQuery($entityIds: [Int!], $first: Int, $currencyCode: currencyCode) {
       site {
         products(entityIds: $entityIds, first: $first) {
           edges {
@@ -102,12 +104,13 @@ export default async function Compare(props: Props) {
 
   const parsed = CompareParamsSchema.parse(searchParams);
   const productIds = parsed.ids?.filter((id) => !Number.isNaN(id));
- 
+  const currencyCode = (await cookies()).get('currencyCode')?.value as CurrencyCode || 'CAD';
   const { data } = await client.fetch({
     document: ComparePageQuery,
     variables: {
       entityIds: productIds ?? [],
       first: productIds?.length ? MAX_COMPARE_LIMIT : 0,
+      currencyCode: currencyCode
     },
     customerAccessToken,
     fetchOptions: customerAccessToken ? { cache: 'no-store' } : { next: { revalidate } },
