@@ -99,6 +99,16 @@ export default async function Product(props: Props) {
   }
 
   const category = removeEdgesAndNodes(product.categories).at(0);
+  console.log('========category=======', product.categories);
+
+
+  
+  const breadcrumbs = product.categories.map((cat: any) => ({
+    name: cat.name,
+    url: cat.path || `/categories/${cat.entityId}`, 
+  }));
+
+  console.log('======== Breadcrumbs ========', breadcrumbs);
 
   return (
     <>
