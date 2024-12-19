@@ -35,7 +35,7 @@ const Select = forwardRef<ElementRef<typeof SelectPrimitive.Trigger>, Props>(
         >
           <SelectPrimitive.Value placeholder={placeholder} />
           <SelectPrimitive.Icon>
-            <ChevronDown className="inline group-focus-visible:text-primary group-enabled:group-hover:text-primary absolute bottom-[25%] right-[3%]" />
+            <ChevronDown className="inline group-focus-visible:text-primary absolute bottom-[25%] right-[3%]" />
           </SelectPrimitive.Icon>
         </SelectPrimitive.Trigger>
  
@@ -81,3 +81,4 @@ const Select = forwardRef<ElementRef<typeof SelectPrimitive.Trigger>, Props>(
 Select.displayName = 'Select';
  
 export { Select };
+//group-enabled:group-hover:text-primary
