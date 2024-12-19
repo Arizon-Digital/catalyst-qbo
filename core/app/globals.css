@@ -23,7 +23,7 @@ ul#nav-menu-list {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    width: 100%;
+    width: 1120px;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
@@ -726,7 +726,7 @@ button.relative.flex.items-center.justify-center.border-2.border-primary.text-ba
     text-decoration: underline;
 }
 .css-92gqt5.css-1fm2acr.css-qvhily.css-wh8wmo.css-1mnqr4v.css-2nq71q.css-xmyfq3.css-1oemyj :hover {
-    transform: scale(1.5);
+    transform: scale(1.1);
     -webkit-transition: all .15s;
     transition: all .15s;
 }
@@ -2277,14 +2277,14 @@ section.section-flex {
     line-height: unset;
 }
 
-.navbar.navbar-black .currency-items:hover{
+/* .navbar.navbar-black .currency-items:hover{
     color: #ca9618 !important;
     cursor: pointer !important;
-}
-.currency-items:hover{
+} */
+/* .currency-items.currencyfont:hover{
     color: #ca9618 !important;
     cursor: pointer !important;
-}
+} */
 
 .nav-root-ele .navbar-list-blue{
     font-family: Oswald, sans-serif;
@@ -2301,9 +2301,11 @@ section.section-flex {
     line-height: normal;
 }
 
-.navbar.navbar-black .contact-link:hover,
-.navbar.navbar-black .select-currency:hover,
-.navbar.navbar-black .lucide-chevron-down :hover{
+.navbar.navbar-black .contact-link:hover
+/* .navbar.navbar-black .select-currency:hover, */
+/* .navbar.navbar-black .currency-font:hover, */
+/* .navbar.navbar-black .lucide-chevron-down :hover{ */
+{
     color: #ca9618 !important;
 }
  
@@ -2776,7 +2778,8 @@ div#warp button{
     }
 
     .plp-filter-parent > div:first-child{
-        width: 20%;
+        width: 70%;
+        padding:0;
     }
 
     .plp-filter-parent > div:nth-child(2){
@@ -3008,12 +3011,15 @@ div#radix-\:Rmkomtlfb\: {
 
 @media (min-width: 1261px) {
     .css-sbz8zg {
-        padding-right: 230px !important;
-        width: 1525px !important;
+        padding-right: 290px !important;
+        width: 9999px;
         position: absolute;
         top: 0;
         left: -90px !important;
         bottom: 0;
+        /* left: 50px; */
+        /* border-radius: inherit; */
+        /* overflow: hidden; */
     }
    
 }
@@ -3022,4 +3028,10 @@ div#radix-\:Rmkomtlfb\: {
         max-width: 77.625rem;
         padding: 0 2.25rem;
     }
-    
+
+.radix-popup{
+    background-color: #1a2348;
+    z-index: 99999;
+    width: 85%;
+    color: #fff !important;
+}

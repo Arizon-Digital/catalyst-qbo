@@ -55,7 +55,7 @@ export const Compare = ({ id, image, name }: Props) => {
            flex items-center justify-center gap-2 
           text-[13px] font-[700]
           border border-[#ca9618]
-          shadow-sm z-10 w-full rounded-[4px]">
+          shadow-sm w-full rounded-[4px]">
       <Checkbox
         checked={checkedState}
         className="!h-[17px] !w-[17px] compare-btn-checkbox"
