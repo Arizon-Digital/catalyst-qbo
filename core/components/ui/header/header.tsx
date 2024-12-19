@@ -220,11 +220,11 @@ const Header = ({
                 <NavigationMenuPrimitive.Item id={`nav-menu-item-${link.href}`} key={link.href}>
                   <NavigationMenuPrimitive.Trigger
                     id={`nav-menu-trigger-${link.href}`}
-                    className="group/button flex items-center font-semibold hover:text-primary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20"
+                    className="group/button flex items-center font-semibold hover:text-primary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20 py-1 px-1"
                   >
                     <CustomLink
                       id={`nav-menu-link-${link.href}`}
-                      className="font-[700] text-[15px]"
+                      className="font-[700] text-[15px] p-0.5"
                       href={link.href}
                     >
                       {link.label}
