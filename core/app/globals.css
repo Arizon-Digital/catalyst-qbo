@@ -2252,14 +2252,14 @@ section.section-flex {
     line-height: unset;
 }
 
-.navbar.navbar-black .currency-items:hover{
+/* .navbar.navbar-black .currency-items:hover{
     color: #ca9618 !important;
     cursor: pointer !important;
-}
-.currency-items:hover{
+} */
+/* .currency-items.currencyfont:hover{
     color: #ca9618 !important;
     cursor: pointer !important;
-}
+} */
 
 .nav-root-ele .navbar-list-blue{
     font-family: Oswald, sans-serif;
@@ -2276,9 +2276,11 @@ section.section-flex {
     line-height: normal;
 }
 
-.navbar.navbar-black .contact-link:hover,
-.navbar.navbar-black .select-currency:hover,
-.navbar.navbar-black .lucide-chevron-down :hover{
+.navbar.navbar-black .contact-link:hover
+/* .navbar.navbar-black .select-currency:hover, */
+/* .navbar.navbar-black .currency-font:hover, */
+/* .navbar.navbar-black .lucide-chevron-down :hover{ */
+{
     color: #ca9618 !important;
 }
  
@@ -2975,4 +2977,10 @@ div#radix-\:Rmkomtlfb\: {
 
 .mini-cart-badge{
     color: #fff;
+}
+.radix-popup{
+    background-color: #1a2348;
+    z-index: 99999;
+    width: 85%;
+    color: #fff !important;
 }

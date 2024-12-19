@@ -44,9 +44,9 @@ export const GetCurrencyList = () => {
     setShowExclTax(currencyCode === 'GBP');
     router.replace(location.href);
   };
-
+//hover:!text-[#ca9618]
   return (
-    <div className="flex items-center gap-1 currency-items hover:!text-[#ca9618] hover:!cursor-pointer">
+    <div className="flex items-center gap-1 currency-items hover:!cursor-pointer">
       {currencyCode && (
         <span className="text-[15px] font-medium currencyfont">Select Currency:</span>
       )}

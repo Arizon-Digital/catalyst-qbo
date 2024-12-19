@@ -98,7 +98,7 @@ const Header = ({
             <a className="contact-link" href="/about-us">
               <i className="contact-link"></i> About Us
             </a>
-            <div className="relative currency-list-parent flex items-center [&_.select-currency]:!pr-[12px]  !pl-[12px] !border-l !border-l-[#fff3] ">
+            <div className="relative z-10 hover:!text-[#ca9618] flex items-center [&_.select-currency]:!pr-[12px]  !pl-[12px] !border-l !border-l-[#fff3] ">
               <GetCurrencyList />
             </div>
             <a href="/contact-us" className="contact-link">
