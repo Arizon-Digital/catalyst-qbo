@@ -19,6 +19,7 @@ import { SubCategories } from './_components/sub-categories';
 import { getCategoryPageData } from './page-data';
 import { ProductGridSwitcher } from './ProductGridSwitcher';
 import Link from 'next/link';
+//import { ToggleFilter } from './ToggleFilter';
 
 // import { Breadcrumbs } from '~/components/ui/breadcrumbs/breadcrumbs';
 
@@ -57,6 +58,7 @@ export default async function Category(props: Props) {
   const searchParams = await props.searchParams;
   const params = await props.params;
   const { locale, slug } = params;
+ 
 
   setRequestLocale(locale);
   const t = await getTranslations('Category');
@@ -83,13 +85,14 @@ export default async function Category(props: Props) {
   const products = productsCollection.items;
   const { hasNextPage, hasPreviousPage, endCursor, startCursor } = productsCollection.pageInfo;
 
+
   return (
     <div className="group mt-[-30px] [&_.product-item-plp]:!w-[unset]">
       <Breadcrumbs category={category} />
 
       {category.defaultImage && (
         <div className="relative w-full">
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform w-full">
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform product-banner">
             <div
               className="rounded bg-gray-200/90 px-16 py-1 sm:py-8"
               style={{ backgroundColor: 'rgba(245,245,245,.9)'}}
@@ -106,14 +109,15 @@ export default async function Category(props: Props) {
             height={250}
             src={category.defaultImage.url}
             width={1230}
+
           />
         </div>
       )}
-
-      <div className="lg:justify- sortbutton plp-filter-parent md:mb-8 lg:flex lg:flex-row lg:items-center mt-8">
-        <div className="font-oswald flex w-[19.5%] items-center justify-center rounded-[8px] border-[7px] border-[#CA9619] bg-[#CA9619] pb-[12px] pl-[18px] pr-[18px] pt-[12px] text-[18px] font-normal text-white no-underline">
+      {/* lg:justify- sortbutton plp-filter-parent md:mb-8 lg:flex lg:flex-row lg:items-center mt-8 */}
+      <div className="plp-filter-parent md:mb-8 flex flex-col items-center lg:flex-row mt-8 w-full ">
+        <div className="font-oswald flex w-[19.5%] items-center justify-center rounded-[8px] border-[7px] border-[#CA9619] bg-[#CA9619] pb-[12px] pl-[18px] pr-[18px] pt-[12px] text-[18px] self-start sm:self-auto font-normal text-white no-underline">
           <Link
-            className="categorybtn mb-4 w-full text-center text-[18px] font-[400] tracking-[-1px] transition-colors duration-200 hover:text-[#131313] lg:mb-0"
+            className="categorybtn mb-4 w-full text-center text-[18px] font-[400] tracking-[-1px] transition-colors duration-200 hover:text-[#131313] lg:mb-0 pt-4 sm:pt-0"
             href="/can't-find-what-are-you-looking-for"
             id="categorybtn"
             rel="noopener noreferrer"
@@ -121,9 +125,9 @@ export default async function Category(props: Props) {
             Can't Find The Product You Are Looking For?
           </Link>
         </div>
-
-        <div className="plp-filters ml-[2.3%] w-[80%] font-[300] hidden sm:block">
-          <div className="form-field pdp hover:border-[#ca9618]">
+        {/*hidden lg:block */}
+        <div className="plp-filters ml-[2.3%] w-[80%] font-[300]">
+          <div className="form-field pdp hover:border-[#ca9618] hidden lg:block">
             <input
               className="form-input w-full"
               type="text"
@@ -132,8 +136,9 @@ export default async function Category(props: Props) {
               data-search-in-category=""
             />
           </div>
-          <div className="flex items-start justify-between text-[#a5a5a5]">
-            <div className="sort order flex items-center justify-between rounded-[4px] border border-[#dcdcdc] hover:border-[#ca9618]">
+          {/*flex items-start justify-between */}
+          <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between text-[#a5a5a5]">
+            <div className="sort order flex items-center justify-between rounded-[4px] mb-4 lg:mb-0 border border-[#dcdcdc] hover:border-[#ca9618]">
               <SortBy />
             </div>
             <div className="product-list-modification flex gap-4">
@@ -145,7 +150,7 @@ export default async function Category(props: Props) {
           </div>
         </div>
 
-        <div className="show-filters-div mt-[1rem] flex flex-col gap-3 whitespace-nowrap md:flex-row">
+        <div className="show-filters-div mt-[1rem] flex lg:flex-col justify-center lg:justify-start gap-3 whitespace-nowrap md:flex-row">
           <MobileSideNav>
             <FacetedSearch
               facets={search.facets.items}
@@ -160,7 +165,9 @@ export default async function Category(props: Props) {
               {t('sortBy', { items: productsCollection.collectionInfo?.totalItems ?? 0 })}
             </div>
           </div>
+         {/*<ToggleFilter/>*/} 
         </div>
+        
       </div>
 
       <div className="flex flex-wrap justify-start">

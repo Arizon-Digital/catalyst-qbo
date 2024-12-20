@@ -2742,6 +2742,17 @@ div#warp button{
 .group .sort.order button{
     color: #131313;
 }
+@media screen and (max-width:640px){
+.best-selling-btn{
+    width:20em;
+}
+.form-field.pdp{
+    display:none;
+}
+.product-banner{
+    width:100%;
+}
+}
 
 .register-page-parent > div > div label{
     line-height: 1.5;
@@ -2767,6 +2778,7 @@ div#warp button{
         width: 200px;    
     }
 
+    
     .cart-page .cart-cols{
         flex-direction: column;
     }
@@ -2802,6 +2814,7 @@ div#warp button{
     .plp-filters .product-list-modification{
         flex-direction: column-reverse;
         gap: 10px;
+        width:20em;
     }
 }
 
@@ -2812,6 +2825,9 @@ div#warp button{
     .products-grid-parent{
         width: 100%;
         margin-left: 0;
+    }
+    .plp-filter-parent > div:first-child{
+        margin-bottom:15px;
     }
 }
 .pdp-products .plp-product-btn{
