@@ -468,6 +468,10 @@ p.pr.value {
 .product-details-itemss {
     display: block;
     width: 91.5%;
+    text-transform: uppercase;
+}
+.custom-field{
+    text-transform: uppercase;
 }
 h3.font-semibold.flex.id {
     justify-content: space-between;
