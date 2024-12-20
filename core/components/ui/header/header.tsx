@@ -94,7 +94,7 @@ const Header = ({
       >
         {/* Top navbar */}
         <div className="relative z-[1] w-full border-b border-gray-100 bg-white">
-          <div className="navbar navbar-black [&_select-currency]:p-0 [&_select-currency]:h-[unset] justify-start pl-[37%]">
+          <div className="navbar navbar-black [&_select-currency]:p-0 [&_select-currency]:h-[unset] justify-start pl-[58%]">
             <a className="contact-link" href="/about-us">
               <i className="contact-link"></i> About Us
             </a>
