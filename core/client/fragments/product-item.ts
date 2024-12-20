@@ -10,7 +10,7 @@ export const ProductItemFragment = graphql(
       entityId
       name
       sku
-      categories(first: 1) {
+      categories(first: 3) {
         edges {
           node {
             ...BreadcrumbsFragment

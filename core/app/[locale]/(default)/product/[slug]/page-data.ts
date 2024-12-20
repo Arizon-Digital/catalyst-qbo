@@ -46,7 +46,7 @@ const ProductPageQuery = graphql(
             url: urlTemplate(lossy: true)
             altText
           }
-          categories(first: 1) {
+          categories(first: 3) {
             edges {
               node {
                 ...BreadcrumbsFragment
