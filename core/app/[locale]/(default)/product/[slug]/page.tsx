@@ -98,21 +98,38 @@ export default async function Product(props: Props) {
     return notFound();
   }
 
-  const category = removeEdgesAndNodes(product.categories).at(0);
-  console.log('========category=======', product.categories);
+  const categories = removeEdgesAndNodes(product.categories) as CategoryNode[];
+ 
+  // Find the category with the longest breadcrumb trail
+  const categoryWithMostBreadcrumbs = categories.reduce((longest, current) => {
+    const longestLength = longest?.breadcrumbs?.edges?.length || 0;
+    const currentLength = current?.breadcrumbs?.edges?.length || 0;
+    return currentLength > longestLength ? current : longest;
+  }, categories[0]);
+ 
+  // Create breadcrumbs structure only for the most complete path
+  const categoryWithBreadcrumbs = categoryWithMostBreadcrumbs
+    ? {
+        ...categoryWithMostBreadcrumbs,
+        breadcrumbs: {
+          edges: [
+            ...(categoryWithMostBreadcrumbs?.breadcrumbs?.edges || []),
+            {
+              node: {
+                name: product.mpn || '',
+                path: '#',
+              },
+            },
+          ].filter(Boolean),
+        },
+      }
+    : null;
 
 
-  
-  const breadcrumbs = product.categories.map((cat: any) => ({
-    name: cat.name,
-    url: cat.path || `/categories/${cat.entityId}`, 
-  }));
-
-  console.log('======== Breadcrumbs ========', breadcrumbs);
 
   return (
     <>
-      {category && <Breadcrumbs category={category} />}
+      {categoryWithBreadcrumbs && <Breadcrumbs category={categoryWithBreadcrumbs} />}
 
       <div className="mb-12 mt-4 lg:grid lg:grid-cols-2 lg:gap-8">
         <Gallery product={product} />
