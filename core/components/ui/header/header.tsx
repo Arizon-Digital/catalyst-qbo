@@ -182,10 +182,9 @@ const Header = ({
                         <ViewedItemsPopover />
                       </div>
                     </nav>
-                    <MiniCart count={0} /> 
-                    {/* <nav className="header-cart-icon pl-10px nmd:p-0">
+                    { <nav className="header-cart-icon pl-10px nmd:p-0">
                       <button onClick={handleCartClick}>{cart}</button>
-                    </nav> */}
+                    </nav> }
                     <div className="flex flex-col flex-wrap items-center gap-0 pl-[5px]">
                       <div className="text">
                         <ScrollToTop />
