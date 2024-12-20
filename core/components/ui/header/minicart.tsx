@@ -92,7 +92,7 @@ export const MiniCart = ({ count }: { count: number }) => {
           {count}
         </span>
 
-        <span className="text-[#1c2541] mini-cart-text hidden sm:block font-light text-sm">Cart</span>
+        <span className="text-[#1a2348] mini-cart-text hidden sm:block font-light text-sm">Cart</span>
       </button>
       
       {isOpen && (

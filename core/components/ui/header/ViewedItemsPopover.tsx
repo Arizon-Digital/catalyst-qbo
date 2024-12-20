@@ -65,9 +65,9 @@ const ViewedItemsPopover = () => {
                   <line x1="80" y1="65" x2="87" y2="65" stroke="#1A2A47" strokeWidth="2"></line>
                 </svg>
               </div>
-              <div className='flex flex-col items-center'>
-              <p className="recently"> Recently </p>
-              <p className="recently"> Viewed </p>
+              <div className='flex flex-col items-center recently-viewed'>
+              <p className="recently text-[#1c2541]"> Recently </p>
+              <p className="recently text-[#1c2541]"> Viewed </p>
               
               </div>
             </div>

@@ -87,7 +87,7 @@ export const Header = async ({ cart }: Props) => {
                 <line x1="4" y1="20" x2="20" y2="20" stroke="#000000" strokeWidth="1" strokeLinecap="round"></line>
               </svg>
             </div>    
-            <div className='flex sign/registration font-light'>
+            <div className='flex sign/registration text-[#1c2541] font-light'>
               <Link aria-label="Login" className="flex items-center p-3" href="/login">
                 Sign In
               </Link>
