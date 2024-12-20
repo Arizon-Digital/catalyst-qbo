@@ -52,6 +52,14 @@ export const ShippingEstimator = ({ checkout, shippingCountries }: Props) => {
 
   return (
     <>
+      {checkout?.subtotal?.value >= 200 ? (
+        <div className="flex flex-col gap-2 border-t border-t-gray-200 py-3">
+          <div className="flex justify-between">
+            <span className="font-semibold" id='shipping'>Shipping:</span>
+            <span>FREE</span>
+          </div>
+        </div>
+      ):
       <div className="flex flex-col gap-2 border-t border-t-gray-200 py-3">
         <div className="flex justify-between">
           <span className="font-semibold" id='shipping'>Shipping:</span>
@@ -71,7 +79,8 @@ export const ShippingEstimator = ({ checkout, shippingCountries }: Props) => {
             >
               {showShippingInfo ? <span className="italic">{t('cancel')}</span> : ('Calculate Shipping')}
             </Button>
-          )}
+          )
+        }
         </div>
 
         {selectedShippingConsignment && (
@@ -110,7 +119,7 @@ export const ShippingEstimator = ({ checkout, shippingCountries }: Props) => {
           </div>
         )}
       </div>
-
+      }
       {Boolean(checkout.handlingCostTotal?.value) && (
         <div className="flex justify-between border-t border-t-gray-200 py-4">
           <span className="font-semibold">{t('handlingCost')}</span>
