@@ -124,7 +124,7 @@ export default async function Cart() {
           </div>
           <div className="buttoncart-child2 flex flex-col gap-[25px]">
             <CheckoutButton cartId={cartId} />
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center cartcontent">
               {/* <img
                 className="h-[76px] w-[200px]"
                 src="https://cdn2.bigcommerce.com/server4700/03842/product_images/uploaded_images/global-secure.png?t=1508252387&amp;_ga=2.7859762.1482315180.1508138351-1600153642.1496331199"

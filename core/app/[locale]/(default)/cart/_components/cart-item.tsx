@@ -286,7 +286,7 @@ export const CartItem = ({ currencyCode, product }: Props) => {
 
       <li className="cart-item-tab border-b border-b-[#CFD8DC] px-[12px] pt-[12px]">
         <div className='flex gap-[20px] items-center min-h-[100px] relative'>
-          <div className="absolute top-2 right-2">
+          <div className="absolute top-2 right-2 carticonmobile">
             <ShoppingCart className="w-5 h-5 text-gray-600" />
           </div>
           <Link href={product.url} className="product-td-img w-[80px] h-[80px] flex items-center justify-center">

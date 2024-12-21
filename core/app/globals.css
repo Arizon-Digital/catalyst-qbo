@@ -2536,7 +2536,9 @@ section.section-flex {
             width: 80%;
             margin-left: 15px;
         }
-        
+        .carticonmobile {
+            display: none;
+        }
     section.section-flex{
         margin-top: 10px;
         margin-left: 50px;
@@ -3079,3 +3081,19 @@ div#radix-\:Rmkomtlfb\: {
 .hb-text a:focus, a:hover {
     color: #246ad3 !important;
 }
+.cartcontent {
+    text-align: center;
+    color: #131313;
+    font-weight: 300;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    nav#nav-menu-root {
+      display: none;
+    }
+    .cart-page .div-breadcrumb {
+        justify-content: center;
+        padding-left: 0;
+    }
+  }
+  
