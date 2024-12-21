@@ -2449,14 +2449,14 @@ section.section-flex {
         border: 1px solid #dcdcdc;
         border-radius: 4px;
         /* -webkit-box-shadow: 0 3px 0 #dcdcdc; */
-        box-shadow: 0 3px 0 #dcdcdc;
+        /* box-shadow: 0 3px 0 #dcdcdc; */
     }
     figure.relative.aspect-square.h-full.max-h-\[548px\].w-full {
         width: auto;
         margin-top: 40px;
         margin-left: 30px;
         /* border: 1px solid #dcdcdc; */
-        box-shadow: 0 3px 0 #dcdcdc;
+        /* box-shadow: 0 3px 0 #dcdcdc; */
     }
     .-mx-6 {
         margin-left: -rem !important;
