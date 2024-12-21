@@ -1267,7 +1267,7 @@ width: auto;
         justify-content: space-between;
         width: 90%;
         margin-left: 9px;
-        margin-bottom: 7px;
+        margin-bottom: 18px;
     }
     .product-reviews-header {
         margin-top: 20px;
@@ -1805,7 +1805,7 @@ width: auto;
             width: 350px;
             margin-top: 40px;
             margin-left: 30px;
-            border: 1px solid #dcdcdc;
+            /* border: 1px solid #dcdcdc; */
             box-shadow: 0 3px 0 #dcdcdc;
         }
       }
@@ -2455,7 +2455,7 @@ section.section-flex {
         width: auto;
         margin-top: 40px;
         margin-left: 30px;
-        border: 1px solid #dcdcdc;
+        /* border: 1px solid #dcdcdc; */
         box-shadow: 0 3px 0 #dcdcdc;
     }
     .-mx-6 {
