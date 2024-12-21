@@ -772,6 +772,7 @@ div#feefo-service-review-carousel-widgetId {
     float: left;
     clear: both;
     margin: .375rem .75rem 0 0;
+    margin-bottom: 10px;
 }
 .productView-info {
     border-top: 1px solid #dcdcdc;
@@ -1259,7 +1260,7 @@ width: auto;
       .product-details-logo {
         height: 27px;
         width: auto;
-        margin-left: 1130px;
+        margin-left: 1110px;
         margin-top: -26px;
     }
     .custom-field {
@@ -2535,10 +2536,7 @@ section.section-flex {
             width: 80%;
             margin-left: 15px;
         }
-        .flex.gap-6 {
-            margin-inline: 10px;
-            gap: 1rem;
-        }
+        
     section.section-flex{
         margin-top: 10px;
         margin-left: 50px;
