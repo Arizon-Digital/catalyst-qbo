@@ -1806,7 +1806,7 @@ width: auto;
             margin-top: 40px;
             margin-left: 30px;
             /* border: 1px solid #dcdcdc; */
-            box-shadow: 0 3px 0 #dcdcdc;
+            /* box-shadow: 0 3px 0 #dcdcdc; */
         }
       }
       .flex.justify-left.mb-4 {
