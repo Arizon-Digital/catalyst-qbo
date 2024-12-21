@@ -30,7 +30,7 @@ const Forgotpasswordbreadcrumb = ({ breadcrumbs, className }: Props) => {
               HOME
             </CustomLink>
           </li>
-          <span className="mx-1">  +/  </span>
+          <span className="mx-1">  /  </span>
         </Fragment>
         {breadcrumbs.map(({ label, href }, i, arr) => {
           const isLast = arr.length - 1 === i;
