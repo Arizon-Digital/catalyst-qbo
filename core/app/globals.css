@@ -3078,3 +3078,6 @@ div#radix-\:Rmkomtlfb\: {
     width: 85%;
     color: #fff !important;
 }
+.hb-text a:focus, a:hover {
+    color: #246ad3 !important;
+}
