@@ -2591,6 +2591,7 @@ section.section-flex {
         margin-left: 180px;
         margin-top: -26px;
     }
+    
     .value {
         width: 250px;
     }
@@ -3046,6 +3047,9 @@ div#warp button{
 div#radix-\:Rmkomtlfb\: {
     height: 500px;
     overflow-x: auto;
+}
+.cart-page .cart-page-col2 {
+    width: auto !important;
 }
 
 .mini-cart-badge{
