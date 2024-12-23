@@ -485,7 +485,7 @@ p.pr.value {
 }
 .product-details-itemss {
     display: block;
-    width: 90%;
+    width: 91%;
     text-transform: uppercase;
 }
 .custom-field{
@@ -1572,7 +1572,7 @@ width: auto;
     }
 
     main.flex-1.px-4.\32 xl\:container.sm\:px-10.lg\:px-12.\32 xl\:mx-auto.\32 xl\:px-0 {
-        max-width: 90%;
+        max-width: 91%;
     }
     nav.grid.flex-auto.auto-cols-fr.gap-8.sm\:grid-flow-col {
         width: 230px;
