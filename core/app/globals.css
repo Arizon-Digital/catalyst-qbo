@@ -850,7 +850,8 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
         border-color: rgb(220, 220, 220) !important;
         border-style: solid !important;
         border-width: 1px !important;
-        width : 2.5rem !important;
+        width : 2.95rem !important;
+        height:35px;
  }
  p.pr {
         font-weight: 400 !important;
@@ -1834,12 +1835,16 @@ width: auto;
         background: #ca9618;
         border: 1px solid #ca9618;
         border-radius: 0px 5px 5px 0px;
+        height:34px;
+        width:34px;
     }
      
     .cart-page-col1 .quantity-reduce{
         background: #ca9618;
         border: 1px solid #ca9618;
         border-radius: 5px 0px 0px 5px;
+        height:34px;
+        width:34px;
     }
      
     .cart-page-col1 #cartproductname{
@@ -2067,12 +2072,12 @@ width: auto;
     letter-spacing: normal;
     word-spacing: normal;
 } 
+/*border: 1px solid orangered;*/
 .cart-page .shipping-country button{
     margin-top: 0 !important;
     padding: 0 8px;
     height: 32px;
     width: 60%;
-    border: 1px solid orangered;
     border-radius: 4px;
     letter-spacing: normal;
     word-spacing: normal;
@@ -2209,9 +2214,6 @@ li.flex.items-center > a.hover\:text-\[\#a5a5a5\].focus-visible\:outline-none.fo
     border-color: #ca9618 !important;
 }
  
-
-
-
   address#address {
     line-height: 1.5;
     font-weight: 400;

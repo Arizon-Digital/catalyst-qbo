@@ -327,7 +327,7 @@ export const CartItem = ({ currencyCode, product }: Props) => {
             <div className="cart-qunRem-div">
               <ItemQuantity product={product} />
               {/* Remove Item */}
-              <div className="deleteIcon-div hidden md:block">
+              <div className="deleteIcon-div">
                 <DeleteConfirmationDialog product={product} currencyCode={currencyCode} deleteIcon="">
                   <button className="flex items-center">
                     <Trash2 className="w-5 h-5 text-gray-600 hover:text-red-600 transition-colors" />
