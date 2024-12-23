@@ -1,5 +1,3 @@
-
-
 import { useFormatter } from 'next-intl';
 import Link from 'next/link';
 import { ShoppingCart, Trash2 } from 'lucide-react';

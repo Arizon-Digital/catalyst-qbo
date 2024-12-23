@@ -150,11 +150,13 @@ const Quantity = ({ value }: { value: number }) => {
 
 export const ItemQuantity = ({ product }: { product: Product }) => {
   const t = useTranslations('Cart.SubmitItemQuantity');
+  const cartT = useTranslations('Cart');
 
   const { quantity, entityId, productEntityId, variantEntityId, selectedOptions } = product;
   const [productQuantity, setProductQuantity] = useState<number>(quantity);
 
   useEffect(() => {
+    document.title=cartT("title");
     setProductQuantity(quantity);
   }, [quantity]);
 
