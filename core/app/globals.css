@@ -473,7 +473,7 @@ ul.col-span-2 {
 }
 
 span.product-details-item {
-    width: 91% !important;
+    width: 90% !important;
     display: block;
     margin-left: 9px;
 }
@@ -485,7 +485,7 @@ p.pr.value {
 }
 .product-details-itemss {
     display: block;
-    width: 91.5%;
+    width: 90%;
     text-transform: uppercase;
 }
 .custom-field{
@@ -1267,8 +1267,8 @@ width: auto;
     .custom-field {
         display: flex;
         justify-content: space-between;
-        width: 90%;
-        margin-left: 9px;
+        width: 91%;
+        margin-left: 11px;
         margin-bottom: 18px;
     }
     .product-reviews-header {
