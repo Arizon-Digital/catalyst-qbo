@@ -220,6 +220,7 @@ export const ItemQuantity = ({ product }: { product: Product }) => {
           onBlur={handleBlur} // Sync with backend on blur
           onChange={handleQuantityChange} // Use the new function
           className="w-12 border text-center text-[15px] font-[700] h-[26px] rounded-none !text-[#454545]"
+          readOnly
           min="1"
         />
         {/* <Quantity value={productQuantity} /> */}
