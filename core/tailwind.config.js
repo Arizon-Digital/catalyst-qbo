@@ -25,6 +25,7 @@ const config = {
         black: '#000000',
         primary: '#053FB0',
         secondary: '#3071EF',
+        customyellow: '#ca9618',
         white: '#FFFFFF',
         error: {
           DEFAULT: '#AD0000',

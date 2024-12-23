@@ -191,10 +191,10 @@ export const ItemQuantity = ({ product }: { product: Product }) => {
     <div className="input-quantity w-[120px] border-2 p-2.5">
       <form action={onSubmit} className="flex items-center">
         <SubmitButton onClick={() => setProductQuantity(productQuantity - 1)}>
-          <div className="quantity-reduce hover:bg-white">
+          <div className="quantity-reduce hover:bg-white flex justify-center items-center">
             <svg
-              width="24"
-              height="24"
+              width="18"
+              height="18"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -225,10 +225,10 @@ export const ItemQuantity = ({ product }: { product: Product }) => {
         {/* <Quantity value={productQuantity} /> */}
 
         <SubmitButton onClick={() => setProductQuantity(productQuantity + 1)}>
-            <div className="quantity-increase hover:bg-white">
+            <div className="quantity-increase hover:bg-white flex justify-center items-center">
               <svg
-                width="24"
-                height="24"
+                width="18"
+                height="18"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
