@@ -17,7 +17,7 @@ export function SettingsIcon() {
       <Settings
         size={28}
         color="#ca9618"
-        className="mt-2 block lg:hidden"
+        className="mt-2 block lg:hidden z-50"
         onClick={() => {
           handleClick();
         }}

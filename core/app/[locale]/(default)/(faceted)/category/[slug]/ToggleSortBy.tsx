@@ -11,8 +11,8 @@ export function ToggleSortBy() {
   return (
     <>
       {openSort && (
-        <div className="plp-filters ml-[2.3%] w-[80%] font-[300] lg:block">
-          <div className="form-field pdp hover:border-[#ca9618] lg:block">
+        <div className="plp-filters ml-[2.3%] w-[80%] font-[300] lg:hidden z--50">
+          <div className="form-field pdp hover:border-[#ca9618] lg:hidden">
             <input
               className="form-input w-full"
               type="text"
