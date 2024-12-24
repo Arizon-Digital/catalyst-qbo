@@ -19,9 +19,12 @@ import { SubCategories } from './_components/sub-categories';
 import { getCategoryPageData } from './page-data';
 import { ProductGridSwitcher } from './ProductGridSwitcher';
 import Link from 'next/link';
-//import { ToggleFilter } from './ToggleFilter';
+
+import { SettingsIcon } from './SettingsIcon';
+import { ToggleSortBy } from './ToggleSortBy';
 
 // import { Breadcrumbs } from '~/components/ui/breadcrumbs/breadcrumbs';
+
 
 interface Props {
   params: {
@@ -58,7 +61,7 @@ export default async function Category(props: Props) {
   const searchParams = await props.searchParams;
   const params = await props.params;
   const { locale, slug } = params;
- 
+
 
   setRequestLocale(locale);
   const t = await getTranslations('Category');
@@ -125,8 +128,8 @@ export default async function Category(props: Props) {
             Can't Find The Product You Are Looking For?
           </Link>
         </div>
-        {/*hidden lg:block */}
-        <div className="plp-filters ml-[2.3%] w-[80%] font-[300]">
+        
+        <div className="plp-filters ml-[2.3%] w-[80%] font-[300] hidden lg:block z--50">
           <div className="form-field pdp hover:border-[#ca9618] hidden lg:block">
             <input
               className="form-input w-full"
@@ -136,9 +139,9 @@ export default async function Category(props: Props) {
               data-search-in-category=""
             />
           </div>
-          {/*flex items-start justify-between */}
-          <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between text-[#a5a5a5]">
-            <div className="sort order flex items-center justify-between rounded-[4px] mb-4 lg:mb-0 border border-[#dcdcdc] hover:border-[#ca9618]">
+
+          <div className="flex flex-col items-center justify-between text-[#a5a5a5] lg:flex-row lg:items-start">
+            <div className="sort order mb-4 flex items-center justify-between rounded-[4px] border border-[#dcdcdc] hover:border-[#ca9618] lg:mb-0">
               <SortBy />
             </div>
             <div className="product-list-modification flex gap-4">
@@ -149,6 +152,8 @@ export default async function Category(props: Props) {
             </div>
           </div>
         </div>
+
+       <ToggleSortBy />
 
         <div className="show-filters-div mt-[1rem] flex lg:flex-col justify-center lg:justify-start gap-3 whitespace-nowrap md:flex-row">
           <MobileSideNav>
@@ -165,8 +170,9 @@ export default async function Category(props: Props) {
               {t('sortBy', { items: productsCollection.collectionInfo?.totalItems ?? 0 })}
             </div>
           </div>
-         {/*<ToggleFilter/>*/} 
+          <SettingsIcon/>
         </div>
+        
         
       </div>
 
