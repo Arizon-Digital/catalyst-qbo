@@ -5,6 +5,8 @@ import TechData from './techdata';
 import Bulk from './bulkprice';
 import Deliveryinformation from './DeliveryInformation';
 import Reviews from './reviews';
+import FeefoReview from '~/components/ui/header/Feeforeview';
+
 
 interface TabComponentProps {
   product: any; // Prop to accept the product description
@@ -48,6 +50,8 @@ const TabComponent = ({ product }: any) => {
             {activeTab === 'TechnicalData' && <TechData product={product} />}
             {activeTab === 'BulkPricing' && <Bulk product={product} />}
             {activeTab === 'DeliveryInformation' && <Deliveryinformation product={product} />}
+            {activeTab === 'Reviews' && <FeefoReview product={product} />}
+            
           </div>
         </div>
       </div>

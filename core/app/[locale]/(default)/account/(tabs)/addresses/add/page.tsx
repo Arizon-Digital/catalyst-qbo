@@ -94,7 +94,7 @@ export default async function AddPage() {
 
   return (
     <div className="mx-auto mb-14 lg:w-2/3">
-      <h1 className="mb-8 text-3xl font-black lg:text-4xl">{t('heading')}</h1>
+      <h1 className="mb-8 text-3xl font-black lg:text-4xl text-center">{t('heading')}</h1>
       <AddAddressForm
         addressFields={addressFields}
         countries={countries || []}

@@ -99,6 +99,21 @@ export const Reviews = async ({ product }: Props) => {
           })
         )}
       </ul>
+
+      {/* Add Feefo Script */}
+      <div className="mt-8">
+        <h4 className="text-xl font-semibold mb-4">More Reviews from Feefo</h4>
+        <div
+          className="feefo-review-widget-product"
+          data-product-sku="default-sku" 
+        ></div>
+        <script
+          type="text/javascript"
+          src="https://api.feefo.com/api/javascript/quality-bearings-online"
+          async
+        ></script>
+      </div>
+
       {reviews.length > 0 && <ProductReviewSchema productId={product.entityId} reviews={reviews} />}
     </>
   );
