@@ -137,7 +137,7 @@ export default async function Product(props: Props) {
       </div>
       <div className="lg:col-span-2" id="tabsection">
         <Description product={product} />
-        {/* <Warranty product={product} /> */}
+        <Warranty product={product} />
         <Suspense fallback={t('loading')}>
           {/* <Reviews productId={product.entityId} /> */}
         </Suspense>
