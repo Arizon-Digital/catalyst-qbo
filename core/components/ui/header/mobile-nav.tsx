@@ -138,20 +138,19 @@ export const MobileNav = ({ links, logo }: Props) => {
                   </NavigationMenuPrimitive.Item>
                 ),
               )}
-              <a>About Us</a>
-              <a>10 Year Anniversary</a>
-              <a>Contact Us</a>
-              <a>Costomer Service</a>
-              <a>Delivery Information</a>
-              <a>FAQS</a>
-              <a>Privacy Policy</a>
-              <a>Customer Reviews</a>
-              <a>Terms & Conditions</a>
-              <a>Blog</a>
+              <a href="/about-us">About Us</a>
+              <a href="/10-year-anniversary">10 Year Anniversary</a>
+              <a href="/contact-us">Contact Us</a>
+              <a href="/customer-service">Customer Service</a>
+              <a href="/delivery-information">Delivery Information</a>
+              <a href="/faqs">FAQs</a>
+              <a href="/privacy-policy">Privacy Policy</a>
+              <a href="/customer-reviews">Customer Reviews</a>
+              <a href="/terms-and-conditions">Terms & Conditions</a>
+              <a href="/blog">Blog</a>
+              <a href="/sign-in">Sign In</a>
+              <a href="/register">Register</a>
 
-              <a>GBP</a>
-              <a>Sign In</a>
-              <a>Register</a>
 
               
             </NavigationMenuPrimitive.List>
