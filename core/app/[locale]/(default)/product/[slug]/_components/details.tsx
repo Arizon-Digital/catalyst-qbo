@@ -82,7 +82,7 @@ export const Details = ({ product }: Props) => {
  
       {Boolean(product.sku) && (
         <div className="pq productView-info">
-          <h3 className="font-semibold flex productView-info-name">{t('sku')} <p className="pr productView-info-value ">: {product.sku}</p></h3>
+          <h3 className="font-semibold flex productView-info-name">{t('sku')} :<p className="pr productView-info-value ">: {product.sku}</p></h3>
         </div>
       )}
  
@@ -90,7 +90,7 @@ export const Details = ({ product }: Props) => {
       {Boolean(product.availabilityV2.description) && (
  
         <div>
-          <h3 className="font-semibold flex productView-info-name">{t('availability')} <p className="pr productView-info-value ">: {product.availabilityV2.description}</p></h3>
+          <h3 className="font-semibold flex productView-info-name">{t('availability')} :<p className="pr productView-info-value ">: {product.availabilityV2.description}</p></h3>
  
         </div>
  

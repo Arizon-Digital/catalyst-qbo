@@ -64,6 +64,7 @@ const DialogDemo = ({ open, setOpen, data, itemVal, count, cartId, handleModalCl
             <label className="Label" htmlFor="name">
               <p>{data?.name} </p>
               <p>1 x {productPrice} </p>
+              <p>SKU : {data?.sku} </p>
 
               <p className="text-base text-grayy-500">{data?.subtitle}</p>
             </label>
@@ -75,14 +76,15 @@ const DialogDemo = ({ open, setOpen, data, itemVal, count, cartId, handleModalCl
 
           </fieldset>
           <div
-            style={{ display: "flex", marginTop: 25, justifyContent: "flex-start" }}
+            style={{ textAlign: "center", marginTop: "25px" }}
           >
 
             <div className="mt-4 space-y-2">
-              <CheckoutButtonPopUp cartId={cartId}  />
+              <CheckoutButtonPopUp cartId={cartId}  style={{ display: "flex" }} />
               <Link
                 href="/cart"
                 className="block w-full border border-gray-200 text-center py-2 rounded-md hover:bg-gray-100"
+                style={{ display: "inline-block" }}
               >
                 VIEW CART
               </Link>
