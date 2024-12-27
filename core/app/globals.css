@@ -6,7 +6,7 @@
     .product-details-logo {
         height: 27px;
         width: auto;
-        margin-left: 1400px !important;
+        margin-left: 1420px !important;
         margin-top: -26px;
     }
 
@@ -485,7 +485,7 @@ p.pr.value {
 }
 .product-details-itemss {
     display: block;
-    width: 91%;
+    width: 90.5%;
     text-transform: uppercase;
 }
 .custom-field{
