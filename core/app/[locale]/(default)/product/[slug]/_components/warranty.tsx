@@ -13,7 +13,7 @@ interface Props {
   product: FragmentOf<typeof WarrantyFragment>;
 }
 
-export const Warranty = async ({ product }: Props) => {
+export const Warranty = ({ product }: Props) => {
   const t = useTranslations('Product.Warranty');
 
   if (!product.warranty) {
@@ -22,8 +22,13 @@ export const Warranty = async ({ product }: Props) => {
 
   return (
     <>
-      <h2  className="mb-4 mt-8 text-xl font-bold md:text-2xl">Spare Parts</h2>
-      <p dangerouslySetInnerHTML={{ __html: product.warranty }}>{product.warranty}</p>
+    <div className='tech-data'>
+    <div className='product-reviews-header'>
+      <h2  className="mb-4 mt-8 text-xl font-bold md:text-2xl page-heading">Spare Parts</h2>
+      <hr className="product-info-hr" />
+      </div>
+      <p dangerouslySetInnerHTML={{ __html: product.warranty }}></p>
+      </div>
     </>
   );
 };

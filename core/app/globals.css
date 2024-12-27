@@ -631,11 +631,11 @@ div#width {
     font-family: "Roboto Slab", serif;
     font-size: 16px;
     font-style: normal;
-    float: left;
+    float: inherit;
     font-weight: 700;
     letter-spacing: 1.5px;
     line-height: 1.175;
-    margin-left: 2px;
+    margin-left: 22px;
     text-transform: uppercase;
 }
 .product-details-dd {
