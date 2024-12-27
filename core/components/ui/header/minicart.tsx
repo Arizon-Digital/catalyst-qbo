@@ -92,7 +92,7 @@ export const MiniCart = ({ count }: { count: number }) => {
           />
         )}
 
-        <span className="absolute right-1.5 mini-cart-count top-5 h-[20px] w-[30px] hidden sm:flex items-center justify-center rounded-full bg-[#1c2541] text-xs font-bold mini-cart-badge">
+        <span className="absolute right-1.5 mini-cart-count top-13 h-[20px] w-[30px]  sm:flex items-center justify-center rounded-full bg-[#1c2541] text-xs font-bold mini-cart-badge">
           {count}
         </span>
 
