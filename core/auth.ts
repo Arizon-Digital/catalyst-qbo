@@ -167,6 +167,16 @@ const getSessionCustomerAccessToken = async () => {
   }
 };
 
+
+export const getSessionUserDetails = async () => {
+  try {
+    const session = await auth();
+    return session?.user;
+  } catch {
+    // Handle error or return a default value
+  }
+};
+
 export { handlers, auth, signIn, signOut, getSessionCustomerAccessToken };
 
 declare module 'next-auth' {

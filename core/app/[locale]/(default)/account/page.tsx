@@ -6,6 +6,7 @@ import { ReactNode } from 'react';
 import { Link } from '~/components/link';
 
 import { AccountNotification } from './(tabs)/_components/account-notification';
+import { WelcomeMessage } from './welcome';
 
 interface AccountItem {
   children: ReactNode;
@@ -43,7 +44,7 @@ export default function Account() {
   return (
     <div className="mx-auto">
       <h1 className="my-8 text-4xl font-black lg:my-8 lg:text-5xl">{t('heading')}</h1>
-
+      <WelcomeMessage />
       <AccountNotification message={t('successMessage')} />
 
       <div className="mb-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -62,3 +63,5 @@ export default function Account() {
 }
 
 export const runtime = 'edge';
+
+
