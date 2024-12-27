@@ -91,7 +91,7 @@ export default async function Search(props: Props) {
             {t('products')}
           </h2>
 
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 sm:gap-8">
+          <div className="product-grid grid gap-6 sm:gap-8 grid-cols-4">
             {products.map((product, index) => (
               <ProductCard
                 imagePriority={index <= 3}

@@ -698,7 +698,7 @@ div#feefo-service-review-carousel-widgetIdd {
 }
 
 .group.relative.flex.flex-col.overflow-visible {
-    width:450px;
+    width:auto;
     border: 1px solid #dcdcdc !important;
     border-radius: 4px;
     -webkit-box-shadow: 0 3px 0 #dcdcdc;
