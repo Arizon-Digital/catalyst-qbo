@@ -1228,7 +1228,7 @@ width: auto;
     text-transform: uppercase;
       }
       div#radix-\:R1aj2rmlt7\: {
-        overflow-y: auto; 
+        overflow-y: auto !important; 
     -webkit-overflow-scrolling: touch; 
         background-color: #1a2348;
         color: #ffff !important;
