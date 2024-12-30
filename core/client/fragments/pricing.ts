@@ -29,6 +29,19 @@ export const PricingFragment = graphql(`
           currencyCode
         }
       }
+      bulkPricing {
+        minimumQuantity
+        maximumQuantity
+        ... on BulkPricingFixedPriceDiscount {
+          price
+        }
+        ... on BulkPricingPercentageDiscount {
+          percentOff
+        }
+        ... on BulkPricingRelativePriceDiscount {
+          priceAdjustment
+        }
+      }
     }
     excludeTax: prices(currencyCode: $currencyCode) {
       price {
@@ -55,6 +68,19 @@ export const PricingFragment = graphql(`
         max {
           value
           currencyCode
+        }
+      }
+      bulkPricing {
+        minimumQuantity
+        maximumQuantity
+        ... on BulkPricingFixedPriceDiscount {
+          price
+        }
+        ... on BulkPricingPercentageDiscount {
+          percentOff
+        }
+        ... on BulkPricingRelativePriceDiscount {
+          priceAdjustment
         }
       }
     }

@@ -63,14 +63,23 @@ interface Props {
   product: FragmentOf<typeof DetailsFragment>;
 }
  
+
 export const Details = ({ product }: Props) => {
+
+  console.log('Product:::::::::::::::::', JSON.stringify(product.weight));
   const t = useTranslations('Product.Details');
+  
   const format = useFormatter();
  
   const customFields = (product?.customFields) ? removeEdgesAndNodes(product.customFields) : [];
  
   const showPriceRange =
     product.prices?.priceRange.min.value !== product.prices?.priceRange.max.value;
+
+
+    
+
+    
  
   return (
     <div>
@@ -97,9 +106,11 @@ export const Details = ({ product }: Props) => {
       )}
  
      
-        {Boolean(product.weight) && (
-          <BulkPricing />
+        {(product?.weight?.value) && (
+          <BulkPricing product={product} />
         )}
+        
+
     <div className='priced'>
         {/* <GetCurrencyList /> */}
         {/* <CurrencyTextWrapper /> */}

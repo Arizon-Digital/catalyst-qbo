@@ -47,6 +47,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     useDefaultOptionSelections: true,
     currencyCode,
   });
+  // console.log('Product:::::::::::::::::', JSON.stringify(product));
 
   if (!product) {
     return {};
