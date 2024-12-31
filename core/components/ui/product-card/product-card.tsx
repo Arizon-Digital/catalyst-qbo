@@ -69,6 +69,14 @@ const ProductCard = async ({
   } else {
     currencyCode = await getCurrencyCodeData() || undefined;
   }
+
+  console.log('Product Data:', {
+    productId: id,
+    productName: name,
+    fullProductObject: product,
+    description: product?.description,
+  });
+
   const addToCardData = {
     defaultImage: {
       url: image.src,
@@ -111,6 +119,7 @@ const ProductCard = async ({
         {subtitle && (
           <p className="brand mb-[4px] text-[16px] font-[300] text-[#a5a5a5]">{subtitle}</p>
         )}
+        <p className="brand mb-[4px] text-[16px] font-[300] text-[#a5a5a5] descriptionplp">{product?.description}</p>
         <div className="cardprice">
           <Suspense>  
           <ProductPriceDisplay product={product} page={pageData} currencyData={currencyCode}/>
@@ -136,3 +145,5 @@ const ProductCard = async ({
 ProductCard.displayName = 'ProductCard';
 
 export { ProductCard, type Price };
+
+
