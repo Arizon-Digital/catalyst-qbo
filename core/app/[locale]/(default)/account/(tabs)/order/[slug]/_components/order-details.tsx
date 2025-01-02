@@ -1,3 +1,5 @@
+
+
 import { getFormatter, getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
 
@@ -112,10 +114,10 @@ const OrderSummaryInfo = async ({ summaryInfo }: { summaryInfo: OrderDataType['s
           </span>
         </p>
       </div>
-      {/* TODO: add manage-order buttons */}
     </div>
   );
 };
+
 const combineAddressInfo = (
   address: NonNullable<OrderDataType['consignments']['shipping']>[number]['shippingAddress'],
 ) => {
@@ -127,6 +129,7 @@ const combineAddressInfo = (
 
   return [fullName, addressLine, cityWithZipCode, shippingCountry];
 };
+
 const combineShippingMethodInfo = async (
   shipment?: NonNullable<
     NonNullable<OrderDataType['consignments']['shipping']>[number]['shipments']
@@ -223,7 +226,6 @@ const ShippingInfo = async ({
             className="justify-start p-0"
             variant="subtle"
           >
-            {/* TODO: add link when tracking url available */}
             <Link href="#">{trackingNumber}</Link>
           </Button>
         )}
@@ -260,17 +262,27 @@ export const OrderDetails = async ({ data }: { data: OrderDataType }) => {
                     shippingNumber={idx}
                   />
                 )}
-                <ul className="my-4 flex flex-col gap-4">
+                <ul className="my-4">
                   {lineItems.map((shipment) => {
                     return (
-                      <li key={shipment.entityId}>
+                      <li key={shipment.entityId} className="flex items-start space-x-4 pb-4 last:pb-0 border-b border-gray-100 last:border-b-0">
                         <Suspense fallback={<ProductSnippetSkeleton isExtended={true} />}>
-                          <ProductSnippet
-                            imagePriority={true}
-                            imageSize="square"
-                            isExtended={true}
-                            product={assembleProductData(shipment)}
-                          />
+                          <div className="flex w-full gap-4">
+                            <div className="w-24 h-24 flex-shrink-0">
+                              <ProductSnippet
+                                imagePriority={true}
+                                imageSize="square"
+                                isExtended={true}
+                                product={assembleProductData(shipment)}
+                                className="w-full h-full object-cover rounded-md"
+                              />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="flex flex-col">
+                                {/* Product details will be rendered here by ProductSnippet */}
+                              </div>
+                            </div>
+                          </div>
                         </Suspense>
                       </li>
                     );
@@ -285,7 +297,6 @@ export const OrderDetails = async ({ data }: { data: OrderDataType }) => {
           {!isMultiShippingConsignments && (
             <ShippingInfo consignments={consignments} isMultiConsignments={false} />
           )}
-          {/* TODO: add PaymentInfo component later */}
         </div>
       </div>
     </div>
