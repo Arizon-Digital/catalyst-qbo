@@ -162,7 +162,7 @@ export const ProductSnippet = async ({
   const { path = '' } = data.site.product ?? {};
 
   return (
-    <div className={cn('relative flex flex-col overflow-visible', isExtended && 'flex-row gap-4')}>
+    <div className={cn('relative flex flex-row overflow-visible order', isExtended && 'flex-row gap-4')}>
       <div className="flex justify-center pb-3">
         {isImageAvailable && (
           <div
