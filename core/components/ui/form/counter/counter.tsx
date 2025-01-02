@@ -100,7 +100,7 @@ const Counter = forwardRef<ElementRef<'input'>, Props>(
     };
  
     return (
-      <div className={cn('relative w-[120px] h-[34px]', className)}>
+      <div className={cn('relative w-[120px] h-[36px]', className)}>
         <button
           aria-hidden="true"
           aria-label={t('decrease')}
@@ -114,7 +114,7 @@ const Counter = forwardRef<ElementRef<'input'>, Props>(
           tabIndex={-1}
           type="button"
         >
-          <ChevronDown width={16} height={16} className='text-[#4f4f4f]' strokeWidth={2.2} stroke='#4f4f4f' />
+          <ChevronDown width={14} height={14} className='text-[#4f4f4f]' strokeWidth={2.2} stroke='#4f4f4f' />
         </button>
  
         <button
@@ -130,7 +130,7 @@ const Counter = forwardRef<ElementRef<'input'>, Props>(
           tabIndex={-1}
           type="button"
         >
-          <ChevronUp width={16} height={16}  className='text-[#4f4f4f]' strokeWidth={2.2} stroke='#4f4f4f'/>
+          <ChevronUp width={14} height={14}  className='text-[#4f4f4f]' strokeWidth={2.2} stroke='#4f4f4f'/>
         </button>
  
         <input
