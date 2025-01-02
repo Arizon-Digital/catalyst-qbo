@@ -247,7 +247,6 @@ import { Suspense } from 'react';
 
 import { ExistingResultType } from '~/client/util';
 import { Link } from '~/components/link';
-import { Button } from '~/components/ui/button';
 
 import { getCustomerOrders } from '../page-data';
 import { assembleProductData, ProductSnippet, ProductSnippetSkeleton } from './product-snippet';
@@ -319,10 +318,10 @@ const ManageOrderButtons = async ({
 }: ManageOrderButtonsProps) => {
   const t = await getTranslations('Account.Orders');
 
-  const buttonClasses = "inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-md border border-gray-300 bg-white text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-all duration-200 ease-in-out w-full md:w-auto";
+  const buttonClasses = "inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-md border border-gray-300 bg-white text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-all duration-200 ease-in-out";
 
   return (
-    <div className={`${className} space-y-2 md:space-y-0 md:space-x-2`}>
+    <div className={`${className} flex flex-col gap-2`}>
       <Link 
         href={`/account/order/${orderId}`}
         className={buttonClasses}
@@ -370,8 +369,8 @@ const OrderDetails = async ({
   const format = await getFormatter();
 
   return (
-    <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-      <div className="grid grid-cols-2 gap-4 md:flex md:gap-8">
+    <div className="flex flex-col gap-3">
+      <div className="flex items-center justify-between">
         <Link 
           href={`/account/order/${orderId}`}
           className="transition-colors hover:text-primary"
@@ -381,6 +380,11 @@ const OrderDetails = async ({
             <span className="block font-semibold">{orderId}</span>
           </p>
         </Link>
+        <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
+          {orderStatus}
+        </span>
+      </div>
+      <div className="flex flex-col gap-2">
         <p className="space-y-1">
           <span className="text-sm text-gray-600">{t('placedDate')}</span>
           <span className="block font-semibold">
@@ -400,11 +404,6 @@ const OrderDetails = async ({
             })}
           </span>
         </p>
-      </div>
-      <div className="flex items-center">
-        <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
-          {orderStatus}
-        </span>
       </div>
     </div>
   );
@@ -439,18 +438,29 @@ export const OrdersList = ({ customerOrders }: OrdersListProps) => {
 
         return (
           <li key={entityId} className="group overflow-hidden rounded-lg border border-gray-200 bg-white transition-all duration-200 ease-in-out hover:shadow-lg">
-            <div className="p-6">
-              <OrderDetails
-                orderDate={orderedAt.utc}
-                orderId={entityId}
-                orderPrice={totalIncTax}
-                orderStatus={status.label}
-              />
-              <div className="mt-6 flex gap-4">
-                <ul className="inline-flex gap-4 [&>*:nth-child(n+2)]:hidden md:[&>*:nth-child(n+2)]:list-item md:[&>*:nth-child(n+4)]:hidden lg:[&>*:nth-child(n+4)]:list-item lg:[&>*:nth-child(n+5)]:hidden xl:[&>*:nth-child(n+5)]:list-item lg:[&>*:nth-child(n+7)]:hidden">
+            <div className="flex flex-col gap-4 p-6 md:flex-row md:items-start md:gap-8">
+              {/* Left side - Order Details */}
+              <div className="w-full md:w-1/3">
+                <OrderDetails
+                  orderDate={orderedAt.utc}
+                  orderId={entityId}
+                  orderPrice={totalIncTax}
+                  orderStatus={status.label}
+                />
+                <ManageOrderButtons
+                  className="mt-4"
+                  orderId={entityId}
+                  orderStatus={status.value}
+                  orderTrackingUrl={trackingUrl}
+                />
+              </div>
+
+              {/* Right side - Product Images */}
+              <div className="flex flex-1 gap-4">
+                <ul className="inline-flex gap-4 overflow-x-auto [&>*:nth-child(n+2)]:hidden md:[&>*:nth-child(n+2)]:list-item md:[&>*:nth-child(n+4)]:hidden lg:[&>*:nth-child(n+4)]:list-item lg:[&>*:nth-child(n+5)]:hidden xl:[&>*:nth-child(n+5)]:list-item lg:[&>*:nth-child(n+7)]:hidden">
                   {(shippingConsignments ?? []).map(({ lineItems }) => {
                     return lineItems.slice(0, VisibleListItemsPerDevice.xl).map((shippedProduct) => (
-                      <li className="w-36 overflow-hidden rounded-md transition-transform duration-200 ease-in-out hover:scale-105" key={shippedProduct.entityId}>
+                      <li className="w-36 shrink-0 overflow-hidden rounded-md transition-transform duration-200 ease-in-out hover:scale-105" key={shippedProduct.entityId}>
                         <Suspense fallback={<ProductSnippetSkeleton />}>
                           <ProductSnippet
                             imagePriority={true}
@@ -468,19 +478,7 @@ export const OrdersList = ({ customerOrders }: OrdersListProps) => {
                     0,
                   )}
                 />
-                <ManageOrderButtons
-                  className="hidden lg:ms-auto lg:flex lg:flex-col lg:gap-2"
-                  orderId={entityId}
-                  orderStatus={status.value}
-                  orderTrackingUrl={trackingUrl}
-                />
               </div>
-              <ManageOrderButtons
-                className="mt-6 flex lg:hidden"
-                orderId={entityId}
-                orderStatus={status.value}
-                orderTrackingUrl={trackingUrl}
-              />
             </div>
           </li>
         );
@@ -488,5 +486,3 @@ export const OrdersList = ({ customerOrders }: OrdersListProps) => {
     </ul>
   );
 };
-
-
