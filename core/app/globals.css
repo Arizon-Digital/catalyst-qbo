@@ -771,7 +771,7 @@ div#feefo-service-review-carousel-widgetId {
     text-transform: uppercase;
     float: left;
     clear: both;
-    margin: .375rem .75rem 0 0;
+    margin: .075rem .75rem 0 0;
     margin-bottom: 10px;
 }
 .productView-info {
@@ -1156,7 +1156,7 @@ label.inline-flex.w-full.items-center.justify-between {
         text-align: left;
     }
     .priced{
-    max-width: 300px;
+    max-width: 200px;
     }
     span.cntpriced {
         color: #1a2348;
