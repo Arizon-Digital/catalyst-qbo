@@ -9,7 +9,7 @@ const FeefoReview = ({ sku }) => {
     // Dynamically load the Feefo review script
     const script = document.createElement('script');
     script.type = 'text/javascript';
-    script.src = 'https://api.feefo.com/api/javascript/quality-bearings-online';
+    script.src = 'https://www.feefo.com/en-GB/reviews/quality-bearings-online?displayFeedbackType=PRODUCT&withMedia=false&timeFrame=ALL';
     script.async = true;
     document.body.appendChild(script);
 
@@ -29,8 +29,7 @@ const FeefoReview = ({ sku }) => {
           isCollapsed ? 'collapsed' : ''
         }`}
       >
-        {/* BigCommerce or custom reviews integration can go here */}
-        <p>Default reviews section or placeholder</p>
+        
 
         {/* Feefo Widget */}
         <div
@@ -40,7 +39,7 @@ const FeefoReview = ({ sku }) => {
         ></div>
       </div>
 
-      {/* Collapse/Expand Toggle */}
+      
       <a
         href="#"
         className="emthemesModez-mobile-collapse-handle"
