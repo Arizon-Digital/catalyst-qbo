@@ -119,7 +119,7 @@ const ProductCard = async ({
         {subtitle && (
           <p className="brand mb-[4px] text-[16px] font-[300] text-[#a5a5a5]">{subtitle}</p>
         )}
-        <p className="brand mb-[4px] text-[16px] font-[300] text-[#a5a5a5] descriptionplp">{product?.description}</p>
+        {/* <p className="brand mb-[4px] text-[16px] font-[300] text-[#a5a5a5] descriptionplp">{product?.description}</p> */}
         <div className="cardprice">
           <Suspense>  
           <ProductPriceDisplay product={product} page={pageData} currencyData={currencyCode}/>
