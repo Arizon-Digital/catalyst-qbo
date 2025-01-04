@@ -229,30 +229,34 @@ const ShippingInfo = async ({
 
 const OrderItemLayout = ({ lineItem }) => {
   return (
-    <div className="flex items-center space-x-4">
-      <div className="w-24 h-24 flex-shrink-0 overflow-hidden rounded-md">
+    <div className="!flex !items-start !space-x-6 !p-4 !justify-start !w-full">
+      <div className="!relative !w-24 !h-24 !flex-shrink-0">
         <Suspense fallback={<ProductSnippetSkeleton isExtended={true} />}>
-          <ProductSnippet
-            imagePriority={true}
-            imageSize="square"
-            isExtended={true}
-            product={assembleProductData(lineItem)}
-            className="w-full h-full object-cover"
-          />
+          <div className="!aspect-square !h-full !w-full">
+            <ProductSnippet
+              imagePriority={true}
+              imageSize="square"
+              isExtended={true}
+              product={assembleProductData(lineItem)}
+              className="!absolute !inset-0 !h-full !w-full !object-contain"
+            />
+          </div>
         </Suspense>
       </div>
-      <div className="flex-1 flex justify-between items-start">
-        <div className="flex-1">
-          <h3 className="text-base font-medium text-gray-900">
+      <div className="!flex !flex-1 !justify-between !items-start">
+        <div className="!flex-1">
+          <h3 className="!text-base !font-medium !text-gray-900 !m-0 !p-0">
             {lineItem.productName}
           </h3>
-          <p className="mt-1 text-sm text-gray-500">
+          <p className="!mt-1 !text-sm !text-gray-500 !m-0 !p-0">
             Quantity: {lineItem.quantity}
           </p>
         </div>
-        <p className="text-base font-medium text-gray-900 ml-4">
-          {lineItem.extendedListPrice.formatted}
-        </p>
+        <div className="!ml-4 !flex-shrink-0">
+          <p className="!text-base !font-medium !text-gray-900 !m-0 !p-0">
+            {lineItem.extendedListPrice.formatted}
+          </p>
+        </div>
       </div>
     </div>
   );
