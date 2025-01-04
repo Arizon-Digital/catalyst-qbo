@@ -774,6 +774,11 @@ div#feefo-service-review-carousel-widgetId {
     margin: .075rem .75rem 0 0;
     margin-bottom: 10px;
 }
+
+div#radix-\:Rakomtlfb\: {
+    color: #ffffff;
+    background-color: #1a2348;
+}
 .productView-info {
     border-top: 1px solid #dcdcdc;
     margin-top: .75rem;
