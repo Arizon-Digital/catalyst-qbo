@@ -699,6 +699,12 @@ div#feefo-service-review-carousel-widgetIdd {
     box-shadow: 0 3px 0 #dcdcdc;
     padding-bottom: 0.75rem;
 }
+.checkoutHeader-content{
+    margin: 0 auto;
+    max-width: 52.3076923077rem !important;
+    width: 100%;
+    padding: 1.5rem;
+}
 .product-info-hr {
     border-color: #ca9618;
     border-width: 2px 0 0;
