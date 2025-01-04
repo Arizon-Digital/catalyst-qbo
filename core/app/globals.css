@@ -680,7 +680,7 @@ div#feefo-service-review-carousel-widgetIdd {
     width: 50%;
 }
 
-.pb-3 {
+/* .pb-3 {
     height: 220px;
     margin-left: 20px;
     margin-top: 20px;
@@ -688,8 +688,17 @@ div#feefo-service-review-carousel-widgetIdd {
     border: 1px solid #dcdcdc;
     box-shadow: 0 3px 0 #dcdcdc;
     padding-bottom: 0.75rem;
-}
+} */
 
+.pb-3 {
+    height: auto;
+    margin-left: 20px;
+    margin-top: 20px;
+    width: auto;
+    border: 1px solid #dcdcdc;
+    box-shadow: 0 3px 0 #dcdcdc;
+    padding-bottom: 0.75rem;
+}
 .product-info-hr {
     border-color: #ca9618;
     border-width: 2px 0 0;
