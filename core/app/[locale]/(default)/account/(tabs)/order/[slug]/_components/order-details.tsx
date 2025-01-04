@@ -1,12 +1,8 @@
-
-
 import { getFormatter, getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
-
 import { Link } from '~/components/link';
 import { Button } from '~/components/ui/button';
 import { cn } from '~/lib/utils';
-
 import {
   assembleProductData,
   ProductSnippet,
@@ -23,8 +19,7 @@ const OrderState = async ({ orderState }: { orderState: OrderDataType['orderStat
     <div className="mb-6 flex flex-col gap-6 md:flex-row">
       <div>
         <h2 className="mb-2 text-3xl font-bold lg:text-4xl">
-          {t('orderNumber')}
-          {orderId}
+          {t('orderNumber')} {orderId}
         </h2>
         <p>
           {format.dateTime(new Date(orderDate.utc), {
@@ -50,7 +45,7 @@ const OrderSummaryInfo = async ({ summaryInfo }: { summaryInfo: OrderDataType['s
   return (
     <div className="border border-gray-200 p-6">
       <p className="pb-4 text-lg font-semibold">{t('orderSummary')}</p>
-      <div className="flex border-collapse flex-col gap-2 border-y border-gray-200 py-4">
+      <div className="flex flex-col gap-2 border-y border-gray-200 py-4">
         <p className="flex justify-between">
           <span>{t('orderSubtotal')}</span>
           <span>
@@ -64,8 +59,7 @@ const OrderSummaryInfo = async ({ summaryInfo }: { summaryInfo: OrderDataType['s
           <p className="flex justify-between">
             <span>{t('orderDiscount')}</span>
             <span>
-              -
-              {format.number(nonCouponDiscountTotal.value, {
+              -{format.number(nonCouponDiscountTotal.value, {
                 style: 'currency',
                 currency: nonCouponDiscountTotal.currencyCode,
               })}
@@ -76,8 +70,7 @@ const OrderSummaryInfo = async ({ summaryInfo }: { summaryInfo: OrderDataType['s
           <p className="flex justify-between" key={index}>
             <span>{t('orderAppliedCoupon', { code: couponCode })}</span>
             <span>
-              -
-              {format.number(discountedAmount.value, {
+              -{format.number(discountedAmount.value, {
                 style: 'currency',
                 currency: discountedAmount.currencyCode,
               })}
@@ -165,7 +158,7 @@ const ShippingInfo = async ({
   const shippingConsignments = consignments.shipping;
 
   if (!shippingConsignments) {
-    return;
+    return null;
   }
 
   let customerShippingAddress: string[] = [];
@@ -200,9 +193,9 @@ const ShippingInfo = async ({
         isMultiConsignments && 'flex flex-col gap-4 border-none md:flex-row md:gap-16',
       )}
     >
-      {!isMultiConsignments ? (
+      {!isMultiConsignments && (
         <p className="border-b border-gray-200 pb-4 text-lg font-semibold">{t('shippingTitle')}</p>
-      ) : null}
+      )}
       <div className="flex flex-col gap-2 py-4">
         <p className="font-semibold">{t('shippingAddress')}</p>
         {customerShippingAddress.map((line) => (
@@ -211,7 +204,7 @@ const ShippingInfo = async ({
       </div>
       <div
         className={cn(
-          'flex flex-col gap-2 border-t border-gray-200 pt-4 text-base',
+          'flex flex-col gap-2 border-t border-gray-200 pt-4',
           isMultiConsignments && 'border-0',
         )}
       >
@@ -229,6 +222,37 @@ const ShippingInfo = async ({
             <Link href="#">{trackingNumber}</Link>
           </Button>
         )}
+      </div>
+    </div>
+  );
+};
+
+const OrderItemLayout = ({ lineItem }) => {
+  return (
+    <div className="flex items-center space-x-4">
+      <div className="w-24 h-24 flex-shrink-0 overflow-hidden rounded-md">
+        <Suspense fallback={<ProductSnippetSkeleton isExtended={true} />}>
+          <ProductSnippet
+            imagePriority={true}
+            imageSize="square"
+            isExtended={true}
+            product={assembleProductData(lineItem)}
+            className="w-full h-full object-cover"
+          />
+        </Suspense>
+      </div>
+      <div className="flex-1 flex justify-between items-start">
+        <div className="flex-1">
+          <h3 className="text-base font-medium text-gray-900">
+            {lineItem.productName}
+          </h3>
+          <p className="mt-1 text-sm text-gray-500">
+            Quantity: {lineItem.quantity}
+          </p>
+        </div>
+        <p className="text-base font-medium text-gray-900 ml-4">
+          {lineItem.extendedListPrice.formatted}
+        </p>
       </div>
     </div>
   );
@@ -262,32 +286,13 @@ export const OrderDetails = async ({ data }: { data: OrderDataType }) => {
                     shippingNumber={idx}
                   />
                 )}
-                <ul className="my-4">
-                  {lineItems.map((shipment) => {
-                    return (
-                      <li key={shipment.entityId} className="flex items-start space-x-4 pb-4 last:pb-0 border-b border-gray-100 last:border-b-0">
-                        <Suspense fallback={<ProductSnippetSkeleton isExtended={true} />}>
-                          <div className="flex w-full gap-4">
-                            <div className="w-24 h-24 flex-shrink-0">
-                              <ProductSnippet
-                                imagePriority={true}
-                                imageSize="square"
-                                isExtended={true}
-                                product={assembleProductData(shipment)}
-                                className="w-full h-full object-cover rounded-md"
-                              />
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <div className="flex flex-col">
-                                {/* Product details will be rendered here by ProductSnippet */}
-                              </div>
-                            </div>
-                          </div>
-                        </Suspense>
-                      </li>
-                    );
-                  })}
-                </ul>
+                <div className="divide-y divide-gray-200">
+                  {lineItems.map((lineItem) => (
+                    <div key={lineItem.entityId} className="py-4">
+                      <OrderItemLayout lineItem={lineItem} />
+                    </div>
+                  ))}
+                </div>
               </div>
             );
           })}
