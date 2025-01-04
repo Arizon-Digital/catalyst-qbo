@@ -72,11 +72,11 @@ const Footer = ({
     <section className="section-flex ">
  
       {/* Contact Information Section */}
-      <div className="flex flex-col gap-4 f1">
+      <div className="flex flex-col gap-4 f1 ">
        
         {Boolean(contactInformation) && (
           <>
-            <address className="not-italic" id="address">
+            <address className="not-italic font-bold" id="address">
             <p id="address"> Quality Bearings Online Ltd</p>
             {/* {contactInformation?.address?.split('\n').map((line) => (
                 <Fragment key={line}>
@@ -87,7 +87,7 @@ const Footer = ({
             </address>
             {/* <p id="address" className="footer-contact"> UK - 0808 168 1234</p>
             <p id="address" className="footer-contact"> USA - 646 895 6246 / 619 354 1821</p> */}
-            <p id="address" className="footer-contact"> Canada - 438 793 4642</p>
+            <p id="address" className="footer-contact font-bold"> Canada - 438 793 4642</p>
             {/* {Boolean(contactInformation?.phone) && (
  
               <p id="address"> International- {contactInformation?.phone}</p>
@@ -97,7 +97,7 @@ const Footer = ({
           </>
         )}
  
-        <a className="contactus" href="/contact-us">
+        <a className="contactus font-bold" href="/contact-us">
  
           <p id="address">Contact Us</p>
         </a>
@@ -226,7 +226,7 @@ const Footer = ({
     <section className="flex flex-col gap-10 border-t border-gray-200 px-4 py-8 sm:gap-8 sm:px-10 sm:py-6 lg:hidden lg:px-12 2xl:px-0">
       <Locale />
       <div className="flex w-full flex-col justify-between gap-10 sm:flex-row sm:gap-8">
-        <div className="flex gap-6">{paymentIcons}</div>
+        <div className="flex gap-6 items-center justify-center">{paymentIcons}</div>
         <p className="textscopy">{copyright}</p>
       </div>
     </section>
