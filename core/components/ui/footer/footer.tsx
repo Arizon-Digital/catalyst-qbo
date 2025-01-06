@@ -100,7 +100,8 @@ const Footer = ({
         <a className="contactus font-bold" href="/contact-us">
  
           <p id="address">Contact Us</p>
-          <span className="block w-full h-[1px] bg-white mt-4 sm:hidden"></span>
+          <span className="flex flex-col gap-10 border-t border-gray-200 px-4 py-8 sm:gap-8 sm:px-10 sm:py-6 lg:hidden lg:px-12 2xl:px-0"></span>
+          
         </a>
     
         {/* Social Media Links */}
