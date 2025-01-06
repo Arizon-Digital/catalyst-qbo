@@ -14,6 +14,7 @@ const CategoryPageQuery = graphql(
       site {
         category(entityId: $categoryId) {
           name
+          description
           ...BreadcrumbsFragment
           defaultImage {
             altText

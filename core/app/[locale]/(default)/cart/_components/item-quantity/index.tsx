@@ -156,7 +156,7 @@ export const ItemQuantity = ({ product }: { product: Product }) => {
   const [productQuantity, setProductQuantity] = useState<number>(quantity);
 
   useEffect(() => {
-    document.title=cartT("title");
+    document.title=cartT("title" );
     setProductQuantity(quantity);
   }, [quantity]);
 

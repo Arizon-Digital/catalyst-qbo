@@ -116,8 +116,17 @@ export default async function Category(props: Props) {
           />
         </div>
       )}
+       {/* {category.description && (
+        <div className="w-full mt-6 mb-8 px-4 sm:px-6">
+          <div 
+            className="prose max-w-none text-gray-700"
+            dangerouslySetInnerHTML={{ __html: category.description }}
+          />
+        </div>
+      )} */}
       {/* lg:justify- sortbutton plp-filter-parent md:mb-8 lg:flex lg:flex-row lg:items-center mt-8 */}
       <div className="plp-filter-parent md:mb-8 flex flex-col items-center lg:flex-row mt-8 w-full ">
+        
         <div className="font-oswald flex w-[19.5%] items-center justify-center rounded-[8px] border-[7px] border-[#CA9619] bg-[#CA9619] pb-[12px] pl-[18px] pr-[18px] pt-[12px] text-[18px] self-start sm:self-auto font-normal text-white no-underline">
           <Link
             className="categorybtn mb-4 w-full text-center text-[18px] font-[400] tracking-[-1px] transition-colors duration-200 hover:text-[#131313] lg:mb-0 pt-4 sm:pt-0"
@@ -130,6 +139,7 @@ export default async function Category(props: Props) {
         </div>
         
         <div className="plp-filters ml-[2.3%] w-[80%] font-[300] hidden lg:block z--50">
+          
           <div className="form-field pdp hover:border-[#ca9618] hidden lg:block">
             <input
               className="form-input w-full"
