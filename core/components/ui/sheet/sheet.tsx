@@ -33,7 +33,7 @@ const Sheet = ({ title, children, side = 'left', trigger, ...props }: Props) => 
             <h2 className="text-2xl font-bold">{title}</h2>
           </SheetPrimitive.Title>
           <SheetPrimitive.Close className="focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20">
-            <X className="h-6 w-6">
+            <X className="h-[5.3rem] w-6">
               <title>Close</title>
             </X>
           </SheetPrimitive.Close>
