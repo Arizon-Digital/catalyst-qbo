@@ -2044,7 +2044,11 @@ width: auto;
         .cart-page .cart-page-col2{
             width: 100%;
         }
-
+        p.textscopy {
+            margin-left: 50px !important;
+            font-size: 14px;
+            font-weight: 400;
+        }
 
         .cart-page .cart-item-tab-val{
             flex-direction: column;
