@@ -100,8 +100,9 @@ const Footer = ({
         <a className="contactus font-bold" href="/contact-us">
  
           <p id="address">Contact Us</p>
+          <span className="block w-full h-[1px] bg-white mt-4 sm:hidden"></span>
         </a>
- 
+    
         {/* Social Media Links */}
         {Boolean(socialMediaLinks) && (
           <nav aria-label="Social media links" className="block">
