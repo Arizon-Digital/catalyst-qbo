@@ -117,7 +117,7 @@ export default async function Product(props: Props) {
             ...(categoryWithMostBreadcrumbs?.breadcrumbs?.edges || []),
             {
               node: {
-                name: product.mpn || '',
+                name: product.name || '',
                 path: '#',
               },
             },
