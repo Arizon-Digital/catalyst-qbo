@@ -2050,11 +2050,7 @@ width: auto;
             padding-inline: 40px;
         } */
     }
-    .plp-filter-parent > div:first-child{
-        width: 100% !important;
-        padding:0;
-        height:70px;
-    }
+    
     
      
     @media screen and (max-width: 550px){
