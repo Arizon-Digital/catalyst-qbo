@@ -69,14 +69,7 @@ const ProductCard = async ({
   } else {
     currencyCode = await getCurrencyCodeData() || undefined;
   }
-
-  console.log('Product Data:', {
-    productId: id,
-    productName: name,
-    fullProductObject: product,
-    description: product?.description,
-  });
-
+  
   const addToCardData = {
     defaultImage: {
       url: image.src,

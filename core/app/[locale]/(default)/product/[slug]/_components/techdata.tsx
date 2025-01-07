@@ -53,8 +53,10 @@ interface Props {
 
 const TechData: React.FC<Props> = ({ product }) => {
   const t = useTranslations('Product.TechData');
-  
-  const customFields = removeEdgesAndNodes(product.customFields);
+  let customFields: any = [];
+  if(product?.customFields) {
+    customFields = removeEdgesAndNodes(product.customFields);
+  }
 
   // Return null if no technical data is available
   if (!product.sku && !product.condition && !product.availability && !product.brand && !product.weight) {
