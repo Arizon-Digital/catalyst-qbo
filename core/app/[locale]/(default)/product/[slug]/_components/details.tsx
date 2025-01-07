@@ -66,7 +66,7 @@ interface Props {
 
 export const Details = ({ product }: Props) => {
 
-  console.log('Product:::::::::::::::::', JSON.stringify(product.weight));
+  
   const t = useTranslations('Product.Details');
   
   const format = useFormatter();

@@ -1778,6 +1778,9 @@ width: auto;
         .prod-desc-tbl{
             width:10% !important;
         }
+        .pdpwidth {
+            padding:12px ;
+        }
         .plp-filter-parent > div:first-child{
             width: 100% !important;
             padding:0;
@@ -2043,19 +2046,23 @@ width: auto;
     }
      
     @media screen and (max-width: 640px){
-        main.flex-1.px-4.\32 xl\:container.sm\:px-10.lg\:px-12.\32 xl\:mx-auto.\32 xl\:px-0{
+        /* main.flex-1.px-4.\32 xl\:container.sm\:px-10.lg\:px-12.\32 xl\:mx-auto.\32 xl\:px-0{
             padding-inline: 40px;
-        }
+        } */
     }
     .plp-filter-parent > div:first-child{
         width: 100% !important;
         padding:0;
         height:70px;
     }
+    
      
     @media screen and (max-width: 550px){
         .cart-page .cart-page-col2{
             width: 100%;
+        }
+        .pdpprname {
+            font-size: 22px;  
         }
         p.textscopy {
             margin-left: 45px !important;
