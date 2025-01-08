@@ -154,7 +154,7 @@ const Header = ({
         <header className="z-900 w-full border-b border-gray-100">
           <div className="header-2 relative flex items-center justify-center p-[0] nmd:static nmd:gap-[25px] nmd:py-[25px]">
             <CustomLink
-              className="header-logo-a flex w-full nmd:w-[calc((400/1600)*100vw)]"
+              className="header-logo-a flex w-full nmd:w-[calc((400/1600)*100vw)] mobilelogo"
               href="/"
             >
               {typeof logo === 'object' ? (
@@ -173,7 +173,7 @@ const Header = ({
 
             <div className="header-elements absolute flex w-full items-center gap-[20px] nmd:static nmd:w-auto">
               <div className="header-search hidden nmd:block">{search}</div>
-              <div className="flex w-full items-center gap-[20px] nmd:w-auto">
+              <div className="flex items-center gap-[20px] nmd:w-auto">
                 <nav className="account header-account hidden nmd:block">{account}</nav>
                 <div className="header-cart flex w-full items-center nmd:w-auto">
                   <div className="header-cart-div absolute right-0 flex items-center pr-[10px] nmd:static nmd:pr-0">
