@@ -3079,6 +3079,10 @@ div#warp button{
     .product-grid.grid-cols-4 .plp-product-btn{
         display: none;
     }
+    .text-sm {
+        font-size: .68rem;
+    line-height: 1.25rem;
+    }
   }
 
   .lg\:text-5xl{
