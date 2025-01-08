@@ -3073,8 +3073,11 @@ div#warp button{
       float: none;
       display: block;
     }
-    .product-grid{
+    /* .product-grid{
         grid-template-columns: auto;
+    } */
+    .product-grid.grid-cols-4 .plp-product-btn{
+        display: none;
     }
   }
 
