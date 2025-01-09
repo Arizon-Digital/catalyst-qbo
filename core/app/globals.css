@@ -2053,6 +2053,9 @@ width: auto;
         /* main.flex-1.px-4.\32 xl\:container.sm\:px-10.lg\:px-12.\32 xl\:mx-auto.\32 xl\:px-0{
             padding-inline: 40px;
         } */
+        div#radix-\:R66vfffbmlt7\: {
+            z-index: 9999 !important;
+        }
     }
     
     
@@ -2063,6 +2066,12 @@ width: auto;
         }
         div#radix-\:rm\: {
             z-index: 99999 !important;
+        }
+        div#radix-\:R66vfffbmlt7\: {
+            z-index: 9999 !important;
+        }
+        div#radix-\:r4\:{
+            z-index: 9999999999 !important;
         }
         .pdpprname {
             font-size: 22px;  
