@@ -791,6 +791,7 @@ div#feefo-service-review-carousel-widgetId {
     clear: both;
     margin: .075rem .75rem 0 0;
     margin-bottom: 10px;
+    margin-top: 3px;
 }
 
 div#radix-\:Rakomtlfb\: {
@@ -2609,7 +2610,7 @@ section.section-flex {
         margin-left: 50px;
     }
     .flex.flex-col.gap-4.f1 {
-        padding-right: 10px;
+        padding-right: 60px;
     }
     nav.grid.auto-cols-fr.gap-8.sm\:grid-flow-col {
         padding-right: 10px;
@@ -3103,8 +3104,17 @@ div#warp button{
     /* .product-grid{
         grid-template-columns: auto;
     } */
-    .product-grid.grid-cols-4 .plp-product-btn{
+    /* .product-grid.grid-cols-4 .plp-product-btn{
         display: none;
+    } */
+    .plp-product-btn-hover {
+        display: none;
+    }
+    .plp-product-btn{
+        display: inline-grid !important;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
     }
     .text-sm {
         font-size: .68rem;
