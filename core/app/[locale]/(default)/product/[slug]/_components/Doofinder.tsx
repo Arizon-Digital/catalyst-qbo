@@ -35,7 +35,7 @@ const DoofinderScriptLoader = () => {
         };
         s = l.getElementsByTagName(a)[0];
         s.parentNode.insertBefore(r, s);
-      })(document, 'script', 'https://cdn.doofinder.com/livelayer/1/js/loader.min.js');
+      })(document, 'script', 'https://eu1-config.doofinder.com/2.x/dea1f7b2-1b39-4e98-ad80-fec83c63d49a.js');
     }
   }, [currency, setCurrency]);
 

@@ -58,6 +58,8 @@ const Footer = ({
   ...props
 }: Props) => (
   <footer className={cn('2xl:container 2xl:mx-auto', className)} {...props}>
+
+    
     <nav className="grid flex-auto auto-cols-frr gap-8 sm:grid-flow-col">
       <article className="emthemesModez-newsletterForm" data-section-type="newsletterSubscription">
         <div className="newsletter-container">
@@ -100,9 +102,10 @@ const Footer = ({
         <a className="contactus font-bold" href="/contact-us">
  
           <p id="address">Contact Us</p>
-          <span className="flex flex-col gap-10 border-t border-gray-200 px-4 py-8 sm:gap-8 sm:px-10 sm:py-6 lg:hidden lg:px-12 2xl:px-0"></span>
+          <span className="block w-100 h-[1px] bg-white mt-4 sm:hidden"></span>
           
         </a>
+        
     
         {/* Social Media Links */}
         {Boolean(socialMediaLinks) && (

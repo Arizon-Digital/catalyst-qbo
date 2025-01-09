@@ -89,7 +89,6 @@ export default async function Cart() {
   let cartItemsText = cartQty > 1 ? ' items' : ' item';
 
   return (
-    
     <div className="cart-page mt-[0px] flex flex-col justify-center">
       <ComponentsBreadcrumbs breadcrumbs={breadcrumbs} />
       <h1 className="cart-heading mb-[0.75rem] text-[25px] font-normal">{`${t('heading')} (${cartQty}${cartItemsText})`}</h1>
@@ -110,7 +109,6 @@ export default async function Cart() {
               <CartItem currencyCode={cart.currencyCode} key={product.entityId} product={product} />
             ))}
           </table>
-          <div id="feefo-service-review-carousel-widgetId" class="feefo-review-carousel-widget-service"></div>
           <ul className="cart-item-tab rounded-[4px] border border-[#dcdcdc] py-[6px] text-[1rem] md:hidden">
             {lineItems.map((product) => (
               <CartItem currencyCode={cart.currencyCode} key={product.entityId} product={product} />
@@ -216,7 +214,8 @@ export default async function Cart() {
         </div>
       </div>
       <CartViewed checkout={checkout} currencyCode={cart.currencyCode} lineItems={lineItems} />
-      <div id="feefo-service-review-floating-widgetId"></div>
+      <div id="feefo-service-review-carousel-widgetId" className="feefo-review-carousel-widget-service order-last"></div>
+      <div id="feefo-service-review-floating-widgetId" className="order-last"></div>
     </div>
   );
 }
