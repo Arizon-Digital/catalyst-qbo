@@ -17,7 +17,7 @@ const Sheet = ({ title, children, side = 'left', trigger, ...props }: Props) => 
       <SheetPrimitive.Content
         aria-describedby={undefined}
         className={cn(
-          'fixed gap-4 overflow-auto bg-white p-6 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500 data-[state=open]:animate-in data-[state=closed]:animate-out md:p-10',
+          'fixed gap-4 overflow-auto bg-white p-6 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500 data-[state=open]:animate-in data-[state=closed]:animate-out md:p-10 filterbox',
           side === 'top' &&
             'inset-x-0 top-0 border-b data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top',
           side === 'bottom' &&

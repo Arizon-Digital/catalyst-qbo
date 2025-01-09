@@ -2067,6 +2067,9 @@ width: auto;
         div#radix-\:rm\: {
             z-index: 99999 !important;
         }
+        .filterbox {
+            z-index: 99999 !important;
+        }
         div#radix-\:R66vfffbmlt7\: {
             z-index: 9999 !important;
         }
