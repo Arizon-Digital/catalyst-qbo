@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { BcImage } from '~/components/bc-image';
 import { Link as CustomLink } from '~/components/link';
 import { Button } from '../button';
+import { Instagram, Linkedin, MessageCircle } from 'lucide-react';
 
 export const MobileNav = ({ links, logo }: Props) => {
   const [open, setOpen] = useState(false);
@@ -126,11 +127,35 @@ export const MobileNav = ({ links, logo }: Props) => {
           <div className="flex flex-col gap-2">
             {links.map((link, index) => renderNestedMenu(link, `menu-${index}`))}
             
+            <CustomLink href="/festive-opening-hours" className="block p-3 ps-0 text-#ffffff">Festive Opening Hours</CustomLink>
             <CustomLink href="/about-us" className="block p-3 ps-0 text-#ffffff">About Us</CustomLink>
+            <CustomLink href="/10-year-anniversary" className="block p-3 ps-0 text-#ffffff">10 Year Anniversary</CustomLink>
             <CustomLink href="/contact-us" className="block p-3 ps-0 text-#ffffff">Contact Us</CustomLink>
             <CustomLink href="/customer-service" className="block p-3 ps-0 text-#ffffff">Customer Service</CustomLink>
+            <CustomLink href="/delivery-information" className="block p-3 ps-0 text-#ffffff">Delivery Information</CustomLink>
+            <CustomLink href="/faqs" className="block p-3 ps-0 text-#ffffff">FAQs</CustomLink>
             <CustomLink href="/privacy-policy" className="block p-3 ps-0 text-#ffffff">Privacy Policy</CustomLink>
+            <CustomLink href="/customer-reviews" className="block p-3 ps-0 text-#ffffff">Customer Reviews</CustomLink>
             <CustomLink href="/terms-and-conditions" className="block p-3 ps-0 text-#ffffff">Terms & Conditions</CustomLink>
+            <CustomLink href="/blog" className="block p-3 ps-0 text-#ffffff">Blog</CustomLink>
+
+            {/* Authentication Links */}
+            <div className="mt-4 border-t border-gray-700 pt-4">
+              <CustomLink href="/sign-in" className="block p-3 ps-0 text-#ffffff">Sign In</CustomLink>
+              <CustomLink href="/register" className="block p-3 ps-0 text-#ffffff">Register</CustomLink>
+            </div>
+
+            <div className="mt-4 flex gap-4 p-3 ps-0">
+              <a href="/instagram" className="text-#fff hover:text-primary">
+                <Instagram size={24} />
+              </a>
+              <a href="/linkedin" className="text-#fff hover:text-primary">
+                <Linkedin size={24} />
+              </a>
+              <a href="/contact" className="text-#fff hover:text-primary">
+                <MessageCircle size={24} />
+              </a>
+            </div>
           </div>
         </SheetPrimitive.Content>
       </SheetPrimitive.Portal>
