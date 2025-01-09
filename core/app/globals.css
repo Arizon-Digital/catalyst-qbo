@@ -793,6 +793,10 @@ div#feefo-service-review-carousel-widgetId {
 div#radix-\:Rakomtlfb\: {
     color: #ffffff;
     background-color: #1a2348;
+    z-index: 99999 !important;
+}
+div#radix-\:rm\: {
+    z-index: 99999 !important;
 }
 .productView-info {
     border-top: 1px solid #dcdcdc;
@@ -2056,6 +2060,9 @@ width: auto;
     @media screen and (max-width: 550px){
         .cart-page .cart-page-col2{
             width: 100%;
+        }
+        div#radix-\:rm\: {
+            z-index: 99999 !important;
         }
         .pdpprname {
             font-size: 22px;  
