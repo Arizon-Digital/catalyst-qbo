@@ -94,7 +94,7 @@ const DialogDemo = ({
             <div className="mt-4 space-y-2">
               <button 
                 className="w-full bg-yellow-500 hover:bg-yellow-600 text-center py-2 px-3 rounded text-sm font-medium text-black uppercase"
-                onClick={() => window.location.href = '/checkout'}
+                onClick={() => window.location.href = 'https://secure.qualitybearingsonline.ca/checkout'}
               >
                 Proceed to Checkout
               </button>

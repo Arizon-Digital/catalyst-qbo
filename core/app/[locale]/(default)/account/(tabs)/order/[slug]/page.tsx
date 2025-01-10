@@ -62,7 +62,7 @@ export default async function Order(props: Props) {
   if (!order) {
     notFound();
   }
-
+  console.log('----order----', JSON.stringify(order))
   const data = mapOrderData(order);
 
   return <OrderDetails data={data} />;
