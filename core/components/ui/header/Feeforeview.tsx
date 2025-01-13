@@ -9,7 +9,7 @@ const FeefoReview = ({ sku }) => {
     // Dynamically load the Feefo review script
     const script = document.createElement('script');
     script.type = 'text/javascript';
-    script.src = 'https://www.feefo.com/en-GB/reviews/quality-bearings-online?displayFeedbackType=PRODUCT&withMedia=false&timeFrame=ALL';
+    script.src = 'https://api.feefo.com/api/javascript/quality-bearings-online';
     script.async = true;
     document.body.appendChild(script);
 

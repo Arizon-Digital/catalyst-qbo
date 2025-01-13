@@ -500,6 +500,7 @@ export const RegisterCustomerForm = ({
                       }
                       field={field}
                       name={fieldName}
+                      
                       options={countryStates.map(({ name }) => {
                         return { entityId: name, label: name };
                       })}
