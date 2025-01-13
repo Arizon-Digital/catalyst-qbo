@@ -1,3 +1,5 @@
+
+
 import { AlertCircle } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useEffect, useReducer } from 'react';
@@ -62,13 +64,16 @@ export const ShippingInfo = ({
     checkout.shippingConsignments?.find((consignment) => consignment.selectedShippingOption) ||
     checkout.shippingConsignments?.[0];
 
+  // Find Canada in shipping countries
+  const canadaCountry = shippingCountries.find(country => country.code === 'CA');
+
   const [formValues, setFormValues] = useReducer(
     (currentValues: FormValues, newValues: Partial<FormValues>) => ({
       ...currentValues,
       ...newValues,
     }),
     {
-      country: shippingConsignment?.address.countryCode ?? '',
+      country: shippingConsignment?.address.countryCode ?? 'CA', // Set Canada as default
       state: shippingConsignment?.address.stateOrProvince ?? '',
       city: shippingConsignment?.address.city ?? '',
       postcode: shippingConsignment?.address.postalCode ?? '',
@@ -76,6 +81,17 @@ export const ShippingInfo = ({
   );
 
   const selectedCountry = shippingCountries.find(({ code }) => code === formValues.country);
+
+  // Initialize with Canada and its first province if available
+  useEffect(() => {
+    if (canadaCountry && !formValues.country) {
+      const firstProvince = canadaCountry.statesOrProvinces?.[0]?.name || '';
+      setFormValues({ 
+        country: 'CA',
+        state: firstProvince
+      });
+    }
+  }, [shippingCountries]);
 
   // Preselect first state when states array changes and state is empty
   useEffect(() => {
@@ -118,7 +134,7 @@ export const ShippingInfo = ({
                 if (value) {
                   setFormValues({ country: value, state: '', city: '', postcode: '' });
                 } else {
-                  setFormValues({ country: '', state: '', city: '', postcode: '' });
+                  setFormValues({ country: 'CA', state: '', city: '', postcode: '' }); // Default back to Canada if cleared
                 }
 
                 hideShippingOptions();
@@ -129,6 +145,7 @@ export const ShippingInfo = ({
               }))}
               placeholder={t('countryPlaceholder')}
               value={formValues.country}
+              defaultValue="CA"
             />
           </FieldControl>
         </Field>
