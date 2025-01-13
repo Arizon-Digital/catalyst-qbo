@@ -6,6 +6,7 @@ import { useFormatter, useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 import { useCommonContext } from '~/components/common-context/common-provider';
 import { getProductPrices } from '~/components/graphql-apis';
+import { getCurrencyCodeFn } from '~/components/header/_actions/getCurrencyList';
 
 interface Props {
   product: any;
@@ -16,50 +17,16 @@ interface Props {
 const ProductPriceDisplay = ({ product, page, currencyData }: Props) => {
   const t = useTranslations('Product.Details');
   const format = useFormatter();
-  const [priceData, setPriceData] = useState({});
-  const [showExclTax, setShowExclTax] = useState(false);
   const getCommonContext: any = useCommonContext();
 
   if(!currencyData || page == 'product') {
     currencyData = getCommonContext.getCurrencyCode;
   }
 
-  useEffect(() => {
-    if (page == 'bag' || page == 'card') {
-      setPriceData(product);
-      if (currencyData == 'GBP') {
-        setShowExclTax(true);
-      } else {
-        setShowExclTax(false);
-      }
-    } else {
-      const fetchProductPrice = async ({ entityId, optionValueIds, currencyCode }: { entityId: any, optionValueIds: any, currencyCode: any }) => {
-        const product: any = await getProductPrices({ entityId, optionValueIds, currencyCode });
-        setPriceData(product);
-        if (currencyCode == 'GBP') {
-          setShowExclTax(true);
-        } else {
-          setShowExclTax(false);
-        }
-      }
+  if (!product?.prices) return null;
 
-      if (page == 'bag' || page == 'card') {
-        setPriceData(product);
-        if (currencyData == 'GBP') {
-          setShowExclTax(true);
-        } else {
-          setShowExclTax(false);
-        }
-      } else {
-        fetchProductPrice({ entityId: product?.entityId, optionValueIds: [], currencyCode: currencyData });
-      }
-    }
-  }, [setShowExclTax]);
-
-  if (!priceData?.prices) return null;
-
-  const { prices, excludeTax }: { prices: any, excludeTax: any } = priceData;
-  const displayPrices = showExclTax && currencyData === 'GBP' ? excludeTax : prices;
+  const { prices, excludeTax }: { prices: any, excludeTax: any } = product;
+  const displayPrices = prices;
 
   const showPriceRange =
     displayPrices?.priceRange?.min.value !== displayPrices?.priceRange?.max.value;

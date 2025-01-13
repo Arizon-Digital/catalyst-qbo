@@ -1,4 +1,5 @@
 import { NextFetchEvent, NextRequest, NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
 import { z } from 'zod';
 
 import { getSessionCustomerAccessToken } from '~/auth';
@@ -258,6 +259,19 @@ export const withRoutes: MiddlewareFactory = () => {
 
     const { route, status } = await getRouteInfo(request, event);
 
+    const cookieStore = await cookies();
+    let currencyCookie = cookieStore.get('currencyCode');
+    if(!currencyCookie) {
+      await cookieStore.set({
+        name: 'currencyCode',
+        value: 'CAD',
+        httpOnly: true,
+        sameSite: 'lax',
+        secure: true,
+        path: '/',
+      });
+    }
+
     if (status === 'MAINTENANCE') {
       // 503 status code not working - https://github.com/vercel/next.js/issues/50155
       return NextResponse.rewrite(new URL(`/${locale}/maintenance`, request.url), { status: 503 });
@@ -306,6 +320,7 @@ export const withRoutes: MiddlewareFactory = () => {
 
     switch (node?.__typename) {
       case 'Brand': {
+        let postfix = '';
         url = `/${locale}/brand/${node.entityId}${postfix}`;
         break;
       }
@@ -317,6 +332,7 @@ export const withRoutes: MiddlewareFactory = () => {
       }
 
       case 'Product': {
+        let postfix = '';
         url = `/${locale}/product/${node.entityId}${postfix}`;
         break;
       }

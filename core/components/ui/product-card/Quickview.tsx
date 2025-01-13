@@ -99,13 +99,14 @@ const QuickView = ({ product }: QuickViewProps) => {
       <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm" />
+          <Dialog.Title className="w-5/6 grow font-semibold"></Dialog.Title>
           <Dialog.Content className="fixed left-[50%] top-[50%]  max-h-[90vh] w-[90vw] max-w-4xl translate-x-[-50%] translate-y-[-50%] overflow-y-auto rounded-lg bg-white shadow-lg quickview">
             <div className="p-8">
               <Dialog.Close className="absolute right-4 top-4  rounded-full p-2 hover:bg-gray-100">
                 <X className="h-6 w-6" />
                 <span className="sr-only">Close</span>
               </Dialog.Close>
-
+              <Dialog.Description></Dialog.Description>
               <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
                 <div className="a1 mb-12 mt-4 lg:grid lg:grid-cols-2 lg:gap-8">
                   <Gallery product={productInfo} />

@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { Select } from '~/components/ui/form';
-import { useRouter } from '~/i18n/routing';
 import { getCurrencyListData, getCurrencyCodeFn, setCurrencyCodeFn } from "~/components/header/_actions/getCurrencyList";
 import { useCommonContext } from '~/components/common-context/common-provider';
 import { updateCartCurrency } from "~/components/graphql-apis";
@@ -11,7 +10,6 @@ export const GetCurrencyList = () => {
   const [currency, setCurrency] = useState([]);
   const [currencyCode, setCurrencyCode] = useState('');
   const [showExclTax, setShowExclTax] = useState(false);
-  const router = useRouter();
   const getCommonContext: any = useCommonContext();
 
   useEffect(() => {
@@ -24,25 +22,22 @@ export const GetCurrencyList = () => {
         }),
       );
       setCurrency(currencyOptions);
-      /*let currencyCookieData: string = (await getCurrencyCodeFn()) || 'CAD';
+      let currencyCookieData: string = (await getCurrencyCodeFn()) || 'CAD';
       setCurrencyCodeFn(currencyCookieData);
       setCurrencyCode(currencyCookieData);
-      getCommonContext.setCurrencyCodeFn(currencyCookieData);
+      /*getCommonContext.setCurrencyCodeFn(currencyCookieData);
       setShowExclTax(currencyCookieData === 'GBP');*/
     };
-    let currencyCodeData = getCommonContext.getCurrencyCode || 'CAD';
     getCurrencyData();
-    setCurrencyCode(currencyCodeData);
-    setShowExclTax(currencyCodeData === 'GBP');
   }, []);
 
   const onCurrencyChange = async (currencyCode: string) => {
+    await setCurrencyCodeFn(currencyCode);
     await updateCartCurrency(currencyCode);
-    setCurrencyCodeFn(currencyCode);
     setCurrencyCode(currencyCode);
     getCommonContext.setCurrencyCodeFn(currencyCode);
     setShowExclTax(currencyCode === 'GBP');
-    router.replace(location.href);
+    location.reload();
   };
 //hover:!text-[#ca9618]
   return (
