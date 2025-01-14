@@ -1,6 +1,3 @@
-
-
-
 import useEmblaCarousel, { UseEmblaCarouselType } from 'embla-carousel-react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -38,11 +35,10 @@ const Carousel = ({ className, title, pageSize = 5, products, ...props }: Props)
     align: 'start',
     slidesToScroll: isMobile ? 1 : pageSize,
     draggable: true,
-    containScroll: 'trimSnaps',
     skipSnaps: false,
     speed: isMobile ? 10 : 8,
     dragFree: false,
-    startIndex: 0
+    containScroll: false
   });
 
   const t = useTranslations('Components.Carousel');
@@ -52,14 +48,27 @@ const Carousel = ({ className, title, pageSize = 5, products, ...props }: Props)
       // For mobile, group products in pairs
       const mobileGroups: ReactNode[][] = [];
       for (let i = 0; i < products.length; i += 2) {
-        mobileGroups.push(products.slice(i, Math.min(i + 2, products.length)));
+        const group = [];
+        for (let j = 0; j < 2; j++) {
+          const index = (i + j) % products.length;
+          group.push(products[index]);
+        }
+        mobileGroups.push(group);
       }
       return mobileGroups;
     }
+    
     // For desktop, group by pageSize
     const groups: ReactNode[][] = [];
-    for (let i = 0; i < products.length; i += pageSize) {
-      groups.push(products.slice(i, Math.min(i + pageSize, products.length)));
+    const totalGroups = Math.ceil(products.length / pageSize);
+    
+    for (let i = 0; i < totalGroups; i++) {
+      const group = [];
+      for (let j = 0; j < pageSize; j++) {
+        const index = (i * pageSize + j) % products.length;
+        group.push(products[index]);
+      }
+      groups.push(group);
     }
     return groups;
   }, [products, pageSize, isMobile]);
@@ -67,7 +76,6 @@ const Carousel = ({ className, title, pageSize = 5, products, ...props }: Props)
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
   const [selectedSnapIndex, setSelectedSnapIndex] = useState(0);
-  const [slidesInView, setSlidesInView] = useState<number[]>([0]);
 
   const onSelect = useCallback((emblaApi: CarouselApi) => {
     if (!emblaApi) return;
@@ -116,9 +124,6 @@ const Carousel = ({ className, title, pageSize = 5, products, ...props }: Props)
     onSelect(api);
     api.on('reInit', onSelect);
     api.on('select', onSelect);
-    api.on('slidesInView', () => {
-      setSlidesInView(api.slidesInView());
-    });
 
     return () => {
       api.off('select', onSelect);
@@ -177,8 +182,7 @@ const Carousel = ({ className, title, pageSize = 5, products, ...props }: Props)
               aria-roledescription="slide"
               className={cn(
                 'min-w-0 shrink-0 grow-0 px-4',
-                isMobile ? 'grid grid-cols-2 gap-4 w-full' : 'grid grid-cols-5 gap-8 w-full',
-                !slidesInView.includes(index) && 'invisible'
+                isMobile ? 'grid grid-cols-2 gap-4 w-full' : 'grid grid-cols-5 gap-8 w-full'
               )}
               id={`${id}-slide-${index + 1}`}
               role="group"
@@ -186,9 +190,7 @@ const Carousel = ({ className, title, pageSize = 5, products, ...props }: Props)
               {group.map((product, productIndex) => (
                 <div 
                   key={productIndex} 
-                  className={cn(
-                    'w-full'
-                  )}
+                  className="w-full"
                 >
                   {product}
                 </div>
