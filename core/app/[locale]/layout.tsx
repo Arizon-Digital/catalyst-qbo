@@ -99,7 +99,7 @@ export default async function RootLayout({ params, children }: Props) {
       <head>
         <DraftModeScript />
       </head>
-      <body className="flex h-screen min-w-[375px] flex-col">
+      <body className="flex h-screen min-w-[auto] flex-col">
         <Notifications />
         <MakeswiftProvider>
           <NextIntlClientProvider locale={locale} messages={messages}>

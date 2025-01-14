@@ -268,7 +268,7 @@ export const OrderDetails = async ({ data }: { data: OrderDataType }) => {
                       <li key={shipment.entityId} className="flex items-start space-x-4 pb-4 last:pb-0 border-b border-gray-100 last:border-b-0">
                         <Suspense fallback={<ProductSnippetSkeleton isExtended={true} />}>
                           <div className="flex w-full gap-4">
-                            <div className="w-24 h-24 flex-shrink-0">
+                            <div className="flex-shrink-0">
                               <ProductSnippet 
                                 imagePriority={true}
                                 imageSize="square"

@@ -9,7 +9,7 @@ const OrderItemLayout = ({ lineItems }) => {
           <Suspense fallback={<ProductSnippetSkeleton isExtended={true} />}>
             <div className="flex items-center justify-between">
               <div className="flex items-center flex-1 min-w-0">
-                <div className="w-24 h-24 flex-shrink-0">
+                <div className="flex-shrink-0">
                   <ProductSnippet
                     imagePriority={true}
                     imageSize="square"

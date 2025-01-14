@@ -221,7 +221,7 @@ export const ProductSnippet = async ({
                 </p>
               </div>
             </div>
-            <div className="flex flex-wrap items-end justify-between font-semibold">
+            <div className="flex flex-wrap items-center justify-between font-semibold">
               <Price price={price} />
             </div>
           </div>
@@ -237,7 +237,7 @@ export const ProductSnippet = async ({
           </h3>
         )}
         {!isExtended && (
-          <div className="flex flex-wrap items-end justify-between">
+          <div className="flex flex-wrap items-end justify-between price">
             <Price price={price} />
           </div>
         )}
