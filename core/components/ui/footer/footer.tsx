@@ -105,7 +105,6 @@ const Footer = ({
           <span className="block w-100 h-[1px] bg-white mt-4 sm:hidden"></span>
           
         </a>
-        
     
         {/* Social Media Links */}
         {Boolean(socialMediaLinks) && (

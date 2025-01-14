@@ -1,7 +1,9 @@
+
+
+
 import React, { ReactNode, Suspense } from 'react';
 import { BcImage } from '~/components/bc-image';
 import { Link } from '~/components/link';
-import { cn } from '~/lib/utils';
 import { Compare } from './compare';
 import QuickView from './Quickview';
 import { getCurrencyCodeData } from '~/components/common-functions';
@@ -43,7 +45,7 @@ interface Props extends Product {
   imageSize?: 'square' | 'tall' | 'wide';
   showCompare?: boolean;
   product?: any;
-  page?:string;
+  page?: string;
 }
 
 const ProductCard = async ({
@@ -64,16 +66,17 @@ const ProductCard = async ({
 }: Props) => {
   let currencyCode: any = '';
   let pageData = 'card';
-  if(page) {
+  
+  if (page) {
     pageData = page;
   } else {
     currencyCode = await getCurrencyCodeData() || undefined;
   }
-  
+
   const addToCardData = {
     defaultImage: {
-      url: image.src,
-      altText: image.altText,
+      url: image?.src,
+      altText: image?.altText,
     },
     name,
     price,
@@ -86,19 +89,34 @@ const ProductCard = async ({
       <div className="plp-img-div-parent relative flex justify-center">
         <div className="plp-img-div relative aspect-square flex-auto">
           {image ? (
-            <BcImage alt={image.altText} className="!static object-contain" fill src={image.src} />
+            <BcImage
+              alt={image.altText}
+              className="!static object-contain"
+              fill
+              src={image.src}
+            />
           ) : (
             <div className="h-full w-full bg-gray-200" />
           )}
-          <div className="plp-product-btn-hover opacity-0 hover:opacity-100 w-[110%] left-[-5%] h-full flex flex-col gap-[10px] absolute top-[10%] ">
-            <QuickView product={product} />
-            <AddToCartButton addToCardData={addToCardData} product={product} />
-            {/* Add Compare Section Here */}
-        {showCompare && (
-          <div className="compare-section">
-            <Compare id={id} image={image} name={name} />
-          </div>
-        )}
+          
+          {/* Product Buttons Overlay */}
+          <div className="plp-product-btn-hover opacity-0 hover:opacity-100 w-[110%] left-[-5%] h-full flex flex-col gap-8 absolute top-[30%]">
+            {/* Quick View Button - Top */}
+            <div className="w-full">
+              <QuickView product={product} />
+            </div>
+            
+            {/* Add to Cart & Compare in one row */}
+            <div className="flex items-center gap-2 w-full">
+              <div className="flex-grow">
+                <AddToCartButton addToCardData={addToCardData} product={product} />
+              </div>
+              {showCompare && (
+                <div className="flex-shrink-0">
+                  <Compare id={id} image={image} name={name} />
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -112,24 +130,30 @@ const ProductCard = async ({
         {subtitle && (
           <p className="brand mb-[4px] text-[16px] font-[300] text-[#a5a5a5]">{subtitle}</p>
         )}
-        {/* <p className="brand mb-[4px] text-[16px] font-[300] text-[#a5a5a5] descriptionplp">{product?.description}</p> */}
         <div className="cardprice">
-          <Suspense>  
-          <ProductPriceDisplay product={product} page={pageData} currencyData={currencyCode}/>
+          <Suspense>
+            <ProductPriceDisplay
+              product={product}
+              page={pageData}
+              currencyData={currencyCode}
+            />
           </Suspense>
         </div>
-        
       </div>
 
-      <div className="plp-product-btn">
+      {/* Mobile buttons */}
+      <div className="plp-product-btn flex flex-col gap-2 md:hidden">
         <QuickView product={product} />
-        {/* Add Compare Section Here */}
-        {showCompare && (
-          <div className="compare-section flex justify-center items-center">
-            <Compare id={id} image={image} name={name} />
+        <div className="flex items-center gap-2">
+          <div className="flex-grow">
+            <AddToCartButton addToCardData={addToCardData} product={product} />
           </div>
-        )}
-        <AddToCartButton addToCardData={addToCardData} product={product} />
+          {showCompare && (
+            <div className="flex-shrink-0 compare-section flex justify-center items-center">
+              <Compare id={id} image={image} name={name} />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -138,5 +162,3 @@ const ProductCard = async ({
 ProductCard.displayName = 'ProductCard';
 
 export { ProductCard, type Price };
-
-

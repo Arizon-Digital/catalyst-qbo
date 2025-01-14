@@ -1,10 +1,9 @@
+
 'use client';
 
-import { useEffect, useId, useState } from 'react';
-
+import { useEffect, useState } from 'react';
 import { useCompareDrawerContext } from '../compare-drawer';
-import { Checkbox } from '../form/checkbox';
-import { Label } from '../form/label';
+import { ArrowLeftRight } from 'lucide-react';
 
 interface Image {
   altText?: string;
@@ -18,19 +17,18 @@ interface Props {
 }
 
 export const Compare = ({ id, image, name }: Props) => {
-  const checkboxId = useId();
-
-  const [checkedState, setCheckedState] = useState(false);
+  const [isActive, setIsActive] = useState(false);
   const { products, setProducts } = useCompareDrawerContext();
-
+  
   useEffect(() => {
-    setCheckedState(products.some(({ id: productId }) => productId === id));
+    setIsActive(products.some(({ id: productId }) => productId === id));
   }, [products, id]);
-
-  const handleOnCheckedChange = (isChecked: boolean) => {
-    setCheckedState(isChecked);
-
-    if (isChecked) {
+  
+  const handleClick = () => {
+    const newState = !isActive;
+    setIsActive(newState);
+    
+    if (newState) {
       setProducts([
         ...products,
         {
@@ -41,30 +39,22 @@ export const Compare = ({ id, image, name }: Props) => {
       ]);
     } else {
       setProducts(
-        products.filter(({ id: productId }) => {
-          return productId !== id;
-        }),
+        products.filter(({ id: productId }) => productId !== id)
       );
     }
   };
-
+  
   return (
-    <div className="p-[2px] compare-div-parent transition-all duration-300
-          bg-[#ca9618] hover:bg-[#fff] 
-          text-[#ffffff] hover:text-[#ca9618]
-           flex items-center justify-center gap-2 
-          text-[13px] font-[700]
-          border border-[#ca9618]
-          shadow-sm w-full rounded-[4px]">
-      <Checkbox
-        checked={checkedState}
-        className="!h-[17px] !w-[17px] compare-btn-checkbox"
-        id={checkboxId}
-        onCheckedChange={handleOnCheckedChange}
-      />
-      <Label className="compare-label-text font-[700]" htmlFor={checkboxId}>
-        Compare
-      </Label>
-    </div>
+    <button
+      onClick={handleClick}
+      className={`p-[2px] transition-all duration-300
+        ${isActive ? 'bg-[#ca9618] text-white' : 'bg-white text-[#ca9618]'}
+        hover:bg-[#ca9618] hover:text-white
+        flex items-center justify-center
+        border border-[#ca9618]
+        shadow-sm rounded-[4px] w-8 h-8`}
+    >
+      <ArrowLeftRight className="h-[17px] w-[17px]" />
+    </button>
   );
 };
