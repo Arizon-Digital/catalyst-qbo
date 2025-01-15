@@ -50,7 +50,7 @@ const TabComponent = ({ product }: TabComponentProps) => {
       case 'DeliveryInformation':
         return <Deliveryinformation product={product} />;
       case 'Reviews':
-        return <FeefoReview product={product} />;
+        return <FeefoReview sku={product.sku} />;
       case 'SpareParts':
         return <div dangerouslySetInnerHTML={{ __html: product.warranty }} />;
       default:
