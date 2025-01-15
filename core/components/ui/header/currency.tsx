@@ -23,7 +23,16 @@ export const GetCurrencyList = () => {
       );
       setCurrency(currencyOptions);
       let currencyCookieData: string = (await getCurrencyCodeFn()) || 'CAD';
-      setCurrencyCodeFn(currencyCookieData);
+      // FIXME: `setCurrencyCodeFn` is a server action (i.e. a POST request) that
+      // sets the `currencyCode` cookie. Setting a cookie in a server action will
+      // trigger a full page reload right after this component has been mounted.
+      // This is both unnecessary and currently incompatible with the Makeswift
+      // builder.
+      //
+      // For the time being, we suggest defauling cookie values on the client as
+      // is done in line 29 above, and setting only cookies in response to user
+      // actions, such as a currency change.
+      // setCurrencyCodeFn(currencyCookieData);
       setCurrencyCode(currencyCookieData);
       /*getCommonContext.setCurrencyCodeFn(currencyCookieData);
       setShowExclTax(currencyCookieData === 'GBP');*/
