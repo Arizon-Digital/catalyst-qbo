@@ -126,8 +126,6 @@ export const MobileNav = ({ links, logo }: Props) => {
           
           <div className="flex flex-col gap-2">
             {links.map((link, index) => renderNestedMenu(link, `menu-${index}`))}
-            
-            <CustomLink href="/festive-opening-hours" className="block p-3 ps-0 text-#ffffff">Festive Opening Hours</CustomLink>
             <CustomLink href="/about-us" className="block p-3 ps-0 text-#ffffff">About Us</CustomLink>
             <CustomLink href="/10-year-anniversary" className="block p-3 ps-0 text-#ffffff">10 Year Anniversary</CustomLink>
             <CustomLink href="/contact-us" className="block p-3 ps-0 text-#ffffff">Contact Us</CustomLink>

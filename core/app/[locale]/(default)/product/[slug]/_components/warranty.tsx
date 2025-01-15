@@ -20,15 +20,15 @@ export const Warranty = ({ product }: Props) => {
     return null;
   }
 
-  return (
-    <>
-    <div className='tech-data'>
-    <div className='product-reviews-header'>
-      <h2  className="mb-4 mt-8 text-xl font-bold md:text-2xl page-heading">Spare Parts</h2>
-      <hr className="product-info-hr" />
-      </div>
-      <p dangerouslySetInnerHTML={{ __html: product.warranty }}></p>
-      </div>
-    </>
-  );
+  // return (
+  //   <>
+  //   <div className='tech-data'>
+  //   <div className='product-reviews-header'>
+  //     <h2  className="mb-4 mt-8 text-xl font-bold md:text-2xl page-heading">Spare Parts</h2>
+  //     <hr className="product-info-hr" />
+  //     </div>
+  //     <p dangerouslySetInnerHTML={{ __html: product.warranty }}></p>
+  //     </div>
+  //   </>
+  // );
 };
