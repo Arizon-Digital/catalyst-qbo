@@ -15,6 +15,9 @@ interface Props {
   product: FragmentOf<typeof DescriptionFragment>;
 }
 
+
+
+
 export const Description = ({ product }: any) => {
   const t = useTranslations('Product.Description');
   if (!product.description) {
