@@ -87,7 +87,7 @@ const ProductCard = async ({
   return (
     <div className="product-card group relative flex flex-col overflow-visible product-item-plp">
       <div className="plp-img-div-parent relative flex justify-center">
-        <div className="plp-img-div relative aspect-square flex-auto">
+        <div className="plp-img-div relative aspect-square flex-auto w-full">
           {image ? (
             <BcImage
               alt={image.altText}
@@ -100,7 +100,7 @@ const ProductCard = async ({
           )}
           
           {/* Product Buttons Overlay */}
-          <div className="plp-product-btn-hover opacity-0 hover:opacity-100 w-[110%] left-[-5%] h-full flex flex-col gap-8 absolute top-[30%]">
+          <div className="plp-product-btn-hover opacity-0 hover:opacity-100 w-[80%] left-[10%]  flex flex-col items-center gap-8 absolute top-[30%]">
             {/* Quick View Button - Top */}
             <div className="w-full">
               <QuickView product={product} />
