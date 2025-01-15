@@ -2,7 +2,6 @@ import { NextFetchEvent, NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { z } from 'zod';
 
-import { getSessionCustomerAccessToken } from '~/auth';
 import { client } from '~/client';
 import { graphql } from '~/client/graphql';
 import { revalidate } from '~/client/revalidate-target';
@@ -261,7 +260,7 @@ export const withRoutes: MiddlewareFactory = () => {
 
     const cookieStore = await cookies();
     let currencyCookie = cookieStore.get('currencyCode');
-    if(!currencyCookie) {
+    if (!currencyCookie) {
       await cookieStore.set({
         name: 'currencyCode',
         value: 'CAD',
@@ -308,32 +307,22 @@ export const withRoutes: MiddlewareFactory = () => {
       }
     }
 
-    const customerAccessToken = await getSessionCustomerAccessToken();
-    let postfix = '';
-
-    if (!request.nextUrl.search && !customerAccessToken && request.method === 'GET') {
-      postfix = '/static';
-    }
-
     const node = route?.node;
     let url: string;
 
     switch (node?.__typename) {
       case 'Brand': {
-        let postfix = '';
-        url = `/${locale}/brand/${node.entityId}${postfix}`;
+        url = `/${locale}/brand/${node.entityId}`;
         break;
       }
 
       case 'Category': {
-        postfix = '';
-        url = `/${locale}/category/${node.entityId}${postfix}`;
+        url = `/${locale}/category/${node.entityId}`;
         break;
       }
 
       case 'Product': {
-        let postfix = '';
-        url = `/${locale}/product/${node.entityId}${postfix}`;
+        url = `/${locale}/product/${node.entityId}`;
         break;
       }
 
@@ -359,11 +348,6 @@ export const withRoutes: MiddlewareFactory = () => {
         const { pathname } = new URL(request.url);
 
         const cleanPathName = clearLocaleFromPath(pathname, locale);
-
-        if (cleanPathName === '/' && postfix) {
-          url = `/${locale}${postfix}`;
-          break;
-        }
 
         url = `/${locale}${cleanPathName}`;
       }
