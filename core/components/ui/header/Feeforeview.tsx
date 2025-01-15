@@ -1,56 +1,38 @@
+
+
+
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 const FeefoReview = ({ sku }) => {
-  const [isCollapsed, setIsCollapsed] = useState(true);
-
   useEffect(() => {
-    // Dynamically load the Feefo review script
+    const existingScript = document.getElementById('feefo-script');
+    if (existingScript) {
+      existingScript.remove();
+    }
+
     const script = document.createElement('script');
+    script.id = 'feefo-script';
     script.type = 'text/javascript';
     script.src = 'https://api.feefo.com/api/javascript/quality-bearings-online';
-    script.async = true;
-    document.body.appendChild(script);
+    document.head.appendChild(script);
 
     return () => {
-      document.body.removeChild(script);
+      const scriptToRemove = document.getElementById('feefo-script');
+      if (scriptToRemove) {
+        scriptToRemove.remove();
+      }
     };
   }, []);
 
   return (
-    <div className="tab-content" id="tab-reviews">
-      {/* Heading */}
-      
-
-      {/* Collapsible Content */}
+    <div>
       <div
-        className={`productView-description-tabContent ${
-          isCollapsed ? 'collapsed' : ''
-        }`}
-      >
-        
-
-        {/* Feefo Widget */}
-        <div
-          id="feefo-product-review-widgetId"
-          className="feefo-review-widget-product"
-          data-product-sku={sku}
-        ></div>
-      </div>
-
-      
-      <a
-        href="#"
-        className="emthemesModez-mobile-collapse-handle"
-        onClick={(e) => {
-          e.preventDefault();
-          setIsCollapsed(!isCollapsed);
-        }}
-      >
-        <span className="on">{isCollapsed ? 'View All' : 'Close'}</span>
-        <span className="off">{!isCollapsed ? 'View All' : 'Close'}</span>
-      </a>
+        id="feefo-product-review-widgetId"
+        className="feefo-review-widget-product"
+        data-product-sku={sku}
+      ></div>
     </div>
   );
 };
