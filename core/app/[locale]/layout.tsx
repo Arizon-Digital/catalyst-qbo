@@ -3,6 +3,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
 import { Roboto_Slab } from 'next/font/google';
+import { draftMode } from 'next/headers';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { PropsWithChildren } from 'react';
@@ -13,6 +14,8 @@ import { client } from '~/client';
 import { graphql } from '~/client/graphql';
 import { revalidate } from '~/client/revalidate-target';
 import { MakeswiftProvider } from '~/lib/makeswift/provider';
+
+import '~/lib/makeswift/components';
 
 import { Notifications } from '../notifications';
 import { Providers } from '../providers';
@@ -101,7 +104,7 @@ export default async function RootLayout({ params, children }: Props) {
       </head>
       <body className="flex h-screen min-w-[auto] flex-col">
         <Notifications />
-        <MakeswiftProvider>
+        <MakeswiftProvider previewMode={(await draftMode()).isEnabled}>
           <NextIntlClientProvider locale={locale} messages={messages}>
             <Providers>{children}</Providers>
           </NextIntlClientProvider>

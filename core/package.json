@@ -16,7 +16,7 @@
     "@bigcommerce/catalyst-client": "workspace:^",
     "@hubspot/api-client": "^12.0.1",
     "@icons-pack/react-simple-icons": "^10.1.0",
-    "@makeswift/runtime": "^0.21.3",
+    "@makeswift/runtime": "0.0.0-snapshot-20250108161914",
     "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-alert-dialog": "^1.1.2",
     "@radix-ui/react-checkbox": "^1.1.2",
