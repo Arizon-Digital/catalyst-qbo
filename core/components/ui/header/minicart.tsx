@@ -9,10 +9,9 @@ import { RemoveFromCartButton } from '~/app/[locale]/(default)/cart/_components/
 import { CheckoutButtonPopUp } from './checkout-button';
 import ProductPriceDisplay from '~/app/[locale]/(default)/product/[slug]/_components/exclvat';
 import { removeItem } from '~/app/[locale]/(default)/cart/_actions/remove-item';
-import { MiniCartIcon } from '~/components/common-images';
 import { BcImage } from '~/components/bc-image';
 import { getCartData, getCartId } from '~/components/common-functions';
-import cartIcon from '~/public/cart/cartIcon.svg';
+import miniCartIcon from '~/public/icons/mini-cart-icon.png';
 
 export const MiniCart = ({ count }: { count: number }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +19,6 @@ export const MiniCart = ({ count }: { count: number }) => {
   const [cartItems, setCartItems] = useState([]);
   const [hasItems, setHasItems] = useState(false);
   const cartRef = useRef<HTMLDivElement>(null);
-  const [miniBag, setMiniBag] = useState();
   const [cartId, setCartId] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -28,8 +26,6 @@ export const MiniCart = ({ count }: { count: number }) => {
     const miniBagIcons = async () => {
       let getCartIdData: any = await getCartId();
       setCartId(getCartIdData);
-      let minicartIcon: any = await MiniCartIcon();
-      setMiniBag(minicartIcon);
     };
     miniBagIcons();
 
@@ -47,11 +43,9 @@ export const MiniCart = ({ count }: { count: number }) => {
     setIsOpen(true);
     setLoading(true);
     let cartData = await getCartData();
-    console.log('Full cart data:', cartData); // Debug log
     if (cartData?.lineItems?.physicalItems) {
       setCartItems(cartData);
       if (cartData?.lineItems?.physicalItems.length > 0) {
-        console.log('Physical items:', cartData.lineItems.physicalItems); // Debug log
         setHasItems(true);
       }
     }
@@ -84,9 +78,9 @@ export const MiniCart = ({ count }: { count: number }) => {
         className="relative flex items-end gap-2 p-2 rounded-full mini-cart-btn"
         aria-label="Shopping cart"
       >
-        {miniBag && (
+        {miniCartIcon && (
           <BcImage
-            src={miniBag}
+            src={miniCartIcon}
             alt="mini-cart"
             width="50"
             height="50"
