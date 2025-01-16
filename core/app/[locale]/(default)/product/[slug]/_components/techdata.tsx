@@ -90,7 +90,7 @@ const TechData: React.FC<Props> = ({ product }) => {
           {product.sku && (
             <>
               <span className="product-details-item">
-                <strong>SKU:</strong> <div className='value text-gray-500 text-sm'>{product.sku}</div>
+                <strong>SKU:</strong> <div className='value text-gray-500 font-semibold'>{product.sku}</div>
               </span>
             </>
           )}
@@ -98,7 +98,7 @@ const TechData: React.FC<Props> = ({ product }) => {
           {Boolean(product.availabilityV2?.description) && (
             <div className='product-details-itemss'>
               <h3 className="font-semibold flex id">
-                Availability: <p className="pr value">{product.availabilityV2.description}</p>
+                Availability: <p className="font-semibold">{product.availabilityV2.description}</p>
               </h3>
             </div>
           )}
