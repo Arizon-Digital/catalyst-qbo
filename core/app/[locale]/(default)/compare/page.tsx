@@ -145,7 +145,7 @@ export default async function Compare(props: Props) {
           <caption className="sr-only">{t('Table.caption')}</caption>
  
           <colgroup>
-            <col className="w-80" span={products.length} />
+            <col className="w-[13.5rem]" span={products.length} />
           </colgroup>
  
           <thead>
