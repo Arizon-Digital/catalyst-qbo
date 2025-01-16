@@ -1,4 +1,5 @@
 
+
 import { removeEdgesAndNodes } from '@bigcommerce/catalyst-client';
 import { getFormatter, getTranslations } from 'next-intl/server';
 import * as z from 'zod';
@@ -12,15 +13,22 @@ import { BcImage } from '~/components/bc-image';
 import { Link } from '~/components/link';
 import { SearchForm } from '~/components/search-form';
 import { Button } from '~/components/ui/button';
-import { Rating } from '~/components/ui/rating';
 import { cn } from '~/lib/utils';
  
 import { AddToCart } from './_components/add-to-cart';
 import { AddToCartFragment } from './_components/add-to-cart/fragment';
 import { cookies } from 'next/headers';
 import { CurrencyCode } from '../product/[slug]/page-data';
- 
+
 const MAX_COMPARE_LIMIT = 10;
+
+// Function to remove tables from HTML content
+const removeTablesFromHTML = (htmlContent: string) => {
+  return htmlContent
+    .replace(/\s*<table[\s\S]*?<\/table>\s*/gi, '')  // Remove tables and surrounding whitespace
+    .replace(/^\s+|\s+$/g, '')  // Trim any remaining leading/trailing whitespace
+    .replace(/\n\s*\n/g, '\n'); // Remove empty lines
+};
  
 const CompareParamsSchema = z.object({
   ids: z
@@ -55,10 +63,6 @@ const ComparePageQuery = graphql(
               defaultImage {
                 altText
                 url: urlTemplate(lossy: true)
-              }
-              reviewSummary {
-                numberOfReviews
-                averageRating
               }
               productOptions(first: 3) {
                 edges {
@@ -135,7 +139,7 @@ export default async function Compare(props: Props) {
   }
  
   return (
-    <>
+    <>      
       <h1 className="pb-8 text-4xl font-black lg:text-5xl">
         {t('heading', { quantity: products.length })}
       </h1>
@@ -291,6 +295,7 @@ export default async function Compare(props: Props) {
             </tr>
           </thead>
           <tbody>
+            {/* Description section with table removal */}
             <tr className="absolute mt-6">
               <th className="sticky start-0 top-0 m-0 ps-4 text-start" id="product-description">
                 {t('Table.description')}
@@ -300,42 +305,16 @@ export default async function Compare(props: Props) {
               {products.map((product) => (
                 <td
                   className="border-b px-4 pb-8 pt-20"
-                  dangerouslySetInnerHTML={{ __html: product.description }}
+                  dangerouslySetInnerHTML={{ 
+                    __html: removeTablesFromHTML(product.description) 
+                  }}
                   headers="product-description"
                   key={product.entityId}
                 />
               ))}
             </tr>
-            <tr className="absolute mt-6">
-              <th className="sticky start-0 top-0 m-0 ps-4 text-start" id="product-rating">
-                {t('Table.rating')}
-              </th>
-            </tr>
-            <tr>
-              {products.map((product) => (
-                <td
-                  className="border-b px-4 pb-8 pt-20"
-                  headers="product-rating"
-                  key={product.entityId}
-                >
-                  <p
-                    className={cn(
-                      'flex flex-nowrap text-primary',
-                      product.reviewSummary.numberOfReviews === 0 && 'text-gray-400',
-                    )}
-                  >
-                    <Rating
-                      aria-label={
-                        product.reviewSummary.numberOfReviews === 0
-                          ? `${product.name} has no rating specified`
-                          : `${product.name} rating is ${product.reviewSummary.averageRating} out of 5 stars`
-                      }
-                      rating={product.reviewSummary.averageRating}
-                    />
-                  </p>
-                </td>
-              ))}
-            </tr>
+            
+            {/* Availability section */}
             <tr className="absolute mt-6">
               <th className="sticky start-0 top-0 m-0 ps-4 text-start" id="product-availability">
                 {t('Table.availability')}
