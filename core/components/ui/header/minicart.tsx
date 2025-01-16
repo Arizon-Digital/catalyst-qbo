@@ -85,8 +85,15 @@ export const MiniCart = ({ count }: { count: number }) => {
         aria-label="Shopping cart"
       >
         {miniBag && (
-          <BcImage src={cartIcon} alt="mini-cart" width={40} height={40} />
+          <BcImage
+            src={miniBag}
+            alt="mini-cart"
+            width="50"
+            height="50"
+          />
         )}
+         {/* <BcImage src={cartIcon} alt="cart" width={40} height={40} /> */}
+
         <span className="absolute right-1.5 mini-cart-count top-13 h-[20px] w-[30px]  sm:flex items-center justify-center rounded-full bg-[#1c2541] text-xs font-bold mini-cart-badge">
           {count}
         </span>

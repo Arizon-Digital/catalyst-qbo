@@ -783,7 +783,7 @@ button.relative.flex.items-center.justify-center.border-2.border-primary.text-ba
     text-decoration: underline;
 }
 .css-92gqt5.css-1fm2acr.css-qvhily.css-wh8wmo.css-1mnqr4v.css-2nq71q.css-xmyfq3.css-1oemyj :hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     -webkit-transition: all .15s;
     transition: all .15s;
 }
