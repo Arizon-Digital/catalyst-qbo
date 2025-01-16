@@ -3116,6 +3116,9 @@ div#warp button{
       float: none;
       display: block;
     }
+    .plp-product-content.flex.flex-col.gap-1 {
+        margin-bottom: 15px;
+    }
     .mobilelogo {
         position: relative !important;
         z-index: 1000;
