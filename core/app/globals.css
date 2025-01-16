@@ -2,7 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-
+table.prod-desc-tbl h2 {
+    font-family: Oswald, arial, sans-serif;
+    font-size: 30px !important;
+    font-weight: 400 !important;
+    margin: 25px 0 !important;
+}
 
 .price {
     text-align: center;
