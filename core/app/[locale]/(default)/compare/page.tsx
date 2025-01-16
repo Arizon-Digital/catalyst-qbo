@@ -52,10 +52,6 @@ const ComparePageQuery = graphql(
               brand {
                 name
               }
- ]         availabilityV2 {
-        description
-        }
-                
               defaultImage {
                 altText
                 url: urlTemplate(lossy: true)
@@ -310,7 +306,7 @@ export default async function Compare(props: Props) {
                 />
               ))}
             </tr>
-            {/* <tr className="absolute mt-6">
+            <tr className="absolute mt-6">
               <th className="sticky start-0 top-0 m-0 ps-4 text-start" id="product-rating">
                 {t('Table.rating')}
               </th>
@@ -339,7 +335,7 @@ export default async function Compare(props: Props) {
                   </p>
                 </td>
               ))}
-            </tr> */}
+            </tr>
             <tr className="absolute mt-6">
               <th className="sticky start-0 top-0 m-0 ps-4 text-start" id="product-availability">
                 {t('Table.availability')}
@@ -348,7 +344,10 @@ export default async function Compare(props: Props) {
             <tr>
               {products.map((product) => (
                 <td
-                <h3 className="font-semiboldd flex productView-info-name">{t('availability')} <p className="pr productView-info-value ">: {product.availabilityV2.description}</p></h3>
+                  className="border-b px-4 pb-8 pt-20"
+                  headers="product-availability"
+                  key={product.entityId}
+                >
                   {product.inventory.aggregated?.availableToSell || 'N/A'}
                 </td>
               ))}
