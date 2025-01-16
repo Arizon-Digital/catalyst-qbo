@@ -77,6 +77,10 @@ const ComparePageQuery = graphql(
                   availableToSell
                 }
               }
+              availabilityV2 {
+                description
+                status
+              }
               ...AddToCartFragment
               ...PricingFragment
             }
@@ -327,7 +331,14 @@ export default async function Compare(props: Props) {
                   headers="product-availability"
                   key={product.entityId}
                 >
-                  {product.inventory.aggregated?.availableToSell || 'N/A'}
+                  <div>
+                    <p>{product.availabilityV2?.description || 'N/A'}</p>
+                    <p className="text-sm text-gray-500 mt-1">
+                      {product.inventory.aggregated?.availableToSell !== undefined 
+                        ? `${product.inventory.aggregated.availableToSell} units available`
+                        : ''}
+                    </p>
+                  </div>
                 </td>
               ))}
             </tr>
