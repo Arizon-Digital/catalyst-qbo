@@ -1,5 +1,7 @@
 
 
+
+
 import { removeEdgesAndNodes } from '@bigcommerce/catalyst-client';
 import { getFormatter, getTranslations } from 'next-intl/server';
 import * as z from 'zod';
@@ -14,6 +16,7 @@ import { Link } from '~/components/link';
 import { SearchForm } from '~/components/search-form';
 import { Button } from '~/components/ui/button';
 import { cn } from '~/lib/utils';
+import DescriptionCell from './_components/add-to-cart/description-cell';
  
 import { AddToCart } from './_components/add-to-cart';
 import { AddToCartFragment } from './_components/add-to-cart/fragment';
@@ -22,14 +25,6 @@ import { CurrencyCode } from '../product/[slug]/page-data';
 
 const MAX_COMPARE_LIMIT = 10;
 
-// Function to remove tables from HTML content
-const removeTablesFromHTML = (htmlContent: string) => {
-  return htmlContent
-    .replace(/\s*<table[\s\S]*?<\/table>\s*/gi, '')  // Remove tables and surrounding whitespace
-    .replace(/^\s+|\s+$/g, '')  // Trim any remaining leading/trailing whitespace
-    .replace(/\n\s*\n/g, '\n'); // Remove empty lines
-};
- 
 const CompareParamsSchema = z.object({
   ids: z
     .union([z.string(), z.array(z.string()), z.undefined()])
@@ -46,7 +41,17 @@ const CompareParamsSchema = z.object({
     })
     .transform((value) => value?.map((id) => parseInt(id, 10))),
 });
- 
+
+// Helper function to format currency
+const formatPrice = (price: number, currencyCode: string, format: any) => {
+  const formattedPrice = format.number(price, {
+    style: 'currency',
+    currency: currencyCode,
+  });
+  
+  return formattedPrice.replace('CA$', 'C$');
+};
+
 const ComparePageQuery = graphql(
   `
     query ComparePageQuery($entityIds: [Int!], $first: Int, $currencyCode: currencyCode) {
@@ -59,6 +64,20 @@ const ComparePageQuery = graphql(
               path
               brand {
                 name
+              }
+              sku
+              weight {
+                value
+                unit
+              }
+              customFields {
+                edges {
+                  node {
+                    entityId
+                    name
+                    value
+                  }
+                }
               }
               defaultImage {
                 altText
@@ -128,6 +147,7 @@ export default async function Compare(props: Props) {
   const products = removeEdgesAndNodes(data.site.products).map((product) => ({
     ...product,
     productOptions: removeEdgesAndNodes(product.productOptions),
+    customFields: removeEdgesAndNodes(product.customFields),
   }));
  
   if (!products.length) {
@@ -217,15 +237,9 @@ export default async function Compare(props: Props) {
                       <p className="w-36 shrink-0">
                         {showPriceRange ? (
                           <>
-                            {format.number(product.prices.priceRange.min.value, {
-                              style: 'currency',
-                              currency: product.prices.price.currencyCode,
-                            })}{' '}
+                            {formatPrice(product.prices.priceRange.min.value, product.prices.price.currencyCode, format)}{' '}
                             -{' '}
-                            {format.number(product.prices.priceRange.max.value, {
-                              style: 'currency',
-                              currency: product.prices.price.currencyCode,
-                            })}
+                            {formatPrice(product.prices.priceRange.max.value, product.prices.price.currencyCode, format)}
                           </>
                         ) : (
                           <>
@@ -233,10 +247,7 @@ export default async function Compare(props: Props) {
                               <>
                                 {t('Table.Prices.msrp')}:{' '}
                                 <span className="line-through">
-                                  {format.number(product.prices.retailPrice.value, {
-                                    style: 'currency',
-                                    currency: product.prices.price.currencyCode,
-                                  })}
+                                  {formatPrice(product.prices.retailPrice.value, product.prices.price.currencyCode, format)}
                                 </span>
                                 <br />
                               </>
@@ -246,27 +257,18 @@ export default async function Compare(props: Props) {
                               <>
                                 {t('Table.Prices.was')}:{' '}
                                 <span className="line-through">
-                                  {format.number(product.prices.basePrice.value, {
-                                    style: 'currency',
-                                    currency: product.prices.price.currencyCode,
-                                  })}
+                                  {formatPrice(product.prices.basePrice.value, product.prices.price.currencyCode, format)}
                                 </span>
                                 <br />
                                 <>
                                   {t('Table.Prices.now')}:{' '}
-                                  {format.number(product.prices.price.value, {
-                                    style: 'currency',
-                                    currency: product.prices.price.currencyCode,
-                                  })}
+                                  {formatPrice(product.prices.price.value, product.prices.price.currencyCode, format)}
                                 </>
                               </>
                             ) : (
                               product.prices.price.value && (
                                 <>
-                                  {format.number(product.prices.price.value, {
-                                    style: 'currency',
-                                    currency: product.prices.price.currencyCode,
-                                  })}
+                                  {formatPrice(product.prices.price.value, product.prices.price.currencyCode, format)}
                                 </>
                               )
                             )}
@@ -299,7 +301,7 @@ export default async function Compare(props: Props) {
             </tr>
           </thead>
           <tbody>
-            {/* Description section with table removal */}
+            {/* Description section with height control and read more */}
             <tr className="absolute mt-6">
               <th className="sticky start-0 top-0 m-0 ps-4 text-start" id="product-description">
                 {t('Table.description')}
@@ -309,15 +311,58 @@ export default async function Compare(props: Props) {
               {products.map((product) => (
                 <td
                   className="border-b px-4 pb-8 pt-20"
-                  dangerouslySetInnerHTML={{ 
-                    __html: removeTablesFromHTML(product.description) 
-                  }}
                   headers="product-description"
                   key={product.entityId}
-                />
+                >
+                  <DescriptionCell content={product.description} />
+                </td>
               ))}
             </tr>
             
+            {/* Technical Data section */}
+            <tr className="absolute mt-6">
+              <th className="sticky start-0 top-0 m-0 ps-4 text-start" id="product-technical">
+            Other Details
+              </th>
+            </tr>
+            <tr>
+              {products.map((product) => (
+                <td
+                  className="border-b px-4 pb-8 pt-20"
+                  headers="product-technical"
+                  key={product.entityId}
+                >
+                  <div className="space-y-2">
+                    {product.sku && (
+                      <p className="flex flex-col">
+                        <span className="font-semibold">SKU:</span>
+                        <span className="text-gray-500">{product.sku}</span>
+                      </p>
+                    )}
+                    {product.brand?.name && (
+                      <p className="flex flex-col">
+                        <span className="font-semibold">Brand:</span>
+                        <span className="text-gray-500">{product.brand.name}</span>
+                      </p>
+                    )}
+                    {product.weight && (
+                      <p className="flex flex-col">
+                        <span className="font-semibold">Weight:</span>
+                        <span className="text-gray-500">
+                          {product.weight.value} {product.weight.unit}
+                        </span>
+                      </p>)}
+                    {product.customFields?.map((field) => (
+                      <p key={field.entityId} className="flex flex-col">
+                        <span className="font-semibold">{field.name}:</span>
+                        <span className="text-gray-500">{field.value}</span>
+                      </p>
+                    ))}
+                  </div>
+                </td>
+              ))}
+            </tr>
+
             {/* Availability section */}
             <tr className="absolute mt-6">
               <th className="sticky start-0 top-0 m-0 ps-4 text-start" id="product-availability">
@@ -342,6 +387,8 @@ export default async function Compare(props: Props) {
                 </td>
               ))}
             </tr>
+            
+            {/* Final action buttons */}
             <tr>
               {products.map((product) => {
                 if (product.productOptions.length) {

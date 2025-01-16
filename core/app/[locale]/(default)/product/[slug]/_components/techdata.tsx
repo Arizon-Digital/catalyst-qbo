@@ -131,19 +131,7 @@ const TechData: React.FC<Props> = ({ product }) => {
         ))
       }
 
-      {/* Description section */}
-      {product.description && (
-        <>
-          <div className="product-reviews-header">
-            <h2 className="page-heading">Description</h2>
-            <hr className="product-info-hr" />
-            <br />
-          </div>
-          <div className="description-content">
-            <div dangerouslySetInnerHTML={{ __html: product.description }} />
-          </div>
-        </>
-      )}
+      
     </div>
   );
 };
