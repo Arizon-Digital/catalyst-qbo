@@ -12,6 +12,7 @@ import { removeItem } from '~/app/[locale]/(default)/cart/_actions/remove-item';
 import { MiniCartIcon } from '~/components/common-images';
 import { BcImage } from '~/components/bc-image';
 import { getCartData, getCartId } from '~/components/common-functions';
+import cartIcon from '~/public/cart/cartIcon.svg';
 
 export const MiniCart = ({ count }: { count: number }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -84,14 +85,8 @@ export const MiniCart = ({ count }: { count: number }) => {
         aria-label="Shopping cart"
       >
         {miniBag && (
-          <BcImage
-            src={miniBag}
-            alt="mini-cart"
-            width="50"
-            height="50"
-          />
+          <BcImage src={cartIcon} alt="mini-cart" width={40} height={40} />
         )}
-
         <span className="absolute right-1.5 mini-cart-count top-13 h-[20px] w-[30px]  sm:flex items-center justify-center rounded-full bg-[#1c2541] text-xs font-bold mini-cart-badge">
           {count}
         </span>

@@ -15,7 +15,7 @@ import ViewedItemsPopover from './ViewedItemsPopover';
 import DoofinderScriptLoader from '~/app/[locale]/(default)/product/[slug]/_components/Doofinder';
 import HubspotChat from '~/app/[locale]/(default)/product/[slug]/_components/Chatbot';
 import { GetCurrencyList } from './currency';
-import cartIcon from '~/public/cart/cartIcon.svg';
+
 
 import * as Dialog from '@radix-ui/react-dialog';
 import Link from 'next/link';
@@ -185,8 +185,7 @@ const Header = ({
                     </nav>
                     { <nav className="header-cart-icon pl-10px nmd:p-0">
                       <button onClick={handleCartClick}>
-                        <BcImage src={cartIcon} alt="cart" width={40} height={40} />
-                        {/* {cart} */}
+                        {cart}
                       </button>
                     </nav> }
                     <div className="flex flex-col flex-wrap items-center gap-0 pl-[5px]">
