@@ -3233,8 +3233,20 @@ div#radix-\:R16ar8vfffbmlt7\: {
     .product-details-logo {
         height: 27px;
         width: auto;
-        margin-left: 1468px !important;
+        margin-left: 1450px !important;
         margin-top: -26px;
+    }
+    p.pr {
+        float: right;
+        font-family: Roboto Slab, serif;
+        font-size: 16px;
+        font-style: normal;
+        letter-spacing: 1.5px;
+        line-height: 1.1875;
+        padding-right: 0;
+        text-transform: uppercase;
+        /* font-weight: 400 !important; */
+        Font-size: 15PX !important;
     }
   }
   
