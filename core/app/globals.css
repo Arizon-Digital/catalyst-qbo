@@ -657,7 +657,7 @@ div#width {
     font-weight: 700;
     letter-spacing: 1.5px;
     line-height: 1.175;
-    margin-left: 22px;
+    margin-left: 6px;
     text-transform: uppercase;
 }
 .product-details-dd {
@@ -731,7 +731,7 @@ div#feefo-service-review-carousel-widgetIdd {
     border-color: #ca9618;
     border-width: 2px 0 0;
     margin: 8px 0;
-    margin-left: 9px;
+    margin-left: 4px;
 }
 
 .group.relative.flex.flex-col.overflow-visible {
@@ -1805,6 +1805,14 @@ width: auto;
         .prod-desc-tbl{
             width:100% !important;
         }
+
+        h2.page-heading {
+            
+            font-family: Oswald, arial, sans-serif;
+            font-size: 30px !important;
+            font-weight: 400;
+            
+        }
         .prod-desc-tbl th {
             background: #1a2348;
             color: #fff;
@@ -1858,9 +1866,7 @@ width: auto;
         .tech-data{
             margin-left:0px;
         }
-        h2.page-heading {
-            font-size: 20px;
-        }
+        
         .bg-\[\#e7f5f8\] {
             
             border: 1px solid #dcdcdc;
@@ -2686,7 +2692,13 @@ section.section-flex {
     width:30%;
     }
     .product-info-hr{
-    width:30%;
+    width:100%;
+    }
+
+    .product-details-itemss {
+        display: block;
+        width: 100% !important;
+        text-transform: uppercase;
     }
     .product-details-dd {
         width: 100%;
@@ -2695,7 +2707,7 @@ section.section-flex {
         /* margin-bottom: 50px; */
         height: 27px;
         /* width: auto; */
-        margin-left: 100px;
+        margin-left: 290px;
         margin-top: -26px;
     }
     
