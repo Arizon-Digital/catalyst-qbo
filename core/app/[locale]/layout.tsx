@@ -3,7 +3,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
 import { Roboto_Slab } from 'next/font/google';
-import { draftMode } from 'next/headers';
+import { draftMode, headers } from 'next/headers';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { PropsWithChildren } from 'react';
@@ -43,15 +43,15 @@ const RootLayoutMetadataQuery = graphql(`
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
 
+  const headersList = await headers();
+  const pathname = headersList.get("x-current-url") || "";
   setRequestLocale(locale);
 
   const { data } = await client.fetch({
     document: RootLayoutMetadataQuery,
     fetchOptions: { next: { revalidate } },
   });
-
   const storeName = data.site.settings?.storeName ?? '';
-
   const { pageTitle, metaDescription, metaKeywords } = data.site.settings?.seo || {};
 
   return {
@@ -68,6 +68,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       platform: 'bigcommerce.catalyst',
       build_sha: process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA ?? '',
     },
+    alternates: {
+      languages: {
+        'en-US': pathname,
+        'en-GB': pathname?.replace('.ca', '.com'),
+      },
+    }
   };
 }
 

@@ -273,7 +273,9 @@ export const withRoutes: MiddlewareFactory = () => {
 
     if (status === 'MAINTENANCE') {
       // 503 status code not working - https://github.com/vercel/next.js/issues/50155
-      return NextResponse.rewrite(new URL(`/${locale}/maintenance`, request.url), { status: 503 });
+      const responseData = NextResponse.rewrite(new URL(`/${locale}/maintenance`, request.url), { status: 503 });
+      responseData.headers.set('x-current-url', request?.url);
+      return responseData;
     }
 
     const redirectConfig = {
@@ -285,7 +287,6 @@ export const withRoutes: MiddlewareFactory = () => {
         trailingSlash: process.env.TRAILING_SLASH !== 'false',
       },
     };
-
     if (route?.redirect) {
       switch (route.redirect.to.__typename) {
         case 'BlogPostRedirect':
@@ -296,13 +297,17 @@ export const withRoutes: MiddlewareFactory = () => {
           // For dynamic redirects, assume an internal redirect and construct the URL from the path
           const redirectUrl = new URL(route.redirect.to.path, request.url);
 
-          return NextResponse.redirect(redirectUrl, redirectConfig);
+          const responseData = NextResponse.redirect(redirectUrl, redirectConfig);
+          responseData.headers.set('x-current-url', request?.url);
+          return responseData;
         }
 
         default: {
           // For manual redirects, redirect to the full URL to handle cases
           // where the destination URL might be external to the site.
-          return NextResponse.redirect(route.redirect.toUrl, redirectConfig);
+          const responseData = NextResponse.redirect(route.redirect.toUrl, redirectConfig);
+          responseData.headers.set('x-current-url', request?.url);
+          return responseData;
         }
       }
     }
@@ -356,6 +361,8 @@ export const withRoutes: MiddlewareFactory = () => {
     const rewriteUrl = new URL(url, request.url);
     rewriteUrl.search = request.nextUrl.search;
 
-    return NextResponse.rewrite(rewriteUrl);
+    const responseData = NextResponse.rewrite(rewriteUrl);
+    responseData.headers.set('x-current-url', request?.url);
+    return responseData;
   };
 };
