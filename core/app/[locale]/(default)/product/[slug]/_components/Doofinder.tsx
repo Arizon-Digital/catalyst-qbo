@@ -15,7 +15,7 @@ const DoofinderScriptLoader = () => {
     getCurrencyCode();
     if (typeof window !== "undefined") {
       let dfLayerOptions = {
-        installationId: 'dea1f7b2-1b39-4e98-ad80-fec83c63d49a',
+        installationId: 'c80a9b9e-28af-4200-b897-01d5e488c1b2',
         zone: 'eu1',
         currency: currency
       };
@@ -35,7 +35,7 @@ const DoofinderScriptLoader = () => {
         };
         s = l.getElementsByTagName(a)[0];
         s.parentNode.insertBefore(r, s);
-      })(document, 'script', 'https://eu1-config.doofinder.com/2.x/dea1f7b2-1b39-4e98-ad80-fec83c63d49a.js');
+      })(document, 'script', 'https://eu1-config.doofinder.com/2.x/c80a9b9e-28af-4200-b897-01d5e488c1b2.js');
     }
   }, [currency, setCurrency]);
 
