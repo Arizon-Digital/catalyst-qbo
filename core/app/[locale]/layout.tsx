@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
 
   const headersList = await headers();
-  const pathname = headersList.get("x-current-url") || "";
+  const pathname = headersList.get("X-Current-Url") || "";
   setRequestLocale(locale);
 
   const { data } = await client.fetch({

@@ -274,7 +274,7 @@ export const withRoutes: MiddlewareFactory = () => {
     if (status === 'MAINTENANCE') {
       // 503 status code not working - https://github.com/vercel/next.js/issues/50155
       const responseData = NextResponse.rewrite(new URL(`/${locale}/maintenance`, request.url), { status: 503 });
-      responseData.headers.set('x-current-url', request?.url);
+      responseData.headers.set('X-Current-Url', request?.url);
       return responseData;
     }
 
@@ -298,7 +298,7 @@ export const withRoutes: MiddlewareFactory = () => {
           const redirectUrl = new URL(route.redirect.to.path, request.url);
 
           const responseData = NextResponse.redirect(redirectUrl, redirectConfig);
-          responseData.headers.set('x-current-url', request?.url);
+          responseData.headers.set('X-Current-Url', request?.url);
           return responseData;
         }
 
@@ -306,7 +306,7 @@ export const withRoutes: MiddlewareFactory = () => {
           // For manual redirects, redirect to the full URL to handle cases
           // where the destination URL might be external to the site.
           const responseData = NextResponse.redirect(route.redirect.toUrl, redirectConfig);
-          responseData.headers.set('x-current-url', request?.url);
+          responseData.headers.set('X-Current-Url', request?.url);
           return responseData;
         }
       }
@@ -362,7 +362,7 @@ export const withRoutes: MiddlewareFactory = () => {
     rewriteUrl.search = request.nextUrl.search;
 
     const responseData = NextResponse.rewrite(rewriteUrl);
-    responseData.headers.set('x-current-url', request?.url);
+    responseData.headers.set('X-Current-Url', request?.url);
     return responseData;
   };
 };
