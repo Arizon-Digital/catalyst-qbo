@@ -15,7 +15,7 @@ const DoofinderScriptLoader = () => {
     getCurrencyCode();
     if (typeof window !== "undefined") {
       let dfLayerOptions = {
-        installationId: 'c0f78410-3a01-422e-bb3d-1a441ec81c85',
+        installationId: 'dea1f7b2-1b39-4e98-ad80-fec83c63d49a',
         zone: 'eu1',
         currency: currency
       };
@@ -39,7 +39,7 @@ const DoofinderScriptLoader = () => {
     }
   }, [currency, setCurrency]);
 
-  return <div>{/* You can add any additional UI here if needed */}</div>;
+  return <div></div>;
 };
 
 export default DoofinderScriptLoader;
