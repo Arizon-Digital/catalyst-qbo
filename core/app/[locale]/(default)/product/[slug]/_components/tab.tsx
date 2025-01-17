@@ -42,7 +42,7 @@ const TabComponent: React.FC<TabComponentProps> = ({ product }) => {
     return (
       <div className="space-y-6">
         {/* Description section with margin */}
-        <div className="ml-[2rem]">
+        <div className="md:ml-8">
           {/* Description heading with golden underline */}
           <div className="relative pb-4">
             <h1 className="text-2xl font-bold text-[#03465c]">Description</h1>
@@ -111,7 +111,7 @@ const TabComponent: React.FC<TabComponentProps> = ({ product }) => {
           <tbody className="text-sm text-[#03465c]">
             {Object.entries(tabContent).map(([tab, value]) => (
               <tr key={tab} className="border-b border-[#03465c]/10">
-                <th className="p-4 font-bold">{value.label}</th>
+                {/* <th className="p-4 font-bold">{value.label}</th> */}
                 <td className="p-4">{renderTabContent(tab)}</td>
               </tr>
             ))}
