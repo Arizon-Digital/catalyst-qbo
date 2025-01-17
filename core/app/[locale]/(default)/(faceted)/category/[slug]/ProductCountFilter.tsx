@@ -7,7 +7,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 const ProductCountFilter = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [productsPerPage, setProductsPerPage] = useState<string>('20');
+  const [productsPerPage, setProductsPerPage] = useState<string>('40');
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
