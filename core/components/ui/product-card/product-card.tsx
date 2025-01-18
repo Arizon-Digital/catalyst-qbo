@@ -87,40 +87,38 @@ const ProductCard = async ({
   return (
     <div className="product-card group relative flex flex-col overflow-visible product-item-plp">
       <div className="plp-img-div-parent relative flex justify-center">
-        <Link href={href} className="w-full">
-          <div className="plp-img-div relative aspect-square flex-auto w-full">
-            {image ? (
-              <BcImage
-                alt={image.altText}
-                className="!static object-contain"
-                fill
-                src={image.src}
-              />
-            ) : (
-              <div className="h-full w-full bg-gray-200" />
-            )}
+        <div className="plp-img-div relative aspect-square flex-auto w-full">
+          {image ? (
+            <BcImage
+              alt={image.altText}
+              className="!static object-contain"
+              fill
+              src={image.src}
+            />
+          ) : (
+            <div className="h-full w-full bg-gray-200" />
+          )}
+          
+          {/* Product Buttons Overlay */}
+          <div className="plp-product-btn-hover opacity-0 hover:opacity-100 w-[80%] left-[10%]  flex flex-col items-center gap-8 absolute top-[30%]">
+            {/* Quick View Button - Top */}
+            <div className="w-full">
+              <QuickView product={product} />
+            </div>
             
-            {/* Product Buttons Overlay */}
-            <div className="plp-product-btn-hover opacity-0 hover:opacity-100 w-[80%] left-[10%] flex flex-col items-center gap-8 absolute top-[30%]">
-              {/* Quick View Button - Top */}
-              <div className="w-full">
-                <QuickView product={product} />
+            {/* Add to Cart & Compare in one row */}
+            <div className="flex items-center gap-2 w-full">
+              <div className="flex-grow">
+                <AddToCartButton addToCardData={addToCardData} product={product} />
               </div>
-              
-              {/* Add to Cart & Compare in one row */}
-              <div className="flex items-center gap-2 w-full">
-                <div className="flex-grow">
-                  <AddToCartButton addToCardData={addToCardData} product={product} />
+              {showCompare && (
+                <div className="flex-shrink-0">
+                  <Compare id={id} image={image} name={name} />
                 </div>
-                {showCompare && (
-                  <div className="flex-shrink-0">
-                    <Compare id={id} image={image} name={name} />
-                  </div>
-                )}
-              </div>
+              )}
             </div>
           </div>
-        </Link>
+        </div>
       </div>
 
       <div className="plp-product-content flex flex-col gap-1">
