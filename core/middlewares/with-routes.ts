@@ -257,6 +257,8 @@ export const withRoutes: MiddlewareFactory = () => {
     const locale = request.headers.get('x-bc-locale') ?? '';
 
     const { route, status } = await getRouteInfo(request, event);
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set("currentUrl", request?.url);
 
     const cookieStore = await cookies();
     let currencyCookie = cookieStore.get('currencyCode');
@@ -273,9 +275,11 @@ export const withRoutes: MiddlewareFactory = () => {
 
     if (status === 'MAINTENANCE') {
       // 503 status code not working - https://github.com/vercel/next.js/issues/50155
-      const responseData = NextResponse.rewrite(new URL(`/${locale}/maintenance`, request.url), { status: 503 });
-      responseData.headers.set('X-Current-Url', request?.url);
-      return responseData;
+      return NextResponse.rewrite(new URL(`/${locale}/maintenance`, request.url), {
+        request: {
+          headers: requestHeaders,
+        }, status: 503
+      });
     }
 
     const redirectConfig = {
@@ -285,6 +289,9 @@ export const withRoutes: MiddlewareFactory = () => {
         // Preserve the trailing slash if it was present in the original URL
         // BigCommerce by default returns the trailing slash.
         trailingSlash: process.env.TRAILING_SLASH !== 'false',
+      },
+      request: {
+        headers: requestHeaders,
       },
     };
     if (route?.redirect) {
@@ -297,17 +304,13 @@ export const withRoutes: MiddlewareFactory = () => {
           // For dynamic redirects, assume an internal redirect and construct the URL from the path
           const redirectUrl = new URL(route.redirect.to.path, request.url);
 
-          const responseData = NextResponse.redirect(redirectUrl, redirectConfig);
-          responseData.headers.set('X-Current-Url', request?.url);
-          return responseData;
+          return NextResponse.redirect(redirectUrl, redirectConfig);
         }
 
         default: {
           // For manual redirects, redirect to the full URL to handle cases
           // where the destination URL might be external to the site.
-          const responseData = NextResponse.redirect(route.redirect.toUrl, redirectConfig);
-          responseData.headers.set('X-Current-Url', request?.url);
-          return responseData;
+          return NextResponse.redirect(route.redirect.toUrl, redirectConfig);
         }
       }
     }
@@ -361,8 +364,10 @@ export const withRoutes: MiddlewareFactory = () => {
     const rewriteUrl = new URL(url, request.url);
     rewriteUrl.search = request.nextUrl.search;
 
-    const responseData = NextResponse.rewrite(rewriteUrl);
-    responseData.headers.set('X-Current-Url', request?.url);
-    return responseData;
+    return NextResponse.rewrite(rewriteUrl, {
+      request: {
+        headers: requestHeaders,
+      },
+    });
   };
 };

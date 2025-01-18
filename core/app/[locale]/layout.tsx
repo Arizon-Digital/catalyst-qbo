@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
 
   const headersList = await headers();
-  const pathname = headersList.get("X-Current-Url") || "";
+  const currentUrl: any = headersList.get('x-middleware-request-currenturl');
   setRequestLocale(locale);
 
   const { data } = await client.fetch({
@@ -71,8 +71,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     alternates: {
       languages: {
-        'en-US': pathname,
-        'en-GB': pathname?.replace('.ca', '.com'),
+        'en-US': currentUrl,
+        'en-GB': currentUrl?.replace('.ca', '.com'),
       },
     }
   };
@@ -98,8 +98,7 @@ interface Props extends PropsWithChildren {
 export default async function RootLayout({ params, children }: Props) {
   const { locale } = await params;
   const headersList = await headers();
-  console.log('========headers=======', JSON.stringify(headersList));
-  const pathname = headersList.get("X-Current-Url") || "";
+  const currentUrl: any = headersList.get('x-middleware-request-currenturl');
   // need to call this method everywhere where static rendering is enabled
   // https://next-intl-docs.vercel.app/docs/getting-started/app-router#add-setRequestLocale-to-all-layouts-and-pages
   setRequestLocale(locale);
@@ -107,7 +106,7 @@ export default async function RootLayout({ params, children }: Props) {
   const messages = await getMessages();
 
   return (
-    <html className={`font-sans`} lang={locale} url={pathname}>
+    <html className={`font-sans`} lang={locale} url={currentUrl}>
       <head>
         <DraftModeScript />
         <GoogleAnalytics channelId={process.env.BIGCOMMERCE_CHANNEL_ID} />
