@@ -1,7 +1,7 @@
 "use client"
 
 export default function GoogleAnalytics({ channelId }: { channelId: string }) {
-  if (channelId !== "03842") {
+  if (channelId != "03842") {
     return null
   }
 
