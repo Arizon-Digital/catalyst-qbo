@@ -19,6 +19,7 @@ import '~/lib/makeswift/components';
 
 import { Notifications } from '../notifications';
 import { Providers } from '../providers';
+import GoogleAnalytics from './analytics';
 
 const inter = Roboto_Slab({
   subsets: ['latin'],
@@ -108,6 +109,7 @@ export default async function RootLayout({ params, children }: Props) {
     <html className={`font-sans`} lang={locale} url={pathname}>
       <head>
         <DraftModeScript />
+        <GoogleAnalytics channelId={process.env.BIGCOMMERCE_CHANNEL_ID} />
       </head>
       <body className="flex h-screen min-w-[auto] flex-col">
         <Notifications />
