@@ -24,10 +24,11 @@ export const FacetedSearch = ({
       </h2>
 
       {children}
-
+      <div className='p-[8px_18px]'>
       <RefineBy facets={facets} pageType={pageType} />
 
       <Facets facets={facets} pageType={pageType} />
+      </div>
     </aside>
   );
 };

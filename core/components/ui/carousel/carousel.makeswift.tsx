@@ -1,5 +1,4 @@
 'use client';
-
 import { Select, Style, TextInput } from '@makeswift/runtime/controls';
 import { useEffect, useState } from 'react';
 

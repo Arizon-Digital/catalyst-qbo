@@ -5,8 +5,11 @@ import { revalidateTag } from 'next/cache';
 import { cookies } from 'next/headers';
 
 import { FragmentOf, graphql } from '~/client/graphql';
-import { addCartLineItem } from '~/client/mutations/add-cart-line-item';
-import { createCart } from '~/client/mutations/create-cart';
+import {
+  addCartLineItem,
+  assertAddCartLineItemErrors,
+} from '~/client/mutations/add-cart-line-item';
+import { assertCreateCartErrors, createCart } from '~/client/mutations/create-cart';
 import { getCart } from '~/client/queries/get-cart';
 import { TAGS } from '~/client/tags';
 
@@ -22,7 +25,8 @@ export async function handleAddToCart(
   const productEntityId = Number(data.product_id);
   const quantity = Number(data.quantity);
 
-  const cartId = cookies().get('cartId')?.value;
+  const cookieStore = await cookies();
+  const cartId = cookieStore.get('cartId')?.value;
 
   let cart;
   let cartData: any = {};
@@ -138,7 +142,7 @@ export async function handleAddToCart(
     cart = await getCart(cartId);
     
     if (cart) {
-      cart = await addCartLineItem(cart.entityId, {
+      const addCartLineItemResponse = await addCartLineItem(cart.entityId, {
 
         lineItems: [
           {
@@ -148,7 +152,9 @@ export async function handleAddToCart(
           },
         ],
       });
+      assertAddCartLineItemErrors(addCartLineItemResponse);
 
+      cart = addCartLineItemResponse.data.cart.addCartLineItems?.cart;
       if (!cart?.entityId) {
         return { status: 'error', error: 'Failed to add product to cart.', items: cartData};
       }
@@ -163,14 +169,16 @@ export async function handleAddToCart(
     }
 
     // Create cart
-    cart = await createCart([
+    const createCartResponse = await createCart([
       {
         productEntityId,
         selectedOptions,
         quantity,
       },
     ]);
+    assertCreateCartErrors(createCartResponse);
 
+    cart = createCartResponse.data.cart.createCart?.cart;
     if (!cart?.entityId) {
       return { status: 'error', error: 'Failed to add product to cart.', items: cartData };
     }
@@ -179,7 +187,7 @@ export async function handleAddToCart(
       cartData = cartDataValue;
     }
 
-    cookies().set({
+    cookieStore.set({
       name: 'cartId',
       value: cart.entityId,
       httpOnly: true,

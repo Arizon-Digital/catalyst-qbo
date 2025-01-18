@@ -76,11 +76,11 @@ export const ProductSchema = ({ product }: Props) => {
     : null;
 
   const aggregateRating =
-    product.reviewSummary.numberOfReviews > 0
+    product?.reviewSummary?.numberOfReviews > 0
       ? {
           '@type': 'AggregateRating' as const,
-          ratingValue: product.reviewSummary.averageRating,
-          reviewCount: product.reviewSummary.numberOfReviews,
+          ratingValue: product.reviewSummary?.averageRating,
+          reviewCount: product.reviewSummary?.numberOfReviews,
         }
       : null;
 

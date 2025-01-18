@@ -1,16 +1,12 @@
+
 import { FragmentOf } from 'gql.tada';
 import { useTranslations } from 'next-intl';
 
 import { Field, FieldControl, FieldLabel, FieldMessage, Select } from '~/components/ui/form';
-
 import { FormFieldsFragment } from './fragment';
 import { FieldNameToFieldId } from './utils';
 
-type PicklistType = Extract<
-  FragmentOf<typeof FormFieldsFragment>,
-  { __typename: 'PicklistFormField' }
->;
-
+type PicklistType = Extract<FragmentOf<typeof FormFieldsFragment>, { __typename: 'PicklistFormField' }>;
 type PicklistValidationState = Record<string, boolean>;
 
 interface PicklistProps {
@@ -20,9 +16,7 @@ interface PicklistProps {
   isValid?: boolean;
   onChange?: (value: string) => void;
   onValidate?: (
-    state:
-      | PicklistValidationState
-      | ((prevState: PicklistValidationState) => PicklistValidationState),
+    state: PicklistValidationState | ((prevState: PicklistValidationState) => PicklistValidationState),
   ) => void;
   options: Array<{ label: string; entityId: string | number }>;
 }
@@ -51,6 +45,9 @@ export const Picklist = ({
         }
       : undefined;
 
+  // Sort options alphabetically
+  const sortedOptions = [...options].sort((a, b) => a.label.localeCompare(b.label));
+
   return (
     <Field className="relative space-y-2" name={name}>
       <FieldLabel
@@ -71,7 +68,7 @@ export const Picklist = ({
               ? onChange
               : validateAgainstMissingValue
           }
-          options={options.map(({ label, entityId }) => ({
+          options={sortedOptions.map(({ label, entityId }) => ({
             label,
             value: entityId.toString(),
           }))}
@@ -85,7 +82,7 @@ export const Picklist = ({
       </FieldControl>
       <div className="relative h-7" id='field'>
         {validationError && (
-          <FieldMessage className="inline-flex w-full text-xs font-normal text-error-secondary">
+          <FieldMessage className="inline-flex w-full text-xs font-normal text-error">
             {t('empty')}
           </FieldMessage>
         )}

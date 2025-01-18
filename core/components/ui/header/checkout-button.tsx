@@ -11,8 +11,8 @@ const InternalButton = () => {
   const { pending } = useFormStatus();
 
   return (
-    <Button className="block w-full bg-primary text-white text-center py-2 rounded-md hover:bg-primary/90" loading={pending} loadingText={t('loading')}>
-      PROCEED TO CHECKOUT
+    <Button className="block w-full !text-[13px] !p-[9px_12px] bg-primary text-white text-center py-2 rounded-md hover:bg-primary/90" loading={pending} loadingText={t('loading')}>
+      CHECKOUT NOW
     </Button>
   );
 };
@@ -23,7 +23,7 @@ export const CheckoutButtonPopUp = ({ cartId }: { cartId: string }) => {
     cartId = cartContext.getCartId;
   }
   return (
-    <form action={redirectToCheckout}>
+    <form action={redirectToCheckout} className='w-full'>
       <input name="cartId" type="hidden" value={cartId} />
       <InternalButton />
     </form>

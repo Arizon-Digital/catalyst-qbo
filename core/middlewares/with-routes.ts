@@ -1,7 +1,7 @@
 import { NextFetchEvent, NextRequest, NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
 import { z } from 'zod';
 
-import { getSessionCustomerId } from '~/auth';
 import { client } from '~/client';
 import { graphql } from '~/client/graphql';
 import { revalidate } from '~/client/revalidate-target';
@@ -14,11 +14,25 @@ import { type MiddlewareFactory } from './compose-middlewares';
 const GetRouteQuery = graphql(`
   query getRoute($path: String!) {
     site {
-      route(path: $path) {
+      route(path: $path, redirectBehavior: FOLLOW) {
         redirect {
-          __typename
           to {
             __typename
+            ... on BlogPostRedirect {
+              path
+            }
+            ... on BrandRedirect {
+              path
+            }
+            ... on CategoryRedirect {
+              path
+            }
+            ... on PageRedirect {
+              path
+            }
+            ... on ProductRedirect {
+              path
+            }
           }
           toUrl
         }
@@ -121,10 +135,14 @@ const StorefrontStatusCacheSchema = z.object({
 });
 
 const RedirectSchema = z.object({
-  __typename: z.string(),
-  to: z.object({
-    __typename: z.string(),
-  }),
+  to: z.union([
+    z.object({ __typename: z.literal('BlogPostRedirect'), path: z.string() }),
+    z.object({ __typename: z.literal('BrandRedirect'), path: z.string() }),
+    z.object({ __typename: z.literal('CategoryRedirect'), path: z.string() }),
+    z.object({ __typename: z.literal('PageRedirect'), path: z.string() }),
+    z.object({ __typename: z.literal('ProductRedirect'), path: z.string() }),
+    z.object({ __typename: z.literal('ManualRedirect') }),
+  ]),
   toUrl: z.string(),
 });
 
@@ -240,40 +258,58 @@ export const withRoutes: MiddlewareFactory = () => {
 
     const { route, status } = await getRouteInfo(request, event);
 
-    if (status === 'MAINTENANCE') {
-      // 503 status code not working - https://github.com/vercel/next.js/issues/50155
-      return NextResponse.rewrite(new URL(`/${locale}/maintenance`, request.url), { status: 503 });
+    const cookieStore = await cookies();
+    let currencyCookie = cookieStore.get('currencyCode');
+    if (!currencyCookie) {
+      await cookieStore.set({
+        name: 'currencyCode',
+        value: 'CAD',
+        httpOnly: true,
+        sameSite: 'lax',
+        secure: true,
+        path: '/',
+      });
     }
 
-    // Follow redirects if found on the route
-    // Use 301 status code as it is more universally supported by crawlers
-    const redirectConfig = { status: 301 };
+    if (status === 'MAINTENANCE') {
+      // 503 status code not working - https://github.com/vercel/next.js/issues/50155
+      const responseData = NextResponse.rewrite(new URL(`/${locale}/maintenance`, request.url), { status: 503 });
+      responseData.headers.set('X-Current-Url', request?.url);
+      return responseData;
+    }
 
+    const redirectConfig = {
+      // Use 301 status code as it is more universally supported by crawlers
+      status: 301,
+      nextConfig: {
+        // Preserve the trailing slash if it was present in the original URL
+        // BigCommerce by default returns the trailing slash.
+        trailingSlash: process.env.TRAILING_SLASH !== 'false',
+      },
+    };
     if (route?.redirect) {
       switch (route.redirect.to.__typename) {
-        case 'ManualRedirect': {
-          // For manual redirects, redirect to the full URL to handle cases
-          // where the destination URL might be external to the site
-          return NextResponse.redirect(route.redirect.toUrl, redirectConfig);
+        case 'BlogPostRedirect':
+        case 'BrandRedirect':
+        case 'CategoryRedirect':
+        case 'PageRedirect':
+        case 'ProductRedirect': {
+          // For dynamic redirects, assume an internal redirect and construct the URL from the path
+          const redirectUrl = new URL(route.redirect.to.path, request.url);
+
+          const responseData = NextResponse.redirect(redirectUrl, redirectConfig);
+          responseData.headers.set('X-Current-Url', request?.url);
+          return responseData;
         }
 
         default: {
-          // For all other cases, assume an internal redirect and construct the URL
-          // based on the current request URL to maintain internal redirection
-          // in non-production environments
-          const redirectPathname = new URL(route.redirect.toUrl).pathname;
-          const redirectUrl = new URL(redirectPathname, request.url);
-
-          return NextResponse.redirect(redirectUrl, redirectConfig);
+          // For manual redirects, redirect to the full URL to handle cases
+          // where the destination URL might be external to the site.
+          const responseData = NextResponse.redirect(route.redirect.toUrl, redirectConfig);
+          responseData.headers.set('X-Current-Url', request?.url);
+          return responseData;
         }
       }
-    }
-
-    const customerId = await getSessionCustomerId();
-    let postfix = '';
-
-    if (!request.nextUrl.search && !customerId && request.method === 'GET') {
-      postfix = '/static';
     }
 
     const node = route?.node;
@@ -281,17 +317,17 @@ export const withRoutes: MiddlewareFactory = () => {
 
     switch (node?.__typename) {
       case 'Brand': {
-        url = `/${locale}/brand/${node.entityId}${postfix}`;
+        url = `/${locale}/brand/${node.entityId}`;
         break;
       }
 
       case 'Category': {
-        url = `/${locale}/category/${node.entityId}${postfix}`;
+        url = `/${locale}/category/${node.entityId}`;
         break;
       }
 
       case 'Product': {
-        url = `/${locale}/product/${node.entityId}${postfix}`;
+        url = `/${locale}/product/${node.entityId}`;
         break;
       }
 
@@ -318,19 +354,15 @@ export const withRoutes: MiddlewareFactory = () => {
 
         const cleanPathName = clearLocaleFromPath(pathname, locale);
 
-        if (cleanPathName === '/' && postfix) {
-          url = `/${locale}${postfix}`;
-          break;
-        }
-
         url = `/${locale}${cleanPathName}`;
       }
     }
 
     const rewriteUrl = new URL(url, request.url);
-
     rewriteUrl.search = request.nextUrl.search;
 
-    return NextResponse.rewrite(rewriteUrl);
+    const responseData = NextResponse.rewrite(rewriteUrl);
+    responseData.headers.set('X-Current-Url', request?.url);
+    return responseData;
   };
 };

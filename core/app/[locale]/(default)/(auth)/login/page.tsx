@@ -1,13 +1,16 @@
-import { useTranslations } from 'next-intl';
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Breadcrumbs as ComponentsBreadcrumbs } from '~/components/ui/breadcrumbs';
 import { Link } from '~/components/link';
 import { Button } from '~/components/ui/button';
-import { locales, LocaleType } from '~/i18n/routing';
+import { locales } from '~/i18n/routing';
 
 import { LoginForm } from './_components/login-form';
 
-export async function generateMetadata() {
+export async function generateMetadata({ params }: Props) {
+  const { locale } = await params;
+
+  setRequestLocale(locale);
+
   const t = await getTranslations('Login');
 
   return {
@@ -16,13 +19,15 @@ export async function generateMetadata() {
 }
 
 interface Props {
-  params: { locale: LocaleType };
+  params: Promise<{ locale: string }>;
 }
 
-export default function Login({ params: { locale } }: Props) {
-  unstable_setRequestLocale(locale);
+export default async function Login({ params }: Props) {
+  const { locale } = await params;
 
-  const t = useTranslations('Login');
+  setRequestLocale(locale);
+
+  const t = await getTranslations('Login');
 
   const breadcrumbs: any = [
     {
@@ -33,12 +38,14 @@ export default function Login({ params: { locale } }: Props) {
 
   return (
     <div className="mx-auto my-6 max-w-4xl pageheading">
+      <div className='flex justify-center items-center'>
        <ComponentsBreadcrumbs
-          className="login-div login-breadcrumb mx-auto mt-[6rem] w-[80%] px-[1px]"
+          className="login-div login-breadcrumb mx-auto px-[1px]"
           breadcrumbs={breadcrumbs}
         />
+        </div>
       <h2 className="text-h2 mb-8 text-4xl font-black lg:text-5xl" id='signinheading'>Sign in</h2>
-      <div className="mb-12 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8">
+      <div className="mb-12 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8 mt-[2rem]">
         <LoginForm />
         <div className="flex flex-col gap-4 bg-gray-100 p-8" id='background'>
           <h3 className="text-h5 mb-3" id='newcustomer'>{t('CreateAccount.heading')}</h3>

@@ -41,7 +41,7 @@ const AddressChangeButtons = ({ addressId, isAddressRemovable, onDelete }: Addre
   };
 
   return (
-    <div className="flex w-fit gap-x-2 divide-y-0">
+    <div className="flex w-fit gap-x-2 divide-y-0 text-white">
       <Button aria-label={t('editButton')} asChild variant="secondary">
         <Link href={`/account/addresses/edit/${addressId}`}>{t('editButton')}</Link>
       </Button>
@@ -79,6 +79,7 @@ export const AddressBook = ({
           <p>{accountState.message}</p>
         </Message>
       )}
+      {!addressesCount && <p className="border-t py-12 text-center">{t('emptyAddresses')}</p>}
       <ul className="mb-12">
         {addressBook.map(
           ({

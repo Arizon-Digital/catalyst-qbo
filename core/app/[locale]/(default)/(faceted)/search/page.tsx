@@ -18,10 +18,11 @@ export async function generateMetadata() {
 }
 
 interface Props {
-  searchParams: Record<string, string | string[] | undefined>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
 
-export default async function Search({ searchParams }: Props) {
+export default async function Search(props: Props) {
+  const searchParams = await props.searchParams;
   const t = await getTranslations('Search');
 
   const searchTerm = typeof searchParams.term === 'string' ? searchParams.term : undefined;
@@ -90,7 +91,7 @@ export default async function Search({ searchParams }: Props) {
             {t('products')}
           </h2>
 
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 sm:gap-8">
+          <div className="product-grid grid gap-6 sm:gap-8 grid-cols-4">
             {products.map((product, index) => (
               <ProductCard
                 imagePriority={index <= 3}

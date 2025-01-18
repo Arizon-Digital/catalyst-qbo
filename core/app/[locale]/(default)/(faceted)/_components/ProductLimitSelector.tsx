@@ -1,41 +1,57 @@
-
+// ProductCountFilter.tsx
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { ProductCard } from '~/components/product-card';
-import { fetchFacetedSearch } from '../fetch-faceted-search';
-import { storeProductLimitInCookies } from '../_actions/store-prod-data-limit';
-interface ProductLimitSelectorProps {
-  initialProducts: any[];
-  categoryId: number;
-  searchParams: Record<string, string | string[] | undefined>;
-}
+import { useRouter, useSearchParams } from 'next/navigation';
 
-export function ProductLimitSelector({ initialProducts, categoryId, searchParams }: ProductLimitSelectorProps) {
-  const [productLimit, setProductLimit] = useState(50);
-  const [products, setProducts] = useState(initialProducts);
+const ProductCountFilter = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [productsPerPage, setProductsPerPage] = useState<string>('20');
+  const [isClient, setIsClient] = useState(false);
 
-  const handleLimitChange = async (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const newLimit = Number(event.target.value);    
-    storeProductLimitInCookies(newLimit)
-    setProductLimit(newLimit);
+  useEffect(() => {
+    setIsClient(true);
+    const limit = searchParams.get('limit');
+    if (limit) {
+      setProductsPerPage(limit);
+    }
+  }, [searchParams]);
 
-    
-    const search = await fetchFacetedSearch({ ...searchParams, category: categoryId, limit: newLimit });
-    setProducts(search.products.items);
+  const handleCountChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const newCount = event.target.value;
+    setProductsPerPage(newCount);
+
+    const params = new URLSearchParams(searchParams.toString());
+    params.set('limit', newCount);
+    params.set('page', '1');
+
+    router.push(`${window.location.pathname}?${params.toString()}`);
   };
 
-  return (
-    <div>
-      {productLimit}
-      <select onChange={handleLimitChange} value={productLimit}>
-        <option value="10">10</option>
-        <option value="20">20</option>
-        <option value="50">50</option>
-        <option value="100">100</option>
-      </select>
+  if (!isClient) {
+    return (
+      <div className='rounded-[4px] border border-[#dcdcdc] px-[10px] py-2'>
+        <span>20 Products</span>
+      </div>
+    );
+  }
 
-      
+  return (
+    <div className='rounded-[4px] border border-[#dcdcdc] px-[10px] py-2'>
+      <select
+        value={productsPerPage}
+        onChange={handleCountChange}
+        className="bg-transparent outline-none"
+      >
+        <option value="8">8 Products</option>
+        <option value="12">12 Products</option>
+        <option value="20">20 Products</option>
+        <option value="26">26 Products</option>
+        <option value="40">40 Products</option>
+      </select>
     </div>
   );
-}
+};
+
+export default ProductCountFilter;

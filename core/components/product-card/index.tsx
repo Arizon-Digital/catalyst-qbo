@@ -13,6 +13,7 @@ interface Props {
   imagePriority?: boolean;
   showCompare?: boolean;
   showCart?: boolean;
+  page?: string;
 }
 
 export const ProductCard = ({
@@ -21,6 +22,7 @@ export const ProductCard = ({
   imagePriority = false,
   showCart = true,
   showCompare = true,
+  page,
 }: Props) => {
   const format = useFormatter();
 
@@ -41,6 +43,7 @@ export const ProductCard = ({
       price={price}
       showCompare={showCompare}
       subtitle={brand?.name}
+      page={page}
     />
   );
 };

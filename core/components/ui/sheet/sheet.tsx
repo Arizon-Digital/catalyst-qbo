@@ -17,7 +17,7 @@ const Sheet = ({ title, children, side = 'left', trigger, ...props }: Props) => 
       <SheetPrimitive.Content
         aria-describedby={undefined}
         className={cn(
-          'fixed gap-4 overflow-auto bg-white p-6 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500 data-[state=open]:animate-in data-[state=closed]:animate-out md:p-10',
+          'fixed gap-4 overflow-auto bg-white p-6 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500 data-[state=open]:animate-in data-[state=closed]:animate-out md:p-10 filterbox',
           side === 'top' &&
             'inset-x-0 top-0 border-b data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top',
           side === 'bottom' &&
@@ -33,7 +33,7 @@ const Sheet = ({ title, children, side = 'left', trigger, ...props }: Props) => 
             <h2 className="text-2xl font-bold">{title}</h2>
           </SheetPrimitive.Title>
           <SheetPrimitive.Close className="focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20">
-            <X className="h-6 w-6">
+            <X className="h-[5.3rem] w-6">
               <title>Close</title>
             </X>
           </SheetPrimitive.Close>

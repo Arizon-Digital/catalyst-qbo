@@ -57,7 +57,6 @@ export const NewsLetterSubscriptions = ({ channelId} : {channelId: any}) => {
               placeholder="Your email address"
               aria-required="true"
               required
-              style={{ marginRight: '8px' }}
             />
             <Button
               id="subscribe"
@@ -65,7 +64,7 @@ export const NewsLetterSubscriptions = ({ channelId} : {channelId: any}) => {
               loadingText="processing"
               type="submit"
             >
-              Subscribe
+              SUBSCRIBE
             </Button>
           </div>
         </div>

@@ -1,10 +1,11 @@
 
 
+
+
 import React from 'react';
 import { useTranslations } from 'next-intl';
 import { FragmentOf, graphql } from '~/client/graphql';
 import { removeEdgesAndNodes } from '@bigcommerce/catalyst-client';
-
 import { PricingFragment } from '~/client/fragments/pricing';
 import { ProductItemFragment } from '~/client/fragments/product-item';
 
@@ -12,13 +13,14 @@ import { ProductForm } from './product-form';
 import { ProductFormFragment } from './product-form/fragment';
 import { ProductSchema, ProductSchemaFragment } from './product-schema';
 import { ReviewSummary, ReviewSummaryFragment } from './review-summary';
-import TabComponent from '../_components/tab'; // Corrected typo from 'TabComponnet'
+import TabComponent from '../_components/tab';
 
 export const TechDataFragment = graphql(`
   fragment TechDataFragment on Product {
     sku
     condition
     availability
+    description
     brand {
       name
     }
@@ -53,11 +55,15 @@ interface Props {
 
 const TechData: React.FC<Props> = ({ product }) => {
   const t = useTranslations('Product.TechData');
-  
-  const customFields = removeEdgesAndNodes(product.customFields);
+
+  let customFields: any = [];
+  if(product?.customFields) {
+    customFields = removeEdgesAndNodes(product.customFields);
+  }
 
   // Return null if no technical data is available
-  if (!product.sku && !product.condition && !product.availability && !product.brand && !product.weight) {
+  if (!product.sku && !product.condition && !product.availability && 
+      !product.brand && !product.weight) {
     return null;
   }
 
@@ -84,24 +90,25 @@ const TechData: React.FC<Props> = ({ product }) => {
           {product.sku && (
             <>
               <span className="product-details-item">
-                <strong>SKU:</strong> <div className='value'>{product.sku}</div>
+                <strong>SKU:</strong> <div className='value font-semibold'>{product.sku}</div>
               </span>
             </>
           )}
 
-          {Boolean(product.availabilityV2.description) && (
-            
+          {Boolean(product.availabilityV2?.description) && (
             <div className='product-details-itemss'>
-              <h3 className="font-semibold flex id">Availability: <p className="pr value">{product.availabilityV2.description}</p></h3>
+              <h3 className="font-semibold flex id">
+                Availability: <p className="font-semibold">{product.availabilityV2.description}</p>
+              </h3>
             </div>
-            
           )}
 
           {product.weight && (
             <>
               <span className="product-details-item">
                 <strong>Weight:</strong> 
-                <div className='value'>{product.weight.value} {product.weight.unit}
+                <div className='value'>
+                  {product.weight.value} {product.weight.unit}
                 </div>
               </span>
             </>
@@ -123,9 +130,10 @@ const TechData: React.FC<Props> = ({ product }) => {
           </div>
         ))
       }
+
+      
     </div>
   );
 };
 
 export default TechData;
-

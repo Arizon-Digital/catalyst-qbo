@@ -6,18 +6,22 @@ interface CommonContext {
   open: any;
   getCurrencyCode: any;
   getCartId: any;
+  openSortby: any;
   handlePopup: (data?: any) => void;
   setCurrencyCodeFn: (data?: any) => void;
   setCartIdFn: (data?: any) => void;
+  handleSortby: (data?: any)=> void;
 }
 
 const CommonContext = createContext<CommonContext | undefined>({
   open: false,
   getCurrencyCode: 'CAD',
   getCartId: '',
+  openSortby: false,
   handlePopup: () => { },
   setCurrencyCodeFn: () => { },
   setCartIdFn: () => { },
+  handleSortby: ()=> { }
 });
 
 function CommonReducer(state: any, action: any) {
@@ -25,8 +29,9 @@ function CommonReducer(state: any, action: any) {
     return {
       items: {
         open: action.payload,
-        currencyCode: { ...state.items.currencyCode },
-        cartId: {... state.items.cartId}
+        currencyCode: state.items.currencyCode,
+        cartId: state.items.cartId,
+        openSortby: state.items.openSortby
       },
     };
   } else if(action.type === 'CURRENCY_CODE') {
@@ -34,15 +39,26 @@ function CommonReducer(state: any, action: any) {
       items: {
         open: state.items.open,
         currencyCode: action.payload,
-        cartId: {... state.items.cartId}
+        cartId: state.items.cartId,
+        openSortby: state.items.openSortby
       },
     };
   } else if(action.type === 'CART_ID') {
     return {
       items: {
         open: state.items.open,
-        currencyCode: { ...state.items.currencyCode },
+        currencyCode:  state.items.currencyCode,
         cartId: action.payload,
+        openSortby: state.items.openSortby
+      },
+    };
+  } else if(action.type === 'DISPLAY_SORTBY') {
+    return {
+      items: {
+        open: state.items.open,
+        currencyCode: state.items.currencyCode,
+        cartId: state.items.cartId,
+        openSortby: action.payload
       },
     };
   }
@@ -55,12 +71,20 @@ export const CommonProvider = ({ children }: { children: ReactNode }) => {
       open: false,
       currencyCode: 'CAD',
       cartId: '',
+      openSortby: false
     }
   });
 
   const handlePopup = (open: any) => {
     commonDispatch({
       type: 'DISPLAY_POPUP',
+      payload: open
+    });
+  }
+
+  const handleSortby = (open: any) => {
+    commonDispatch({
+      type: 'DISPLAY_SORTBY',
       payload: open
     });
   }
@@ -83,9 +107,11 @@ export const CommonProvider = ({ children }: { children: ReactNode }) => {
     open: commonState?.items?.open,
     getCurrencyCode: commonState?.items?.currencyCode,
     getCartId: commonState?.items?.cartId,
+    openSortby: commonState?.items?.openSortby,
     handlePopup,
     setCurrencyCodeFn,
-    setCartIdFn
+    setCartIdFn,
+    handleSortby
   };
 
   return <CommonContext.Provider value={value}>{children}</CommonContext.Provider>;

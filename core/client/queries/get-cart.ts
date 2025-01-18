@@ -1,6 +1,6 @@
 import { cache } from 'react';
 
-import { getSessionCustomerId } from '~/auth';
+import { getSessionCustomerAccessToken } from '~/auth';
 
 import { client } from '..';
 import { graphql } from '../graphql';
@@ -25,6 +25,8 @@ const GetCartQuery = graphql(
             totalQuantity
             physicalItems {
               name
+              sku
+              url
               brand
               imageUrl
               entityId
@@ -122,12 +124,12 @@ const GetCartQuery = graphql(
 );
 
 export const getCart = cache(async (cartId?: string, channelId?: string) => {
-  const customerId = await getSessionCustomerId();
+  const customerAccessToken = await getSessionCustomerAccessToken();
 
   const response = await client.fetch({
     document: GetCartQuery,
     variables: { cartId },
-    customerId,
+    customerAccessToken,
     fetchOptions: {
       cache: 'no-store',
       next: {

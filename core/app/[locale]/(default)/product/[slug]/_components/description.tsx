@@ -15,6 +15,9 @@ interface Props {
   product: FragmentOf<typeof DescriptionFragment>;
 }
 
+
+
+
 export const Description = ({ product }: any) => {
   const t = useTranslations('Product.Description');
   if (!product.description) {
@@ -26,7 +29,7 @@ export const Description = ({ product }: any) => {
       
       {/* Pass product description to the TabComponent */}
       <TabComponent product={product} />
-      <TechData product={product} />
+      {/* <TechData product={product} /> */}
     </>
     
   );

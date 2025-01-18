@@ -44,5 +44,17 @@ export const CartViewed = ({ checkout, currencyCode, lineItems }: Props) => {
     });
   }, [currencyCode, lineItems, checkout]);
 
+  useEffect(() => {
+    const loadFeefoReviewsInCart = () => {
+      const url = `//api.feefo.com/api/javascript/quality-bearings-online`;
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src = url;
+      document.head.appendChild(script);
+    };
+    
+    loadFeefoReviewsInCart();
+  }, []);
+
   return null;
 };

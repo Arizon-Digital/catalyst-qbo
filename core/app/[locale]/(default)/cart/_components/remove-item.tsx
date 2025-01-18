@@ -50,9 +50,8 @@ export const deleteIconTemp=async(product:any,currency:any)=>{
       line_items: [lineItemTransform(product)],
     });
 }
-export const RemoveItem = ({ currency, product, deleteIcon }: Props) => {
+export const RemoveItem = ({ currency, product, deleteIcon }: Props, quantity: any) => {
   const t = useTranslations('Cart.SubmitRemoveItem');
-
   const onSubmitRemoveItem = async () => {
     const { status } = await removeItem({
       lineItemEntityId: product.entityId,

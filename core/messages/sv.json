@@ -32,7 +32,7 @@
             "entePasswordMessage": "Ange ditt lösenord",
             "submitting": "Skickar ...",
             "logIn": "Logga in",
-            "resetPassword": "Glömt ditt lösenord?"
+            "forgotPassword": "Glömt ditt lösenord?"
         },
         "CreateAccount": {
             "heading": "Nya kunder?",
@@ -43,10 +43,26 @@
             "ordersTracking": "Spåra nya beställningar",
             "wishlists": "Spara objekt i din önskelista",
             "createLink": "Skapa konto "
+        },
+        "ForgotPassword": {
+            "title": "Glömt ditt lösenord",
+            "heading": "Glömt ditt lösenord",
+            "Form": {
+                "description": "Ange e-postadressen som är kopplad till ditt konto nedan. Vi skickar instruktioner för att återställa ditt lösenord.",
+                "emailLabel": "E-post",
+                "emailValidationMessage": "Ange en giltig e-postadress, t.ex. namn@domän.com",
+                "recaptchaText": "Godkänd ReCAPTCHA-kontroll",
+                "confirmResetPassword": "Om e-postadressen {email} är kopplad till ett konto i vår butik har vi skickat ett e-postmeddelande om återställning av lösenord. Kontrollera din inkorg och skräppostmapp om du inte ser meddelandet.",
+                "submitting": "Skickar ...",
+                "submit": "Återställ lösenord"
+            },
+            "Errors": {
+                "error": "Okänt fel."
+            }
         }
     },
     "Register": {
-        "title": "Register account",
+        "title": "Registrera konto",
         "heading": "Nytt konto",
         "Form": {
             "submit": "Skapa konto",
@@ -55,25 +71,9 @@
             "confirmPassword": "Lösenorden stämmer inte överens"
         },
         "Errors": {
-            "inputError": "Något gick fel när användarens inmatning bearbetades.",
+            "inputError": "Något gick fel när användarens inmatning skulle bearbetas.",
             "apiError": "Det verkar som om vi har ett serverfel. Försök igen om några minuter.",
             "error": "Någonting gick fel. Vänligen försök igen senare."
-        }
-    },
-    "Reset": {
-        "title": "Återställ lösenord",
-        "heading": "Återställ lösenord",
-        "Form": {
-            "description": "Ange e-postadressen som är kopplad till ditt konto nedan. Vi skickar instruktioner för att återställa ditt lösenord.",
-            "emailLabel": "E-post",
-            "emailValidationMessage": "Ange en giltig e-postadress, t.ex. namn@domän.com",
-            "recaptchaText": "Godkänd ReCAPTCHA-kontroll",
-            "confirmResetPassword": "Om e-postadressen {email} är kopplad till ett konto i vår butik har vi skickat ett e-postmeddelande om återställning av lösenord. Kontrollera din inkorg och skräppostmapp om du inte ser meddelandet.",
-            "submitting": "Skickar ...",
-            "submit": "Återställ lösenord"
-        },
-        "Errors": {
-            "error": "Okänt fel."
         }
     },
     "FacetedGroup": {
@@ -122,7 +122,11 @@
     "Category": {
         "sortBy": "{items, plural, =0 {no items} =1 {1 item} other {# items}}",
         "products": "Produkter",
-        "items": "varor"
+        "items": "varor",
+        "Empty": {
+            "message": "Inga produkter i denna kategori",
+            "cta": "Tillbaka till startsidan"
+        }
     },
     "Search": {
         "title": "Sökresultat",
@@ -133,6 +137,7 @@
     },
     "Account": {
         "Home": {
+            "title": "Mitt konto",
             "heading": "Mitt konto",
             "accountTabsLabel": "Kontoflikar",
             "orders": "Beställningar",
@@ -148,6 +153,7 @@
             "title": "Adresser",
             "addNewAddress": "Lägg till ny adress",
             "editButton": "Redigera",
+            "emptyAddresses": "Inga adresser har lagts till",
             "deleteButton": "Radera",
             "confirmDeleteAddress": "Radera adress",
             "deleteModalTitle": "Är du säker på att du vill ta bort den här adressen?",
@@ -157,11 +163,11 @@
                 "Form": {
                     "recaptchaText": "Godkänd ReCAPTCHA-kontroll",
                     "submit": "Lägg till ny adress",
-                    "submitting": "Saving address...",
+                    "submitting": "Sparar adress ...",
                     "cancel": "Annullera",
-                    "success": "Address added to your account.",
+                    "success": "Adressen har lagts till på ditt konto.",
                     "Errors": {
-                        "inputError": "Något gick fel när användarens inmatning bearbetades.",
+                        "inputError": "Något gick fel när användarens inmatning skulle bearbetas.",
                         "error": "Okänt fel."
                     }
                 }
@@ -172,14 +178,14 @@
                 "Form": {
                     "recaptchaText": "Godkänd ReCAPTCHA-kontroll",
                     "submit": "Redigera adress",
-                    "submitting": "Updating address...",
+                    "submitting": "Uppdaterar adress ...",
                     "cancel": "Annullera",
                     "confirmDeleteAddress": "Radera adress",
                     "deleteModalTitle": "Är du säker på att du vill ta bort den här adressen?",
                     "deleteButton": "Radera",
-                    "success": "The address has been successfully updated.",
+                    "success": "Adressen har uppdaterats.",
                     "Errors": {
-                        "inputError": "Något gick fel när användarens inmatning bearbetades.",
+                        "inputError": "Något gick fel när användarens inmatning skulle bearbetas.",
                         "notFound": "Adressen finns inte.",
                         "error": "Okänt fel."
                     }
@@ -198,7 +204,7 @@
             "changePassword": "Ändra lösenor",
             "submit": "Uppdatera inställningar",
             "submitting": "Uppdatera inställningar ...",
-            "successMessage": "Bästa {firstName} {lastName}, du har uppdaterat dina kontouppgifter",
+            "successMessage": "Dina kontoinställningar har uppdaterats",
             "validationMessages": {
                 "email": "Ange en giltig e-postadress, t.ex. namn@domän.com",
                 "empty": "Det här fältet får inte vara tomt",
@@ -225,7 +231,7 @@
             },
             "UpdateCustomer": {
                 "Errors": {
-                    "inputError": "Något gick fel när användarens inmatning bearbetades.",
+                    "inputError": "Något gick fel när användarens inmatning skulle bearbetas.",
                     "notFound": "Kunden finns inte"
                 }
             }
@@ -329,8 +335,7 @@
             }
         },
         "AddToCart": {
-            "success": "{cartItems, plural, =1 {1 Item} other {# Items}} har lagts till <cartLink> i kundvagnen</cartLink>",
-            "error": "Produkten kunde inte läggas till i kundvagnen. Försök igen."
+            "success": "{cartItems, plural, =1 {1 Item} other {# Items}} har lagts till <cartLink> i kundvagnen</cartLink>"
         }
     },
     "Product": {
@@ -338,9 +343,14 @@
         "Carousel": {
             "relatedProducts": "Relaterade produkter"
         },
+        "Gallery": {
+            "previous": "Previous product image",
+            "next": "Next product image",
+            "thumbnailNavigation": "Thumbnail navigation",
+            "enlarge": "Enlarge product image"
+        },
         "Form": {
             "success": "{cartItems, plural, =1 {1 Item} other {# Items}} har lagts till <cartLink> i kundvagnen</cartLink>",
-            "error": "Produkten kunde inte läggas till i kundvagnen. Försök igen.",
             "saveToWishlist": "Spara i önskelistan",
             "quantityLabel": "Kvantitet"
         },
@@ -362,7 +372,7 @@
             "sku": "SKU",
             "upc": "UPC",
             "minPurchase": "Minsta köp:",
-            "maxPurchase": "Maxköp",
+            "maxPurchase": "Maximalt köp:",
             "availability": "Tillgänglighet",
             "condition": "Skick",
             "weight": "Vikt",
@@ -399,7 +409,7 @@
         }
     },
     "Maintenance": {
-        "title": "Maintenance",
+        "title": "Underhåll",
         "message": "Vi är nere för underhåll",
         "contactUs": "Kontakta oss på:"
     },
@@ -431,7 +441,34 @@
             "LocaleSwitcher": {
                 "chooseCountryAndLanguage": "Välj land och språk",
                 "goToSite": "Gå till webbplatsen"
+            },
+            "MiniCart": {
+                "cart": "Kundvagn",
+                "items": "Artiklar i kundvagnen"
+            },
+            "Navigation": {
+                "toggle": "Toggle navigation",
+                "navigationMenu": "Navigation menu"
+            },
+            "Search": {
+                "openSearchPopup": "Open search popup",
+                "closeSearchPopup": "Close search popup",
+                "searchBar": "Search bar",
+                "photo": "Foto",
+                "products": "Produkter",
+                "categories": "Kategorier",
+                "brands": "Varumärke",
+                "noSearchResults": "Tyvärr, inga resultat för {term}.",
+                "searchPlaceholder": "Sök...",
+                "clearSearch": "Rensa sökning",
+                "processing": "Behandlar…"
             }
+        },
+        "Footer": {
+            "socialMediaLinks": "Sociala Media-länkar"
+        },
+        "Breadcrumb": {
+            "breadcrumb": "Breadcrumb"
         },
         "Compare": {
             "compareButton": "Jämför ({products})",
@@ -453,11 +490,34 @@
             "processing": "Behandlar…"
         },
         "ProductCard": {
+            "Compare": {
+                "compare": "Jämför"
+            },
             "AddToCart": {
                 "viewOptions": "Visa alternativ",
-                "success": "{cartItems, plural, =1 {1 Item} other {# Items}} har lagts till <cartLink> i kundvagnen</cartLink>",
-                "error": "Produkten kunde inte läggas till i kundvagnen. Försök igen."
+                "success": "{cartItems, plural, =1 {1 Item} other {# Items}} har lagts till <cartLink> i kundvagnen</cartLink>"
             }
+        },
+        "Slideshow": {
+            "slideshow": "Interactive slide show",
+            "slide": "Glida",
+            "previousSlide": "Previous slide",
+            "nextSlide": "Next slide",
+            "slideNo": "{n} of {total}",
+            "pause": "Pause slideshow",
+            "play": "Play slideshow"
+        },
+        "Pagination": {
+            "pagination": "sidnumrering",
+            "previous": "Föregående",
+            "next": "Nästa"
+        },
+        "Carousel": {
+            "carousel": "Karusell",
+            "previousProducts": "Previous products",
+            "nextProducts": "Next products",
+            "slides": "Slides",
+            "goto": "Go to slide {n}"
         },
         "FormFields": {
             "Validation": {
@@ -476,6 +536,10 @@
                 "password": "Ange ett lösenord",
                 "phone": "Ange ett telefonnummer",
                 "postalCode": "Ange ett postnummer"
+            },
+            "Counter": {
+                "increase": "Öka antal",
+                "decrease": "Minska antal"
             }
         }
     }

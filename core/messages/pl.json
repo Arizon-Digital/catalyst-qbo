@@ -32,7 +32,7 @@
             "entePasswordMessage": "Podaj hasło",
             "submitting": "Przekazanie...",
             "logIn": "Zaloguj się",
-            "resetPassword": "Nie pamiętasz hasła?"
+            "forgotPassword": "Nie pamiętasz hasła?"
         },
         "CreateAccount": {
             "heading": "Nowy klient?",
@@ -41,12 +41,28 @@
             "multipleAddresses": "Zapisz wiele adresów wysyłki",
             "ordersHistory": "Dostęp do historii zamówień",
             "ordersTracking": "Śledzenie nowych zamówień",
-            "wishlists": "Zapisz przedmioty na swojej liście życzeń",
+            "wishlists": "Zapisz elementy na swojej liście życzeń",
             "createLink": "Utwórz konto "
+        },
+        "ForgotPassword": {
+            "title": "Nie pamiętam hasła",
+            "heading": "Nie pamiętam hasła",
+            "Form": {
+                "description": "Podaj poniżej adres e-mail powiązany z Twoim kontem. Wyślemy Ci instrukcje resetowania hasła.",
+                "emailLabel": "Email",
+                "emailValidationMessage": "Podaj prawidłowy adres e-mail, np. nazwa@domena.com",
+                "recaptchaText": "Zdaj test ReCAPTCHA",
+                "confirmResetPassword": "Jeśli adres e-mail {email} jest powiązany z kontem w naszym sklepie, otrzymasz wiadomość e-mail umożliwiającą zresetowanie hasła. Jeśli jej nie widzisz, sprawdź skrzynkę odbiorczą i folder ze spamem.",
+                "submitting": "Przekazanie...",
+                "submit": "Zresetuj hasło"
+            },
+            "Errors": {
+                "error": "Nieznany błąd."
+            }
         }
     },
     "Register": {
-        "title": "Register account",
+        "title": "Zarejestruj konto",
         "heading": "Nowe konto",
         "Form": {
             "submit": "Utwórz konto",
@@ -58,22 +74,6 @@
             "inputError": "Wystąpił błąd podczas przetwarzania danych wprowadzonych przez użytkownika.",
             "apiError": "Wygląda na to, że wystąpił błąd serwera, spróbuj ponownie za kilka minut.",
             "error": "Coś poszło nie tak. Proszę spróbować później."
-        }
-    },
-    "Reset": {
-        "title": "Zresetuj hasło",
-        "heading": "Zresetuj hasło",
-        "Form": {
-            "description": "Podaj poniżej adres e-mail powiązany z Twoim kontem. Wyślemy Ci instrukcje resetowania hasła.",
-            "emailLabel": "Email",
-            "emailValidationMessage": "Podaj prawidłowy adres e-mail, np. nazwa@domena.com",
-            "recaptchaText": "Zdaj test ReCAPTCHA",
-            "confirmResetPassword": "Jeśli adres e-mail {email} jest powiązany z kontem w naszym sklepie, otrzymasz wiadomość e-mail umożliwiającą zresetowanie hasła. Jeśli jej nie widzisz, sprawdź skrzynkę odbiorczą i folder ze spamem.",
-            "submitting": "Przekazanie...",
-            "submit": "Zresetuj hasło"
-        },
-        "Errors": {
-            "error": "Nieznany błąd."
         }
     },
     "FacetedGroup": {
@@ -122,7 +122,11 @@
     "Category": {
         "sortBy": "{items, plural, =0 {no items} =1 {1 item} other {# items}}",
         "products": "Produkty",
-        "items": "produkty"
+        "items": "produkty",
+        "Empty": {
+            "message": "Brak produktów w tej kategorii",
+            "cta": "Powrót na początek"
+        }
     },
     "Search": {
         "title": "Wyniki wyszukiwania",
@@ -133,6 +137,7 @@
     },
     "Account": {
         "Home": {
+            "title": "Moje konto",
             "heading": "Moje konto",
             "accountTabsLabel": "Karty konta",
             "orders": "Zamówienia",
@@ -148,6 +153,7 @@
             "title": "Adresy",
             "addNewAddress": "Dodaj nowy adres",
             "editButton": "Edytuj",
+            "emptyAddresses": "Brak dodanych adresów",
             "deleteButton": "Usuń",
             "confirmDeleteAddress": "Usuń adres",
             "deleteModalTitle": "Czy na pewno chcesz usunąć ten adres?",
@@ -157,9 +163,9 @@
                 "Form": {
                     "recaptchaText": "Zdaj test ReCAPTCHA",
                     "submit": "Dodaj nowy adres",
-                    "submitting": "Saving address...",
+                    "submitting": "Zapisywanie adresu...",
                     "cancel": "Anuluj",
-                    "success": "Address added to your account.",
+                    "success": "Adres został dodany do Twojego konta.",
                     "Errors": {
                         "inputError": "Wystąpił błąd podczas przetwarzania danych wprowadzonych przez użytkownika.",
                         "error": "Nieznany błąd."
@@ -172,12 +178,12 @@
                 "Form": {
                     "recaptchaText": "Zdaj test ReCAPTCHA",
                     "submit": "Edytuj adres",
-                    "submitting": "Updating address...",
+                    "submitting": "Aktualizowanie adresu...",
                     "cancel": "Anuluj",
                     "confirmDeleteAddress": "Usuń adres",
                     "deleteModalTitle": "Czy na pewno chcesz usunąć ten adres?",
                     "deleteButton": "Usuń",
-                    "success": "The address has been successfully updated.",
+                    "success": "Adres został pomyślnie zaktualizowany.",
                     "Errors": {
                         "inputError": "Wystąpił błąd podczas przetwarzania danych wprowadzonych przez użytkownika.",
                         "notFound": "Adres nie istnieje.",
@@ -198,7 +204,7 @@
             "changePassword": "Zmień hasło",
             "submit": "Zaktualizuj ustawienia",
             "submitting": "Zaktualizuj ustawienia...",
-            "successMessage": "Witaj, {firstName} {lastName}. Dane Twojego konta zostały pomyślnie zaktualizowane.",
+            "successMessage": "Ustawienia konta zostały zaktualizowane",
             "validationMessages": {
                 "email": "Podaj prawidłowy adres e-mail, np. nazwa@domena.com",
                 "empty": "To pole nie może być puste",
@@ -329,8 +335,7 @@
             }
         },
         "AddToCart": {
-            "success": "Dodano {cartItems, plural, =1 {1 produkt} other {# produkty(-ów)}} <cartLink>do koszyka</cartLink>",
-            "error": "Błąd podczas dodawania produktu do koszyka. Spróbuj ponownie."
+            "success": "Dodano {cartItems, plural, =1 {1 produkt} other {# produkty(-ów)}} <cartLink>do koszyka</cartLink>"
         }
     },
     "Product": {
@@ -338,9 +343,14 @@
         "Carousel": {
             "relatedProducts": "Powiązane produkty"
         },
+        "Gallery": {
+            "previous": "Previous product image",
+            "next": "Next product image",
+            "thumbnailNavigation": "Thumbnail navigation",
+            "enlarge": "Enlarge product image"
+        },
         "Form": {
             "success": "Dodano {cartItems, plural, =1 {1 produkt} other {# produkty(-ów)}} <cartLink>do koszyka</cartLink>",
-            "error": "Błąd podczas dodawania produktu do koszyka. Spróbuj ponownie.",
             "saveToWishlist": "Zapisz na liście życzeń",
             "quantityLabel": "Ilość"
         },
@@ -399,7 +409,7 @@
         }
     },
     "Maintenance": {
-        "title": "Maintenance",
+        "title": "Konserwacja",
         "message": "Przerwa z powodu konserwacji",
         "contactUs": "Możesz skontaktować się z nami:"
     },
@@ -431,7 +441,34 @@
             "LocaleSwitcher": {
                 "chooseCountryAndLanguage": "Wybierz kraj i język",
                 "goToSite": "Przejdź do witryny"
+            },
+            "MiniCart": {
+                "cart": "Koszyk",
+                "items": "Produkty w koszyku"
+            },
+            "Navigation": {
+                "toggle": "Toggle navigation",
+                "navigationMenu": "Navigation menu"
+            },
+            "Search": {
+                "openSearchPopup": "Open search popup",
+                "closeSearchPopup": "Close search popup",
+                "searchBar": "Search bar",
+                "photo": "Zdjęcie",
+                "products": "Produkty",
+                "categories": "Kategorie",
+                "brands": "Marki",
+                "noSearchResults": "Niestety, brak wyników dla {term}.",
+                "searchPlaceholder": "Szukaj...",
+                "clearSearch": "Wyraźne wyszukiwanie",
+                "processing": "Przetwarzanie..."
             }
+        },
+        "Footer": {
+            "socialMediaLinks": "Linki do mediów społecznościowych"
+        },
+        "Breadcrumb": {
+            "breadcrumb": "Breadcrumb"
         },
         "Compare": {
             "compareButton": "Porównaj ({products})",
@@ -453,11 +490,34 @@
             "processing": "Przetwarzanie..."
         },
         "ProductCard": {
+            "Compare": {
+                "compare": "Porównaj"
+            },
             "AddToCart": {
                 "viewOptions": "Wyświetl opcje",
-                "success": "Dodano {cartItems, plural, =1 {1 produkt} other {# produkty(-ów)}} <cartLink>do koszyka</cartLink>",
-                "error": "Błąd podczas dodawania produktu do koszyka. Spróbuj ponownie."
+                "success": "Dodano {cartItems, plural, =1 {1 produkt} other {# produkty(-ów)}} <cartLink>do koszyka</cartLink>"
             }
+        },
+        "Slideshow": {
+            "slideshow": "Interactive slide show",
+            "slide": "Slajd",
+            "previousSlide": "Previous slide",
+            "nextSlide": "Next slide",
+            "slideNo": "{n} of {total}",
+            "pause": "Pause slideshow",
+            "play": "Play slideshow"
+        },
+        "Pagination": {
+            "pagination": "dzielenie na strony",
+            "previous": "Poprzedni",
+            "next": "Dalej"
+        },
+        "Carousel": {
+            "carousel": "Karuzela",
+            "previousProducts": "Previous products",
+            "nextProducts": "Next products",
+            "slides": "Slides",
+            "goto": "Go to slide {n}"
         },
         "FormFields": {
             "Validation": {
@@ -476,6 +536,10 @@
                 "password": "Wprowadź hasło",
                 "phone": "Wprowadź numer telefonu",
                 "postalCode": "Wprowadź kod pocztowy"
+            },
+            "Counter": {
+                "increase": "Zwiększ liczbę",
+                "decrease": "Zmniejsz liczbę"
             }
         }
     }

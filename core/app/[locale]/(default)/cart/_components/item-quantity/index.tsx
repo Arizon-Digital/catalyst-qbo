@@ -150,11 +150,13 @@ const Quantity = ({ value }: { value: number }) => {
 
 export const ItemQuantity = ({ product }: { product: Product }) => {
   const t = useTranslations('Cart.SubmitItemQuantity');
+  const cartT = useTranslations('Cart');
 
   const { quantity, entityId, productEntityId, variantEntityId, selectedOptions } = product;
   const [productQuantity, setProductQuantity] = useState<number>(quantity);
 
   useEffect(() => {
+    document.title=cartT("title" );
     setProductQuantity(quantity);
   }, [quantity]);
 
@@ -171,6 +173,8 @@ export const ItemQuantity = ({ product }: { product: Product }) => {
       toast.error(t('errorMessage'), {
         icon: <AlertCircle className="text-error-secondary" />,
       });
+
+      setProductQuantity(quantity);
     }
   };
   const handleQuantityChange = (e: { target: { value: any } }) => {
@@ -189,10 +193,10 @@ export const ItemQuantity = ({ product }: { product: Product }) => {
     <div className="input-quantity w-[120px] border-2 p-2.5">
       <form action={onSubmit} className="flex items-center">
         <SubmitButton onClick={() => setProductQuantity(productQuantity - 1)}>
-          <div className="quantity-reduce hover:bg-white">
+          <div className="quantity-reduce hover:bg-white flex justify-center items-center">
             <svg
-              width="24"
-              height="24"
+              width="18"
+              height="18"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -218,15 +222,16 @@ export const ItemQuantity = ({ product }: { product: Product }) => {
           onBlur={handleBlur} // Sync with backend on blur
           onChange={handleQuantityChange} // Use the new function
           className="w-12 border text-center text-[15px] font-[700] h-[26px] rounded-none !text-[#454545]"
+          readOnly
           min="1"
         />
         {/* <Quantity value={productQuantity} /> */}
 
         <SubmitButton onClick={() => setProductQuantity(productQuantity + 1)}>
-            <div className="quantity-increase hover:bg-white">
+            <div className="quantity-increase hover:bg-white flex justify-center items-center">
               <svg
-                width="24"
-                height="24"
+                width="18"
+                height="18"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -235,7 +240,7 @@ export const ItemQuantity = ({ product }: { product: Product }) => {
                   d="M7 14l5-5 5 5"
                   stroke="black"
                   strokeWidth="1"
-                  stroke-linecap="round"
+                  strokeLinecap="round"
                   stroke-linejoin="round"
                 />
               </svg>

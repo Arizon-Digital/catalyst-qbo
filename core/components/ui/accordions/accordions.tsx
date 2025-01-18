@@ -27,12 +27,12 @@ const Accordions = ({ accordions, ...props }: Props) => {
       {accordions.map((accordion, i) => (
         <AccordionPrimitive.Item key={i} value={accordion.title}>
           <AccordionPrimitive.Header className="flex">
-            <AccordionPrimitive.Trigger className="flex flex-1 items-center justify-between py-[9.5px] text-lg font-bold outline-none transition-all hover:text-secondary focus-visible:text-secondary [&[data-state=open]>svg]:rotate-180">
+            <AccordionPrimitive.Trigger className="flex flex-1 items-center justify-between py-[9.5px] text-[15px] text-[#151515] font-bold outline-none transition-all hover:text-secondary focus-visible:text-secondary [&[data-state=open]>svg]:rotate-180">
               {accordion.title}
               <ChevronDown className="h-6 w-6 shrink-0 transition-transform duration-200" />
             </AccordionPrimitive.Trigger>
           </AccordionPrimitive.Header>
-          <AccordionPrimitive.Content className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down mb-4 overflow-hidden transition-all">
+          <AccordionPrimitive.Content className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down mb-4 text-[#151515] font-[400] overflow-hidden transition-all">
             {accordion.content}
           </AccordionPrimitive.Content>
         </AccordionPrimitive.Item>

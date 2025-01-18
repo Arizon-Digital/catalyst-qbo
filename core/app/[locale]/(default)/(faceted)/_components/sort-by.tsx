@@ -14,7 +14,7 @@ export function SortBy() {
   const [isPending, startTransition] = useTransition();
 
   const t = useTranslations('FacetedGroup.SortBy');
-  const value = searchParams.get('sort') ?? 'featured';
+  const value = searchParams.get('sort') ?? 'best_selling';
 
   const onSort = (sortValue: string) => {
     const params = new URLSearchParams(searchParams);
@@ -29,15 +29,15 @@ export function SortBy() {
   };
 
   return (
-    <div className="order-2 min-w-[224px] md:order-3 md:w-auto">
+    <div className="order-2 md:order-3 md:w-auto capitalize">
       <span className="hidden" data-pending={isPending ? '' : undefined} />
-      <Select
+      <Select 
         label={t('ariaLabel')}
         onValueChange={onSort}
         options={[
+          { value: 'best_selling', label: t('bestSellingItems') },
           { value: 'featured', label: t('featuredItems') },
           { value: 'newest', label: t('newestItems') },
-          { value: 'best_selling', label: t('bestSellingItems') },
           { value: 'a_to_z', label: t('aToZ') },
           { value: 'z_to_a', label: t('zToA') },
           { value: 'best_reviewed', label: t('byReview') },

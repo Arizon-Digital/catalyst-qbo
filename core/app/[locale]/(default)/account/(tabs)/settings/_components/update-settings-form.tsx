@@ -68,8 +68,6 @@ export enum FieldNameToFieldId {
   email = 1,
   firstName = 4,
   lastName,
-  company,
-  phone,
 }
 
 type FieldUnionType = keyof typeof FieldNameToFieldId;
@@ -192,10 +190,7 @@ export const UpdateSettingsForm = ({
     if (submit.status === 'success') {
       setFormStatus({
         status: 'success',
-        message: t('successMessage', {
-          firstName: submit.data?.firstName,
-          lastName: submit.data?.lastName,
-        }),
+        message: t('successMessage'),
       });
     }
 
@@ -434,7 +429,7 @@ export const UpdateSettingsForm = ({
               <Link href="/account">{t('cancel')}</Link>
             </Button>
             <Link
-              className="mt-2 w-fit font-semiboldd text-primary hover:text-secondary md:ms-auto md:mt-0"
+              className="mt-2 w-fit font-semibold text-primary hover:text-secondary md:ms-auto md:mt-0"
               href="/account/settings/change-password"
             >
               {t('changePassword')}

@@ -1,5 +1,4 @@
-import { useTranslations } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 
 import { redirect } from '~/i18n/routing';
 
@@ -14,26 +13,25 @@ export async function generateMetadata() {
 }
 
 interface Props {
-  searchParams: {
+  searchParams: Promise<{
     c?: string;
     t?: string;
-  };
+  }>;
 }
 
-export default function ChangePassword({ searchParams }: Props) {
-  const t = useTranslations('ChangePassword');
-
-  const customerId = searchParams.c;
-  const customerToken = searchParams.t;
+export default async function ChangePassword({ searchParams }: Props) {
+  const { c: customerId, t: customerToken } = await searchParams;
+  const t = await getTranslations('ChangePassword');
+  const locale = await getLocale();
 
   if (!customerId || !customerToken) {
-    redirect('/login');
+    redirect({ href: '/login', locale });
   }
 
   if (customerId && customerToken) {
     return (
       <div className="mx-auto my-6 max-w-4xl pageheading">
-        <h2 className="mb-8 text-4xl font-black lg:text-5xl">{t('heading')}</h2>
+        <h2 className="mb-8 text-4xl font-black lg:text-5xl font form">{t('heading')}</h2>
         <ChangePasswordForm customerId={customerId} customerToken={customerToken} />
       </div>
     );

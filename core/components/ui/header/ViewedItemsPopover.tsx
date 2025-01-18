@@ -29,7 +29,7 @@ const ViewedItemsPopover = () => {
           aria-label="Quickview"
         >
          <div className='flex mr-[20px] items-center'>
-              <div>
+              <div className="mr-3">
                 <svg
                   width="45"
                   height="50"
@@ -65,20 +65,24 @@ const ViewedItemsPopover = () => {
                   <line x1="80" y1="65" x2="87" y2="65" stroke="#1A2A47" strokeWidth="2"></line>
                 </svg>
               </div>
-              <div className='flex flex-col items-center'>
-               
+              <div className='flex flex-col items-center recently-viewed'>
+              <p className="recently text-[#1c2541]"> Recently </p>
+              <p className="recently text-[#1c2541]"> Viewed </p>
+              
               </div>
             </div>
         </button>
       </Popover.Trigger>
       <Popover.Portal>
         <Popover.Content
-          className="fixed bg-white rounded-md p-6 z-50"
+          className="fixed bg-white rounded-md p-6 !z-99999 recent-view-dropdown"
           style={{
-            top: '190px',
+            top: '350px',
             right: '-190px',
             transform: 'translate(-50%, -50%)',
             width: '290px',
+            
+           
           }}
           sideOffset={5}
         >
@@ -86,13 +90,13 @@ const ViewedItemsPopover = () => {
           <div className="mt-4">
             <ViewedItems recentlyViewed={recentlyViewed} /> 
           </div>
-          <div style={{ display: "flex", marginTop: '20px', justifyContent: "flex-end" }}>
+          {/* <div style={{ display: "flex", marginTop: '20px', justifyContent: "flex-end" }}>
             <Popover.Close asChild>
               <button className="Button bg-green-500 text-white px-4 py-2 rounded" aria-label="Close">
                 Close
               </button>
             </Popover.Close>
-          </div>
+          </div> */}
           <Popover.Arrow className="PopoverArrow" />
         </Popover.Content>
       </Popover.Portal>

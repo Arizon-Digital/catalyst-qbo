@@ -3,7 +3,7 @@ import { cache } from 'react';
 import { z } from 'zod';
 import { cookies } from 'next/headers';
 
-import { getSessionCustomerId } from '~/auth';
+import { getSessionCustomerAccessToken } from '~/auth';
 import { client } from '~/client';
 import { PaginationFragment } from '~/client/fragments/pagination';
 import { graphql, VariablesOf } from '~/client/graphql';
@@ -170,16 +170,17 @@ interface ProductSearch {
 
 const getProductSearchResults = cache(
   async ({ limit = 9, after, before, sort, filters }: ProductSearch) => {
-    const customerId = await getSessionCustomerId();
-    const currencyCode = (await cookies()).get('currencyCode')?.value as CurrencyCode | undefined;
+    const customerAccessToken = await getSessionCustomerAccessToken();
+    const cookieStore = await cookies();
+    const currencyCode = cookieStore.get('currencyCode')?.value as CurrencyCode || 'CAD';
     const filterArgs = { filters, sort };
     const paginationArgs = before ? { last: limit, before } : { first: limit, after };
 
     const response = await client.fetch({
       document: GetProductSearchResultsQuery,
       variables: { ...filterArgs, ...paginationArgs, currencyCode: currencyCode },
-      customerId,
-      fetchOptions: customerId ? { cache: 'no-store' } : { next: { revalidate: 300 } },
+      customerAccessToken,
+      fetchOptions: customerAccessToken ? { cache: 'no-store' } : { next: { revalidate: 300 } },
     });
 
     const { site } = response.data;

@@ -32,7 +32,7 @@
             "entePasswordMessage": "Ingresa tu contraseña",
             "submitting": "Enviando...",
             "logIn": "Inicio de sesión",
-            "resetPassword": "¿Olvidaste tu contraseña?"
+            "forgotPassword": "¿Olvidaste tu contraseña?"
         },
         "CreateAccount": {
             "heading": "¿Nuevo cliente?",
@@ -43,10 +43,26 @@
             "ordersTracking": "Rastrear nuevos pedidos",
             "wishlists": "Guardar artículos en tu lista de deseos",
             "createLink": "Crear cuenta "
+        },
+        "ForgotPassword": {
+            "title": "Olvidé la contraseña",
+            "heading": "Olvidé la contraseña",
+            "Form": {
+                "description": "A continuación, ingresa el correo electrónico asociado a tu cuenta. Te enviaremos instrucciones para restablecer tu contraseña.",
+                "emailLabel": "Correo electrónico",
+                "emailValidationMessage": "Ingresa un correo electrónico válido, como nombre@dominio.com",
+                "recaptchaText": "Pasar la comprobación de ReCAPTCHA",
+                "confirmResetPassword": "Si la dirección de correo electrónico {email} está vinculada a una cuenta en nuestra tienda, te hemos enviado un correo electrónico de restablecimiento de contraseña. Revisa tu bandeja de entrada y tu carpeta de correo no deseado si no lo ves.",
+                "submitting": "Enviando...",
+                "submit": "Restablecer la contraseña"
+            },
+            "Errors": {
+                "error": "Error desconocido."
+            }
         }
     },
     "Register": {
-        "title": "Register account",
+        "title": "Registrar cuenta",
         "heading": "Cuenta nueva",
         "Form": {
             "submit": "Crear cuenta",
@@ -58,22 +74,6 @@
             "inputError": "Ocurrió un error en el procesamiento de la entrada del usuario.",
             "apiError": "Parece que estamos experimentando un error en el servidor, inténtalo de nuevo en unos minutos.",
             "error": "Algo salió mal. Vuelva a intentarlo más tarde."
-        }
-    },
-    "Reset": {
-        "title": "Restablecer la contraseña",
-        "heading": "Restablecer la contraseña",
-        "Form": {
-            "description": "A continuación, ingresa el correo electrónico asociado a tu cuenta. Te enviaremos instrucciones para restablecer tu contraseña.",
-            "emailLabel": "Correo electrónico",
-            "emailValidationMessage": "Ingresa un correo electrónico válido, como nombre@dominio.com",
-            "recaptchaText": "Pasar la comprobación de ReCAPTCHA",
-            "confirmResetPassword": "Si la dirección de correo electrónico {email} está vinculada a una cuenta en nuestra tienda, te hemos enviado un correo electrónico de restablecimiento de contraseña. Revisa tu bandeja de entrada y tu carpeta de correo no deseado si no lo ves.",
-            "submitting": "Enviando...",
-            "submit": "Restablecer la contraseña"
-        },
-        "Errors": {
-            "error": "Error desconocido."
         }
     },
     "FacetedGroup": {
@@ -122,7 +122,11 @@
     "Category": {
         "sortBy": "{items, plural, =0 {sin artículos} =1 {1 artículo} other {# artículos}}",
         "products": "Productos",
-        "items": "Artículos"
+        "items": "Artículos",
+        "Empty": {
+            "message": "Ningún producto en esta categoría",
+            "cta": "Regresar a la página de inicio"
+        }
     },
     "Search": {
         "title": "Resultados de búsqueda",
@@ -133,6 +137,7 @@
     },
     "Account": {
         "Home": {
+            "title": "Mi cuenta",
             "heading": "Mi cuenta",
             "accountTabsLabel": "Pestañas de la cuenta",
             "orders": "Pedidos",
@@ -148,6 +153,7 @@
             "title": "Direcciones",
             "addNewAddress": "Agregar nueva dirección",
             "editButton": "Editar",
+            "emptyAddresses": "No se han agregado direcciones",
             "deleteButton": "Eliminar",
             "confirmDeleteAddress": "Eliminar dirección",
             "deleteModalTitle": "¿Estás seguro de que deseas eliminar esta dirección?",
@@ -157,9 +163,9 @@
                 "Form": {
                     "recaptchaText": "Pasar la comprobación de ReCAPTCHA",
                     "submit": "Agregar nueva dirección",
-                    "submitting": "Saving address...",
+                    "submitting": "Guardando la dirección...",
                     "cancel": "Cancelar",
-                    "success": "Address added to your account.",
+                    "success": "Dirección agregada a tu cuenta.",
                     "Errors": {
                         "inputError": "Ocurrió un error en el procesamiento de la entrada del usuario.",
                         "error": "Error desconocido."
@@ -172,12 +178,12 @@
                 "Form": {
                     "recaptchaText": "Pasar la comprobación de ReCAPTCHA",
                     "submit": "Editar dirección",
-                    "submitting": "Updating address...",
+                    "submitting": "Actualizando dirección...",
                     "cancel": "Cancelar",
                     "confirmDeleteAddress": "Eliminar dirección",
                     "deleteModalTitle": "¿Estás seguro de que deseas eliminar esta dirección?",
                     "deleteButton": "Eliminar",
-                    "success": "The address has been successfully updated.",
+                    "success": "La dirección se actualizó correctamente.",
                     "Errors": {
                         "inputError": "Ocurrió un error en el procesamiento de la entrada del usuario.",
                         "notFound": "La dirección no existe.",
@@ -198,7 +204,7 @@
             "changePassword": "Cambiar contraseña",
             "submit": "ACTUALICE LA CONFIGURACIÓN",
             "submitting": "Actualizar configuración...",
-            "successMessage": "Estimado/a {firstName} {lastName}: Actualizaste los datos de tu cuenta correctamente",
+            "successMessage": "Se actualizó la configuración de tu cuenta",
             "validationMessages": {
                 "email": "Ingresa un correo electrónico válido, como nombre@dominio.com",
                 "empty": "Este campo no puede estar vacío",
@@ -329,8 +335,7 @@
             }
         },
         "AddToCart": {
-            "success": "{cartItems, plural, =1 {1 artículo} other {# artículos}} agregado(s) a <cartLink>tu carrito</cartLink>",
-            "error": "Error al agregar un producto al carrito. Vuelve a intentarlo."
+            "success": "{cartItems, plural, =1 {1 artículo} other {# artículos}} agregado(s) a <cartLink>tu carrito</cartLink>"
         }
     },
     "Product": {
@@ -338,9 +343,14 @@
         "Carousel": {
             "relatedProducts": "Productos relacionados"
         },
+        "Gallery": {
+            "previous": "Previous product image",
+            "next": "Next product image",
+            "thumbnailNavigation": "Thumbnail navigation",
+            "enlarge": "Enlarge product image"
+        },
         "Form": {
             "success": "{cartItems, plural, =1 {1 artículo} other {# artículos}} agregado(s) a <cartLink>tu carrito</cartLink>",
-            "error": "Error al agregar un producto al carrito. Vuelve a intentarlo.",
             "saveToWishlist": "Guardar en la lista de deseos",
             "quantityLabel": "Cantidad"
         },
@@ -399,7 +409,7 @@
         }
     },
     "Maintenance": {
-        "title": "Maintenance",
+        "title": "MANTENIMIENTO",
         "message": "Estamos fuera de servicio por mantenimiento",
         "contactUs": "Puedes contactarnos en:"
     },
@@ -431,7 +441,34 @@
             "LocaleSwitcher": {
                 "chooseCountryAndLanguage": "Elige tu país y tu idioma",
                 "goToSite": "Ve al sitio"
+            },
+            "MiniCart": {
+                "cart": "Carrito",
+                "items": "Artículos en el carrito"
+            },
+            "Navigation": {
+                "toggle": "Toggle navigation",
+                "navigationMenu": "Navigation menu"
+            },
+            "Search": {
+                "openSearchPopup": "Open search popup",
+                "closeSearchPopup": "Close search popup",
+                "searchBar": "Search bar",
+                "photo": "Foto",
+                "products": "Productos",
+                "categories": "Categorías",
+                "brands": "Marcas",
+                "noSearchResults": "Lo sentimos, no hay resultados para {term}.",
+                "searchPlaceholder": "Buscar...",
+                "clearSearch": "Borrar búsqueda",
+                "processing": "Procesando…"
             }
+        },
+        "Footer": {
+            "socialMediaLinks": "Enlaces a redes sociales"
+        },
+        "Breadcrumb": {
+            "breadcrumb": "Breadcrumb"
         },
         "Compare": {
             "compareButton": "Comparar ({products})",
@@ -453,11 +490,34 @@
             "processing": "Procesando…"
         },
         "ProductCard": {
+            "Compare": {
+                "compare": "Comparar"
+            },
             "AddToCart": {
                 "viewOptions": "Opciones de visualización",
-                "success": "{cartItems, plural, =1 {1 artículo} other {# artículos}} agregado(s) a <cartLink>tu carrito</cartLink>",
-                "error": "Error al agregar un producto al carrito. Vuelve a intentarlo."
+                "success": "{cartItems, plural, =1 {1 artículo} other {# artículos}} agregado(s) a <cartLink>tu carrito</cartLink>"
             }
+        },
+        "Slideshow": {
+            "slideshow": "Interactive slide show",
+            "slide": "Diapositiva",
+            "previousSlide": "Previous slide",
+            "nextSlide": "Next slide",
+            "slideNo": "{n} of {total}",
+            "pause": "Pause slideshow",
+            "play": "Play slideshow"
+        },
+        "Pagination": {
+            "pagination": "paginación",
+            "previous": "Anterior",
+            "next": "Siguiente"
+        },
+        "Carousel": {
+            "carousel": "Carrusel",
+            "previousProducts": "Previous products",
+            "nextProducts": "Next products",
+            "slides": "Slides",
+            "goto": "Go to slide {n}"
         },
         "FormFields": {
             "Validation": {
@@ -476,6 +536,10 @@
                 "password": "Ingresa una contraseña",
                 "phone": "Introduce un número de teléfono",
                 "postalCode": "Introduce un código postal"
+            },
+            "Counter": {
+                "increase": "Aumentar número",
+                "decrease": "Disminuir número"
             }
         }
     }

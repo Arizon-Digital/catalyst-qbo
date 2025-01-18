@@ -33,29 +33,29 @@ const Deliveryinformation: React.FC<Props> = ({ product }) => {
         <table className="delivery-info" style={{ width: '100%' }} border="0px solid #ffffff">
           <tbody>
             <tr>
-              <td width="70%">
+              <td width="70%" className="delivery123">
                 <h2 style={{ fontFamily: 'Roboto Slab' }}>1-3 Day Service</h2>
               </td>
-              <td align="center" width="30%">
-                <img src="https://cdn11.bigcommerce.com/s-03842/content/NewSite/Icons/DHL.jpg" alt="DHL logo" width="160px" />
+              <td align="center" width="30%"className="delivery1234">
+                <img src="https://cdn11.bigcommerce.com/s-03842/content/NewSite/Icons/DHL.jpg" alt="DHL logo"  className="delivery-image"/>
               </td>
             </tr>
           </tbody>
         </table>
         <br />
-        <table className="deliverytable" style={{ width: '100%' }} align="center">
+        <table className="deliverytable" >
           <tbody>
             <tr>
               <th style={{ width: '50%' }}>Order Value</th>
               <th style={{ width: '50%' }}>Delivery Cost</th>
             </tr>
             <tr>
-              <td>$0.00 to $200.00</td>
-              <td>$10.00</td>
+              <td className="deliverytable-d1">$0.00 to $200.00</td>
+              <td className="deliverytable-d1">$15.00</td>
             </tr>
             <tr>
-              <td>Over $200.00</td>
-              <td>Free Of Charge</td>
+              <td className="deliverytable-d2">Over $200.00</td>
+              <td className="deliverytable-d2">Free Of Charge</td>
             </tr>
           </tbody>
         </table>
