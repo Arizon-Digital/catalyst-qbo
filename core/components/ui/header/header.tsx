@@ -191,7 +191,7 @@ const Header = ({
                     <div className="flex flex-col flex-wrap items-center gap-0 pl-[5px]">
                       <div className="text">
                         <ScrollToTop />
-                        <DoofinderScriptLoader />
+                        <DoofinderScriptLoader value={process.env.DOOFINDER_KEY} />
                         <HubspotChat portalId={139717848} />
                       </div>
                       <div className="texts" />
