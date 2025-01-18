@@ -34,7 +34,7 @@ export default function BulkPricing({ product }: BulkPricingProps) {
 
       return (
         <li key={index} className="text-gray-700">
-          • Buy {pricing.minimumQuantity} or {pricing.maximumQuantity || 'above'} and pay {discountText} each
+          • Buy {pricing.minimumQuantity} - {pricing.maximumQuantity || 'above'} and pay {discountText} each
         </li>
       );
     });
