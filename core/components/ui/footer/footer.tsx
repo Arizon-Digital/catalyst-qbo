@@ -56,7 +56,7 @@ export const Footer = ({
           <address className="not-italic font-bold" id="address">
             <p id="address">Quality Bearings Online Ltd</p>
           </address>
-          <p id="address" className="footer-contact font-bold">Canada - 438 793 4642</p>
+          <p id="address" className="footer-contact font-bold">Canada - {contactInformation?.phone}</p>
           <a className="contactus font-bold" href="/contact-us">
             <p id="address">Contact Us</p>
             <span className="block w-100 h-[1px] bg-white mt-4 sm:hidden"></span>
@@ -188,7 +188,7 @@ export const Footer = ({
           <address className="not-italic font-bold" id="address">
             <p id="address">Quality Bearings Online Ltd</p>
           </address>
-          <p id="address" className="footer-contact font-bold">Canada - 438 793 4642</p>
+          <p id="address" className="footer-contact font-bold">Canada - {contactInformation?.phone}</p>
           <a className="contactus font-bold" href="/contact-us">
             <p id="address">Contact Us</p>
           </a>
