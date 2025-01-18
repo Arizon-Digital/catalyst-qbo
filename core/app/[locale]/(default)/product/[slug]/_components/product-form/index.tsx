@@ -177,7 +177,6 @@ export const ProductForm = ({ data: product }: Props) => {
         <div className="mt-4 flex flex-col gap-4 @md:flex-row" id='addtocart button'>
           
           <Submit data={product} />
-          {open && <DialogDemo data={product} itemVal={productFormSubmit}  open={open} setOpen={setOpen} handleModalClose={handleModalClose} count={count} cartId={cartId}/>}
           
           {/* NOT IMPLEMENTED YET */}
           <div className="w-full">
@@ -188,6 +187,7 @@ export const ProductForm = ({ data: product }: Props) => {
           </div>
         </div>
       </form>
+      {open && <DialogDemo data={product} itemVal={productFormSubmit}  open={open} setOpen={setOpen} handleModalClose={handleModalClose} count={count} cartId={cartId}/>}
     </FormProvider>
   );
 };

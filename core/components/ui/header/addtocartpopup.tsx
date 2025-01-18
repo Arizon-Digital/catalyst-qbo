@@ -4,15 +4,13 @@
 import { useEffect, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { FragmentOf } from 'gql.tada';
-import { useFormatter, useTranslations } from 'next-intl';
-import { useFormStatus } from 'react-dom';
-
-import { Button } from '~/components/ui/button';
+import { useFormatter } from 'next-intl';
 import { ProductItemFragment } from '~/client/fragments/product-item';
 import { Link } from '~/components/link';
 import { BcImage } from '~/components/bc-image';
 import { CheckoutButtonPopUp } from "./checkout-button";
 import { pricesTransformer } from "~/data-transformers/prices-transformer";
+import { getCartId } from "~/components/common-functions";
 
 interface Props {
   data: FragmentOf<typeof ProductItemFragment>;
@@ -20,37 +18,44 @@ interface Props {
   cartId?: any;
 }
 
-const DialogDemo = ({ 
-  open, 
-  setOpen, 
-  data, 
-  itemVal, 
-  count, 
-  cartId, 
-  handleModalClose 
-}: { 
-  open: boolean, 
-  setOpen: any, 
-  data: any, 
-  itemVal: any, 
-  count?: any, 
-  cartId?: any, 
-  handleModalClose?: any 
+const DialogDemo = ({
+  open,
+  setOpen,
+  data,
+  itemVal,
+  count,
+  cartId,
+  handleModalClose
+}: {
+  open: boolean,
+  setOpen: any,
+  data: any,
+  itemVal: any,
+  count?: any,
+  cartId?: any,
+  handleModalClose?: any
 }) => {
   const [counterSec, setCounterSec] = useState(10);
+  const [cartIdData, setCartIdData] = useState<any>();
 
   useEffect(() => {
-    if(counterSec > 0) {
+    if (counterSec > 0) {
       setTimeout(() => {
         setCounterSec(counterSec - 1);
       }, 1000);
     } else {
       handleModalClose();
     }
+
+    const getCartIdFromCart = async () => {
+      let getCartIdData: any = await getCartId();
+      setCartIdData(getCartIdData);
+    };
+    getCartIdFromCart();
   }, [counterSec, handleModalClose]);
 
   let productPrice: any;
-  if(data?.price) {
+  if (data?.price) {
     productPrice = data?.price;
   } else {
     const format = useFormatter();
@@ -92,12 +97,7 @@ const DialogDemo = ({
             </div>
 
             <div className="mt-4 space-y-2">
-              <button 
-                className="w-full bg-yellow-500 hover:bg-yellow-600 text-center py-2 px-3 rounded text-sm font-medium text-black uppercase"
-                onClick={() => window.location.href = 'https://secure.qualitybearingsonline.ca/checkout'}
-              >
-                Proceed to Checkout
-              </button>
+              <CheckoutButtonPopUp title="Proceed to Checkout" cartId={cartIdData} />
               <Link
                 href="/cart"
                 className="block w-full bg-gray-100 text-center py-2 text-sm text-gray-700 hover:bg-gray-200 rounded uppercase font-medium"
