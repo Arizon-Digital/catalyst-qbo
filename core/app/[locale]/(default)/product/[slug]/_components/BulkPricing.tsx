@@ -25,16 +25,16 @@ export default function BulkPricing({ product }: BulkPricingProps) {
       let discountText = '';
 
       if ('price' in pricing) {
-        discountText = `${formatCurrency(pricing.price)} off`;
+        discountText = `${formatCurrency(pricing.price)} `;
       } else if ('percentOff' in pricing) {
         discountText = `${pricing.percentOff.toFixed(2)}% off`;
       } else if ('priceAdjustment' in pricing) {
-        discountText = `${formatCurrency(Number(pricing.priceAdjustment))} off`;
+        discountText = `${formatCurrency(Number(pricing.priceAdjustment))} `;
       }
 
       return (
         <li key={index} className="text-gray-700">
-          • Buy {pricing.minimumQuantity} - {pricing.maximumQuantity || 'above'} and pay {discountText} each
+          • Buy {pricing.minimumQuantity} {pricing.maximumQuantity ? '-' : 'or'} {pricing.maximumQuantity || 'above'} and pay  only {discountText} each
         </li>
       );
     });
