@@ -97,7 +97,7 @@ const DialogDemo = ({
             </div>
 
             <div className="mt-4 space-y-2">
-              <CheckoutButtonPopUp title="Proceed to Checkout" cartId={cartIdData} />
+              <CheckoutButtonPopUp title="PROCEED TO CHECKOUT" cartId={cartIdData} />
               <Link
                 href="/cart"
                 className="block w-full bg-gray-100 text-center py-2 text-sm text-gray-700 hover:bg-gray-200 rounded uppercase font-medium"
