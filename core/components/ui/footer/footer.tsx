@@ -101,9 +101,7 @@ export const Footer = ({
             <li className='navigationfooter opacity-[0.5] transition-opacity duration-500 hover:opacity-[1]'>
               <a href="/blog">Blog</a>
             </li>
-            <li className='navigationfooter opacity-[0.5] transition-opacity duration-500 hover:opacity-[1]'>
-              <a href="/sitemap">Sitemap</a>
-            </li>
+           
           </ul>
         </nav>
 
