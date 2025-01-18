@@ -3,7 +3,8 @@
 import React, { useEffect, useState } from "react";
 import { getCurrencyCodeFn } from "~/components/header/_actions/getCurrencyList";
 
-const DoofinderScriptLoader = ({value}: {value: string}) => {
+const DoofinderScriptLoader = ({value}: {value: any}) => {
+  console.log('========value=======', value);
   const [currency, setCurrency] = useState('CAD');
   useEffect(() => {
     const getCurrencyCode = async() => {

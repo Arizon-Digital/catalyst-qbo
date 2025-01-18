@@ -114,6 +114,7 @@ export const Header = async ({ cart }: Props) => {
       locales={localeLanguageRegionMap}
       logo={data.settings ? logoTransformer(data.settings) : undefined}
       search={<QuickSearch logo={data.settings ? logoTransformer(data.settings) : ''} />}
+      dooFinderKey={process.env.DOOFINDER_KEY}
     />
   );
 };

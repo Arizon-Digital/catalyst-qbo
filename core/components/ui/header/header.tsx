@@ -51,6 +51,7 @@ interface Props extends ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.
   locale?: ReactNode;
   logo?: string | Image;
   search?: ReactNode;
+  dooFinderKey?: string;
 }
 
 const Header = ({
@@ -62,6 +63,7 @@ const Header = ({
   locales,
   logo,
   search,
+  dooFinderKey,
 }: Props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -191,7 +193,7 @@ const Header = ({
                     <div className="flex flex-col flex-wrap items-center gap-0 pl-[5px]">
                       <div className="text">
                         <ScrollToTop />
-                        <DoofinderScriptLoader value={process.env.DOOFINDER_KEY} />
+                        <DoofinderScriptLoader value={dooFinderKey} />
                         <HubspotChat portalId={139717848} />
                       </div>
                       <div className="texts" />
