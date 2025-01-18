@@ -98,6 +98,7 @@ interface Props extends PropsWithChildren {
 export default async function RootLayout({ params, children }: Props) {
   const { locale } = await params;
   const headersList = await headers();
+  console.log('========headers=======', JSON.stringify(headersList));
   const pathname = headersList.get("X-Current-Url") || "";
   // need to call this method everywhere where static rendering is enabled
   // https://next-intl-docs.vercel.app/docs/getting-started/app-router#add-setRequestLocale-to-all-layouts-and-pages
