@@ -110,7 +110,7 @@ export default async function Category(props: Props) {
             className="!w-full"
             alt={category.defaultImage.altText}
             height={250}
-            src={category.defaultImage.url}
+            src={category.defaultImage.url?.replace('.original', '')}
             width={1230}
 
           />
