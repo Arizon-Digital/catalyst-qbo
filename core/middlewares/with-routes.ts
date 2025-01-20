@@ -273,6 +273,17 @@ export const withRoutes: MiddlewareFactory = () => {
       });
     }
 
+    if(request?.url) {
+      await cookieStore.set({
+        name: 'currentUrl',
+        value: request?.url,
+        httpOnly: true,
+        sameSite: 'lax',
+        secure: true,
+        path: '/',
+      });
+    }
+
     if (status === 'MAINTENANCE') {
       // 503 status code not working - https://github.com/vercel/next.js/issues/50155
       return NextResponse.rewrite(new URL(`/${locale}/maintenance`, request.url), {

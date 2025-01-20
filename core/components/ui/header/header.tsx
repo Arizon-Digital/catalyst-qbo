@@ -19,6 +19,7 @@ import { GetCurrencyList } from './currency';
 
 import * as Dialog from '@radix-ui/react-dialog';
 import Link from 'next/link';
+import HrefLang from '~/app/[locale]/hreflang';
 
 interface Link {
   label: string;
@@ -195,6 +196,7 @@ const Header = ({
                         <ScrollToTop />
                         {/* <DoofinderScriptLoader value={dooFinderKey} /> */}
                         <HubspotChat portalId={139717848} />
+                        <HrefLang />
                       </div>
                       <div className="texts" />
                       {activeLocale && locales.length > 0 ? (

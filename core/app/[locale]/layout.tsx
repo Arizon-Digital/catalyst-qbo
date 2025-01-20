@@ -3,7 +3,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
 import { Roboto_Slab } from 'next/font/google';
-import { draftMode, headers } from 'next/headers';
+import { draftMode } from 'next/headers';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { PropsWithChildren } from 'react';
@@ -44,8 +44,6 @@ const RootLayoutMetadataQuery = graphql(`
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
 
-  const headersList = await headers();
-  const currentUrl: any = headersList.get('x-middleware-request-currenturl');
   setRequestLocale(locale);
 
   const { data } = await client.fetch({
@@ -68,12 +66,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     other: {
       platform: 'bigcommerce.catalyst',
       build_sha: process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA ?? '',
-    },
-    alternates: {
-      languages: {
-        'en-US': currentUrl,
-        'en-GB': currentUrl?.replace('.ca', '.com'),
-      },
     }
   };
 }
@@ -97,8 +89,6 @@ interface Props extends PropsWithChildren {
 
 export default async function RootLayout({ params, children }: Props) {
   const { locale } = await params;
-  const headersList = await headers();
-  const currentUrl: any = headersList.get('x-middleware-request-currenturl');
   // need to call this method everywhere where static rendering is enabled
   // https://next-intl-docs.vercel.app/docs/getting-started/app-router#add-setRequestLocale-to-all-layouts-and-pages
   setRequestLocale(locale);
@@ -106,7 +96,7 @@ export default async function RootLayout({ params, children }: Props) {
   const messages = await getMessages();
 
   return (
-    <html className={`font-sans`} lang={locale} url={currentUrl}>
+    <html className={`font-sans`} lang={locale}>
       <head>
         <DraftModeScript />
         <GoogleAnalytics channelId={process.env.BIGCOMMERCE_CHANNEL_ID} />
