@@ -96,7 +96,7 @@ export const MiniCart = ({ count }: { count: number }) => {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 top-12 w-96 z-50 bg-white rounded-lg border border-gray-200 shadow-sm">
+        <div className="absolute right-0 top-12 w-96 z-50 bg-white rounded-lg border border-gray-200 shadow-sm card-cart">
           <div className="p-4">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-lg font-semibold">Shopping Cart</h2>

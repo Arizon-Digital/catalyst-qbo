@@ -163,7 +163,7 @@ const Header = ({
               {typeof logo === 'object' ? (
                 <BcImage
                   alt={logo.altText}
-                  className="header-logo h-[50px] w-full min-w-[173px] [@media_and(max-width:400px)]:w-[200px] object-contain nmd:h-[100px]"
+                  className="header-logo h-[50px] w-full min-w-[173px]  object-contain nmd:h-[100px]"
                   height={108}
                   priority
                   src={logo.src}
