@@ -3155,7 +3155,7 @@ div#warp button{
     .mobilelogo {
         position: relative !important;
         z-index: 1000;
-        width: fit-content;
+        width: 200px !important;
     }
     /* .product-grid{
         grid-template-columns: auto;
