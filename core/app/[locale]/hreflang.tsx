@@ -1,10 +1,11 @@
 "use client"
 
+import { useEffect } from 'react';
 import { usePathname } from '~/i18n/routing';
 
 export default function HrefLang() {
   const pathname = usePathname();
-  setTimeout(() => {
+  useEffect(() => {
     let currentUrl = pathname;
     let linkDefault = document.createElement('link');
       linkDefault.hreflang = 'x-default';
@@ -38,7 +39,7 @@ export default function HrefLang() {
         document.head.removeChild(scriptUS);
       }
     document.head.appendChild(linkGBDefault);
-  }, 1000);
+  }, []);
 
   return (
     <></>
