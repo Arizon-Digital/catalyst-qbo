@@ -19,8 +19,7 @@ interface Props {
 export const ShippingOptions = ({ data, checkoutEntityId, currencyCode }: Props) => {
   const t = useTranslations('Cart.ShippingCost');
   const format = useFormatter();
-  const { availableShippingOptions, entityId } = data;
-
+  const { availableShippingOptions, entityId } = data;  
   const shippingOptions = availableShippingOptions?.map(
     ({ cost, description, entityId: shippingOptionEntityId, isRecommended }) => ({
       cost: cost.value,
@@ -42,11 +41,14 @@ export const ShippingOptions = ({ data, checkoutEntityId, currencyCode }: Props)
 
   const items = shippingOptions?.map((option) => ({
     value: option.shippingOptionEntityId,
-    label: `${option.description} - ${format.number(option.cost, { style: 'currency', currency: currencyCode })}`,
+    label: `${option.description} - ${format.number(option.cost, { style: 'currency', currency: currencyCode})?.replace('CA$', 'C$')}`,
   }));
 
   const defaultValue = shippingOptions?.find((option) => option.isDefault)?.shippingOptionEntityId;
 
+  console.log(defaultValue,items);
+
+  
   return items && items.length > 0 ? (
     <Form action={onSubmit} className="mx-auto mb-4 mt-4 grid w-full grid-cols-1 gap-y-4">
       <Field className="relative space-y-2" id="shipping-option" name="option">
