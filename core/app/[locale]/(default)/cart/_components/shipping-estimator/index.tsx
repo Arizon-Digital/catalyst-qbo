@@ -18,6 +18,7 @@ interface Props {
   shippingCountries: ExistingResultType<typeof getShippingCountries>;
 }
 
+
 export const ShippingEstimator = ({ checkout, shippingCountries }: Props) => {
   const t = useTranslations('Cart.CheckoutSummary');
   const format = useFormatter();
@@ -68,7 +69,7 @@ export const ShippingEstimator = ({ checkout, shippingCountries }: Props) => {
               {format.number(checkout.shippingCostTotal?.value || 0, {
                 style: 'currency',
                 currency: checkout.cart?.currencyCode,
-              })}
+              })}?.replace('CA$', 'C$');
             </span>
           ) : (
             <Button
@@ -127,7 +128,7 @@ export const ShippingEstimator = ({ checkout, shippingCountries }: Props) => {
             {format.number(checkout.handlingCostTotal?.value || 0, {
               style: 'currency',
               currency: checkout.cart?.currencyCode,
-            })}
+            })}?.replace('CA$', 'C$');
           </span>
         </div>
       )}
