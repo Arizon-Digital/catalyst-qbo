@@ -48,18 +48,6 @@ export default async function Blog({ params }: Props) {
 
   return (
     <div className="mx-auto max-w-4xl">
-      <h1 className="mb-2 text-3xl font-black lg:text-5xl">{blogPost.name}</h1>
-
-      <div className="mb-8 flex">
-        <small className="mb-0 text-base text-gray-500">
-          {format.dateTime(new Date(blogPost.publishedDate.utc))}
-        </small>
-
-        {Boolean(blogPost.author) && (
-          <small className="text-base text-gray-500">, by {blogPost.author}</small>
-        )}
-      </div>
-
       {blogPost.thumbnailImage ? (
         <div className="mb-6 flex h-40 sm:h-80 lg:h-96">
           <BcImage
@@ -81,15 +69,32 @@ export default async function Blog({ params }: Props) {
         </div>
       )}
 
-      <div className="mb-10 text-base" dangerouslySetInnerHTML={{ __html: blogPost.htmlBody }} />
-      <div className="mb-10 flex">
-        {blogPost.tags.map((tag) => (
-          <Link className="me-3 block cursor-pointer" href={`/blog/tag/${tag}`} key={tag}>
-            <Tag content={tag} />
-          </Link>
-        ))}
+      <h1 className="mb-2 text-3xl font-black lg:text-5xl">{blogPost.name}</h1>
+
+      <div className="mb-10 text-base blog" dangerouslySetInnerHTML={{ __html: blogPost.htmlBody }} />
+
+      <div className="flex justify-between items-start mb-10">
+        <div className="flex">
+          {blogPost.tags.map((tag) => (
+            <Link className="me-3 block cursor-pointer" href={`/blog/tag/${tag}`} key={tag}>
+              <Tag content={tag} />
+            </Link>
+          ))}
+        </div>
+        <div className="flex-shrink-0">
+          <SharingLinks data={data} />
+        </div>
       </div>
-      <SharingLinks data={data} />
+
+      <div className="mb-8 flex items-center text-base text-gray-500">
+        <span>{format.dateTime(new Date(blogPost.publishedDate.utc))}</span>
+        {Boolean(blogPost.author) && (
+          <>
+            <span className="mx-2">,</span>
+            <span>by {blogPost.author}</span>
+          </>
+        )}
+      </div>
     </div>
   );
 }

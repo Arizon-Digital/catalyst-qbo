@@ -68,7 +68,7 @@ export const SharingLinks = ({ data }: Props) => {
           <title>{t('email')}</title>
         </Mail>
       </a>
-      <PrintButton />
+      
 
       <a
         className="hover:text-primary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20"
@@ -86,14 +86,7 @@ export const SharingLinks = ({ data }: Props) => {
       >
         <SiLinkedin size={24} title="LinkedIn" />
       </a>
-      <a
-        className="hover:text-primary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20"
-        href={`https://pinterest.com/pin/create/button/?url=${encodedUrl}&media=${blogPost.thumbnailImage?.url || ''}&description=${encodedTitle}`} // TODO: use default image if thumbnailImage is not available
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        <SiPinterest height={24} title="Pinterest" width={24} />
-      </a>
+      
     </div>
   );
 };

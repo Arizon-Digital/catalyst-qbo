@@ -2,6 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
+.blog h2 {
+    font-weight: 600;
+    margin-top: 2.25rem;
+    font-size: 30px;
+    line-height: 1.25;
+    margin-bottom: .75rem;
+}
+.blog h3{
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 2.25rem;
+    line-height: 1.25;
+    margin-bottom: .75rem;
+}
+
+.blog p {
+    font-weight: 300;
+  }
+.blog a {
+    line-height: inherit;
+    text-decoration: underline;
+}
 table.prod-desc-tbl h2 {
     font-family: Oswald, arial, sans-serif;
     font-size: 30px !important;
