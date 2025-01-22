@@ -2,7 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-
+.upadte.shipping {
+    border: 1px solid #ca9618;
+    padding: 9px 24px;
+    width: 65%;
+    height: 35px;
+    border-radius: 4px;
+    background: #ca9618;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 13px !important;
+}
 
 .blog h2 {
     font-weight: 600;

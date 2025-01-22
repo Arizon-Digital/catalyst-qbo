@@ -86,7 +86,7 @@ export const ShippingEstimator = ({ checkout, shippingCountries }: Props) => {
         {selectedShippingConsignment && (
           <div className="flex justify-between">
             <span>{selectedShippingConsignment.selectedShippingOption?.description}</span>
-            <Button
+            <Button 
               aria-controls="shipping-options"
               className="w-fit p-0 text-primary hover:bg-transparent"
               onClick={() => setShowShippingInfo((open) => !open)}
@@ -121,7 +121,7 @@ export const ShippingEstimator = ({ checkout, shippingCountries }: Props) => {
       </div>
       }
       {Boolean(checkout.handlingCostTotal?.value) && (
-        <div className="flex justify-between border-t border-t-gray-200 py-4">
+        <div className="flex justify-between border-t border-t-gray-200 py-4 update shipping ">
           <span className="font-semibold">{t('handlingCost')}</span>
           <span>
             {format.number(checkout.handlingCostTotal?.value || 0, {

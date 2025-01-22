@@ -68,7 +68,7 @@ export const SharingLinks = ({ data }: Props) => {
           <title>{t('email')}</title>
         </Mail>
       </a>
-      
+      <PrintButton />
 
       <a
         className="hover:text-primary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/20"
