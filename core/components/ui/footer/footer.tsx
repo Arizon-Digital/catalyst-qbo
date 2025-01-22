@@ -236,19 +236,19 @@ export const Footer = ({
         </nav>
 
         {/* Third Column with Images and Links */}
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-2">
           {/* Awards and Certifications - Structured like the image */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-2">
             {/* Lloyds Bank Awards Group */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2">
               <img src="https://cdn11.bigcommerce.com/s-ur7wjnshy8/images/stencil/original/image-manager/footer-logo.png" 
                    alt="Lloyds Bank British Business" 
                    className="w-[400px] h-auto" />
             </div>
 
             {/* SC21 and Supply Chain Solutions */}
-            <div className="flex items-center gap-4">
-              <div className="border">
+            <div className="flex items-center gap-2">
+              <div className="">
                 <img src="https://cdn11.bigcommerce.com/s-03842/content/../product_images/uploaded_images/sc21.png" 
                      alt="SC21" 
                      className="w-[300px] h-auto" />
@@ -318,7 +318,7 @@ export const Footer = ({
       </section>
     </div>
 
-    <section className="hidden justify-between gap-8 border-t border-gray-200 px-4 py-6 sm:px-10 lg:flex lg:px-12 2xl:px-0" id="borderfooter">
+    <section className="hidden justify-between gap-8 border-t border-gray-200 px-4 mt-6 py-6 sm:px-10 lg:flex lg:px-12 2xl:px-0" id="borderfooter">
       <p className="textscopy">{copyright}</p>
       <div className="flex gap-8 ml-[100px]">
         <Locale />
