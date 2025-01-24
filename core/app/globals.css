@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+
+/* Hide number input spinner arrows in Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+
 .upadte.shipping {
     border: 1px solid #ca9618;
     padding: 9px 24px;
