@@ -3298,6 +3298,14 @@ div#radix-\:R16ar8vfffbmlt7\: {
 }
 
 @media screen and (min-width: 1920px) {
+
+
+    .container.row{
+   
+    padding: 5px 135px 5px 248px !important;
+    
+}
+    
     
 
     section.section-flex {
