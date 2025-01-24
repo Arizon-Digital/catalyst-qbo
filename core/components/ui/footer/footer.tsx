@@ -240,7 +240,7 @@ export const Footer = ({
           {/* Awards and Certifications - Structured like the image */}
           <div className="flex flex-col gap-2">
             {/* Lloyds Bank Awards Group */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 lloyds">
               <img src="https://cdn11.bigcommerce.com/s-ur7wjnshy8/images/stencil/original/image-manager/footer-logo.png" 
                    alt="Lloyds Bank British Business" 
                    className="w-[400px] h-auto" />

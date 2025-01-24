@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 
+.lloyds {
+    margin-bottom: -25px !important;
+}
 /* Hide number input spinner arrows in Firefox */
 input[type="number"] {
     -moz-appearance: textfield;
