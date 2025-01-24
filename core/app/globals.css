@@ -732,6 +732,7 @@ table {
     unicode-bidi: isolate;
     border-spacing: 2px;
     border-color: BLACK;
+    margin-top: 10px;
 }
 div#feefo-service-review-carousel-widgetIdd {
     width: 50%;
