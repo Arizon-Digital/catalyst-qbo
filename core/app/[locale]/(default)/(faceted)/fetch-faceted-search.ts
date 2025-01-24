@@ -176,6 +176,8 @@ const getProductSearchResults = cache(
     const filterArgs = { filters, sort };
     const paginationArgs = before ? { last: limit, before } : { first: limit, after };
 
+   console.log('----filter----', JSON.stringify(filterArgs))
+   
     const response = await client.fetch({
       document: GetProductSearchResultsQuery,
       variables: { ...filterArgs, ...paginationArgs, currencyCode: currencyCode },
@@ -326,7 +328,7 @@ export const PublicSearchParamsSchema = z.object({
 });
 
 const AttributeKey = z.custom<`attr_${string}`>((val) => {
-  return typeof val === 'string' ? /^attr_\w+$/.test(val) : false;
+  return typeof val === 'string' ? /^attr_\w+(.*)$/.test(val) : false;
 });
 
 const PublicToPrivateParams = PublicSearchParamsSchema.catchall(SearchParamToArray)
@@ -350,7 +352,7 @@ const PublicToPrivateParams = PublicSearchParamsSchema.catchall(SearchParamToArr
       slug,
       ...additionalParams
     } = filters;
-
+    
     // Assuming the rest of the params are product attributes for now. We need to see if we can get the GQL endpoint to ingore unknown params.
     const productAttributes = Object.entries(additionalParams)
       .filter(([attribute]) => AttributeKey.safeParse(attribute).success)
@@ -358,7 +360,7 @@ const PublicToPrivateParams = PublicSearchParamsSchema.catchall(SearchParamToArr
         attribute: attribute.replace('attr_', ''),
         values,
       }));
-
+      
     return {
       after,
       before,
@@ -395,6 +397,7 @@ const PublicToPrivateParams = PublicSearchParamsSchema.catchall(SearchParamToArr
 export const fetchFacetedSearch = cache(
   // We need to make sure the reference passed into this function is the same if we want it to be memoized.
   async (params: z.input<typeof PublicSearchParamsSchema>) => {
+    console.log('----params-----', params);
     const { after, before, limit = 9, sort, filters } = PublicToPrivateParams.parse(params);
 
     return getProductSearchResults({
