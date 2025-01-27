@@ -203,9 +203,9 @@ export const Footer = ({
               <li className='navigationfooter opacity-[0.5] transition-opacity duration-500 hover:opacity-[1]'>
                 <a href="/about-us">About Us</a>
               </li>
-              <li className='navigationfooter opacity-[0.5] transition-opacity duration-500 hover:opacity-[1]'>
+              {/* <li className='navigationfooter opacity-[0.5] transition-opacity duration-500 hover:opacity-[1]'>
                 <a href="/10-year-anniversary">10 Year Anniversary</a>
-              </li>
+              </li> */}
               <li className='navigationfooter opacity-[0.5] transition-opacity duration-500 hover:opacity-[1]'>
                 <a href="/contact-us">Contact Us</a>
               </li>

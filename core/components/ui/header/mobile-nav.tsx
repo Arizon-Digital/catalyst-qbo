@@ -160,7 +160,7 @@ export const MobileNav = ({ links, logo }: Props) => {
             {links.map((link, index) => renderNestedMenu(link, `menu-${index}`))}
             
             <CustomLink href="/about-us" className="block p-3 ps-0 text-#ffffff">About Us</CustomLink>
-            <CustomLink href="/10-year-anniversary" className="block p-3 ps-0 text-#ffffff">10 Year Anniversary</CustomLink>
+            {/* <CustomLink href="/10-year-anniversary" className="block p-3 ps-0 text-#ffffff">10 Year Anniversary</CustomLink> */}
             <CustomLink href="/contact-us" className="block p-3 ps-0 text-#ffffff">Contact Us</CustomLink>
             <CustomLink href="/customer-service" className="block p-3 ps-0 text-#ffffff">Customer Service</CustomLink>
             <CustomLink href="/delivery-information" className="block p-3 ps-0 text-#ffffff">Delivery Information</CustomLink>
