@@ -148,11 +148,11 @@ export default function BulkPricing({ product }: BulkPricingProps) {
 
   if (!hasBulkPricing) {
     return (
-      <div className="mt-4">
+      <div className="">
         <h3 className="font-semibold flex items-center productView-info-name">
           Bulk Pricing :
         </h3>
-        <div className="ml-2 mt-[76px] productView-info-value">
+        <div className="ml-2 mt-[50.4px;] productView-info-value">
           <Link 
             href="/bulk-pricing"
             className="text-black-600 hover:text-blue-700 underline capitalize"
