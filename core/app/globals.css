@@ -950,6 +950,7 @@ a.relative.flex.items-center.justify-center.border-2.border-primary.px-\[30px\].
  p.pr {
         font-weight: 400 !important;
         Font-size: 15PX !important;
+        text-transform: initial;
  }
  button#currency-selection {
     width: auto;
@@ -3326,7 +3327,7 @@ div#radix-\:R16ar8vfffbmlt7\: {
         letter-spacing: 1.5px;
         line-height: 1.1875;
         padding-right: 0;
-        text-transform: uppercase;
+        text-transform: initial;
         font-weight: 400 !important;
         Font-size: 15PX !important;
     }
