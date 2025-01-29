@@ -246,7 +246,7 @@ const Header = ({
                     id={`nav-menu-content-${link.href}`}
                     className="absolute left-0 z-[70] w-full bg-white shadow-lg"
                   >
-                    <div className="mx-auto flex max-w-7xl flex-wrap justify-center gap-6 px-4 py-4">
+                    <div className="mx-auto flex max-w-7xl flex-wrap justify-start gap-6 px-4 py-4">
                       {link.groups.map((group, index) => (
                         <ul
                           id={`nav-menu-group-${group.href}`}
