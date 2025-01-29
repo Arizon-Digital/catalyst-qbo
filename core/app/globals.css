@@ -1250,6 +1250,7 @@ label.inline-flex.w-full.items-center.justify-between {
         text-align: left;
     }
     .priced{
+    margin-top:12px ;
     max-width: 200px;
     }
     span.cntpriced {
