@@ -156,19 +156,20 @@ const Header = ({
 
         {/* Main header */}
         <header className="z-900 w-full border-b border-gray-100">
-          <div className="header-2 relative flex items-center justify-center p-[0] nmd:static nmd:gap-[25px] nmd:py-[25px]">
+          <div className="header-2 relative flex items-center justify-center p-[0] nmd:static nmd:gap-[25px] nmd:py-[25px] cursor-pointer">
             <CustomLink
-              className="header-logo-a flex w-full nmd:w-[calc((400/1600)*100vw)] mobilelogo"
+              className="header-logo-a flex w-full nmd:w-[calc((400/1600)*100vw)] mobilelogo cursor-pointer"
               href="/"
             >
               {typeof logo === 'object' ? (
                 <BcImage
                   alt={logo.altText}
-                  className="header-logo h-[50px] w-full min-w-[173px]  object-contain nmd:h-[100px]"
+                  className="header-logo h-[50px] w-full min-w-[173px]  object-contain nmd:h-[100px] cursor-pointer"
                   height={108}
                   priority
                   src={logo.src}
                   width={384}
+
                 />
               ) : (
                 <span className="">{logo}</span>
