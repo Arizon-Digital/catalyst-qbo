@@ -121,7 +121,7 @@ const Search = ({ initialTerm = '', logo, onSearch }: Props) => {
           <SheetPrimitive.Content
             aria-describedby={undefined}
             className={cn(
-              'fixed inset-x-0 top-0 items-center overflow-auto border-b bg-white px-4 shadow-lg transition ease-in-out data-[state=closed]:duration-0 data-[state=open]:duration-0 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top md:px-10 lg:px-12',
+              'fixed inset-x-0 top-0 items-center overflow-auto border-b bg-white px-4 shadow-lg transition ease-in-out data-[state=closed]:duration-0 data-[state=open]:duration-0 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top md:px-10 lg:px-12 hidden',
               searchResults && searchResults.products.length > 0 && 'h-full lg:h-3/4',
             )}
           >
