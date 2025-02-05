@@ -268,6 +268,7 @@ export const RegisterCustomerForm = ({
 
           {customerFields
             .filter((field) => !CUSTOMER_FIELDS_TO_EXCLUDE.includes(field.entityId))
+            .filter((field) => ![28, 29].includes(field.entityId))
             .map((field) => {
               const fieldId = field.entityId;
               const fieldName = createFieldName(field, 'customer');
