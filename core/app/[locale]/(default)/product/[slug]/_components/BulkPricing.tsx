@@ -170,7 +170,7 @@ export default function BulkPricing({ product }: BulkPricingProps) {
         Bulk Pricing
       </h3>
       
-      <div className="ml-2 mt-[76px] productView-info-value">
+      <div className="ml-2 mt-[51px] productView-info-value">
         <Dialog.Root>
           <Dialog.Trigger asChild>
             <button className="text-black-600 hover:text-blue-700 underline capitalize">
